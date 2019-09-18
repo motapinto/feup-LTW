@@ -1,0 +1,5 @@
+Notes:
+- use "class" to identify a commun editing option 
+- use "id" to identify unique things to be later edited
+
+ 
