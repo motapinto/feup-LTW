@@ -1,5 +1,122 @@
 Notes:
-- use "class" to identify a commun editing option 
+- use <div> to separate large blocks of content
+- use <p> for paragraphs
+- use <span> for small specific parts of text (ex: <p>... written by <span class = "person"> Martim Silva </span>)
+
+- use "class" to identify a commun editing option (can have more than one class seprated by whitespace)
 - use "id" to identify unique things to be later edited
 
- 
+
+----------------------------------------------------------
+Basic ----------------------------------------------------
+----------------------------------------------------------
+<img src="dog.png" alt="description if not visible" width="" heigth="">
+<h1> <h2> <h3> <h4> <h5> <h6>
+<a href = "...."> Name </a>
+<ol> <li> ... <ol>
+<ul> <li> ... <ul>
+
+
+
+Forms-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Input attributes (<input ...>)
+    type : type of input (text, number[max, min, step], range, passowrd, email, url, search, tel)
+    type = "file" name = "" - to use file upload form method must be "post" and enctype="multipart/form-data"
+    type = "color" value = "#336699"
+    type = "date" value="2009-09-09" ; [aaaa-mm-dd]!
+    type = "checkbox"/"radio" name = "..." value="..." checked (para checkboxes num mesmo contexto usar o mesmo nome para no maximo permitir uma opcao)
+    + common attributes
+
+Button attributes(<button ...>)
+    type : type of button (submit, reset, )
+    formmethod : type of method (post, get)
+    formaction : specifies url(only for submit type button)
+    + common attributes
+
+Textarea attributes(<textarea>)
+    + common attributes
+
+Select attributes(<select ...>)
+    name : 
+    multiple : allow multiples selections
+    required : 
+    disabled : 
+
+
+Dropdown/Select
+<select name="">
+    <option value="" selected>
+    <option value="">
+    <option value="">
+</select>
+
+Dropdown/Option Group
+<select name="">
+    <optgroup label="Europe">
+        <option value="" selected>
+        <option value="">
+        <option value="">
+    </optgroup>
+    <optgroup label="America">
+        <option value="">
+        <option value="">
+        <option value="">
+    </optgroup>
+</select>
+
+
+Labels:
+<label> Name:
+    <input> ... </input>
+<label>
+
+Fieldset:
+<form>
+    <fieldset>
+        .....
+    </fieldset>
+</form>
+
+Common atributes (<....>):
+    name : used in http request
+    id : use with CSS and Javascript
+    value : default value
+    placeholder : hint
+    readonly : input cannot be modified
+    required : must be filled out
+    disable : input disabled (may be enable with Javascript)
+
+----------------------------------------------------------
+Formatting text-------------------------------------------
+----------------------------------------------------------
+
+<em> - itallic
+<strong> - bold
+
+
+
+
+
+
+----------------------------------------------------------
+Structure ------------------------------------------------
+----------------------------------------------------------
+
+header - introduction/navigation aids (search form, logo, title, subtitle) ; can be in body, article, section, form,...
+nav - section of page that contains lots of links
+aside - separate to content of page, usually sidebars or inserts
+section - secção de um documento com uma header
+article - é suposto ser independente e fazer sentido sem o contexto da pagina. cada article deve ter uma header
+footer - nota de rodape (copyright info, author, ...)
+
+----------------------------------------------------------
+Media ----------------------------------------------------
+----------------------------------------------------------
+
+<canvas ...> - empty rectangle to be drawn using Javascript
+<svg ...> - 
+<audio>
+<video>
+<source>
+<track>

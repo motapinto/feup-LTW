@@ -1,0 +1,93 @@
+<!--form where user should input:
+country - dropdown
+interests - list with options
+
+form with submit button
+each field should have a label
+validate the page at the end
+
+post/get form methods-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>User form</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <form action="submition.html" method="GET">
+            ´
+            <fieldset>
+                <legend>Personal data:</legend>
+                <label>Name: <input type="text" name="name" required></label>
+                <label>Email: <input type="email" name="email" placeholder="example@xxx.com" required></label>
+                <label>Profession: <input type="text" name="profession" ></label>
+
+                <div>
+                    Age:
+                    <input type="radio" name="age" value="<18"> &lt;18
+                    <input type="radio" name="age" value="19-35"> 19 - 35
+                    <input type="radio" name="age" value="<36-48"> &lt;36 - 48
+                    <input type="radio" name="age" value=">49"> &gt;49
+                </div>
+                
+                <label>Country:
+                    <select name="country">
+    
+                        <optgroup label="Europe">
+                            <option value="portugal">Portugal</option>
+                            <option value="netherlands">Netherlands</option>
+                            <option value="france">France</option>
+                        </optgroup>
+    
+                        <optgroup label="North America">
+                            <option value="usa">USA</option>
+                            <option value="canada">Canada</option>
+                        </optgroup>
+                        
+                        <optgroup label="South America">
+                            <option value="brazil">Brazil</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="chile">Chile</option>
+                        </optgroup>
+                    </select>
+                </label>
+
+                <label>Interests: </label>
+                <label>
+                    <input type="checkbox" name="interest"> Photography 
+                </label>
+                <label>
+                    <input type="checkbox" name="interest">Sports
+                </label>
+                <label>
+                    <input type="checkbox" name="interest">Politics
+                </label>
+                <label>
+                    <input type="checkbox" name="interest">Cinema
+                </label>
+                <label>
+                    <input type="checkbox" name="interest">Informatics
+                </label>
+                <label>
+                    <input type="checkbox" name="interest">Music
+                </label>
+
+            </fieldset>
+            
+
+            <div>
+                <label>
+                    How did you find the site: <br>
+                    <textarea name="description" cols="20" rows="5"></textarea>
+                </label>
+            </div>
+
+            <button type="submit" formmethod="get">Submit</button>
+            <button type="reset">Reset</button>
+            
+        </form>
+    </body>
+</html>
