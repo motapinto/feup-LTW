@@ -1,0 +1,29 @@
+header h1 {
+    color: aqua;
+    background-color: blueviolet;
+    margin: 0;
+}
+
+
+header h2 {
+    border: 5px;
+    margin: 0;
+    padding: 50px;
+}
+
+body {
+    width: 100em;
+    background-color: burlywood;
+}
+
+p {
+    background-color: blueviolet
+}
+
+html {
+    background-color: darkgrey;
+}
+
+.breaking_news {
+    color: brown;
+}

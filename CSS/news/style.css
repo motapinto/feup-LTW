@@ -1,0 +1,25 @@
+header {
+    background-color: #046DD5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+body h1 {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+#related {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #2A2F33;
+    color: white;
+}
+
+#related a {
+    color: white;
+    text-decoration: none;
+}
