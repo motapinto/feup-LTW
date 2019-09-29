@@ -1,0 +1,88 @@
+body {
+  width: 60em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+section {
+  padding: 2em;
+  margin: 1em;
+}
+
+#green {
+  background-color: #baffc9;
+  order: 3;
+}
+
+#orange {
+  background-color: #ffdfba;
+  order: 4;
+  flex-grow: 1;
+}
+
+#yellow {
+  background-color:   #ffffba;
+  order: 1;
+}
+
+#red {
+  background-color:   #ffb3ba;
+  order: 2;
+}
+
+#blue {
+  background-color:   #bae1ff;
+  order: 5;
+}
+
+ul { 
+  padding: 0; 
+}
+
+li {
+  background-color: white;
+  padding: 1em;
+  display: block;
+  margin: 1em;
+}
+
+
+/*  FLEX PROPRITIES
+display: flex | inline-flex
+flex-direction: row | column
+flex-wrap: wrap | nowrap | wrapreverse
+flex-basis: <legth>
+justify-content: flex-start | flex-end | center
+aliugn-self: flex-start | flex-end | center
+align-items: flex-start | flex-end | center
+align-content: flex-start | flex-end | center
+flex-grow: <number>
+flex-shrink: <number>
+flex: <integer>
+order: <integer>
+*/
+
+
+/* FLEX VS FLEX-GROW
+flex is a shorthand property of flex-grow, flex-shrink and flex-basis.
+
+In this case, flex: 1 sets
+
+flex-grow: 1
+flex-shrink: 1
+flex-basis: 0 (in old spec drafts it was flex-basis: 0%)
+
+
+If you only use flex-grow: 1, you will have
+
+flex-grow: 1
+flex-shrink: 1
+flex-basis: auto
+
+Then, the difference is that the flex base size will be 0 in the first case, 
+so the flex items will have the same size after distributing free space.
+
+In the second case each flex item will start with the size given by its content, 
+and then will grow or shrink according to free space. Most probably the sizes will end up being different.
+*/
