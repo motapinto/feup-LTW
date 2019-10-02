@@ -1,0 +1,87 @@
+html {
+    background-color: thistle;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    display: grid;
+    width: 800px;
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: white;
+}
+
+#header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: dimgray;
+    color: white;
+    padding: 20px;
+}
+
+#menu {
+    background-color: #330000;
+}
+
+#menu a {
+    color: white;
+}
+
+#menu ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+    flex-direction: row;
+}
+
+#menu li {
+    border-right: 1px solid white;
+    padding-right: 10px;
+    margin-right: 0px;
+    margin: 10px;
+}
+
+#menu li:last-child {
+    border: none;
+}
+
+#content {
+    padding: 0 10px;
+}
+
+#content h3 {
+    font-size: 170%;
+    margin: 10px;
+}
+
+#content img {
+    float: left;
+    padding: 0 10px 10px 0;
+}
+
+#content ul {
+    list-style: none;
+    padding: 10px 0px;
+    margin: 0px;
+}
+
+#content li{
+    display: inline;
+    background-color: slategrey;
+    padding: 3px 10px;
+}
+
+#content li a{
+    color: white;
+}
+
+.news-item {
+    border-bottom: 1px solid black;
+}
+
+#footer {
+    padding: 0 10px;
+}
