@@ -1,0 +1,108 @@
+html {
+    background-color: #000000;
+}
+
+body {
+    padding-left: 40px;
+    font-family: times, serif;
+    background-color: #ffffff;
+}
+
+h1, h2, h3 {
+    font-family: georgia, serif;
+}
+
+#header {
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+#header h1 {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+#header h2 {
+    font-size: 0.8em;
+    margin: 0px;
+}
+
+
+
+
+
+
+#menu {
+    background-color: #333333;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 10px 5px;
+    margin: 0px;
+}
+#menu li{
+    display: inline;
+    background-color: white;
+    padding: 0px 10px;
+    margin: 10px;
+}
+
+#content {
+    padding: 0 10px;
+    width: 800px;
+}   
+
+#content .news-item h3{
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+#content .news-item img{
+    float: right; 
+    padding: 0 0 10px 10px;
+}
+
+#content .news-item a{
+    text-decoration: none;
+    color:#883333;
+}
+
+#content .news-item ul{
+    list-style-type: none;
+    background-color: #333333;
+    padding: 3px 0px;
+    margin: 0px;   
+}
+
+#content .news-item li{
+    display: inline;
+    padding: 3px 10px;
+}   
+
+#content .news-item li a{
+    text-decoration: none;
+    color:#ffffff;
+}  
+
+#content .introduction {
+    font-style: italic;
+}
+
+#footer {
+    padding: 0;
+    text-align: right;
+    width: 800px;
+}
+   
+
+
+
