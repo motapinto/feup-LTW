@@ -5,7 +5,7 @@ html {
 body {
     padding-left: 40px;
     font-family: times, serif;
-    background-color: #ffffff;
+    background-image: url("C:\\Users\\Martim\\Desktop\\LTW\\CSS\\news2\\style2-stripe.png");
 }
 
 h1, h2, h3 {
@@ -30,11 +30,6 @@ h1, h2, h3 {
     margin: 0px;
 }
 
-
-
-
-
-
 #menu {
     background-color: #333333;
 }
@@ -53,17 +48,17 @@ h1, h2, h3 {
     display: inline;
     background-color: white;
     padding: 0px 10px;
-    margin: 10px;
 }
 
 #content {
     padding: 0 10px;
-    width: 800px;
+    background-color: white;
 }   
 
 #content .news-item h3{
     font-size: 1.8em;
-    margin: 10px 0;
+    margin: 0;
+    padding-top: 10px;
 }
 
 #content .news-item img{
@@ -80,7 +75,7 @@ h1, h2, h3 {
     list-style-type: none;
     background-color: #333333;
     padding: 3px 0px;
-    margin: 0px;   
+    margin: 0;
 }
 
 #content .news-item li{
@@ -97,10 +92,19 @@ h1, h2, h3 {
     font-style: italic;
 }
 
+.news-item {
+    width: 800px;
+    margin: 0;
+}
+
 #footer {
-    padding: 0;
+    background-color: white;
+}
+
+#footer p {
     text-align: right;
     width: 800px;
+    margin: 0px;
 }
    
 
