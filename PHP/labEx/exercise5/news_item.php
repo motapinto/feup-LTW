@@ -6,19 +6,15 @@
   $stmt->execute(array($_GET['id']));
   $article = $stmt->fetch();
 
-?>
-
-  <h1>$article['title']</h1>
-  <p>$article['introduction']</p>
-
-<?php
 
   $stmt = $db->prepare('SELECT * FROM comments JOIN users USING (username) WHERE news_id = ?');
   $stmt->execute(array($_GET['id']));
   $comments = $stmt->fetchAll();
 
-  foreach( $comments as $comments) { ?>
-  
-    <?php }
+  foreach( $comments as $comments) { 
+    echo '<h1>'.$comments['news_id'].'</h1>';
+    echo '<p>'.$comments['username'].'</p>';
+    echo '<p>'.$comments['published'].'</p>';
+  }
 
 ?>

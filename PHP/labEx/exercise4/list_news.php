@@ -5,8 +5,8 @@
   $stmt->execute();
   $articles = $stmt->fetchAll();
 
-  foreach( $articles as $article) { ?>
-    <h1><?=$article['title']?></h1>
-    <p><?=$article['introduction']?></p>
-    <?php }
+  foreach( $articles as $article) { 
+    echo '<h1>'.$article['title'].'</h1>';
+    echo '<p>'.$article['introduction'].'</h1>';
+  }
 ?>
