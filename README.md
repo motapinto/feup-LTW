@@ -7,10 +7,9 @@
 > **Project developed by:**\
 > Martim Silva ([motapinto](https://github.com/motapinto))\
 > Luis Ramos ([luispramos](https://github.com/luispramos))
-
-### To do
-
-- [ ] start proj1
+>
+> **Any problems?**\
+> Start an Issue please.
 
 
 **Disclaimer** - This repository was created for educational purposes and we do not take any responsibility for anything related to its content. You are free to use any code or algorithm you find, but do so at your own risk.
