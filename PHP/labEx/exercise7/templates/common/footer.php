@@ -1,4 +1,4 @@
-<?php function draw_footer() { ?>
+<?php function drawFooter() { ?>
   </body>
 </html>
 <?php } ?>

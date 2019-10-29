@@ -1,4 +1,4 @@
-<?php function draw_header() { ?>
+<?php function drawHeader() { ?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
