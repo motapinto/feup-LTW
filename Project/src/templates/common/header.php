@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>News</title>
+    <title>Campus Rentals</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="nav_bar.css">
   </head>
   <body>
 <?php } ?>

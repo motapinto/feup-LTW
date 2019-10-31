@@ -1,12 +1,13 @@
 <?= function drawNavBar() { ?>
     <header>
+        <img class="logo" src="assets/logoi.png" alt="logo">
         <nav>
-            <ul>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">A</a></li>
-                <li><a href="#">B</a></li>
+            <ul class="links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Buy</a></li>
+                <li><a href="#">Rent</a></li>
             </ul>
         </nav>
-        <a href="#"> <button> Hey</button></a>
+        <a class="button" href="#"> <button> Profile</button></a>
     </header>
 <?= } ?>
