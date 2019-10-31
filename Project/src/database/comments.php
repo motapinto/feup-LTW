@@ -6,7 +6,7 @@
     function getCommentsByPropertyId($id){
         global $db;
 
-        $stmt = $db->prepare('SELECT * FROM Comment JOIN Property USING (username) WHERE news_id = ?');
+        $stmt = $db->prepare('SELECT * FROM Comment WHERE property_id = ?');
         $stmt->execute(array($id));
         return $stmt->fetchAll();
     }
@@ -15,8 +15,8 @@
     function getCommentsByUsername($username){
         global $db;
 
-        $stmt = $db->prepare('SELECT * FROM Comment JOIN Property USING (username) WHERE news_id = ?');
-        $stmt->execute(array($id));
+        $stmt = $db->prepare('SELECT * FROM Comment WHERE username = ?');
+        $stmt->execute(array($username));
         return $stmt->fetchAll();
     }
 ?>
