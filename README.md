@@ -11,5 +11,8 @@
 > **Any problems?**\
 > Start an Issue please.
 
+Ideias:
+- por um dropdown order by: price, date, location, ...
+
 
 **Disclaimer** - This repository was created for educational purposes and we do not take any responsibility for anything related to its content. You are free to use any code or algorithm you find, but do so at your own risk.
