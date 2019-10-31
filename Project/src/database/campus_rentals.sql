@@ -1,9 +1,9 @@
 --
--- File generated with SQLiteStudio v3.2.1 on Thu Oct 31 19:22:41 2019
+-- File generated with SQLiteStudio v3.2.1 on Thu Oct 31 20:01:02 2019
 --
 -- Text encoding used: UTF-8
 --
-PRAGMA foreign_keys = on;
+PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table: Comment
@@ -13,10 +13,12 @@ CREATE TABLE Comment (
     id          INTEGER NOT NULL
                         PRIMARY KEY AUTOINCREMENT,
     property_id INTEGER NOT NULL,
-    username    VARCHAR NOT NULL,
+    email       VARCHAR NOT NULL
+                        REFERENCES User (email) ON DELETE SET NULL
+                                                ON UPDATE CASCADE,
     description VARCHAR NOT NULL,
     FOREIGN KEY (
-        username
+        email
     )
     REFERENCES User (username) ON DELETE SET NULL
                                ON UPDATE CASCADE,
@@ -34,7 +36,8 @@ DROP TABLE IF EXISTS Property;
 CREATE TABLE Property (
     id               INTEGER NOT NULL
                              PRIMARY KEY AUTOINCREMENT,
-    username         VARCHAR NOT NULL,
+    email            VARCHAR NOT NULL
+                             REFERENCES User (email),
     city             VARCHAR NOT NULL,
     street           VARCHAR NOT NULL,
     door_number      INTEGER NOT NULL,
@@ -47,17 +50,12 @@ CREATE TABLE Property (
     description      VARCHAR NOT NULL,
     property_type    VARCHAR NOT NULL,
     CHECK (property_type == 'House' OR 
-           property_type == 'Apartment'),
-    FOREIGN KEY (
-        username
-    )
-    REFERENCES User (username) ON DELETE SET NULL
-                               ON UPDATE CASCADE
+           property_type == 'Apartment') 
 );
 
 INSERT INTO Property (
                          id,
-                         username,
+                         email,
                          city,
                          street,
                          door_number,
@@ -90,7 +88,7 @@ INSERT INTO Property (
 
 INSERT INTO Property (
                          id,
-                         username,
+                         email,
                          city,
                          street,
                          door_number,
@@ -131,12 +129,9 @@ CREATE TABLE Rented (
     initial_date VARCHAR NOT NULL,
     fina_date    VARCHAR NOT NULL,
     property_id  INTEGER NOT NULL,
-    username     VARCHAR NOT NULL,
-    FOREIGN KEY (
-        username
-    )
-    REFERENCES User (username) ON DELETE SET NULL
-                               ON UPDATE CASCADE,
+    email        VARCHAR NOT NULL
+                         REFERENCES User (email) ON DELETE SET NULL
+                                                 ON UPDATE CASCADE,
     FOREIGN KEY (
         property_id
     )
@@ -149,47 +144,42 @@ CREATE TABLE Rented (
 DROP TABLE IF EXISTS User;
 
 CREATE TABLE User (
-    username VARCHAR NOT NULL
+    email    VARCHAR NOT NULL
+                     UNIQUE
                      PRIMARY KEY,
     password VARCHAR NOT NULL,
     name     VARCHAR NOT NULL,
     age      INTEGER NOT NULL,
-    email    TEXT    NOT NULL
-                     UNIQUE,
     rating   INTEGER NOT NULL
 );
 
 INSERT INTO User (
-                     username,
+                     email,
                      password,
                      name,
                      age,
-                     email,
                      rating
                  )
                  VALUES (
-                     'motapinto',
+                     'ms@gmail.com',
                      '03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4',
                      'Martim Pinto da Silva',
                      25,
-                     'ms@gmail.com',
                      4
                  );
 
 INSERT INTO User (
-                     username,
+                     email,
                      password,
                      name,
                      age,
-                     email,
                      rating
                  )
                  VALUES (
-                     'lpramos',
+                     'lr@gmail.com',
                      '03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4',
                      'Luis Ramos',
                      32,
-                     'lr@gmail.com',
                      5
                  );
 
