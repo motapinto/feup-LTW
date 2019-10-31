@@ -41,7 +41,8 @@ button:active {
 }
 
 button:hover {
-    background-color: rgba(117, 227, 255, 0.8);
+	background-color: rgba(117, 227, 255, 0.8);
+	cursor: pointer;
 }
 
 form {

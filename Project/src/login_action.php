@@ -6,13 +6,15 @@
   //if(!isset(_POST['username']) || !isset(_POST['username']) || 
     //_POST['username'] == '')
   
-  if (checkIfUserExists($_POST['username'], $_POST['password'])) { // checks if user exists
-    $_SESSION['username'] = $_POST['username'];                    // store the username
-    include('listings_all.php');                                   // lists all listings
-  }  
-  else {
-    include('logout_action.php'); //logs out
-  }
+  //if (checkIfUserExists($_POST['username'], $_POST['password'])) { // checks if user exists
+   // $_SESSION['username'] = $_POST['username'];                    // store the username
+    //include('listings_all.php');                                   // lists all listings
+  //}  
+  //else {
+    //include('logout_action.php'); //logs out
+  //}
+
+  checkIfUserExists($_POST['email'], $_POST['password'])
 
   //header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
