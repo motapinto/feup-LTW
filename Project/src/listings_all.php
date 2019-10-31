@@ -5,7 +5,7 @@
     $listings = getAllListings();                     // gets all listings from the database
 
     include('templates/common/header.php');           // prints the initial part of the HTML document
-    include('templates/common/menu.php');             // prints the menu in HTML
+    include('templates/common/nav_bar.php');          // prints the menu in HTML
     include('templates/listings/all_listings.php');   // prints the list of listings in HTML
     include('templates/common/footer.php');           // prints the final part of the HTML document
 ?>

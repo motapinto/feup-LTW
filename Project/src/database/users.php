@@ -1,5 +1,4 @@
 <?php
-    session_start(); 
     include_once(__DIR__.'/connection.php');
 
     // Checks if the input user exists

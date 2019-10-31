@@ -1,5 +1,4 @@
 <?php
-    session_start(); 
     include_once(__DIR__.'/connection.php');
 
     //Returns all comments for a property with id = id

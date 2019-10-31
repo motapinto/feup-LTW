@@ -41,7 +41,7 @@ CREATE TABLE Property (
   price_day INTEGER NOT NULL,
   available BOOLEAN NOT NULL,
   rating INTEGER NOT NULL,
-  introduction VARCHAR NOT NULL,
+  title VARCHAR NOT NULL,
   description VARCHAR NOT NULL,
   property_type VARCHAR NOT NULL,
   

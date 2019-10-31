@@ -1,5 +1,4 @@
 <?php
-    session_start(); 
     include_once(__DIR__.'/connection.php');
 
     // Returns all listings
@@ -48,13 +47,11 @@
     }
 
     // /Returns all available listings
-    function getListingsAvailable($price) {
+    function getListingsAvailable() {
         global $db;
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE available == true ORDER BY price_day');
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
-
 ?>
