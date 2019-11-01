@@ -4,7 +4,6 @@
   include_once('templates/common/footer.php');
 
   drawHead('Login');
-  drawNavBar();
 
 ?>
 
