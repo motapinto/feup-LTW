@@ -1,22 +1,28 @@
 <?php
     include_once(__DIR__.'/connection.php');
 
+    define("User does not exist", 1);
+    define("User exists", 2);
+    define("User exists but wrong password", 3);
+
     // Checks if the input user exists
-    function checkIfUserExists($email, $password){
+    function checkUser($email, $password){
         global $db;
 
         $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
         $stmt->execute(array($email));
         $user = $stmt->fetch();
 
-        $passwordVerification = sha1($password);
-            echo $password;
+        if (!$user) {
+            return "User does not exist";
+        } 
         
-        //if($passwordVerification === $user['password'])
-            //return true;
+        if(strtoupper(sha1($password)) === strtoupper($user['password'])) {
+            return "User exists";
+        }
 
-        //else 
-            //return false;
-        
+        else {
+            return "User exists but wrong password";
+        } 
     }
 ?>

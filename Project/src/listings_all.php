@@ -6,6 +6,8 @@
 
     include('templates/common/header.php');           // prints the initial part of the HTML document
     include('templates/common/nav_bar.php');          // prints the menu in HTML
+    //drawNavBar();
     include('templates/listings/all_listings.php');   // prints the list of listings in HTML
+    //drawFooter()
     include('templates/common/footer.php');           // prints the final part of the HTML document
 ?>
