@@ -1,2 +1,4 @@
-  </body>
-</html>
+<?php function drawFooter() { ?>
+      </body>
+    </html>
+<?php } ?>

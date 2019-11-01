@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Login</title>
-		<link rel="stylesheet" href="styles/login.css">
-	</head>
-  
+<?php
+  include_once('templates/common/header.php');
+  include_once('templates/common/nav_bar.php');
+  include_once('templates/common/footer.php');
+
+  drawHeader();
+  drawNavBar();
+
+?>
+
 	<h1>Rentals NAV</h1>
 		<section class="sign_in">
 			<form action="login_action.php" method="POST">
@@ -28,4 +30,7 @@
 			</form>
 		</section>
 	</h1>
-</html>
+
+<?php
+  drawFooter();
+?>

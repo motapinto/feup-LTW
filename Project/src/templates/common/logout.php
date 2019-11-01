@@ -1,3 +1,3 @@
-<form action="logout_action.php" method="POST">   
-    <input type="submit" value="Log Out">
-</form>
+<?php function drawLogOut() { ?>
+  <button formaction="logout_action.php" formmethod="post">Log Out</button>
+<?php } ?>
