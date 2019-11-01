@@ -4,7 +4,8 @@
       <head>
         <title><?=$title?></title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="/src/styles/nav_bar.css">
+        <link rel="stylesheet" href="styles/nav_bar.css">
+        <link rel="stylesheet" href="styles/login.css">
       </head>
       <body>
   <?php } ?>
