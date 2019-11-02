@@ -2,12 +2,15 @@
     include_once('database/connection.php');          // connects to the database
     include_once('database/listings.php');            // listings functions
 
-    $listings = getAllListings();                     // gets all listings from the database
-
+    
     include('templates/common/header.php');           // prints the initial part of the HTML document
     include('templates/common/nav_bar.php');          // prints the menu in HTML
-    //drawNavBar();
     include('templates/listings/all_listings.php');   // prints the list of listings in HTML
-    //drawFooter()
     include('templates/common/footer.php');           // prints the final part of the HTML document
+
+    drawHead('All Listings');
+    drawNavBar();
+    $listings = getAllListings();                     // gets all listings from the database
+    drawAllListings($listings);
+    drawFooter()
 ?>

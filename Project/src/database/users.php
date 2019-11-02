@@ -25,4 +25,21 @@
             return "User exists but wrong password";
         } 
     }
+
+    function addUser($email, $password, $name, $age){
+      global $db;
+
+      $stmt = $db->prepare('INSERT INTO User (
+            email,
+            password,
+            name,
+            age,
+            rating
+        )
+        VALUES (?, ?, ?, ?, NULL);
+      ');
+      $stmt->execute(array($email, sha1($password), $name, $age));
+      $user = $stmt->fetch();
+      return !$user?true:false;
+    }
 ?>

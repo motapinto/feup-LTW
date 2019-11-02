@@ -1,4 +1,4 @@
-
+<?php function drawAllListings($listings) { ?>
 <section id="listings">
 <?php foreach($listings as $listing) { ?>
     <article>
@@ -48,3 +48,5 @@
     </article>
 <?php } ?>
 </section>
+
+<?php } ?>

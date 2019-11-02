@@ -5,20 +5,20 @@
     background-color: #242424;
 }
 
-body {
+.log_in, .sign_up {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-    height: 800px;
+  height: 800px;
 }
 
 h1, h2 {
     color: white;
 }
 
-a {
+a, p {
 	color: white;
 	font-size: 14px;
 	text-decoration: none;
@@ -26,14 +26,15 @@ a {
 }
 
 button {
-    border: none;
+  border: none;
 	border-radius: 20px;
 	background-color: rgb(0, 100, 160);
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
-	letter-spacing: 1px;
+  letter-spacing: 1px;
+  margin: 10px;
 }
 
 button:active {
