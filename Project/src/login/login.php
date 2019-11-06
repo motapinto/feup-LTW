@@ -7,7 +7,7 @@
 ?>
   <section class="log_in">
     <form action="../actions/login_action.php" method="POST">
-      <img class="logo" src="../../assets/logoi.png" alt="logo">
+      <img class="logo" src="../../assets/logo.png" alt="logo">
       <h2>Sign in</h2>
       <input name="email" type="email" placeholder="email" />
       <input name="password" type="password" placeholder="password" maxlength=30/>

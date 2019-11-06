@@ -1,6 +1,6 @@
 <?php function drawNavBar() { ?>
   <nav>
-      <img class="logo" src="../assets/logoi.png" alt="logo">
+      <a href="../listings/listings_all.php"><img class="logo" src="../../assets/logo.png" alt="logo" ></a>
         <ul class="links">
             <li><a href="#">About</a></li>
             <li><a href="#">Buy</a></li>

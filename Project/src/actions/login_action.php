@@ -17,7 +17,7 @@
     
       case "User exists":
       $_SESSION['email'] = $_POST['email'];                        // store the username
-      header('Location: ../listings_all.php');                                 // lists all listings
+      header('Location: ../listings/listings_all.php');                                 // lists all listings
       break;                                
     
       case "User exists but wrong password":
