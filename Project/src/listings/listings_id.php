@@ -6,7 +6,7 @@
   if (!isset($_GET['id']) || id < 0)
     die("Invalid id!");
 
-  include_once('templates/common/header.php');
+  include_once('../templates/common/header.php');
 
   $listing = getListingById($_GET['id']);
   include_once('../templates/listings/some_listing.php');
