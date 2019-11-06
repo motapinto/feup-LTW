@@ -6,7 +6,7 @@
 
 ?>
   <section class="log_in">
-    <form action="../login/login_action.php" method="POST">
+    <form action="../actions/login_action.php" method="POST">
       <img class="logo" src="../../assets/logoi.png" alt="logo">
       <h2>Sign in</h2>
       <input name="email" type="email" placeholder="email" />
@@ -22,7 +22,7 @@
         }		
       ?>
       <a href="#">Forgot your password?</a>
-      <button class="loginin_button" formaction="login_action.php" formmethod="post">LOG IN</button>
+      <button class="loginin_button" formaction="../actions/login_action.php" formmethod="post">LOG IN</button>
       <button class="signup_button" formaction="signup.php" formmethod="post">SIGN UP</button>
     </form>
   </section>
