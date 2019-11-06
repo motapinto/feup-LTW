@@ -1,9 +1,9 @@
 --
--- File generated with SQLiteStudio v3.2.1 on Wed Nov 6 09:56:52 2019
+-- File generated with SQLiteStudio v3.2.1 on Thu Oct 31 19:22:41 2019
 --
 -- Text encoding used: UTF-8
 --
-PRAGMA foreign_keys = off;
+PRAGMA foreign_keys = on;
 BEGIN TRANSACTION;
 
 -- Table: Comment
@@ -12,13 +12,14 @@ DROP TABLE IF EXISTS Comment;
 CREATE TABLE Comment (
     id          INTEGER NOT NULL
                         PRIMARY KEY AUTOINCREMENT,
-    property_id INTEGER NOT NULL
-                        REFERENCES Property (id) ON DELETE CASCADE
-                                                 ON UPDATE CASCADE,
-    email       VARCHAR NOT NULL
-                        REFERENCES User (email) ON DELETE CASCADE
-                                                ON UPDATE CASCADE,
+    property_id INTEGER NOT NULL,
+    username    VARCHAR NOT NULL,
     description VARCHAR NOT NULL,
+    FOREIGN KEY (
+        username
+    )
+    REFERENCES User (username) ON DELETE SET NULL
+                               ON UPDATE CASCADE,
     FOREIGN KEY (
         property_id
     )
@@ -33,8 +34,7 @@ DROP TABLE IF EXISTS Property;
 CREATE TABLE Property (
     id               INTEGER NOT NULL
                              PRIMARY KEY AUTOINCREMENT,
-    email            VARCHAR NOT NULL
-                             REFERENCES User (email),
+    username         VARCHAR NOT NULL,
     city             VARCHAR NOT NULL,
     street           VARCHAR NOT NULL,
     door_number      INTEGER NOT NULL,
@@ -47,12 +47,17 @@ CREATE TABLE Property (
     description      VARCHAR NOT NULL,
     property_type    VARCHAR NOT NULL,
     CHECK (property_type == 'House' OR 
-           property_type == 'Apartment') 
+           property_type == 'Apartment'),
+    FOREIGN KEY (
+        username
+    )
+    REFERENCES User (username) ON DELETE SET NULL
+                               ON UPDATE CASCADE
 );
 
 INSERT INTO Property (
                          id,
-                         email,
+                         username,
                          city,
                          street,
                          door_number,
@@ -85,7 +90,7 @@ INSERT INTO Property (
 
 INSERT INTO Property (
                          id,
-                         email,
+                         username,
                          city,
                          street,
                          door_number,
@@ -123,95 +128,70 @@ DROP TABLE IF EXISTS Rented;
 CREATE TABLE Rented (
     id           INTEGER NOT NULL
                          PRIMARY KEY AUTOINCREMENT,
-    initial_date DATE    NOT NULL,
-    final_date   DATE    NOT NULL
-                         CONSTRAINT [FinalDate > Initial Date] CHECK (final_date > initial_date),
-    property_id  INTEGER NOT NULL
-                         REFERENCES Property (id) ON DELETE CASCADE
-                                                  ON UPDATE CASCADE,
-    email        VARCHAR NOT NULL
-                         REFERENCES User (email) ON DELETE NO ACTION
-                                                 ON UPDATE CASCADE
+    initial_date VARCHAR NOT NULL,
+    final_date    VARCHAR NOT NULL,
+    property_id  INTEGER NOT NULL,
+    username     VARCHAR NOT NULL,
+    FOREIGN KEY (
+        username
+    )
+    REFERENCES User (username) ON DELETE SET NULL
+                               ON UPDATE CASCADE,
+    FOREIGN KEY (
+        property_id
+    )
+    REFERENCES Property (id) ON DELETE SET NULL
+                             ON UPDATE CASCADE
 );
-
-INSERT INTO Rented (
-                       id,
-                       initial_date,
-                       final_date,
-                       property_id,
-                       email
-                   )
-                   VALUES (
-                       1,
-                       '10/10/2012',
-                       '10/12/2012',
-                       1,
-                       'lr@gmail.com'
-                   );
 
 
 -- Table: User
 DROP TABLE IF EXISTS User;
 
 CREATE TABLE User (
-    email    VARCHAR NOT NULL
-                     UNIQUE
+    username VARCHAR NOT NULL
                      PRIMARY KEY,
     password VARCHAR NOT NULL,
     name     VARCHAR NOT NULL,
     age      INTEGER NOT NULL,
-    rating   INTEGER
+    email    TEXT    NOT NULL
+                     UNIQUE,
+    rating   INTEGER NOT NULL
 );
 
 INSERT INTO User (
-                     email,
+                     username,
                      password,
                      name,
                      age,
+                     email,
                      rating
                  )
                  VALUES (
-                     'ms@gmail.com',
+                     'motapinto',
                      '7110EDA4D09E062AA5E4A390B0A572AC0D2C0220',
                      'Martim Pinto da Silva',
                      25,
+                     'ms@gmail.com',
                      4
                  );
 
 INSERT INTO User (
-                     email,
+                     username,
                      password,
                      name,
                      age,
+                     email,
                      rating
                  )
                  VALUES (
-                     'lr@gmail.com',
+                     'lpramos',
                      '7110EDA4D09E062AA5E4A390B0A572AC0D2C0220',
                      'Luis Ramos',
                      32,
+                     'lr@gmail.com',
                      5
                  );
-
-
--- Trigger: OnRent
-DROP TRIGGER IF EXISTS OnRent;
-CREATE TRIGGER OnRent
-        BEFORE INSERT
-            ON Rented
-          WHEN (
-    SELECT COUNT( * ) AS contagem
-      FROM (
-               SELECT R.initial_date,
-                      R.final_date
-                 FROM Rented AS R
-                WHERE NEW.initial_date < R.final_date AND 
-                      NEW.final_date > R.initial_date
-           )
-)
-BEGIN
-    SELECT RAISE(ROLLBACK, "Invalid Dates");
-END;
 
 
 COMMIT TRANSACTION;
