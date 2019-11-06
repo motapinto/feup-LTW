@@ -129,7 +129,7 @@ CREATE TABLE Rented (
     id           INTEGER NOT NULL
                          PRIMARY KEY AUTOINCREMENT,
     initial_date VARCHAR NOT NULL,
-    fina_date    VARCHAR NOT NULL,
+    final_date    VARCHAR NOT NULL,
     property_id  INTEGER NOT NULL,
     username     VARCHAR NOT NULL,
     FOREIGN KEY (

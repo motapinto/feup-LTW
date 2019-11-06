@@ -34,7 +34,7 @@ button {
 	font-weight: bold;
 	padding: 12px 45px;
   	letter-spacing: 1px;
-  	margin-left: 0px;
+  	margin: 10px;
 }
 
 button:active {
@@ -63,3 +63,4 @@ input {
 	margin: 8px 0;
 	width: 100%;
 }
+
