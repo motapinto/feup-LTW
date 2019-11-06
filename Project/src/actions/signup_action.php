@@ -6,7 +6,6 @@
   
   $checkUserReturn = checkUser($_POST['email'], $_POST['password']);
   
-  
   switch($checkUserReturn) { 
     case "User does not exist":
       if(addUser($_POST['email'], $_POST['password'], $_POST['name'], $_POST['age']))
