@@ -6,6 +6,7 @@
             <li><a href="#">Buy</a></li>
             <li><a href="#">Rent</a></li>
         </ul>
-      <button formaction="../../profile/profile.php" formmethod="post"> Profile</button></a>
+        <a href="../profile/profile.php"><button formaction="#" formmethod="post"> Profile</button></a>
+        <a href="../actions/logout_action.php"><button formaction="#" formmethod="post"> LogOut</button></a>
   </nav>
 <?php } ?>

@@ -42,4 +42,14 @@
       $user = $stmt->fetch();
       return !$user?true:false;
     }
+
+    function userProfile($email) {
+        global $db;
+
+        $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
+        $stmt->execute(array($email));
+        $user = $stmt->fetch();
+
+        return $user;
+    }
 ?>
