@@ -1,4 +1,4 @@
-<?php function draw_header($username) {  ?>
+<?php function draw_header($title) {  ?>
     <!DOCTYPE html>
         <html lang="en-US">
         <head>
