@@ -1,5 +1,5 @@
 <?php
-    include_once('../database/connection.php');          // connects to the database
+    include_once('../includes/database.php');            // connects to the database
     include_once('../database/listings.php');            // listings functions
 
     include('../templates/common/header.php');           // prints the initial part of the HTML document
@@ -9,7 +9,7 @@
 
     drawHead('All Listings');
     drawNavBar();
-    $listings = getAllListings();                     // gets all listings from the database
+    $listings = getAllListings();                        // gets all listings from the database
     drawAllListings($listings);
     drawFooter()
 ?>

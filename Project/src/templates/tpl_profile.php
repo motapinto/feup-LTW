@@ -1,4 +1,4 @@
-<?php function drawProfile($user) { ?>
+<?php function draw_profile($user) { ?>
 <section id="user">
     <article>
         <header>

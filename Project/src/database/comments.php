@@ -1,9 +1,9 @@
 <?php
-    include_once(__DIR__.'/connection.php');
+    include_once('../includes/database.php');      // connects to the database
 
     //Returns all comments for a property with id = id
     function getCommentsByPropertyId($id){
-        global $db;
+        $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Comment WHERE property_id = ?');
         $stmt->execute(array($id));
@@ -12,7 +12,7 @@
 
     //Returns all comments with a username with username = username
     function getCommentsByUsername($username){
-        global $db;
+        $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Comment WHERE username = ?');
         $stmt->execute(array($username));
