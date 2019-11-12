@@ -3,7 +3,7 @@
 
     // Returns all listings
     function getAllListings() {
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property');
         $stmt->execute();
@@ -12,7 +12,7 @@
 
     // Returns listing with id = id
     function getListingById($id) {
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE id = ? ORDER BY price_day');
         $stmt->execute(array($id));
@@ -21,7 +21,7 @@
 
     // Returns all listings with city = city
     function getListingByCity($city) {
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE city = ? ORDER BY price_day');
         $stmt->execute(array($id));
@@ -30,7 +30,7 @@
 
     // Returns all listings with city = city && street = street
     function getListingByStreet($city, $street) {
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE city = ? AND street = ? ORDER BY price_day');
         $stmt->execute(array($city), array($street));
@@ -39,7 +39,7 @@
 
     // Returns all listings wtih price < price_day
     function getListingsBelowPrice($price) {
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE price_day < price ORDER BY price_day');
         $stmt->execute();
@@ -48,7 +48,7 @@
 
     // /Returns all available listings
     function getListingsAvailable() {
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE available == true ORDER BY price_day');
         $stmt->execute();
