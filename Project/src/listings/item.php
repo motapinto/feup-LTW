@@ -15,13 +15,18 @@
 
 ?>
     <section>
-      <article>
+      <article class='list'>
         <h2><?=$item['title']?></h2>
+        <!-- Galeria de imagens, possivelmente usando scripts? -->
         <p><?=$item['description']?></p>
         <p>Rating: <?=$item['rating']?></p>
-        <p>Property type:<?=$item['property_type']?></p>
+        <p>Property type: <?=$item['property_type']?></p>
         <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
         <p>Price per day: <?=$item['price_day']?>$</p>
+        <form action="../rent/rent.php" method="GET">
+            <input name="id" type='hidden' value=<?=$id?> />
+            <button class="rent_button">Rent</button>
+        </form>
       </article>
     </section>
 
