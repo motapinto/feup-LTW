@@ -11,7 +11,7 @@
 
     $id = $_GET['id'];
     $item = getListingById($id);
-    $comments = getCommentsByEmail($item['email']);
+    $comments = getCommentsByPropertyId($id);
 
     draw_header('Campus Rentals');
     draw_navBar();
@@ -43,7 +43,10 @@
       </article>
       <article class='rent'>
         <form action="../rent/rent.php" method="GET">
-          <input name="id" type='hidden' value=<?=$id?> />
+          <input name="id" type='hidden' value=<?=$id?>/>
+          <input name="email" type='hidden' value=<?=$id?>/>
+          <input type="date" name="check_in" title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+          <input type="date" name="check_out" title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
           <button class="rent_button">Rent</button>
         </form>
       </article>
@@ -56,7 +59,7 @@
 
 
     if(isset($_SESSION['email'])){ ?>
-      <form action="../actions/action_comment.php" method="POST">
+      <form id='comment_form' action="../actions/action_comment.php" method="POST">
           <h3>Leave a comment</h3>
           <textarea name="comment" cols="40" rows="5" placeholder="Describe your experience" required></textarea>
           <input name="email" type="hidden" value="<?=$_SESSION['email']?>"/>
@@ -65,7 +68,7 @@
       </form>
 <?php }
     else { ?>
-      <p>To leave a comment please log in</p>
+      <p id='comment_form'>To leave a comment please log in</p>
 <?php }
 
     draw_footer();
