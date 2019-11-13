@@ -5,7 +5,7 @@
     /**
      * A singleton representing the app connection 
      * to the database. Use Database::instance() to 
-     * access it and getDB() to get the database connection.
+     * access it and db() to get the database connection.
      */
     class Database {
         private static $instance = null;
@@ -26,7 +26,7 @@
                 throw new Exception("Failed to open database");
         }
 
-        public function getDB() {
+        public function db() {
             return $this->db;
         }
 

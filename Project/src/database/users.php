@@ -7,7 +7,7 @@
 
     // Checks if the input user exists
     function checkUser($email, $password){
-        $db = Database::instance()->getDB();
+        $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
         $stmt->execute(array($email));
@@ -25,7 +25,7 @@
 
     // Adds a new user to the database
     function addUser($email, $password, $name, $age){
-        $db = Database::instance()->getDB();
+        $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO User (
                 email,
@@ -42,7 +42,7 @@
     }
 
     function userProfile($email) {
-        $db = Database::instance()->getDB();
+        $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
         $stmt->execute(array($email));

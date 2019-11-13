@@ -5,7 +5,7 @@
 
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');                  // prints the menu in HTML
-    include('../templates/listings/all_listings.php');    // prints the list of listings in HTML
+    include('../templates/tpl_listings.php');    // prints the list of listings in HTML
 
     draw_header('All Listings');
     draw_navBar(true);

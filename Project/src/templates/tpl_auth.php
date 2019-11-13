@@ -6,7 +6,7 @@
             <input name="email" type="email" placeholder="email" />
             <input name="password" type="password" placeholder="password" maxlength=30/>
             <a href="#">Forgot your password?</a>
-            <button class="loginin_button" formaction="../actions/action_login.php" formmethod="post">LOG IN</button>
+            <button class="loginin_button">LOG IN</button>
             <button class="signup_button" formaction="signup.php" formmethod="post">SIGN UP</button>
         </form>
     </section>
