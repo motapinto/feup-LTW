@@ -1,4 +1,4 @@
   
 <?php
-  header('Location: src/authentication/login.php');
+  header('Location: src/listings/listings_all.php');
 ?>

@@ -6,11 +6,13 @@
             <li><a href="#">Buy</a></li>
             <li><a href="#">Rent</a></li>
         </ul>
-        <a href="../profile/profile.php"><button formaction="#" formmethod="post"> Profile</button></a>
-        <a href="../actions/logout_action.php"><button formaction="#" formmethod="post"> LogOut</button></a>
+      <?php
+        if(isset($_SESSION['email'])) { ?>
+          <a href="../profile/profile.php"><button formaction="#" formmethod="post"> Profile</button></a>
+          <a href="../actions/action_logout.php"><button formaction="#" formmethod="post"> Log Out</button></a>
+        <?php }
+        else { ?>
+          <a href="../authentication/login.php"><button formaction="#" formmethod="post"> Log In</button></a>
+        <?php } ?>
     </nav>
-<?php } ?>
-
-<?php function drawLogOut() { ?>
-    <button formaction="logout_action.php" formmethod="post">Log Out</button>
 <?php } ?>

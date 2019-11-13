@@ -6,6 +6,9 @@
     include('../templates/tpl_navBar.php');         // prints the menu in HTML
     include('../templates/tpl_profile.php');        // prints the user profile
 
+    if(!isset($_SESSION['email']))
+      header('Location: ../listings/all_listings.php');
+
     draw_header('User Profile');
     draw_navBar();
     $user = userProfile($_SESSION['email']);        // get's current user
