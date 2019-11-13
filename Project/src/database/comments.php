@@ -3,7 +3,7 @@
 
     //Returns all comments for a property with id = id
     function getCommentsByPropertyId($id){
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Comment WHERE property_id = ?');
         $stmt->execute(array($id));
@@ -12,7 +12,7 @@
 
     //Returns all comments with a username with username = username
     function getCommentsByUsername($username){
-        $db = Database::instance()->db();
+        $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Comment WHERE username = ?');
         $stmt->execute(array($username));

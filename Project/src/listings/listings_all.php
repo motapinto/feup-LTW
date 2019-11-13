@@ -8,7 +8,7 @@
     include('../templates/listings/all_listings.php');    // prints the list of listings in HTML
 
     draw_header('All Listings');
-    draw_navBar();
+    draw_navBar(true);
     $listings = getAllListings();                        // gets all listings from the database
     draw_allListings($listings);
     draw_footer();

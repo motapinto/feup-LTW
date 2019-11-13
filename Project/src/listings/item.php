@@ -2,6 +2,7 @@
     include_once('../includes/session.php');              // starts session
     include_once('../includes/database.php');             // connects to the database
     include_once('../database/listings.php');             // listings functions
+    include_once('../database/comments.php');             // comments functions
 
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');                  // prints the menu in HTML
@@ -14,8 +15,8 @@
     draw_navBar();
 
 ?>
-    <section>
-      <article class='list'>
+    <section id='list'>
+      <article class='property'>
         <h2><?=$item['title']?></h2>
         <!-- Galeria de imagens, possivelmente usando scripts? -->
         <p><?=$item['description']?></p>
@@ -24,13 +25,21 @@
         <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
         <p>Price per day: <?=$item['price_day']?>$</p>
         <form action="../rent/rent.php" method="GET">
-            <input name="id" type='hidden' value=<?=$id?> />
-            <button class="rent_button">Rent</button>
+          <input name="id" type='hidden' value=<?=$id?> />
+          <button class="rent_button">Rent</button>
+        </form>
+      </article>
+      <article class='rent'>
+        <form action="../rent/rent.php" method="GET">
+          <input name="id" type='hidden' value=<?=$id?> />
+          <button class="rent_button">Rent</button>
         </form>
       </article>
     </section>
 
 <?php
 
+
+    // draw_comments();
     draw_footer();
 ?>

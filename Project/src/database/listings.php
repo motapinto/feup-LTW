@@ -24,7 +24,7 @@
         $db = Database::instance()->getDB();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE city = ? ORDER BY price_day');
-        $stmt->execute(array($id));
+        $stmt->execute(array($city));
         return $stmt->fetchAll();
     }
 

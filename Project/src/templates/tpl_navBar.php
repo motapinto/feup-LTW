@@ -1,9 +1,14 @@
-<?php function draw_navBar() { ?>
+<?php function draw_navBar($search=false) { ?>
     <nav>
         <a href="../listings/listings_all.php"><img class="logo" src="../../assets/logo.png" alt="logo" ></a>
+        <?php if($search){ ?>
+        <form action="../listings/listings_city.php" method="GET">
+          <input name="search" type="text" placeholder="Search" required/>
+        </form>
+        <?php } ?>
         <ul class="links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Buy</a></li>
+            <!-- <li><a href="#">About</a></li> -->
+            <li><a href="#">My Properties</a></li>
             <li><a href="#">Rent</a></li>
         </ul>
       <?php
