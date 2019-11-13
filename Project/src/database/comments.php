@@ -7,7 +7,7 @@
 
         $stmt = $db->prepare('SELECT name, comment, date, image, Comment.rating
                               FROM Comment, User 
-                              WHERE property_id = ? AND User.email = Comment.email'
+                              WHERE property_id = ? AND User.email = Comment.email;'
                             );
         $stmt->execute(array($id));
         return $stmt->fetchAll();
@@ -19,7 +19,7 @@
 
         $stmt = $db->prepare('SELECT name, comment, date, image, Comment.rating
                               FROM Comment, User 
-                              WHERE Comment.email = ? AND User.email = Comment.email'
+                              WHERE Comment.email = ? AND User.email = Comment.email;'
                             );
         $stmt->execute(array($email));
         return $stmt->fetchAll();
@@ -33,8 +33,8 @@
                   property_id,
                   comment
                 )
-                VALUES (?, ?, ?);
-        ');
+                VALUES (?, ?, ?);'
+        );
         $stmt->execute(array($email, $property_id, $comment));
 
         return (!$stmt->fetch())?true:false;
