@@ -1,13 +1,22 @@
 <?php 
+  include_once('../includes/database.php');
+  include_once('../database/images.php');
 
-function draw_item($item){ ?>
+
+function draw_item($item){ 
+  $image = getFirstImageOfProperty($item['id']);
+  ?>
   <article class='item'>
     <a href="item.php?id=<?=$item['id']?>">
     <!-- missing image -->
+    <?php if(isset($image['image_path'])) { ?>
+      <img src=<?=$image['image_path']?> alt="Image of property">
+    <?php } ?>
+
       <h1>
           <?=$item['title']?>
       </h1>
-      <p><!-- missing star image --><?=$item['rating']?></p>
+      <p><!-- missing star image -->Rating: <?=$item['rating']?> stars</p>
       <p class="comments"></p>
     </a>
 </article>

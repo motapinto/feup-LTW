@@ -106,3 +106,21 @@ button{
   margin: 10px;
 }
 
+#listings {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.item {
+  margin: 2em;
+}
+
+.item a {
+  text-decoration: none;
+}
+
+.item a img {
+  width: 60%;
+  height: 60%;
+}
+

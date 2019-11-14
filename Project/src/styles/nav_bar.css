@@ -44,3 +44,10 @@ nav button:hover {
     background-color: rgba(117, 227, 255, 0.8);
 }
 
+nav form input {
+    outline: none;
+    resize: none;
+    border: 0;
+    border-radius: 7px;
+}
+
