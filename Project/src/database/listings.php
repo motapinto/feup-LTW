@@ -20,12 +20,12 @@
     }
 
     // Returns listing with email = email
-    function getListingByEmail($email) {
+    function getListingsByEmail($email) {
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Property WHERE email = ?');
         $stmt->execute(array($email));
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
     // Returns all listings with city = city
