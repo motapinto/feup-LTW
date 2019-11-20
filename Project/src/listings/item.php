@@ -3,6 +3,7 @@
     include_once('../includes/database.php');             // connects to the database
     include_once('../database/listings.php');             // listings functions
     include_once('../database/comments.php');             // comments functions
+    include_once('../database/images.php');               // images functions
 
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');                  // prints the menu in HTML
@@ -12,6 +13,7 @@
     $id = $_GET['id'];
     $item = getListingById($id);
     $comments = getCommentsByPropertyId($id);
+    $images = getImagesByPropertyId($id);
 
     draw_header('Campus Rentals');
     draw_navBar();
@@ -20,6 +22,11 @@
     <section id='list'>
       <article class='property'>
         <h2><?=$item['title']?></h2>
+        <ul>
+          <?php foreach ($images as $image) { ?>
+            <li><img src=<?=$image['image_path']?> alt='Image of the property '></li>          
+          <?php } ?>
+        </ul>
         <!-- Galeria de imagens, possivelmente usando scripts? -->
         <p><?=$item['description']?></p>
         <p>Rating: <?=$item['rating']?></p>
@@ -50,7 +57,14 @@
           <input type="date" name="check_in" title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
           <label>Check Out</label>
           <input type="date" name="check_out" title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+          <label>Number of Guests</label>
           <input type="number" min="1" max=<?=$item['guests']?> value="1"/>
+          <!-- <label>Number of Adults</label>
+          <input type="number" min="1" max=<?=$item['guests']?> value="1"/>
+          <label>Number of Children</label>
+          <input type="number" min="1" max=<?=$item['guests']?> value="1"/>
+          <label>Number of Babies</label>
+          <input type="number" min="1" max=<?=$item['guests']?> value="1"/> -->
           <button class="rent_button">Rent</button>
         </form>
 <?php } 
