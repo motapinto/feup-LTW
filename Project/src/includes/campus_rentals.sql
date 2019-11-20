@@ -13,7 +13,7 @@ CREATE TABLE Comment (
     id          INTEGER NOT NULL
                         PRIMARY KEY AUTOINCREMENT,
     property_id INTEGER NOT NULL,
-    username    VARCHAR NOT NULL,
+    email    VARCHAR NOT NULL,
     description VARCHAR NOT NULL,
     FOREIGN KEY (
         username
