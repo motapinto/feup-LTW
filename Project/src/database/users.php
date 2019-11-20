@@ -41,6 +41,7 @@
         return !$user?true:false;
     }
 
+    // Returns the user with the received email
     function userProfile($email) {
         $db = Database::instance()->db();
 
@@ -49,5 +50,16 @@
         $user = $stmt->fetch();
 
         return $user;
+    }
+
+    // Returns the user with the received email
+    function userCommentsAll($email, $comments) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Comment WHERE email = ?');
+        $stmt->execute(array($email));
+        $comments = $stmt->fetch();
+
+        return $comments;
     }
 ?>
