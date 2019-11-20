@@ -1,6 +1,7 @@
 <?php 
   include_once('../includes/database.php');
   include_once('../database/images.php');
+  include_once('../database/comments.php');
 
 
 function draw_item($item){ 
@@ -17,7 +18,7 @@ function draw_item($item){
           <?=$item['title']?>
       </h1>
       <p><!-- missing star image -->Rating: <?=$item['rating']?> stars</p>
-      <p class="comments"></p>
+      <p class="comments">Comments: <?=numberCommentsByProperty($item['id'])?></p>
     </a>
   </article>
 <?php }

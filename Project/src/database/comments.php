@@ -25,6 +25,7 @@
         return $stmt->fetchAll();
     }
 
+    //Adds a comment to the database
     function addComment($email, $property_id, $comment){
         $db = Database::instance()->db();
 
@@ -38,5 +39,29 @@
         $stmt->execute(array($email, $property_id, $comment));
 
         return (!$stmt->fetch())?true:false;
+    }
+
+    //Returns number of comments the user with email = email has done
+    function numberCommentsByEmail($email){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT COUNT(*) as count
+                              FROM Comment 
+                              WHERE email = ?'
+                            );
+        $stmt->execute(array($email));
+        return $stmt->fetch()['count'];
+    }
+
+    //Returns number of comments the property has
+    function numberCommentsByProperty($property_id){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT COUNT(*) as count
+                              FROM Comment 
+                              WHERE property_id = ?'
+                            );
+        $stmt->execute(array($property_id));
+        return $stmt->fetch()['count'];
     }
 ?>

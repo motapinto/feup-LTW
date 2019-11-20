@@ -11,5 +11,12 @@
     draw_navBar();
     $properties = getListingsByEmail($_SESSION['email']);                        // gets all listings from the database
     draw_properties($properties);
+
+?>
+    <section id='addProperty'>
+        <a href="add_property.php"><button>Add a property</button></a>
+    </section>
+<?php
+
     draw_footer();
 ?>
