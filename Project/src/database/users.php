@@ -52,7 +52,7 @@
         if (!isset($user['email'])) 
             return 2;
 
-        if($password === ''){
+        if($password != ''){
             $stmt = $db->prepare('UPDATE User
                                 SET email = ?,
                                 name = ?,
