@@ -3,6 +3,9 @@
         <form action="../actions/action_login.php" method="POST">
             <img class="logo" src="../../assets/logo.png" alt="logo">
             <h2>Log in</h2>
+            <?php if(isset($_SESSION['msg'])) { ?>
+              <p><?=$_SESSION['msg']?></p>
+            <?php } ?>
             <input name="email" type="email" placeholder="email" />
             <input name="password" type="password" placeholder="password" maxlength=30/>
             <a href="#">Forgot your password?</a>

@@ -5,7 +5,7 @@
     function getImagesByPropertyId($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT image_path
+        $stmt = $db->prepare('SELECT id
                               FROM Image 
                               WHERE property_id = ?'
                             );
@@ -17,7 +17,7 @@
     function getFirstImageOfProperty($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT image_path
+        $stmt = $db->prepare('SELECT id
                               FROM Image 
                               WHERE property_id = ?
                               GROUP BY property_id'
@@ -32,9 +32,8 @@
 
         $stmt = $db->prepare('INSERT INTO Image (
                   property_id,
-                  image_path
                 )
-                VALUES (?, ?);'
+                VALUES (?);'
         );
         $stmt->execute(array($property_id, $image_path));
 

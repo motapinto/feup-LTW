@@ -2,7 +2,7 @@
 
 function draw_comment($comment) { ?>
   <article class='comment'>
-    <img src=<?= $comment['image'] ?> alt="Image of <?= $comment['name'] ?>">
+    <!-- <img src=<?= $comment['id'] ?> alt="Image of <?= $comment['name'] ?>"> -->
     <h3><?= $comment['name'] ?></h3>
     <h6><?= $comment['date'] ?>  Rating:<?= $comment['rating'] ?></h6> <!-- missing star image -->
     <p><?= $comment['comment'] ?></p>

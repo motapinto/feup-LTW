@@ -24,7 +24,7 @@
         <h2><?=$item['title']?></h2>
         <ul>
           <?php foreach ($images as $image) { ?>
-            <li><img src=<?=$image['image_path']?> alt='Image of the property '></li>          
+            <!-- <li><img src=<?=$image['id']?> alt='Image of the property '></li>           -->
           <?php } ?>
         </ul>
         <!-- Galeria de imagens, possivelmente usando scripts? -->
@@ -50,9 +50,8 @@
       </article>
       <article class='rent'>
 <?php if(isset($_SESSION['email'])) { ?>
-        <form action="../rent/rent.php" method="GET">
+        <form action="../rent/rent.php" method="POST">
           <input name="id" type='hidden' value=<?=$id?>/>
-          <input name="email" type='hidden' value=<?=$id?>/>
           <label>Check In</label>
           <input type="date" name="check_in" title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
           <label>Check Out</label>
@@ -83,7 +82,6 @@
       <form id='comment_form' action="../actions/action_comment.php" method="POST">
           <h4>Leave a comment</h4>
           <textarea name="comment" cols="40" rows="5" placeholder="Describe your experience" required></textarea>
-          <input name="email" type="hidden" value="<?=$_SESSION['email']?>"/>
           <input name="property_id" type="hidden" value="<?=$id?>"/>
           <button class="comment_button">Comment</button>
       </form>

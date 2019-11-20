@@ -8,17 +8,19 @@
     $checkUserReturn = checkUser($_POST['email'], $_POST['password']);
   
     switch($checkUserReturn) { 
-        case "User does not exist":
-            include('logout_action.php');
-            break;   
-          
         case "User exists":
             $_SESSION['email'] = $_POST['email'];               // store the username
             header('Location: ../listings/listings_all.php');   // lists all listings
-            break;                                
-          
+            break;     
+
+        case "User does not exist":
+            $_SESSION['msg'] = 'User does not exist';
+            header('Location: ../authentication/login.php');
+            break;  
+
         case "User exists but wrong password":
-            include('action_logout.php');
+            $_SESSION['msg'] = 'User exists but wrong password';
+            header('Location: ../authentication/login.php');
             break;   
     }
 ?>

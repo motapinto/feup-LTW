@@ -8,13 +8,13 @@
     switch($checkUserReturn) { 
         case "User does not exist":
             if(addUser($_POST['email'], $_POST['password'], $_POST['name'], $_POST['age']))
-                header('Location: ../login/login.php');                                 // login
+                header('Location: ../authentication/login.php');                                 // login
             else 
-                include('../authentication/logout_action.php');
-                break;   
+                include('../actions/action_logout.php');
+            break;   
         
         default :
-            include('../authentication/logout_action.php');
+            include('../actions/action_logout.php');
             break;                                
     }
 ?>

@@ -10,7 +10,7 @@ function draw_item($item){
     <a href="item.php?id=<?=$item['id']?>">
     <!-- missing image -->
     <?php if(isset($image['image_path'])) { ?>
-      <img src=<?=$image['image_path']?> alt="Image of property">
+      <!-- <img src=<?=$image['image_path']?> alt="Image of property"> -->
     <?php } ?>
 
       <h1>
@@ -19,7 +19,7 @@ function draw_item($item){
       <p><!-- missing star image -->Rating: <?=$item['rating']?> stars</p>
       <p class="comments"></p>
     </a>
-</article>
+  </article>
 <?php }
 
 function draw_allListings($listings) { ?>

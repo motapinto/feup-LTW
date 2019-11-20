@@ -5,7 +5,7 @@
     function getCommentsByPropertyId($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT name, comment, date, image, Comment.rating
+        $stmt = $db->prepare('SELECT name, comment, date, Comment.rating
                               FROM Comment, User 
                               WHERE property_id = ? AND User.email = Comment.email;'
                             );
@@ -17,7 +17,7 @@
     function getCommentsByEmail($email){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT name, comment, date, image, Comment.rating
+        $stmt = $db->prepare('SELECT name, comment, date, Comment.rating
                               FROM Comment, User 
                               WHERE Comment.email = ? AND User.email = Comment.email;'
                             );
