@@ -33,19 +33,15 @@
             <div class="profile-usermenu">
                 <ul class="usermenu">
                     <li class="overview">
-                    <i class="material-icons" style="color:white;">view_headline</i>
                         <a href="#"> Overview </a>
                     </li>
                     <li class="settings">
-                        <i class="material-icons" style="color:white;">perm_identity</i>
                         <a href="#"> Account Settings </a>
                     </li>
                     <li class="rating">
-                        <i class="material-icons" style="color:white;">star_border</i>
                         <a href="#"> Rating </a>
                     </li>
                     <li class="comments">
-                        <i class="material-icons" style="color:white;">comment</i>
                         <a href="#"> Comments </a>
                     </li>
                 </ul>
@@ -54,21 +50,24 @@
     </div>
 
     <style>  
+        body {
+            background-color: white;
+        }
 
-        a {
+
+        .user a {
             text-decoration: none;
         }
 
         .side-drawer {
-            position: fixed;
             display: flex; /* or inline-flex */
             flex-direction: column ;
             width: 20%;
             height: 60%; 
-            background-color: rgb(39, 64, 89);
+            background-color: white;
             padding: 50px;
             margin: 50px;
-            border: solid 3px rgb(136, 189, 234);
+            border: solid 2px rgb(175, 175, 175);
         }
 
 
@@ -82,13 +81,13 @@
         }
 
         .profile-photo a{
-            color: white;
+            color: black;
             font-family: "Montserrat", sans-serif;
         }
 
         .profile-name {
             text-align: center;
-            color: white;
+            color: black;
             font-family: "Montserrat", sans-serif;
         }
 
@@ -99,7 +98,7 @@
 
         .profile-userbuttons button{
             display: flex;
-            border: 1px solid white;
+            border: 1px solid rgb(175,175,175);
             background-color: rgb(136, 189, 234);
             color: rgb(39, 64, 89);
             letter-spacing: 1px;
@@ -131,7 +130,7 @@
         .usermenu a{
             font-size: 20px;
             font-family: "Montserrat", sans-serif;
-            color: white;
+            color: black;
         }
 
         .usermenu a:hover{

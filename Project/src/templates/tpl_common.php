@@ -4,8 +4,7 @@
         <head>
             <title><?=$title?></title>
             <meta charset="UTF-8">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link rel="stylesheet" href="../styles/nav_bar.css">
+            <link rel="stylesheet" href="../../assets/font-awesome/css/font-awesome.min.css">            <link rel="stylesheet" href="../styles/nav_bar.css">
             <link rel="stylesheet" href="../styles/login.css">
             <link rel="stylesheet" href="../styles/body.css">
         </head>
