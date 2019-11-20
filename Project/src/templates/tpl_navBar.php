@@ -6,13 +6,11 @@
           <input name="search" type="text" placeholder="Search" required/>
         </form>
         <?php } ?>
-        <ul class="links">
-            <!-- <li><a href="#">About</a></li> -->
-            <li><a href="#">My Properties</a></li>
-            <li><a href="#">Rent</a></li>
-        </ul>
-      <?php
-        if(isset($_SESSION['email'])) { ?>
+        <?php if(isset($_SESSION['email'])) { ?>
+          <ul class="links">
+              <!-- <li><a href="#">About</a></li> -->
+              <li><a href="#">My Properties</a></li>
+          </ul>
           <a href="../profile/profile.php"><button formaction="#" formmethod="post"> Profile</button></a>
           <a href="../actions/action_logout.php"><button formaction="#" formmethod="post"> Log Out</button></a>
         <?php }

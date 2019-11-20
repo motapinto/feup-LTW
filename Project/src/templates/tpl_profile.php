@@ -63,8 +63,8 @@
             position: fixed;
             display: flex; /* or inline-flex */
             flex-direction: column ;
-            width: 250px;
-            height: 500px; 
+            width: 20%;
+            height: 60%; 
             background-color: rgb(39, 64, 89);
             padding: 50px;
             margin: 50px;

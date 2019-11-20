@@ -41,6 +41,22 @@
         return !$user?true:false;
     }
 
+    // Checks if the input user exists
+  function changeUser($oldEmail, $newEmail, $name, $age, $password){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
+        $stmt->execute(array($newEmail));
+        $user = $stmt->fetch();
+
+        if (!$user) 
+            return false;
+        
+        
+        
+        return true;
+    }
+
     // Returns the user with the received email
     function userProfile($email) {
         $db = Database::instance()->db();
