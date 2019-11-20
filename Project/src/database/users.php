@@ -42,19 +42,39 @@
     }
 
     // Checks if the input user exists
-  function changeUser($oldEmail, $newEmail, $name, $age, $password){
+    function changeUser($oldEmail, $newEmail, $name, $age, $password){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
+        $stmt = $db->prepare('SELECT email FROM User WHERE email = ?');
         $stmt->execute(array($newEmail));
         $user = $stmt->fetch();
 
-        if (!$user) 
-            return false;
-        
-        
-        
-        return true;
+        if (!isset($user['email'])) 
+            return 2;
+
+        if($password === ''){
+            $stmt = $db->prepare('UPDATE User
+                                SET email = ?,
+                                name = ?,
+                                age = ?,
+                                password = ?
+                                WHERE email = ?');
+            $stmt->execute(array($newEmail, $name, $age, sha1($password), $oldEmail));
+
+        }
+        else {
+            $stmt = $db->prepare('UPDATE User
+                                SET email = ?,
+                                name = ?,
+                                age = ?,
+                                password = ?
+                                WHERE email = ?');
+            $stmt->execute(array($newEmail, $name, $age, $oldEmail));
+
+        }
+        $user = $stmt->fetch();
+
+        return !$user?0:1;
     }
 
     // Returns the user with the received email

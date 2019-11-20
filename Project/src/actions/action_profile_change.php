@@ -1,10 +1,12 @@
 <?php
     include_once('../includes/session.php');        // starts the session
-    include_once('../database/comments.php');       // comments functions
+    include_once('../database/users.php');           // user functions
 
     if(!isset($_POST['email']) || !isset($_POST['name']) || !isset($_POST['age']) || !isset($_POST['password']) || !isset($_POST['control']))
         header('Location: ../profile/profile.php');
 
+        
+        
     $oldEmail = $_SESSION['email'];
     $newEmail = $_POST['email'];
     $name = $_POST['name'];
@@ -12,15 +14,28 @@
     $password = $_POST['password'];
     if($password != $_POST['control']){
         $_SESSION['msg'] = 'Password doesn\'t match';
+        header("Location: ../profile/profile.php");
     }
+    
+    $ret = changeUser($oldEmail, $newEmail, $name, $age, $password);
+    switch ($ret){
+        case 0:
+            $_SESSION['email'] = $newEmail;
+            if(isset($_SESSION['msg']))
+                unset($_SESSION['msg']);
+            break;
+        
+        case 1:
+            $_SESSION['msg']='Invalid Parameters';
+            break;
 
-    if(changeUser($oldEmail, $newEmail, $name, $age, $password)){
-      $_SESSION['email'] = $newEmail;
-      if(isset($_SESSION['msg']))
-        unset($_SESSION['msg']);
+        case 2:
+            $_SESSION['msg']='Email already exists';
+            break;        
+        
+        default:
+            break;
     }
-    else 
-      $_SESSION['msg']='Email already exists';
 
     header("Location: ../profile/profile.php");
 ?>

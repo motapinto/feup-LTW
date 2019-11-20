@@ -2,10 +2,13 @@
     <div id="change-settings-tab">
         <h1 id="change-settings-title">Edit Profile</h4>
         <form action='../actions/action_profile_change.php' method='POST'>
+            <?php if(isset($_SESSION['msg'])) { ?> 
+                <p><?=$_SESSION['msg']?></p>
+            <?php } ?>
             <div id="change-settings-name" class="change-settings-elem">
                 <label> Name </label>
                 <div class="div-aux">
-                    <input id="name" type="text" value="<?=$user['name']?>">
+                    <input name="name" type="text" value="<?=$user['name']?>">
                     <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
@@ -13,7 +16,7 @@
             <div id="change-settings-email" class="change-settings-elem">
                 <label> Email </label>
                 <div class="div-aux">
-                    <input id="email" type="email" value="<?=$user['email']?>">
+                    <input name="email" type="email" value="<?=$user['email']?>">
                     <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
@@ -21,7 +24,7 @@
             <div id="change-settings-age" class="change-settings-elem">
                 <label> Age </label>
                 <div class="div-aux">
-                    <input id="age" type="number" min="18" max="120" value="<?=$user['age']?>">
+                    <input name="age" type="number" min="18" max="120" value="<?=$user['age']?>">
                     <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
@@ -29,14 +32,14 @@
             <div id="change-settings-password1" class="change-settings-elem">
                 <label> Password </label>
                 <div class="div-aux">
-                    <input id="password" type="password" value="">
+                    <input name="password" type="password" value="">
                     <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
             <div id="change-settings-password2" class="change-settings-elem">
                 <label> Confirm password </label>
                 <div class="div-aux">
-                    <input id="control" type="password" value="">
+                    <input name="control" type="password" value="">
                     <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>

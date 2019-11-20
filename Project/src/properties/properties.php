@@ -5,11 +5,11 @@
 
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');                  // prints the menu in HTML
-    include('../templates/tpl_listings.php');    // prints the list of listings in HTML
+    include('../templates/tpl_properties.php');    // prints the list of listings in HTML
 
-    draw_header('All Listings');
+    draw_header('My Properties');
     draw_navBar();
     $properties = getListingsByEmail($_SESSION['email']);                        // gets all listings from the database
-    draw_properties($listings);
+    draw_properties($properties);
     draw_footer();
 ?>
