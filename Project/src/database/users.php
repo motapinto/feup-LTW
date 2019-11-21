@@ -23,22 +23,15 @@
             return "User exists but wrong password";
     }
 
-    // Adds a new user to the database
-    function addUser($email, $password, $name, $age){
+    // Returns the user with the received email
+    function userProfile($email) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('INSERT INTO User (
-                email,
-                password,
-                name,
-                age,
-                rating
-            )
-            VALUES (?, ?, ?, ?, NULL);
-        ');
-        $stmt->execute(array($email, sha1($password), $name, $age));
+        $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
+        $stmt->execute(array($email));
         $user = $stmt->fetch();
-        return !$user?true:false;
+
+        return $user;
     }
 
     // Checks if the input user exists
@@ -77,15 +70,22 @@
         return !$user?0:1;
     }
 
-    // Returns the user with the received email
-    function userProfile($email) {
+    // Adds a new user to the database
+    function addUser($email, $password, $name, $age){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
-        $stmt->execute(array($email));
+        $stmt = $db->prepare('INSERT INTO User (
+                email,
+                password,
+                name,
+                age,
+                rating
+            )
+            VALUES (?, ?, ?, ?, NULL);
+        ');
+        $stmt->execute(array($email, sha1($password), $name, $age));
         $user = $stmt->fetch();
-
-        return $user;
+        return !$user?true:false;
     }
 
     // Returns the user with the received email

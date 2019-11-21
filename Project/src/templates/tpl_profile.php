@@ -9,7 +9,10 @@
                     </div>
                 </div>
                 <div class="profile-change-photo">
-                <i class="material-icons" style="color:white;">attach_file</i>
+                    <i class="material-icons">attach_file
+                        <input type="file" name="image">
+                        <input type="submit" name="Submit">
+                    </i>
                     <a href="edit-photo.php" class="change-photo" >
                         Update
                     </a>                
@@ -25,23 +28,31 @@
 
             <!-- SIDEBAR BUTTONS -->
             <div class="profile-userbuttons">
-                <button type="button" class="profile-userbuttons-properties">Properties</button>
-                <button type="button" class="profile-userbuttons-message">Message</button>
+                <a href="../properties/properties.php">
+                    <button type="button" class="profile-userbuttons-properties">Properties</button>
+                </a>
+                <a href="#">
+                    <button type="button" class="profile-userbuttons-message">Message</button>
+                </a>
             </div>
 
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
                 <ul class="usermenu">
-                    <li class="overview">
+                    <li>
+                        <i class="material-icons"> menu </i>
                         <a href="#"> Overview </a>
                     </li>
-                    <li class="settings">
+                    <li>
+                        <i class="material-icons"> settings </i>
                         <a href="#"> Account Settings </a>
                     </li>
-                    <li class="rating">
+                    <li>
+                        <i class="material-icons"> star_border </i>
                         <a href="#"> Rating </a>
                     </li>
-                    <li class="comments">
+                    <li>
+                        <i class="material-icons"> insert_comment </i>
                         <a href="#"> Comments </a>
                     </li>
                 </ul>
@@ -60,10 +71,11 @@
         }
 
         .side-drawer {
+            position: fixed;
             display: flex; /* or inline-flex */
             flex-direction: column ;
-            width: 20%;
-            height: 60%; 
+            width: 280px;
+            height: 500px; 
             background-color: white;
             padding: 50px;
             margin: 50px;
@@ -99,8 +111,7 @@
         .profile-userbuttons button{
             display: flex;
             border: 1px solid rgb(175,175,175);
-            background-color: rgb(136, 189, 234);
-            color: rgb(39, 64, 89);
+            background-color: rgb(39, 64, 89);
             letter-spacing: 1px;
             margin: 10px;
             padding: 10px 20px;
