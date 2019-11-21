@@ -49,7 +49,7 @@
         $stmt->execute(array($newEmail));
         $user = $stmt->fetch();
 
-        if (!isset($user['email'])) 
+        if (isset($user['email'])) 
             return 2;
 
         if($password != ''){

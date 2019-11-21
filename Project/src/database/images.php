@@ -27,7 +27,7 @@
     }
 
     // Adds an image path to the database
-    function addImage($property_id, $image_path){
+    function addImage($property_id){
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO Image (
@@ -35,8 +35,8 @@
                 )
                 VALUES (?);'
         );
-        $stmt->execute(array($property_id, $image_path));
+        $stmt->execute(array($property_id));
 
-        return (!$stmt->fetch())?true:false;
+        return $stmt->fetch();
     }
 ?>
