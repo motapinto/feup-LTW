@@ -1,11 +1,11 @@
 <?php
     include_once('../includes/session.php');        // starts the session
-    include_once('../database/users.php');           // user functions
+    include_once('../database/users.php');          // user functions
 
     if(!isset($_POST['email']) || !isset($_POST['name']) || !isset($_POST['age']) || !isset($_POST['password']) || !isset($_POST['control']))
         header('Location: ../profile/profile.php');
        
-    $oldEmail = $_SESSION['email'];
+    $id = $_SESSION['id'];
     $newEmail = $_POST['email'];
     $name = $_POST['name'];
     $age = $_POST['age'];
@@ -15,10 +15,9 @@
         header("Location: ../profile/profile.php");
     }
     
-    $ret = changeUser($oldEmail, $newEmail, $name, $age, $password);
+    $ret = changeUser($id, $newEmail, $name, $age, $password);
     switch ($ret){
         case 0:
-            $_SESSION['email'] = $newEmail;
             if(isset($_SESSION['msg']))
                 unset($_SESSION['msg']);
             break;

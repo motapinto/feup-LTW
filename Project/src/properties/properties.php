@@ -9,7 +9,7 @@
 
     draw_header('My Properties');
     draw_navBar();
-    $properties = getListingsByEmail($_SESSION['email']);                        // gets all listings from the database
+    $properties = getListingsByEmail($_SESSION['id']);                        // gets all listings from the database
     draw_properties($properties);
 
 ?>

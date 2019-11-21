@@ -3,10 +3,10 @@
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/listings.php');      // properties functions
     
-    if(!isset($_SESSION['email']))
+    if(!isset($_SESSION['id']))
         header('Location: ../listings/listings_all.php');                                 // main webpage
   
-    if( addListing($_SESSION['email'], $_POST['title'], $_POST['description'], 
+    if( addListing($_SESSION['id'], $_POST['title'], $_POST['description'], 
                 $_POST['price_day'], $_POST['guests'], $_POST['city'],
                 $_POST['street'], $_POST['door_number'], $_POST['apartment_number'],
                 $_POST['property_type']) )

@@ -24,49 +24,45 @@
     }
 
     // Returns the user with the received email
-    function userProfile($email) {
+    function userProfile($id) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
-        $stmt->execute(array($email));
+        $stmt = $db->prepare('SELECT * FROM User WHERE id = ?');
+        $stmt->execute(array($id));
         $user = $stmt->fetch();
 
         return $user;
     }
 
     // Checks if the input user exists
-    function changeUser($oldEmail, $newEmail, $name, $age, $password){
+    function changeUser($id, $newEmail, $name, $age, $password){
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT email FROM User WHERE email = ?');
         $stmt->execute(array($newEmail));
         $user = $stmt->fetch();
 
-        if (!isset($user['email'])) 
+        if (isset($user['email'])) 
             return 2;
 
         if($password != ''){
-            $stmt = $db->prepare('UPDATE User
-                                SET email = ?,
+            $stmt = $db->prepare('UPDATE User SET 
+                                email = ?,
                                 name = ?,
                                 age = ?,
                                 password = ?
-                                WHERE email = ?');
-            $stmt->execute(array($newEmail, $name, $age, sha1($password), $oldEmail));
-
+                                WHERE id = ?');
+            $stmt->execute(array($id, $newEmail, $name, $age, sha1($password), $id));
         }
         else {
             $stmt = $db->prepare('UPDATE User
                                 SET email = ?,
                                 name = ?,
                                 age = ?,
-                                password = ?
-                                WHERE email = ?');
-            $stmt->execute(array($newEmail, $name, $age, $oldEmail));
-
+                                WHERE id = ?');
+            $stmt->execute(array($newEmail, $name, $age, $id));
         }
         $user = $stmt->fetch();
-
         return !$user?0:1;
     }
 

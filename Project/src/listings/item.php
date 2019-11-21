@@ -49,7 +49,7 @@
         <p>Price per day: <?=$item['price_day']?>$</p>
       </article>
       <article class='rent'>
-<?php if(isset($_SESSION['email'])) { ?>
+<?php if(isset($_SESSION['id'])) { ?>
         <form action="../rent/rent.php" method="POST">
           <input name="id" type='hidden' value=<?=$id?>/>
           <label>Check In</label>
@@ -78,7 +78,7 @@
     draw_allComments($comments);
 
 
-    if(isset($_SESSION['email'])){ ?>
+    if(isset($_SESSION['id'])){ ?>
       <form id='comment_form' action="../actions/action_comment.php" method="POST">
           <h4>Leave a comment</h4>
           <textarea name="comment" cols="40" rows="5" placeholder="Describe your experience" required></textarea>

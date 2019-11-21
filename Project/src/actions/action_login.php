@@ -9,11 +9,12 @@
   
     switch($checkUserReturn) { 
         case "User exists":
-            $_SESSION['email'] = $_POST['email'];               // store the username
+            $user = userProfile($_POST['email']);
+            $_SESSION['id'] = user['id'];                       // store the username
             if(isset($_SESSION['msg']))
               unset($_SESSION['msg']);
             header('Location: ../listings/listings_all.php');   // lists all listings
-            break;     
+            break;
 
         case "User does not exist":
             $_SESSION['msg'] = 'User does not exist';

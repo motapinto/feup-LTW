@@ -7,12 +7,12 @@
     include('../templates/tpl_profile.php');        // prints the user profile
     include('../templates/tpl_profile-edit.php');   // prints de profile settings
 
-    if(!isset($_SESSION['email']))
+    if(!isset($_SESSION['id']))
       header('Location: ../listings/all_listings.php');
 
     draw_header('User Profile');
     draw_navBar();
-    $user = userProfile($_SESSION['email']);        // get's current user
+    $user = userProfile($_SESSION['id']);        // get's current user
     draw_profile($user);
     draw_profile_settings($user);
     //draw_profile_overview($user);

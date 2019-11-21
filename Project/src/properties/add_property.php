@@ -1,6 +1,6 @@
 <?php
     include_once('../includes/session.php');              // starts session
-    if(!isset($_SESSION['email']))
+    if(!isset($_SESSION['id']))
         header('Location: ../listings/listings_all.php');                                 // main webpage
 
     include_once('../includes/database.php');             // connects to the database

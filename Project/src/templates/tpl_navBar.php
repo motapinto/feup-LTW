@@ -6,7 +6,7 @@
           <input name="search" type="text" placeholder="Search" required/>
         </form>
         <?php } ?>
-        <?php if(isset($_SESSION['email'])) { ?>
+        <?php if(isset($_SESSION['id'])) { ?>
           <ul class="links">
               <!-- <li><a href="#">About</a></li> -->
               <li><a href="../properties/properties.php">My Properties</a></li>

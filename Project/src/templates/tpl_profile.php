@@ -71,7 +71,7 @@
         }
 
         .side-drawer {
-            position: fixed;
+            position: absolute;
             display: flex; /* or inline-flex */
             flex-direction: column ;
             width: 280px;
@@ -79,7 +79,7 @@
             background-color: white;
             padding: 50px;
             margin: 50px;
-            border: solid 2px rgb(175, 175, 175);
+            border: solid 1px rgb(175, 175, 175);
         }
 
 

@@ -16,5 +16,4 @@
     $originalFileName = "images/originals/$id.jpg";
     $smallFileName = "images/thumbs_small/$id.jpg";
     $mediumFileName = "images/thumbs_medium/$id.jpg";
-
 ?>
