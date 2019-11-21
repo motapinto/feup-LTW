@@ -8,22 +8,21 @@
     $checkUserReturn = checkUser($_POST['email'], $_POST['password']);
   
     switch($checkUserReturn) { 
-        case "User exists":
-            $user = userProfile($_POST['email']);
-            $_SESSION['id'] = user['id'];                       // store the username
-            if(isset($_SESSION['msg']))
-              unset($_SESSION['msg']);
-            header('Location: ../listings/listings_all.php');   // lists all listings
-            break;
-
         case "User does not exist":
             $_SESSION['msg'] = 'User does not exist';
             header('Location: ../authentication/login.php');
             break;  
-
+        
         case "User exists but wrong password":
             $_SESSION['msg'] = 'User exists but wrong password';
             header('Location: ../authentication/login.php');
-            break;   
+            break; 
+
+        default:
+            $_SESSION['id'] = $checkUserReturn;                       // store the username
+            if(isset($_SESSION['msg']))
+              unset($_SESSION['msg']);
+            header('Location: ../listings/listings_all.php');   // lists all listings
+            break;
     }
-?>
+        ?>

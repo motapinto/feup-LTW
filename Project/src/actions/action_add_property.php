@@ -6,12 +6,16 @@
     if(!isset($_SESSION['id']))
         header('Location: ../listings/listings_all.php');                                 // main webpage
   
-    if( addListing($_SESSION['id'], $_POST['title'], $_POST['description'], 
+    $result = addListing($_SESSION['id'], $_POST['title'], $_POST['description'], 
                 $_POST['price_day'], $_POST['guests'], $_POST['city'],
                 $_POST['street'], $_POST['door_number'], $_POST['apartment_number'],
-                $_POST['property_type']) )
-        header('Location: ../properties/add_property_image.php');
+                $_POST['property_type']);
+    
+    if($result !== false){
+        $id = $result['id'];
+        header("Location: ../properties/add_property_image.php?=$id");
+    }
 
     $_SESSION['err_msg'] = "Failled to add property";
-    header('Location: ../properties/add_property_image.php');
+    header('Location: ../properties/add_property.php');
 ?>

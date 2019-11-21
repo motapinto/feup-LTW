@@ -1,9 +1,8 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
 
-    define("User does not exist", 1);
-    define("User exists", 2);
-    define("User exists but wrong password", 3);
+    define("User does not exist", -1);
+    define("User exists but wrong password", -2);
 
     // Checks if the input user exists
     function checkUser($email, $password){
@@ -17,7 +16,7 @@
             return "User does not exist";
         
         if(strtoupper(sha1($password)) === strtoupper($user['password']))
-            return "User exists";
+            return $user['id'];
 
         else
             return "User exists but wrong password";

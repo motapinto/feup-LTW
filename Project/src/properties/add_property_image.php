@@ -1,5 +1,10 @@
 <?php
     include_once('../includes/session.php');              // starts session
+    if(!isset($_SESSION['id']))
+        header('Location: ../listings/listings_all.php');                                 // main webpage
+    if(!isset($_GET['id']))
+        header('Location: ../listings/listings_all.php');                                 // main webpage
+
     include_once('../includes/database.php');             // connects to the database
     include_once('../database/listings.php');             // listings functions
 
@@ -9,13 +14,16 @@
 
     draw_header('My Properties');
     draw_navBar();
-    $properties = getListingsByUser($_SESSION['id']);                        // gets all listings from the database
-    print_r($_SESSION['id']);
-    draw_properties($properties);
 
 ?>
     <section id='addProperty'>
-        <a href="add_property.php"><button>Add a property</button></a>
+        <h2>Add Property Images</h2>
+        <h4>Stage 2/2</h4>
+        <form action="../action/action_property_image.php" method='POST' enctype="multipart/form-data">
+            <input type="hidden" name="property_id" value="<?=$_GET['id']?>">
+            <input type="file" name="image" required>
+            <button>Add Image</button>
+        </form>
     </section>
 <?php
 

@@ -48,7 +48,7 @@
                 return false;
         }
         $result = $stmt->fetch();
-        return !$result?false:true;
+        return isset($result)?$result:false;
     }
 
     // Returns all listings
@@ -69,12 +69,12 @@
         return $stmt->fetch();
     }
 
-    // Returns listing with email = email
-    function getListingsByEmail($email) {
+    // Returns listing with user_id = user_id
+    function getListingsByUser($user_id) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Property WHERE email = ?');
-        $stmt->execute(array($email));
+        $stmt = $db->prepare('SELECT * FROM Property WHERE user_id = ?');
+        $stmt->execute(array($user_id));
         return $stmt->fetchAll();
     }
 
