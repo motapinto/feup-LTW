@@ -1,6 +1,56 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
 
+    // Adds a listing
+    function addListing($email, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type) {
+        $db = Database::instance()->db();
+        $stmt;
+
+        switch ($property_type) {
+            case 0:
+                $stmt = $db->prepare('INSERT INTO Property (
+                  email,
+                  title,
+                  description,
+                  price_day,
+                  guests,
+                  city,
+                  street,
+                  door_number,
+                  property_type
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)');
+                $stmt->execute(array($email, $title, $description, $price_day,
+                                     $guests, $city, $street, $door_number,
+                                     $property_type));
+                break;
+            
+            case 1:
+                $stmt = $db->prepare('INSERT INTO Property (
+                  email,
+                  title,
+                  description,
+                  price_day,
+                  guests,
+                  city,
+                  street,
+                  door_number,
+                  apartment_number,
+                  property_type
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                $stmt->execute(array($email, $title, $description, $price_day,
+                                     $guests, $city, $street, $door_number,
+                                     $apartment_number, $property_type));
+                break;
+            
+            default:
+                return false;
+        }
+        $result = $stmt->fetch();
+        return !$result?false:true;
+    }
+
     // Returns all listings
     function getAllListings() {
         $db = Database::instance()->db();
