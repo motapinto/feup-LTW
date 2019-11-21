@@ -2,7 +2,7 @@
     include_once('../includes/session.php');        // starts the session
     include_once('../database/users.php');          // user functions
 
-    if(!isset($_POST['email']) || !isset($_POST['name']) || !isset($_POST['age']) || !isset($_POST['password']) || !isset($_POST['control']))
+    if(!isset($_POST['email']) || !isset($_POST['name']) || !isset($_POST['age']) || !isset($_POST['password']))
         header('Location: ../profile/profile.php');
        
     $id = $_SESSION['id'];
@@ -10,10 +10,6 @@
     $name = $_POST['name'];
     $age = $_POST['age'];
     $password = $_POST['password'];
-    if($password != $_POST['control']){
-        $_SESSION['msg'] = 'Password doesn\'t match';
-        header("Location: ../profile/profile.php");
-    }
     
     $ret = changeUser($id, $newEmail, $name, $age, $password);
     switch ($ret){

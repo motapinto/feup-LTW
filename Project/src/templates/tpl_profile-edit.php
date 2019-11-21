@@ -29,16 +29,17 @@
             <div class="change-settings-elem">
                 <label> Password </label>
                 <div>
-                    <input name="password" type="password" value="">
+                    <input id="password" type="password" value="" onkeyup='checkPass();'/>
                 </div>
             </div>
             <div class="change-settings-elem">
                 <label> Confirm password </label>
                 <div>
-                    <input name="control" type="password" value="">
+                    <input id="confirm_password" type="password" value="" onkeyup='checkPass();'/>
+                    <span id='message'></span>
                 </div>
             </div>
-            <button>Submit</button>
+            <button id="submit">Submit</button>
         </form>
     </div>
 
@@ -60,11 +61,12 @@
         }
 
         #change-settings-tab input {
-            border-style: none;
+            border: solid rgb(176, 183, 187) 1px;
             color: grey;
             width: 400px;
             text-align: center;
             padding-top: 15px;
+            border-radius: 5px;
         }
 
         #change-settings-tab form div{
@@ -98,4 +100,29 @@
             margin: 0; 
         }
     </style>
+
+    <script>
+        function checkPass() {
+            if(document.getElementById('password').value.length == 0 ||
+                document.getElementById('password').value ==document.getElementById('confirm_password').value) {
+
+                document.getElementById('password').style.backgroundColor = 'white';
+                document.getElementById('password').style.border = "solid 1px rgb(176, 183, 187)"
+                document.getElementById('confirm_password').style.backgroundColor = 'white';
+                document.getElementById('confirm_password').style.border = "solid 1px rgb(176, 183, 187)"
+                document.getElementById('message').innerHTML = '';
+            }
+            else {
+                document.getElementById('confirm_password').style.backgroundColor  = 'rgb(246, 220, 220)';
+                document.getElementById('confirm_password').style.border = "solid 1px rgb(233, 76, 76)"
+                document.getElementById('message').innerHTML = 'The password\'s doesn\'t match';
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('submit').disabled = false;
+            }
+        }
+
+        function submitName(){
+        }
+    </script>
+
 <?php } ?>
