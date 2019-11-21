@@ -35,14 +35,7 @@ nav .links  li{
 nav button {
     margin-left: 20px;
     padding: 9px 25px;
-    background-color: rgb(0, 100, 160);
-    border: none;
-    border-radius: 50px;
-}
-
-nav button:hover {
-    background-color: rgba(117, 227, 255, 0.8);
-}
+  }
 
 nav form input {
     outline: none;
