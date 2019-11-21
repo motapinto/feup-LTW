@@ -5,42 +5,37 @@
             <?php if(isset($_SESSION['msg'])) { ?> 
                 <p><?=$_SESSION['msg']?></p>
             <?php } ?>
-            <div id="change-settings-name" class="change-settings-elem">
+            <div class="change-settings-elem">
                 <label> Name </label>
-                <div class="div-aux">
+                <div>
                     <input name="name" type="text" value="<?=$user['name']?>">
-                    <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
 
-            <div id="change-settings-email" class="change-settings-elem">
+            <div class="change-settings-elem">
                 <label> Email </label>
-                <div class="div-aux">
+                <div>
                     <input name="email" type="email" value="<?=$user['email']?>">
-                    <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
 
-            <div id="change-settings-age" class="change-settings-elem">
+            <div class="change-settings-elem">
                 <label> Age </label>
-                <div class="div-aux">
+                <div>
                     <input name="age" type="number" min="18" max="120" value="<?=$user['age']?>">
-                    <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
 
-            <div id="change-settings-password1" class="change-settings-elem">
+            <div class="change-settings-elem">
                 <label> Password </label>
-                <div class="div-aux">
+                <div>
                     <input name="password" type="password" value="">
-                    <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
-            <div id="change-settings-password2" class="change-settings-elem">
+            <div class="change-settings-elem">
                 <label> Confirm password </label>
-                <div class="div-aux">
+                <div>
                     <input name="control" type="password" value="">
-                    <a href="#"><i class="material-icons" style="color:white;">arrow_forward_ios</i></a>
                 </div>
             </div>
             <button>Submit</button>
@@ -48,15 +43,8 @@
     </div>
 
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
-
-        #change-settings-tab a {
-            text-decoration: none;
-        }
-        
         #change-settings-tab {
-            background-color: rgb(39, 64, 89);
-            border: solid 3px rgb(136, 189, 234);
+            background-color: white;
             width: 400px;
             height: 600px;
             margin-left: 600px;
@@ -64,28 +52,27 @@
         }
 
         #change-settings-tab label{
-            font-family: "Montserrat", sans-serif;
-            color: rgb(150, 152, 154);
+            color: black;
         }
 
         #change-settings-tab h1{
-            font-family: "Montserrat", sans-serif;
             color: grey;
         }
 
         #change-settings-tab input {
             border-style: none;
-            background-color: rgb(39, 64, 89);
-            color: white;
-            width: 200px;
+            color: grey;
+            width: 400px;
+            text-align: center;
             padding-top: 15px;
         }
 
         #change-settings-tab form div{
-            margin-bottom: 30px;            
+            margin-bottom: 25px;            
         }
 
         #change-settings-tab button {
+            margin-left: 35%;
             background-color: rgb(39, 64, 89);
             border: none;
             color: white;
@@ -101,7 +88,14 @@
         }
 
         .change-settings-elem:last-child {
-            border-bottom: none; 
+            border: none;
+        }
+
+        /*https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
         }
     </style>
 <?php } ?>

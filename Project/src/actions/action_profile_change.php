@@ -4,9 +4,7 @@
 
     if(!isset($_POST['email']) || !isset($_POST['name']) || !isset($_POST['age']) || !isset($_POST['password']) || !isset($_POST['control']))
         header('Location: ../profile/profile.php');
-
-        
-        
+       
     $oldEmail = $_SESSION['email'];
     $newEmail = $_POST['email'];
     $name = $_POST['name'];
