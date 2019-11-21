@@ -33,8 +33,7 @@
         $stmt = $db->prepare('INSERT INTO Image (
                   property_id,
                 )
-                VALUES (?);'
-        );
+                VALUES (?)');
         $stmt->execute(array($property_id));
 
         return $stmt->fetch();
