@@ -1,20 +1,20 @@
 <?php function draw_profile($user) { ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
-    <div id="user">
-        <section class="side-drawer">
+    <div id='user'>
+        <section class='side-drawer'>
             <!-- USER PHOTO -->
-            <div class="profile-photo">
-                <div style="display: inline-block;border-radius:20px;">
-                    <div class="photo" style="height: 120px; width: 120px; display: block;">
-                        <img class="_1mgxxu3" src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiqgZXS8-vlAhWpzoUKHT63Ab8QjRx6BAgBEAQ&url=https%3A%2F%2Fstackoverflow.com%2Fq%2F38576264&psig=AOvVaw3Zgglh2B6Xw7fusxBqulSU&ust=1573896532418510" height="120" width="120" alt="User Photo" title="User Photo">
+            <div class='profile-photo'>
+                <div style='display: inline-block;border-radius:20px;'>
+                    <div class='photo' style='height: 120px; width: 120px; display: block;'>
+                        <img class='_1mgxxu3' src='https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiqgZXS8-vlAhWpzoUKHT63Ab8QjRx6BAgBEAQ&url=https%3A%2F%2Fstackoverflow.com%2Fq%2F38576264&psig=AOvVaw3Zgglh2B6Xw7fusxBqulSU&ust=1573896532418510' height='120' width='120' alt='User Photo' title='User Photo'>
                     </div>
                 </div>
-                <div class="profile-change-photo">
-                    <i class="material-icons">attach_file
-                        <input type="file" name="image">
-                        <input type="submit" name="Submit">
+                <div class='profile-change-photo'>
+                    <i class='material-icons'>attach_file
+                        <input type='file' name='image'>
+                        <input type='submit' name='Submit'>
                     </i>
-                    <a href="edit-photo.php" class="change-photo" >
+                    <a href='edit-photo.php' class='change-photo' >
                         Update
                     </a>                
                 </div>
@@ -22,39 +22,39 @@
             
             <!-- USER NAME -->
             <header>
-                <div class="profile-name">
+                <div class='profile-name'>
                     <h1><?=$user['name']?></h1>
                 </div>
             </header>
 
             <!-- SIDEBAR BUTTONS -->
-            <div class="profile-userbuttons">
-                <a href="../properties/properties.php">
-                    <button type="button" class="circular-button">Properties</button>
+            <div class='profile-userbuttons'>
+                <a href='../properties/properties.php'>
+                    <button type='button' class='circular-button'>Properties</button>
                 </a>
-                <a href="#">
-                    <button type="button" class="circular-button">Message</button>
+                <a href='#'>
+                    <button type='button' class='circular-button'>Message</button>
                 </a>
             </div>
 
             <!-- SIDEBAR MENU -->
-            <div class="profile-usermenu">
-                <ul class="usermenu">
+            <div class='profile-usermenu'>
+                <ul class='usermenu'>
                     <li>
-                        <i class="material-icons"> menu </i>
+                        <i class='material-icons'> menu </i>
                         <button class='no-button' onclick='profileOverview();'> Overview </button>
                     </li>
                     <li>
-                        <i class="material-icons"> settings </i>
+                        <i class='material-icons'> settings </i>
                         <button class='no-button' onclick='profileSettings();'> Account Settings </button>
                     </li>
                     <li>
-                        <i class="material-icons"> star_border </i>
-                        <a href="#"> Rating </a>
+                        <i class='material-icons'> star_border </i>
+                        <a href='#'> Rating </a>
                     </li>
                     <li>
-                        <i class="material-icons"> insert_comment </i>
-                        <a href="#"> Comments </a>
+                        <i class='material-icons'> insert_comment </i>
+                        <a href='#'> Comments </a>
                     </li>
                 </ul>
             </div>
@@ -69,61 +69,48 @@
 <!--*********************** PROFILE SETTINGS ***********************-->
     <div id='profile-settings-tab' class='selected-tab'>
         <h1 id='profile-settings-title'>Edit Profile</h4>
-        <form action='../actions/action_profile_change.php' method='POST'>
             <div id='profile-setting-name' class='profile-setting-elem'>
                 <label> Name </label>
-                <div class='profile-settings-aux-div'>
-                    <input name='name' type='text' value='<?=$user['name']?>'>
-                    <a href="#"><i class="material-icons" style="color:rgb(176, 183, 187);">arrow_forward_ios</i></a>
-                </div>
+                    <input id='name' type='text' value='<?=$user['name']?>'>
+                    <button onclick='submitForm(0);'><i class='material-icons'>arrow_forward_ios</i></button>
             </div>
 
             <div id='profile-setting-email' class='profile-setting-elem'>
                 <label> Email </label>
-                <div class='profile-settings-aux-div'>
-                    <input name='email' type='email' value='<?=$user['email']?>'>
-                    <a href="#"><i class="material-icons" style="color:rgb(176, 183, 187);">arrow_forward_ios</i></a>
-                    <span id='profile-settings-msg-email'></span>
-                </div>
+                <input id='email' type='email' value='<?=$user['email']?>'>
+                <button onclick='submitForm(1);'><i class='material-icons'>arrow_forward_ios</i></button>
+                <span id='profile-settings-msg-email'></span>
             </div>
 
             <div id='profile-setting-age' class='profile-setting-elem'>
                 <label> Age </label>
-                <div class='profile-settings-aux-div'>
-                    <input name='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
-                    <a href="#"><i class="material-icons" style="color:rgb(176, 183, 187);">arrow_forward_ios</i></a>
-                </div>
+                <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
+                <button onclick='submitForm(2);'><i class='material-icons'>arrow_forward_ios</i></button>
             </div>
 
             <div id='profile-setting-password' class='profile-setting-elem'>
                 <label> Password </label>
-                <div class='profile-settings-aux-div'>
-                    <input id='password' type='password' value='' onkeyup='checkPass();'/>
-                    <a href="#"><i class="material-icons" style="color:rgb(176, 183, 187);">arrow_forward_ios</i></a>
-                </div>
+                <input id='password' type='password' value='' onkeyup='checkPass();'/>
+                <button onclick='submitForm(3);'><i class='material-icons'>arrow_forward_ios</i></button>
             </div>
 
             <div id='profile-settings-confirm_password' class='profile-setting-elem'>
                 <label> Confirm password </label>
-                <div class='profile-settings-aux-div'>
-                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
-                    <a href="#"><i class="material-icons" style="color:rgb(176, 183, 187);">arrow_forward_ios</i></a>
-                    <span id='profile-settings-msg-pass'></span>
-                </div>
+                <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
+                <span id='profile-settings-msg-pass'></span>
             </div>
-        </form>
     </div>
 <?php } ?>
 
 <script>
     function profileOverview() {
-        document.getElementById("profile-settings-tab").style.display = "none";
-        document.getElementById("profile-overview-tab").style.display = "display";
+        document.getElementById('profile-settings-tab').style.display = 'none';
+        document.getElementById('profile-overview-tab').style.display = 'display';
     }
 
     function profileSettings() {
-        document.getElementById("profile-overview-tab").style.display = "none";
-        document.getElementById("profile-settings-tab").style.display = "block";
+        document.getElementById('profile-overview-tab').style.display = 'none';
+        document.getElementById('profile-settings-tab').style.display = 'block';
     }
 
     function checkEmail() {
@@ -155,30 +142,64 @@
         else {
             document.getElementById('confirm_password').style.backgroundColor  = 'rgb(246, 220, 220)';
             document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
-            document.getElementById('profile-settings-msg-pass').innerHTML = 'The password\'s dont\'t match';
+            document.getElementById('profile-settings-msg-pass').innerHTML = 'The password\'s don\'t match';
             document.getElementById('profile-settings-msg-pass').style.color = 'red';
             document.getElementById('profile-settings-submit').disabled = true;
         }
     }
 
-    function submitForm(){
-        let name = document.getElementById('profile-setting-name').innerHTML.value;
-        let email = document.getElementById('profile-setting-email').innerHTML.value;
-        let age = document.getElementById('profile-setting-age').innerHTML.value;
-        let password = document.getElementById('profile-setting-password').innerHTML.value;
-        let confirm_password = document.getElementById('profile-setting-confirm_password').innerHTML.value;
-
-        let requestName = split(name, ' ');
-        requestName = requestName.join('+');
-        let requestEmail = email.replace('@', '%40');
-        let request = 'name=' + requestName + '&' + 'email=' + requestEmail + '&' + 'age=' + age + '&'+ 'password=' + password + '&' + 'control=' + confirm_password;
-        
+    function submitForm(option){
         let xhttp = new XMLHttpRequest();
         let asynchronous = true;
+        let request, name, email, age, password;
+  
+        switch(option) {
+            // user name
+            case 0:
+                name = document.getElementById('name').value;
+                let requestName = name.split(' ');
+                requestName = requestName.join('+');
+                request = 'name=' + requestName;
+                break;
+            // user email
+            case 1:
+                email = document.getElementById('email').value;
+                let requestEmail = email.replace('@', '%40');
+                request = 'email=' + requestEmail;
+                break;
+            // user age
+            case 2:
+                age = document.getElementById('age').value;
+                request = 'age=' + age;
+                break;
+            // user password
+            case 3:
+                password = document.getElementById('password').value;
+                request = 'password=' + password;
+                break;
+            default:
+                break;
+        }
 
         // Define what happens on successful data submission
         xhttp.addEventListener('load', function(event) {
-            alert('Yeah! Data sent and response loaded.');
+            switch(option) {
+            // user email
+            case 1:
+                emailAfter = document.getElementById('email').value;
+                if(email != emailAfter) {
+                    document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
+                    document.getElementById('profile-settings-msg-email').style.color = 'red';
+                    alert('error');
+                }
+                else {
+                    alert('no error');
+                    document.getElementById('profile-settings-msg-email').innerHTML = '';
+                }
+                break;
+            default:
+                break;
+        }
         });
 
         // Define what happens in case of error
@@ -216,13 +237,13 @@
 
     .profile-photo a{
         color: black;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .profile-name {
         text-align: center;
         color: black;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .profile-userbuttons {
@@ -262,7 +283,7 @@
 
     .usermenu a{
         font-size: 20px;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: black;
     }
 
@@ -293,9 +314,8 @@
     #profile-settings-tab input {
         border: solid rgb(176, 183, 187) 1px;
         color: grey;
-        width: 350px;
+        width:30em;
         text-align: center;
-        padding-top: 15px;
         border-radius: 5px;
     }
 
@@ -303,12 +323,16 @@
         border: solid rgb(176, 183, 187) 2px;
     }
 
-    .profile-settings-aux-div{
-        margin-bottom: 25px;            
+    .profile-setting-elem label{
+        grid-column: 1/ span 2;     
+        margin-right: 1em;
     }
 
     .profile-setting-elem {
-        margin-bottom: 25px;      
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-bottom: 2em;
+        margin-bottom: 2em;
         border-bottom: solid 1px rgb(136, 189, 234);   
     }
 
