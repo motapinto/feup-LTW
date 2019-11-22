@@ -9,128 +9,123 @@
         $imagePath = "../../assets/images/thumbs_medium/u_$id.png";
     ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
-    <div id='user'>
-        <section class='side-drawer'>
-            <!-- USER PHOTO -->
-            <div class="profile-photo">
-                <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
-                <div class="profile-change-photo">
-                    <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="image" id='image'>
-                        <label for="image">Choose Image</label>
-                        <input type="submit" name="Submit" value="Upload">
-                    </form>
+    <div class="profile">
+        <div id='user'>
+            <section class='side-drawer'>
+                <!-- USER PHOTO -->
+                <div class="profile-photo">
+                    <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
+                    <div class="profile-change-photo">
+                        <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="image" id='image'>
+                            <label for="image">Choose Image</label>
+                            <input type="submit" name="Submit" value="Upload">
+                        </form>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- USER NAME -->
-            <header>
-                <h1><?=$user['name']?></h1>
-                <div class="rating">
-                    <?php 
-                    $rating = $user['rating'];
-                    for($i = 0; $i < 5; $i++){
-                        $nextRating = $rating - 1;
-                        if (($rating - $nextRating) == 0) { ?>
-                            <i class="material-icons"> star_border</i>
-                        <?php }
-                        else if (($rating - $nextRating) <= 0.5) { ?>
-                            <i class="material-icons"> star_half</i>
-                        <?php }
-                        else { ?>
-                            <i class="material-icons"> star</i>
-                        <?php }
-                        $rating = $nextRating;
-                    }
-                    ?>
+                
+                <!-- USER NAME -->
+                <header>
+                    <h1><?=$user['name']?></h1>
+                    <div class="rating">
+                        <?php 
+                        $rating = $user['rating'];
+                        for($i = 0; $i < 5; $i++){
+                            $nextRating = $rating - 1;
+                            if (($rating - $nextRating) == 0) { ?>
+                                <i class="material-icons"> star_border</i>
+                            <?php }
+                            else if (($rating - $nextRating) <= 0.5) { ?>
+                                <i class="material-icons"> star_half</i>
+                            <?php }
+                            else { ?>
+                                <i class="material-icons"> star</i>
+                            <?php }
+                            $rating = $nextRating;
+                        }
+                        ?>
+                    </div>
+                </header>
+
+                <!-- SIDEBAR BUTTONS -->
+                <div class='profile-userbuttons'>
+                    <a href='../properties/properties.php'>
+                        <button type='button' class='circular-button'>Properties</button>
+                    </a>
+                    <a href='#'>
+                        <button type='button' class='circular-button'>Message</button>
+                    </a>
                 </div>
-            </header>
 
-            <!-- SIDEBAR BUTTONS -->
-            <div class='profile-userbuttons'>
-                <a href='../properties/properties.php'>
-                    <button type='button' class='circular-button'>Properties</button>
-                </a>
-                <a href='#'>
-                    <button type='button' class='circular-button'>Message</button>
-                </a>
-            </div>
-
-            <!-- SIDEBAR MENU -->
-            <div class='profile-usermenu'>
-                <ul class='usermenu'>
-                    <li>
-                        <i class='material-icons'> menu </i>
-                        <button class='no-button' onclick='profileOverview();'> Overview </button>
-                    </li>
-                    <li>
-                        <i class='material-icons'> settings </i>
-                        <button class='no-button' onclick='profileSettings();'> Account Settings </button>
-                    </li>
-                    <li>
-                        <i class='material-icons'> star_border </i>
-                        <a href='#'> Rating </a>
-                    </li>
-                    <li>
-                        <i class="material-icons"> insert_comment </i>
-                        <button class='no-button' onclick='profileComments();'> Comments </button>
-                    </li>
-                </ul>
-            </div>
-        </section> 
-    </div>
+                <!-- SIDEBAR MENU -->
+                <div class='profile-usermenu'>
+                    <button class='no-button' onclick='profileOverview();'>
+                        <i class='material-icons'> menu </i> Overview 
+                    </button>
+                    <button class='no-button' onclick='profileSettings();'>
+                        <i class='material-icons'> settings </i> Profile Settings
+                    </button>
+                    <button class='no-button' onclick='profileSettings();'>
+                        <i class='material-icons'> star_border </i>Account Settings
+                    </button>
+                    <button class='no-button' onclick='profileComments();'>
+                        <i class="material-icons"> insert_comment </i>Comments
+                    </button>
+                </div>
+            </section> 
+        </div>
 
 <!--*********************** PROFILE OVERVIEW ***********************-->
-    <div id='profile-overview-tab' class='selected-tab'>
-    </div>
+        <div id='profile-overview-tab' class='selected-tab'>
+        </div>
 
 
 <!--*********************** PROFILE SETTINGS ***********************-->
-    <div id='profile-settings-tab' class='selected-tab'>
-        <h1 id='profile-settings-title'>Edit Profile</h4>
-            <div id='profile-setting-name' class='profile-setting-elem'>
-                <label> Name </label>
-                    <input id='name' type='text' value='<?=$user['name']?>'>
-                    <button onclick='submitForm(0);'><i class='material-icons'>arrow_forward_ios</i></button>
-            </div>
+        <div id='profile-settings-tab' class='selected-tab'>
+            <h1 id='profile-settings-title'>Edit Profile</h4>
+                <div id='profile-setting-name' class='profile-setting-elem'>
+                    <label> Name </label>
+                        <input id='name' type='text' value='<?=$user['name']?>'>
+                        <button onclick='submitForm(0);'><i class='material-icons'>arrow_forward_ios</i></button>
+                </div>
 
-            <div id='profile-setting-email' class='profile-setting-elem'>
-                <label> Email </label>
-                <input id='email' type='email' value='<?=$user['email']?>'>
-                <button onclick='submitForm(1);'><i class='material-icons'>arrow_forward_ios</i></button>
-                <span id='profile-settings-msg-email'></span>
-            </div>
+                <div id='profile-setting-email' class='profile-setting-elem'>
+                    <label> Email </label>
+                    <input id='email' type='email' value='<?=$user['email']?>'>
+                    <button onclick='submitForm(1);'><i class='material-icons'>arrow_forward_ios</i></button>
+                    <span id='profile-settings-msg-email'></span>
+                </div>
 
-            <div id='profile-setting-age' class='profile-setting-elem'>
-                <label> Age </label>
-                <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
-                <button onclick='submitForm(2);'><i class='material-icons'>arrow_forward_ios</i></button>
-            </div>
+                <div id='profile-setting-age' class='profile-setting-elem'>
+                    <label> Age </label>
+                    <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
+                    <button onclick='submitForm(2);'><i class='material-icons'>arrow_forward_ios</i></button>
+                </div>
 
-            <div id='profile-setting-password' class='profile-setting-elem'>
-                <label> Password </label>
-                <input id='password' type='password' value='' onkeyup='checkPass();'/>
-                <button onclick='submitForm(3);'><i class='material-icons'>arrow_forward_ios</i></button>
-            </div>
+                <div id='profile-setting-password' class='profile-setting-elem'>
+                    <label> Password </label>
+                    <input id='password' type='password' value='' onkeyup='checkPass();'/>
+                    <button onclick='submitForm(3);'><i class='material-icons'>arrow_forward_ios</i></button>
+                </div>
 
-            <div id='profile-settings-confirm_password' class='profile-setting-elem'>
-                <label> Confirm password </label>
-                <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
-                <span id='profile-settings-msg-pass'></span>
-            </div>
-    </div>
+                <div id='profile-settings-confirm_password' class='profile-setting-elem'>
+                    <label> Confirm password </label>
+                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
+                    <span id='profile-settings-msg-pass'></span>
+                </div>
+        </div>
 
 <!--*********************** PROFILE COMMENTS ***********************-->
-    <div id='profile-comments-tab' class='selected-tab'>
-        <?php 
-        $nComments = count($comments);
-        if($nComments === 1) { ?>
-            <h1>1 comment</h1>
-        <?php } else { ?>
-            <h1><?=count($comments)?> comments</h1>
-        <?php } ?>
+        <div id='profile-comments-tab' class='selected-tab'>
+            <?php 
+            $nComments = count($comments);
+            if($nComments === 1) { ?>
+                <h1>1 comment</h1>
+            <?php } else { ?>
+                <h1><?=count($comments)?> comments</h1>
+            <?php } ?>
+        </div>
     </div>
-
 <?php } ?>
 
 <script>
@@ -254,15 +249,11 @@
 <style>
 /************************* PROFILE SIDEMENU *************************/
     .side-drawer {
-        position: absolute;
         display: flex; /* or inline-flex */
         flex-direction: column ;
-        width: 280px;
-        height: 500px; 
         background-color: white;
         padding: 50px;
         margin: 50px;
-        border: solid 1px rgb(175, 175, 175);
         align-items:center;
     }
 
@@ -270,10 +261,6 @@
         display: flex;
         flex-direction: column;
         align-items:center;
-    }
-
-    .profile-photo a:hover{
-        text-decoration: underline;
     }
 
     .profile-photo a{
@@ -304,32 +291,13 @@
     .profile-usermenu {
         display: flex; /* or inline-flex */
         flex-direction: column ; 
-        margin: 10px;
+        margin: 1em;
         border-top: solid 3px rgb(136, 189, 234);
         border-bottom: solid 3px rgb(136, 189, 234);
     }
 
-    .usermenu {
-        list-style-type: none;
-        padding-left: 10%;
-    }
-
-    .usermenu li {
-        padding-bottom: 8px;
-    }
-
-    .usermenu li a {
-        list-style-type: none;
-    }
-
-    .usermenu a{
-        font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-        color: black;
-    }
-
-    .usermenu a:hover{
-        text-decoration: underline;
+    .no-button {
+        padding: 0.3em 0em;
     }
 
     .upload-photo {  
@@ -375,13 +343,15 @@
 
 
 /*************************      COMMON      *************************/
+    .profile {
+        display: grid;
+        grid-template-columns: 35% 65%
+    }
     .selected-tab {
         display: none;
         background-color: white;
-        width: 400px;
-        height: 600px;
-        margin-left: 600px;
         padding: 40px;
+        border-left: solid 1px rgb(175, 175, 175);
     }
 
 /************************* PROFILE OVERVIEW *************************/
