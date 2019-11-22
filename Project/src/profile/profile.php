@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include_once('../includes/session.php');              // starts session
     include_once('../database/users.php');          // user functions
     
     include('../templates/tpl_common.php');         // prints the initial and final part of the HTML document

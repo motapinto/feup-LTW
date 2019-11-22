@@ -1,29 +1,48 @@
-<?php function draw_profile($user) { ?>
+<?php function draw_profile($user) { 
+    include_once("../database/comments.php");
+    $id = $user['id'];
+    $comments = getCommentsByUserId($id);
+    $imagePath = "../../assets/images/noImage.jpg";
+    if(file_exists("../../assets/images/thumbs_medium/u_$id.jpg"))
+        $imagePath = "../../assets/images/thumbs_medium/u_$id.jpg";
+    else if(file_exists("../../assets/images/thumbs_medium/u_$id.png"))
+        $imagePath = "../../assets/images/thumbs_medium/u_$id.png";
+    ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <div id="user">
         <section class="side-drawer">
             <!-- USER PHOTO -->
             <div class="profile-photo">
-                <div style="display: inline-block;border-radius:20px;">
-                    <div class="photo" style="height: 120px; width: 120px; display: block;">
-                        <img class="_1mgxxu3" src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiqgZXS8-vlAhWpzoUKHT63Ab8QjRx6BAgBEAQ&url=https%3A%2F%2Fstackoverflow.com%2Fq%2F38576264&psig=AOvVaw3Zgglh2B6Xw7fusxBqulSU&ust=1573896532418510" height="120" width="120" alt="User Photo" title="User Photo">
-                    </div>
-                </div>
+                <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
                 <div class="profile-change-photo">
-                    <i class="material-icons">attach_file
-                        <input type="file" name="image">
-                        <input type="submit" name="Submit">
-                    </i>
-                    <a href="edit-photo.php" class="change-photo" >
-                        Update
-                    </a>                
+                    <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" id='image'>
+                        <label for="image">Choose Image</label>
+                        <input type="submit" name="Submit" value="Upload">
+                    </form>
                 </div>
             </div>
             
             <!-- USER NAME -->
             <header>
-                <div class="profile-name">
-                    <h1><?=$user['name']?></h1>
+                <h1><?=$user['name']?></h1>
+                <div class="rating">
+                    <?php 
+                    $rating = $user['rating'];
+                    for($i = 0; $i < 5; $i++){
+                        $nextRating = $rating - 1;
+                        if (($rating - $nextRating) == 0) { ?>
+                            <i class="material-icons"> star_border</i>
+                        <?php }
+                        else if (($rating - $nextRating) <= 0.5) { ?>
+                            <i class="material-icons"> star_half</i>
+                        <?php }
+                        else { ?>
+                            <i class="material-icons"> star</i>
+                        <?php }
+                        $rating = $nextRating;
+                    }
+                    ?>
                 </div>
             </header>
 
@@ -54,7 +73,7 @@
                     </li>
                     <li>
                         <i class="material-icons"> insert_comment </i>
-                        <a href="#"> Comments </a>
+                        <button class='no-button' onclick='profileComments();'> Comments </button>
                     </li>
                 </ul>
             </div>
@@ -113,17 +132,37 @@
             </div>
         </form>
     </div>
+
+<!--*********************** PROFILE COMMENTS ***********************-->
+    <div id='profile-comments-tab' class='selected-tab'>
+        <?php 
+        $nComments = count($comments);
+        if($nComments === 1) { ?>
+            <h1>1 comment</h1>
+        <?php } else { ?>
+            <h1><?=count($comments)?> comments</h1>
+        <?php } ?>
+    </div>
+
 <?php } ?>
 
 <script>
     function profileOverview() {
         document.getElementById("profile-settings-tab").style.display = "none";
+        document.getElementById("profile-comments-tab").style.display = "none";
         document.getElementById("profile-overview-tab").style.display = "display";
     }
 
     function profileSettings() {
         document.getElementById("profile-overview-tab").style.display = "none";
+        document.getElementById("profile-comments-tab").style.display = "none";
         document.getElementById("profile-settings-tab").style.display = "block";
+    }
+
+    function profileComments() {
+        document.getElementById("profile-overview-tab").style.display = "none";
+        document.getElementById("profile-comments-tab").style.display = "block";
+        document.getElementById("profile-settings-tab").style.display = "none";
     }
 
     function checkEmail() {
@@ -203,11 +242,13 @@
         padding: 50px;
         margin: 50px;
         border: solid 1px rgb(175, 175, 175);
+        align-items:center;
     }
 
     .profile-photo {
-        margin-left: 4em;
-        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
     }
 
     .profile-photo a:hover{
@@ -272,6 +313,46 @@
 
     .upload-photo {  
     }
+    
+    .profile-photo img{
+        border-radius: 50%;
+        height: 10em;
+        width: 10em; 
+    }
+
+    .profile-change-photo form input[type="file"]{
+        display: none;
+    }
+
+    .profile-change-photo form label:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .profile-change-photo form label{
+        color: rgb(0, 102, 102);
+        font-weight: bold;        
+    }
+    
+    .profile-change-photo form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+        margin:0;
+    }
+
+    .profile-change-photo form *{
+        margin: 0.1em;
+    }
+
+    .rating {
+        display:flex;
+        color: #F9A602;
+        align-items: center;
+    }
+
+
 /*************************      COMMON      *************************/
     .selected-tab {
         display: none;

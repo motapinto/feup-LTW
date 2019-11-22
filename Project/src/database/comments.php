@@ -14,14 +14,14 @@
     }
 
     //Returns all comments with a email with email = email
-    function getCommentsByEmail($email){
+    function getCommentsByUserId($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT name, comment, date, Comment.rating
-                              FROM Comment, User 
-                              WHERE Comment.email = ? AND User.email = Comment.email;'
+        $stmt = $db->prepare('SELECT comment, date, rating
+                              FROM Comment 
+                              WHERE user_id = ?'
                             );
-        $stmt->execute(array($email));
+        $stmt->execute(array($id));
         return $stmt->fetchAll();
     }
 

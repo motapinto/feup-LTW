@@ -9,7 +9,6 @@
 
     draw_header('All Listings');
     draw_navBar(true);
-    print_r($_SESSION['id']);
     $listings = getAllListings();                        // gets all listings from the database
     draw_allListings($listings);
     draw_footer();

@@ -5,12 +5,11 @@
     
     if(!isset($_SESSION['id']))
         header('Location: ../listings/listings_all.php');                                 // main webpage
-    
+
     $id = $_SESSION['id'];
-    $name = $_FILES['image']['tmp_name'];
+    $name = $_FILES['image']['name'];
 
-    if(strpos($name, '.jpg') !== false){ //Contains .jpg
-
+    if(strpos($name, '.jpg') !== false || strpos($name, '.jpeg') !== false){ //Contains .jpg
         // Generate filenames for original, small and medium files
         $originalFileName = "../../assets/images/originals/u_$id.jpg";
         $smallFileName = "../../assets/images/thumbs_small/u_$id.jpg";
@@ -84,6 +83,5 @@
 
     
 
-        
-    header('Location: ../properties/add_property_image.php');
+    header('Location: ../profile/profile.php');
 ?>
