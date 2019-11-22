@@ -252,8 +252,8 @@
         display: flex; /* or inline-flex */
         flex-direction: column ;
         background-color: white;
-        padding: 50px;
-        margin: 50px;
+        padding: 5%;
+        margin: 5%;
         align-items:center;
     }
 
@@ -350,7 +350,9 @@
     .selected-tab {
         display: none;
         background-color: white;
-        padding: 40px;
+        margin: 5%;
+        padding: 0 5%;
+        width: 60%;
         border-left: solid 1px rgb(175, 175, 175);
     }
 
@@ -365,9 +367,9 @@
     #profile-settings-tab input {
         border: solid rgb(176, 183, 187) 1px;
         color: grey;
-        width:30em;
         text-align: center;
         border-radius: 5px;
+        margin-right: 2%;
     }
 
     #profile-settings-tab input:focus {
@@ -381,7 +383,7 @@
 
     .profile-setting-elem {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 88%   10%;
         padding-bottom: 2em;
         margin-bottom: 2em;
         border-bottom: solid 1px rgb(136, 189, 234);   
