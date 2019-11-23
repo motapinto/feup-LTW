@@ -291,8 +291,9 @@
         display: grid;
         grid-template-columns: 2em 10em;
         margin: 1em;
-        border-top: solid 2px rgb(136, 189, 234);
-        border-bottom: solid 2px rgb(136, 189, 234);
+        padding: 1em 4em;
+        border-top: solid 1px rgb(136, 189, 234);
+        border-bottom: solid 1px rgb(136, 189, 234);
     }
 
     .profile-usermenu button {
@@ -315,7 +316,7 @@
     }
 
     .profile-change-photo form label{
-        color: rgb(0, 102, 102);
+        color: teal;
         font-weight: bold;        
     }
     
