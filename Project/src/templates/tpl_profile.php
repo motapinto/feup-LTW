@@ -59,18 +59,17 @@
 
                 <!-- SIDEBAR MENU -->
                 <div class='profile-usermenu'>
-                    <button class='no-button' onclick='profileOverview();'>
-                        <i class='material-icons'> menu </i> Overview 
-                    </button>
-                    <button class='no-button' onclick='profileSettings();'>
-                        <i class='material-icons'> settings </i> Profile Settings
-                    </button>
-                    <button class='no-button' onclick='profileSettings();'>
-                        <i class='material-icons'> star_border </i>Account Settings
-                    </button>
-                    <button class='no-button' onclick='profileComments();'>
-                        <i class="material-icons"> insert_comment </i>Comments
-                    </button>
+                    <i class='material-icons'> menu </i>
+                    <button class='no-button' onclick='profileOverview();'> Overview </button>
+                    
+                    <i class='material-icons'> settings </i>
+                    <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
+                    
+                    <i class='material-icons'> star_border </i>
+                    <button class='no-button' onclick='profileSettings();'>Account Settings</button>
+                    
+                    <i class="material-icons"> insert_comment </i>
+                    <button class='no-button' onclick='profileComments();'>Comments</button>
                 </div>
             </section> 
         </div>
@@ -289,20 +288,17 @@
     }
 
     .profile-usermenu {
-        display: flex; /* or inline-flex */
-        flex-direction: column ; 
+        display: grid;
+        grid-template-columns: 2em 10em;
         margin: 1em;
-        border-top: solid 3px rgb(136, 189, 234);
-        border-bottom: solid 3px rgb(136, 189, 234);
+        border-top: solid 2px rgb(136, 189, 234);
+        border-bottom: solid 2px rgb(136, 189, 234);
     }
 
-    .no-button {
-        padding: 0.3em 0em;
+    .profile-usermenu button {
+        margin: 0.2em 0em;
     }
 
-    .upload-photo {  
-    }
-    
     .profile-photo img{
         border-radius: 50%;
         height: 10em;
@@ -336,9 +332,10 @@
     }
 
     .rating {
-        display:flex;
         color: #F9A602;
+        display: flex;
         align-items: center;
+        justify-content: center;
     }
 
 
