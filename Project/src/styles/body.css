@@ -125,7 +125,6 @@ a, p, label {
 }
 
 .no-button{
-  display: flex;
   border: none;
   background-color: white;
   color:black;
