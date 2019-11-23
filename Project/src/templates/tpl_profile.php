@@ -9,70 +9,68 @@
         $imagePath = "../../assets/images/thumbs_medium/u_$id.png";
     ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
-    <div class="profile">
-        <div id='user'>
-            <section class='side-drawer'>
-                <!-- USER PHOTO -->
-                <div class="profile-photo">
-                    <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
-                    <div class="profile-change-photo">
-                        <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="image" id='image'>
-                            <label for="image">Choose Image</label>
-                            <input type="submit" name="Submit" value="Upload">
-                        </form>
-                    </div>
+    <section class="profile">
+        <section class='side-drawer'>
+            <!-- USER PHOTO -->
+            <article class="profile-photo">
+                <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
+                <div class="profile-change-photo">
+                    <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" id='image'>
+                        <label for="image">Choose Image</label>
+                        <input type="submit" name="Submit" value="Upload">
+                    </form>
                 </div>
+            </article>
+            
+            <!-- USER NAME -->
+            <header>
+                <h1><?=$user['name']?></h1>
+                <article class="rating">
+                    <?php 
+                    $rating = $user['rating'];
+                    for($i = 0; $i < 5; $i++){
+                        $nextRating = $rating - 1;
+                        if (($rating - $nextRating) == 0) { ?>
+                            <i class="material-icons"> star_border</i>
+                        <?php }
+                        else if (($rating - $nextRating) <= 0.5) { ?>
+                            <i class="material-icons"> star_half</i>
+                        <?php }
+                        else { ?>
+                            <i class="material-icons"> star</i>
+                        <?php }
+                        $rating = $nextRating;
+                    }
+                    ?>
+                </article>
+            </header>
+
+            <!-- SIDEBAR BUTTONS -->
+            <article class='profile-userbuttons'>
+                <a href='../properties/properties.php'>
+                    <button type='button' class='circular-button'>Properties</button>
+                </a>
+                <a href='#'>
+                    <button type='button' class='circular-button'>Message</button>
+                </a>
+            </article>
+
+            <!-- SIDEBAR MENU -->
+            <article class='profile-usermenu'>
+                <i class="fas fa-bars"></i>
+                <button class='no-button' onclick='profileOverview();'> Overview </button>
                 
-                <!-- USER NAME -->
-                <header>
-                    <h1><?=$user['name']?></h1>
-                    <div class="rating">
-                        <?php 
-                        $rating = $user['rating'];
-                        for($i = 0; $i < 5; $i++){
-                            $nextRating = $rating - 1;
-                            if (($rating - $nextRating) == 0) { ?>
-                                <i class="material-icons"> star_border</i>
-                            <?php }
-                            else if (($rating - $nextRating) <= 0.5) { ?>
-                                <i class="material-icons"> star_half</i>
-                            <?php }
-                            else { ?>
-                                <i class="material-icons"> star</i>
-                            <?php }
-                            $rating = $nextRating;
-                        }
-                        ?>
-                    </div>
-                </header>
+                <i class="fas fa-users-cog"></i>
+                <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
+                
+                <i class="fas fa-shield-alt"></i>
+                <button class='no-button' onclick='profileSettings();'>Security Settings</button>
 
-                <!-- SIDEBAR BUTTONS -->
-                <div class='profile-userbuttons'>
-                    <a href='../properties/properties.php'>
-                        <button type='button' class='circular-button'>Properties</button>
-                    </a>
-                    <a href='#'>
-                        <button type='button' class='circular-button'>Message</button>
-                    </a>
-                </div>
-
-                <!-- SIDEBAR MENU -->
-                <div class='profile-usermenu'>
-                    <i class='material-icons'> menu </i>
-                    <button class='no-button' onclick='profileOverview();'> Overview </button>
-                    
-                    <i class='material-icons'> settings </i>
-                    <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
-                    
-                    <i class='material-icons'> star_border </i>
-                    <button class='no-button' onclick='profileSettings();'>Account Settings</button>
-                    
-                    <i class="material-icons"> insert_comment </i>
-                    <button class='no-button' onclick='profileComments();'>Comments</button>
-                </div>
-            </section> 
-        </div>
+                <i class="far fa-comments"></i>
+                <button class='no-button' onclick='profileComments();'>Comments</button>
+            </article>
+        </section> 
 
 <!--*********************** PROFILE OVERVIEW ***********************-->
         <div id='profile-overview-tab' class='selected-tab'>
@@ -80,39 +78,46 @@
 
 
 <!--*********************** PROFILE SETTINGS ***********************-->
-        <div id='profile-settings-tab' class='selected-tab'>
-            <h1 id='profile-settings-title'>Edit Profile</h4>
-                <div id='profile-setting-name' class='profile-setting-elem'>
-                    <label> Name </label>
-                        <input id='name' type='text' value='<?=$user['name']?>'>
-                        <button onclick='submitForm(0);'><i class='material-icons'>arrow_forward_ios</i></button>
-                </div>
+        <section id='profile-settings-tab' class='selected-tab'>
+            <h1 id='profile-settings-title'>Edit Profile</h1>
+                <article id='profile-setting-name' class='profile-setting-elem'>
+                    <header> Name </header>
+                    <input id='name' type='text' value='<?=$user['name']?>'>
+                    <button class="submit-button" onclick='submitForm(0);'>
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </article>
 
-                <div id='profile-setting-email' class='profile-setting-elem'>
-                    <label> Email </label>
+                <article id='profile-setting-email' class='profile-setting-elem'>
+                    <header> Email </header>
                     <input id='email' type='email' value='<?=$user['email']?>'>
-                    <button onclick='submitForm(1);'><i class='material-icons'>arrow_forward_ios</i></button>
-                    <span id='profile-settings-msg-email'></span>
-                </div>
+                    <button class="submit-button" onclick='submitForm(1);'>
+                        <i class="fas fa-sync-alt"></i>
+                    </button>                
+                </article>
 
-                <div id='profile-setting-age' class='profile-setting-elem'>
-                    <label> Age </label>
+                <article id='profile-setting-age' class='profile-setting-elem'>
+                    <header> Age </header>
                     <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
-                    <button onclick='submitForm(2);'><i class='material-icons'>arrow_forward_ios</i></button>
-                </div>
+                    <button class="submit-button" onclick='submitForm(2);'>
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </article>
 
-                <div id='profile-setting-password' class='profile-setting-elem'>
-                    <label> Password </label>
+                <article id='profile-setting-password' class='profile-setting-elem'>
+                    <header> Password </header>
                     <input id='password' type='password' value='' onkeyup='checkPass();'/>
-                    <button onclick='submitForm(3);'><i class='material-icons'>arrow_forward_ios</i></button>
-                </div>
+                    <button class="submit-button" onclick='submitForm(3);'>
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </article>
 
-                <div id='profile-settings-confirm_password' class='profile-setting-elem'>
-                    <label> Confirm password </label>
+                <article id='profile-settings-confirm_password' class='profile-setting-elem'>
+                    <header> Confirm password </header>
                     <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
-                    <span id='profile-settings-msg-pass'></span>
-                </div>
-        </div>
+                </article>
+                <footer id='profile-settings-msg'></footer>
+        </section>
 
 <!--*********************** PROFILE COMMENTS ***********************-->
         <div id='profile-comments-tab' class='selected-tab'>
@@ -124,7 +129,8 @@
                 <h1><?=count($comments)?> comments</h1>
             <?php } ?>
         </div>
-    </div>
+<!--*********************** SECTION END ****************************-->
+    </section>>
 <?php } ?>
 
 <script>
@@ -169,14 +175,14 @@
             document.getElementById('password').style.border = 'solid 1px rgb(176, 183, 187)'
             document.getElementById('confirm_password').style.backgroundColor = 'white';
             document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
-            document.getElementById('profile-settings-msg-pass').innerHTML = '';
+            document.getElementById('profile-settings-msg').innerHTML = '';
             document.getElementById('profile-settings-submit').disabled = false;
         }
         else {
             document.getElementById('confirm_password').style.backgroundColor  = 'rgb(246, 220, 220)';
             document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
-            document.getElementById('profile-settings-msg-pass').innerHTML = 'The password\'s don\'t match';
-            document.getElementById('profile-settings-msg-pass').style.color = 'red';
+            document.getElementById('profile-settings-msg').innerHTML = 'The password\'s don\'t match';
+            document.getElementById('profile-settings-msg').style.color = 'red';
             document.getElementById('profile-settings-submit').disabled = true;
         }
     }
@@ -296,8 +302,8 @@
         border-bottom: solid 1px rgb(136, 189, 234);
     }
 
-    .profile-usermenu button {
-        margin: 0.2em 0em;
+    .profile-usermenu button, i {
+        margin: 0.5em 0em;
     }
 
     .profile-photo img{
@@ -351,6 +357,7 @@
         margin: 5%;
         padding: 0 5%;
         width: 60%;
+        height: 45em;
         border-left: solid 1px rgb(175, 175, 175);
     }
 
@@ -374,8 +381,8 @@
         border: solid rgb(176, 183, 187) 2px;
     }
 
-    .profile-setting-elem label{
-        grid-column: 1/ span 2;     
+    .profile-setting-elem header{
+        grid-column: 1/ footer 2;     
         margin-right: 1em;
     }
 
@@ -389,6 +396,31 @@
 
     .profile-setting-elem:last-child {
         border: none;
+    }
+
+    .profile-setting-elem input{
+        height: 2em;   
+    }
+
+    .submit-button {
+        border: none;
+        background-color: white;
+        color: grey;
+    }
+    
+    .submit-button:hover {
+        color: black;
+        cursor: pointer;
+        animation: rotation 2s infinite linear;
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
+        }
     }
 </style>
 

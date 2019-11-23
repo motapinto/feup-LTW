@@ -13,7 +13,7 @@ body {
   background-color: white;
 }
 
-a, input, p, h1, h2, h3, h4, h5, h6, span, label {
+a, input, p, h1, h2, h3, h4, h5, h6, span, label, header, footer {
   text-decoration: none;
   font-family: var(--main-font);
   color: black;
@@ -33,7 +33,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* arranjar este topico */
-a, p, label {
+a, p, label, header {
   font-size: 16px;
 }
 /* arranjar este topico */
