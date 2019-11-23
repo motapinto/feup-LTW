@@ -9,6 +9,9 @@
             <link rel="stylesheet" href="../styles/nav_bar.css">
             <link rel="stylesheet" href="../styles/login.css">
             <link rel="stylesheet" href="../styles/body.css">
+<!--*********************************************** PROFILE  ***********************************************-->
+            <link rel="stylesheet" href="../styles/profile.css">
+            <script src="../scripts/profile.js"></script>
         </head>
         <body>
 <?php } ?>
