@@ -12,7 +12,7 @@
       <span class="tags">
         <?php foreach ($tags as $tag) { ?>
           <a href="list_news.php?tag=<?=$tag?>">#<?=$tag?></a>
-        <? } ?>
+        <?php } ?>
       </span>
       <span class="date"><?=date('Y-m-d H:i:s', $article['published']);?></span>
       <a class="comments" href="news_item.php?id=<?=$article['id']?>#comments"><?=$article['comments']?></a>

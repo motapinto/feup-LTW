@@ -46,7 +46,7 @@
             </header>
 
             <!-- SIDEBAR BUTTONS -->
-            <div class='profile-userbuttons'>
+            <article class='profile-userbuttons'>
                 <a href='../properties/properties.php'>
                     <button type='button' class='circular-button'>Properties</button>
                 </a>
