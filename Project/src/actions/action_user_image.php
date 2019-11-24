@@ -1,4 +1,20 @@
 <?php
+    function cleanOld($id){
+        if(file_exists("../../assets/images/originals/u_$id.jpg")){
+            unlink("../../assets/images/originals/u_$id.jpg");
+            unlink("../../assets/images/thumbs_small/u_$id.jpg");
+            unlink("../../assets/images/thumbs_medium/u_$id.jpg");
+        }
+        else if(file_exists("../../assets/images/originals/u_$id.png")){
+            unlink("../../assets/images/originals/u_$id.png");
+            unlink("../../assets/images/thumbs_small/u_$id.png");
+            unlink("../../assets/images/thumbs_medium/u_$id.png");
+        }
+    }
+
+
+
+
     include_once('../includes/session.php');       // starts the session
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/listings.php');      // properties functions
@@ -10,6 +26,8 @@
     $name = $_FILES['image']['name'];
 
     if(strpos($name, '.jpg') !== false || strpos($name, '.jpeg') !== false){ //Contains .jpg
+        cleanOld($id);
+
         // Generate filenames for original, small and medium files
         $originalFileName = "../../assets/images/originals/u_$id.jpg";
         $smallFileName = "../../assets/images/thumbs_small/u_$id.jpg";
@@ -44,6 +62,7 @@
         imagejpeg($medium, $mediumFileName);
     }
     else if(strpos($name, '.png') !== false){ //Contains .png
+        cleanOld($id);
 
         // Generate filenames for original, small and medium files
         $originalFileName = "../../assets/images/originals/u_$id.png";
