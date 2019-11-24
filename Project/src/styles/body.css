@@ -151,3 +151,23 @@ a, p, label {
   height: 60%;
 }
 
+#properties{
+    list-style: none;
+    padding: 0;
+}
+
+#properties li{
+    border-bottom: 2px solid black;
+}
+
+#addProperty form{
+    margin: var(--main-margin);
+}
+
+.rating {
+    color: #F9A602;
+    display: flex;
+    justify-content: left;
+}
+
+

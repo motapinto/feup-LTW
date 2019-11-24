@@ -15,10 +15,25 @@
     draw_header('My Properties');
     draw_navBar();
 
+    $images = getImagesByPropertyId($_GET['id']);
+
+
+
 ?>
     <section id='addProperty'>
         <h2>Add Property Images</h2>
         <h4>Stage 2/2</h4>
+        <?php 
+        foreach($images as $image){
+            $id = $images['id'];
+            if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg")){ ?>
+                <img src="../../assets/images/thumbs_medium/p_<?=$id?>.jpg" alt="">
+            <?php }
+            else if(file_exists("../../assets/images/thumbs_medium/p_$id.png")) { ?>
+                <img src="../../assets/images/thumbs_medium/p_<?=$id?>.png" alt="">
+            <?php }
+        }
+        ?>
         <form action="../action/action_property_image.php" method='POST' enctype="multipart/form-data">
             <input type="hidden" name="property_id" value="<?=$_GET['id']?>">
             <input type="file" name="image" required>
@@ -26,6 +41,7 @@
         </form>
     </section>
 <?php
+
 
     draw_footer();
 ?>

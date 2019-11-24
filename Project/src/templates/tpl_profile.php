@@ -10,69 +10,66 @@
     ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <div class="profile">
-        <div id='user'>
-            <section class='side-drawer'>
-                <!-- USER PHOTO -->
-                <div class="profile-photo">
-                    <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
-                    <div class="profile-change-photo">
-                        <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="image" id='image'>
-                            <label for="image">Choose Image</label>
-                            <input type="submit" name="Submit" value="Upload">
-                        </form>
-                    </div>
+        <section class='side-drawer'>
+            <!-- USER PHOTO -->
+            <div class="profile-photo">
+                <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
+                <div class="profile-change-photo">
+                    <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" id='image'>
+                        <label for="image">Choose Image</label>
+                        <input type="submit" name="Submit" value="Upload">
+                    </form>
                 </div>
+            </div>
+            
+            <!-- USER NAME -->
+            <header>
+                <h1><?=$user['name']?></h1>
+                <div class="rating">
+                    <?php 
+                    $rating = $user['rating'];
+                    for($i = 0; $i < 5; $i++){
+                        if ($rating <= 0) { ?>
+                            <i class="material-icons"> star_border</i>
+                        <?php }
+                        else if ($rating <= 0.5) { ?>
+                            <i class="material-icons"> star_half</i>
+                        <?php }
+                        else { ?>
+                            <i class="material-icons"> star</i>
+                        <?php }
+                        $rating -= 1;
+                    }
+                    ?>
+                </div>
+            </header>
+
+            <!-- SIDEBAR BUTTONS -->
+            <div class='profile-userbuttons'>
+                <a href='../properties/properties.php'>
+                    <button type='button' class='circular-button'>Properties</button>
+                </a>
+                <a href='#'>
+                    <button type='button' class='circular-button'>Message</button>
+                </a>
+            </div>
+
+            <!-- SIDEBAR MENU -->
+            <div class='profile-usermenu'>
+                <i class='material-icons'> menu </i>
+                <button class='no-button' onclick='profileOverview();'> Overview </button>
                 
-                <!-- USER NAME -->
-                <header>
-                    <h1><?=$user['name']?></h1>
-                    <div class="rating">
-                        <?php 
-                        $rating = $user['rating'];
-                        for($i = 0; $i < 5; $i++){
-                            $nextRating = $rating - 1;
-                            if (($rating - $nextRating) == 0) { ?>
-                                <i class="material-icons"> star_border</i>
-                            <?php }
-                            else if (($rating - $nextRating) <= 0.5) { ?>
-                                <i class="material-icons"> star_half</i>
-                            <?php }
-                            else { ?>
-                                <i class="material-icons"> star</i>
-                            <?php }
-                            $rating = $nextRating;
-                        }
-                        ?>
-                    </div>
-                </header>
-
-                <!-- SIDEBAR BUTTONS -->
-                <div class='profile-userbuttons'>
-                    <a href='../properties/properties.php'>
-                        <button type='button' class='circular-button'>Properties</button>
-                    </a>
-                    <a href='#'>
-                        <button type='button' class='circular-button'>Message</button>
-                    </a>
-                </div>
-
-                <!-- SIDEBAR MENU -->
-                <div class='profile-usermenu'>
-                    <i class='material-icons'> menu </i>
-                    <button class='no-button' onclick='profileOverview();'> Overview </button>
-                    
-                    <i class='material-icons'> settings </i>
-                    <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
-                    
-                    <i class='material-icons'> star_border </i>
-                    <button class='no-button' onclick='profileSettings();'>Account Settings</button>
-                    
-                    <i class="material-icons"> insert_comment </i>
-                    <button class='no-button' onclick='profileComments();'>Comments</button>
-                </div>
-            </section> 
-        </div>
+                <i class='material-icons'> settings </i>
+                <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
+                
+                <i class='material-icons'> star_border </i>
+                <button class='no-button' onclick='profileSettings();'>Account Settings</button>
+                
+                <i class="material-icons"> insert_comment </i>
+                <button class='no-button' onclick='profileComments();'>Comments</button>
+            </div>
+        </section> 
 
 <!--*********************** PROFILE OVERVIEW ***********************-->
         <div id='profile-overview-tab' class='selected-tab'>
@@ -255,6 +252,10 @@
         margin: 5%;
         align-items:center;
     }
+    
+    .side-drawer header h1{
+        margin: 0.2em 0;
+    }
 
     .profile-photo {
         display: flex;
@@ -329,13 +330,6 @@
 
     .profile-change-photo form *{
         margin: 0.1em;
-    }
-
-    .rating {
-        color: #F9A602;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
 

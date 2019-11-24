@@ -1,5 +1,9 @@
 <?php
     include_once('../includes/session.php');              // starts session
+
+    if(!isset($_SESSION['id']))
+        header('Location: ../listings/listings_all.php');
+
     include_once('../includes/database.php');             // connects to the database
     include_once('../database/listings.php');             // listings functions
 
@@ -10,12 +14,13 @@
     draw_header('My Properties');
     draw_navBar();
     $properties = getListingsByUser($_SESSION['id']);                        // gets all listings from the database
-    print_r($_SESSION['id']);
     draw_properties($properties);
 
 ?>
     <section id='addProperty'>
-        <a href="add_property.php"><button>Add a property</button></a>
+        <form action="add_property.php">
+            <button>Add a property</button>
+        </form>
     </section>
 <?php
 
