@@ -4,7 +4,7 @@
   include_once('../database/comments.php');
 
 
-function draw_item($item){ 
+function draw_list_item($item){ 
   $image = getFirstImageOfProperty($item['id']);
   ?>
   <article class='item'>
@@ -23,7 +23,7 @@ function draw_item($item){
   </article>
 <?php }
 
-function draw_allListings($listings) { ?>
+function draw_list_all($listings) { ?>
   <section id="listings">
     <?php foreach($listings as $item) { 
       draw_item($item);
@@ -32,4 +32,83 @@ function draw_allListings($listings) { ?>
 
 <?php }
 
-?>
+function draw_item($item) { ?>
+
+    <section id='list'>
+      <!-- <article class='property'>
+          <h2>
+            <?=$item['title']?>
+          </h2>
+          <p><?=$item['description']?></p>
+          <p>Property type: 
+            <?php
+              switch ($item['property_type']) {
+                case 0:
+                  ?> House <?php
+                  break;
+                case 1:
+                  ?> Appartment <?php
+                  break;
+                default:
+                  ?> Undefined <?php
+                  break;
+              } 
+            ?>
+          </p>
+          <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
+      </article> -->
+      
+<!--*********************** CALENDER + RENT (RIGHT SIDE) ***********************-->
+      <aside class='rent'>
+        <section class="rent-header">
+          	<header>
+				<span id="rent-price">
+					€<?=$item['price_day']?>
+				</span>
+				<span>
+					per night
+				</span><br>
+				<i id="rent-star" class="material-icons"> star_border</i>
+				<span class="rent-rating_comments">
+					<?=$item['rating']?>
+					(<?=numberCommentsByProperty($item['id'])?> comments)
+				</span>
+			</header>
+		
+
+        </section class="rent-body">
+			<form action="../rent/rent.php" method="POST">
+				<input name="id" type='hidden' value=<?=$item['id']?>/>
+				<label>Check In</label>
+				<input type="date" name="check_in" title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+				<label>Check Out</label>
+				<input type="date" name="check_out" title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+				<label>Number of Guests</label>
+				<input type="number" min="1" max=<?=$item['guests']?> value="1"/>
+				<!-- <label>Number of Adults</label>
+				<input type="number" min="1" max=<?=$item['guests']?> value="1"/>
+				<label>Number of Children</label>
+				<input type="number" min="1" max=<?=$item['guests']?> value="1"/>
+				<label>Number of Babies</label>
+				<input type="number" min="1" max=<?=$item['guests']?> value="1"/> -->
+				<button class="rent_button">Rent</button>
+			</form>
+		  </section>
+
+    </aside>
+<?php
+    draw_allComments($comments);
+    if(isset($_SESSION['id'])){ ?>
+      <form id='comment_form' action="../actions/action_comment.php" method="POST">
+          <h4>Leave a comment</h4>
+          <textarea name="comment" cols="40" rows="5" placeholder="Describe your experience" required></textarea>
+          <input name="property_id" type="hidden" value="<?=$id?>"/>
+          <button class="comment_button">Comment</button>
+      </form>
+<?php }
+    else { ?>
+      <p id='comment_form'>To leave a comment please log in.</p>
+<?php } 
+ } ?>
+
+
