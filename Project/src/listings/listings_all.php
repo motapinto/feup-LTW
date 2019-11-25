@@ -8,7 +8,7 @@
     include('../templates/tpl_listings.php');    // prints the list of listings in HTML
 
     draw_header('All Listings');
-    draw_navBar(true);
+    draw_navBar();
     $listings = getAllListings();                        // gets all listings from the database
     draw_allListings($listings);
     draw_footer();
