@@ -11,14 +11,19 @@
     include('../templates/tpl_comments.php');    // prints the list of listings in HTML
 
     $id = $_GET['id'];
+<<<<<<< HEAD
     $item = getListingById($id);
     if(isset($_SESSION['id']) && $item['user_id'] === $_SESSION['id'])
         $owner = true;
     else $owner = false;    
+=======
+    $item = getListingById($id);                     // gets all listings from the database
+>>>>>>> 9434bc27243e27299e3deb8ccc44c73b807d1900
     $comments = getCommentsByPropertyId($id);
     $images = getImagesByPropertyId($id);
 
     draw_header('Campus Rentals');
+<<<<<<< HEAD
     draw_navBar();
 
 ?>
@@ -104,5 +109,9 @@
         <p id='comment_form'>To leave a comment please log in.</p>
     <?php }
 
+=======
+    draw_navBar(0);
+    draw_item($item);
+>>>>>>> 9434bc27243e27299e3deb8ccc44c73b807d1900
     draw_footer();
 ?>

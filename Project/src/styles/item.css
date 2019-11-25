@@ -1,0 +1,135 @@
+.rent {
+    position: fixed;
+    right: 5%;
+    top: 8em;
+    height: 40%;
+    width: 30%;
+    border: 1px solid rgb(212,212,212);
+    background-color: white;
+}
+
+#rent-price {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 0;
+}
+.rent-header {
+    display:flex;
+    flex-direction: row;
+    padding-left: 8%;
+    padding-top: 8%;
+}
+
+.rent-rating_comments {
+    padding-top: 10px;
+}
+.rent form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.rent input {
+    width: 10em;
+}
+.rent form button {
+    width: 10em;
+    background-color: rgb(250, 130, 130);
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+#rent-star {
+    font-size: 10px;
+    color: teal;
+    border:none;
+}
+
+.rent label {
+    margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#comments {
+    border-top: white solid 0.1em;
+    margin: var(--main-margin);
+    width: var(--main-width);
+}
+
+
+/* arranjar este topico */
+
+#comments h2 {
+    margin-top: 0.2em;
+}
+
+
+/* arranjar este topico */
+
+.comment {
+    margin: var(--main-margin);
+    width: var(--main-width);
+    border-bottom: white solid 1px;
+}
+
+
+/* arranjar este topico */
+
+.comment h3,
+.comment h6 {
+    margin: 0em 2.5rem;
+}
+
+
+/* arranjar este topico */
+
+.comment img {
+    float: left;
+    height: 2em;
+    width: auto;
+    border-radius: 50%;
+}
+
+
+/* arranjar este topico */
+
+#comments :last-child {
+    border-bottom: 0;
+}
+
+
+/* arranjar este topico */
+
+#comment_form {
+    margin: var(--main-margin);
+    width: var(--main-width);
+}
+
+
+/* arranjar este topico */
+
+#comment_form textarea {
+    outline: none;
+    resize: none;
+    border-radius: 4px;
+}s

@@ -12,6 +12,10 @@ body {
     background-color: white;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 a,
 input,
 p,
@@ -24,10 +28,12 @@ h6,
 span,
 label,
 header,
+button,
 footer {
     text-decoration: none;
     font-family: var(--main-font);
     color: black;
+    border: none;
 }
 
 input:focus,
@@ -37,10 +43,7 @@ button:focus {
     outline: none;
 }
 
-
 /*Elimantes num pad arrows when input is number*/
-
-
 /*https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
 
 input[type=number]::-webkit-inner-spin-button,
@@ -48,7 +51,11 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 /* arranjar este topico */
 
@@ -68,112 +75,6 @@ header {
 }
 
 
-/* arranjar este topico */
-
-.rent {
-    position: fixed;
-    right: 5%;
-    top: 8em;
-    height: 60%;
-    width: 30%;
-}
-
-
-/* arranjar este topico */
-
-.rent form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-
-/* arranjar este topico */
-
-.rent input {
-    width: 10em;
-}
-
-
-/* arranjar este topico */
-
-.rent form button {
-    width: 10em;
-}
-
-
-/* arranjar este topico */
-
-.rent label {
-    margin-top: 1em;
-}
-
-
-/* arranjar este topico */
-
-#comments {
-    border-top: white solid 0.1em;
-    margin: var(--main-margin);
-    width: var(--main-width);
-}
-
-
-/* arranjar este topico */
-
-#comments h2 {
-    margin-top: 0.2em;
-}
-
-
-/* arranjar este topico */
-
-.comment {
-    margin: var(--main-margin);
-    width: var(--main-width);
-    border-bottom: white solid 1px;
-}
-
-
-/* arranjar este topico */
-
-.comment h3,
-.comment h6 {
-    margin: 0em 2.5rem;
-}
-
-
-/* arranjar este topico */
-
-.comment img {
-    float: left;
-    height: 2em;
-    width: auto;
-    border-radius: 50%;
-}
-
-
-/* arranjar este topico */
-
-#comments :last-child {
-    border-bottom: 0;
-}
-
-
-/* arranjar este topico */
-
-#comment_form {
-    margin: var(--main-margin);
-    width: var(--main-width);
-}
-
-
-/* arranjar este topico */
-
-#comment_form textarea {
-    outline: none;
-    resize: none;
-    border-radius: 4px;
-}
 
 .circular-button {
     display: flex;
