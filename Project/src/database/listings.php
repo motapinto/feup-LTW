@@ -47,8 +47,9 @@
             default:
                 return false;
         }
-        $result = $stmt->fetch();
-        return isset($result)?$result:false;
+        $result = $stmt->fetchAll();
+
+        return $result;
     }
 
     // Returns all listings

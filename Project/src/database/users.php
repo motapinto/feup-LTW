@@ -37,17 +37,6 @@
     function changeUser($id, $newEmail, $name, $age, $password){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('INSERT INTO User (
-            email,
-            password,
-            name,
-            age
-        )
-        VALUES (ola, a, a, 2, NULL);
-        ');
-        $stmt->execute();
-
-
         $stmt = $db->prepare('SELECT email FROM User WHERE email = ?');
         $stmt->execute(array($newEmail));
         $user = $stmt->fetch();

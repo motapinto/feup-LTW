@@ -12,7 +12,7 @@
     include('../templates/tpl_properties.php');    // prints the list of listings in HTML
 
     draw_header('My Properties');
-    draw_navBar();
+    draw_navBar(0);
     $properties = getListingsByUser($_SESSION['id']);                        // gets all listings from the database
     draw_properties($properties);
 

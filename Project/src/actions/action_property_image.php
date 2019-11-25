@@ -1,16 +1,19 @@
 <?php
     include_once('../includes/session.php');       // starts the session
     include_once('../includes/database.php');      // connects to the database
-    include_once('../database/image.php');      // properties functions
+    include_once('../database/images.php');      // properties functions
     
     if(!isset($_SESSION['id']))
         header('Location: ../listings/listings_all.php');                                 // main webpage
     
     $property_id = $_POST['property_id'];
-    $id = addImage($property_id)['id'];
-    $name = $_FILES['image']['tmp_name'];
+    $id = addImage($property_id);
+    $name = $_FILES['image']['name'];
+    
+    print_r($id);
+    $id = $id['id'];
 
-    if(strpos($name, '.jpg') !== false){ //Contains .jpg
+    if(strpos($name, '.jpg') !== false || strpos($name, '.jpeg') !== false){ //Contains .jpg
 
         // Generate filenames for original, small and medium files
         $originalFileName = "../../assets/images/originals/p_$id.jpg";
@@ -84,5 +87,5 @@
         $_SESSION['msg'] = "Invalid image type, please use a .jpg/.jpeg or .png image.";
 
     
-    header("Location: ../properties/add_property_image.php?=$property_id");
+    // header("Location: ../properties/add_property_image.php?id=$property_id");
 ?>
