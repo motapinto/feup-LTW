@@ -11,7 +11,7 @@
     include('../templates/tpl_properties.php');    // prints the list of listings in HTML
 
     draw_header('My Properties');
-    draw_navBar();
+    draw_navBar(0);
 
 ?>
     <section id='addProperty'>

@@ -11,7 +11,7 @@
     include('../templates/tpl_properties.php');    // prints the list of listings in HTML
 
     draw_header('My Properties');
-    draw_navBar();
+    draw_navBar(0);
 
 
     if(!isset($_GET['id']))
@@ -25,8 +25,7 @@
     <section id='addProperty'>
         <h2>Add Property Images</h2>
         <h4>Stage 2/2</h4>
-        <?php 
-        foreach($images as $image){
+        <?php foreach($images as $image){
             $id = $image['id'];
             if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg")){ ?>
                 <img src="../../assets/images/thumbs_medium/p_<?=$id?>.jpg" alt="">

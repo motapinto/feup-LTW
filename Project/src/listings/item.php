@@ -20,11 +20,16 @@
 
 ?>
     <section id='list'>
-      <article class='property'>
-        <h2><?=$item['title']?></h2>
-        <ul>
-          <?php foreach ($images as $image) { ?>
-            <!-- <li><img src=<?=$image['id']?> alt='Image of the property '></li>           -->
+        <article class='property'>
+            <h2><?=$item['title']?></h2>
+            <ul>
+            <?php foreach ($images as $image) { 
+                $imageId = $image['id'];
+                if(file_exists("../../assets/images/thumbs_medium/p_$imageId.jpg"))
+                    $imagePath = "../../assets/images/thumbs_medium/p_$imageId.jpg";
+                else if(file_exists("../../assets/images/thumbs_medium/p_$imageId.png"))
+                    $imagePath = "../../assets/images/thumbs_medium/p_$imageId.png"; ?>
+            <li><img src=<?=$imagePath?> alt='Image of the property '></li>          
           <?php } ?>
         </ul>
         <!-- Galeria de imagens, possivelmente usando scripts? -->

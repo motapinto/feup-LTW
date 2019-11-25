@@ -13,7 +13,6 @@ function draw_property($property){
     ?>
     <li class='property'>
         <a href="property.php?id=<?=$property['id']?>">
-        <!-- missing image -->
         <?php if(isset($imagePath)) { ?>
             <img src=<?=$imagePath?> alt="Image of property">
         <?php } ?>

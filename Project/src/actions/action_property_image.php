@@ -9,9 +9,6 @@
     $property_id = $_POST['property_id'];
     $id = addImage($property_id);
     $name = $_FILES['image']['name'];
-    
-    print_r($id);
-    $id = $id['id'];
 
     if(strpos($name, '.jpg') !== false || strpos($name, '.jpeg') !== false){ //Contains .jpg
 
@@ -87,5 +84,5 @@
         $_SESSION['msg'] = "Invalid image type, please use a .jpg/.jpeg or .png image.";
 
     
-    // header("Location: ../properties/add_property_image.php?id=$property_id");
+    header("Location: ../properties/add_property_image.php?id=$property_id");
 ?>

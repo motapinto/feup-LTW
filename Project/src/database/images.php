@@ -20,10 +20,10 @@
         $stmt = $db->prepare('SELECT id
                               FROM Image 
                               WHERE property_id = ?
-                              GROUP BY property_id'
+                              GROUP BY id'
                             );
         $stmt->execute(array($id));
-        return $stmt->fetch();
+        return $stmt->fetch()['id'];
     }
 
     // Adds an image path to the database
@@ -34,6 +34,6 @@
                 VALUES (?)');
         $stmt->execute(array($property_id));
 
-        return $stmt->fetchAll();
+        return $db->lastInsertId();
     }
 ?>
