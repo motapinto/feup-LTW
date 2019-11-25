@@ -5,16 +5,12 @@
 
 
 function draw_property($property){ 
-    $id = getFirstImageOfProperty($property['id']);
-    if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg"))
-        $imagePath = "../../assets/images/thumbs_medium/p_$id.jpg";
-    else if(file_exists("../../assets/images/thumbs_medium/p_$id.png"))
-        $imagePath = "../../assets/images/thumbs_medium/p_$id.png";
+    $image = getFirstImagePathOfProperty($property['id']);
     ?>
     <li class='property'>
         <a href="property.php?id=<?=$property['id']?>">
-        <?php if(isset($imagePath)) { ?>
-            <img src=<?=$imagePath?> alt="Image of property">
+        <?php if(isset($image)) { ?>
+            <img src=<?=$image?> alt="Image of property">
         <?php } ?>
         <h2><?=$property['title']?></h2>
         <div class="rating">

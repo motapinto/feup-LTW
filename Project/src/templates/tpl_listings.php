@@ -5,13 +5,13 @@
 
 
 function draw_list_item($item){ 
-  $image = getFirstImageOfProperty($item['id']);
+  $image = getFirstImagePathOfProperty($item['id']);
   ?>
   <article class='item'>
     <a href="item.php?id=<?=$item['id']?>">
     <!-- missing image -->
-    <?php if(isset($image['image_path'])) { ?>
-      <!-- <img src=<?=$image['image_path']?> alt="Image of property"> -->
+    <?php if(isset($image)) { ?>
+      <!-- <img src=<?=$image?> alt="Image of property"> -->
     <?php } ?>
 
       <h1>
@@ -26,7 +26,7 @@ function draw_list_item($item){
 function draw_list_all($listings) { ?>
   <section id="listings">
     <?php foreach($listings as $item) { 
-      draw_item($item);
+      draw_list_item($item);
     } ?>
   </section>
 
@@ -34,21 +34,15 @@ function draw_list_all($listings) { ?>
 
 function draw_item($item, $owner=false) { 
     $comments = getCommentsByPropertyId($item['id']);
-    $images = getImagesByPropertyId($item['id']);
+    $images = getImagePathsByPropertyId($item['id'], 'MEDIUM');
 ?>
 
     <section id='list'>
         <article class='property'>
             <h2><input type="<?php if($owner){ ?>text<?php } else { ?>disable <?php } ?>" name="title" value="<?=$item['title']?>"></h2>
             <ul> 
-            <?php foreach ($images as $image) { 
-                $imageId = $image['id'];
-                if(file_exists("../../assets/images/thumbs_medium/p_$imageId.jpg"))
-                    $imagePath = "../../assets/images/thumbs_medium/p_$imageId.jpg";
-                else if(file_exists("../../assets/images/thumbs_medium/p_$imageId.png"))
-                    $imagePath = "../../assets/images/thumbs_medium/p_$imageId.png"; ?>
-                    
-                <li><img src=<?=$imagePath?> alt='Image of the property '></li>          
+            <?php foreach ($images as $image) { ?>
+                <li><img src=<?=$image?> alt='Image of the property '></li>          
             <?php } ?>
             </ul>
             <?php if($owner){ ?>

@@ -1,19 +1,17 @@
 <?php function draw_profile($user) { 
     include_once("../database/comments.php");
+    include_once("../database/images.php");
+
     $id = $user['id'];
     $comments = getCommentsByUserId($id);
-    $imagePath = "../../assets/images/noImage.jpg";
-    if(file_exists("../../assets/images/thumbs_medium/u_$id.jpg"))
-        $imagePath = "../../assets/images/thumbs_medium/u_$id.jpg";
-    else if(file_exists("../../assets/images/thumbs_medium/u_$id.png"))
-        $imagePath = "../../assets/images/thumbs_medium/u_$id.png";
+    $image = getUserImagePath($id, 'MEDIUM');
     ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <section class="profile">
         <section class='side-drawer'>
             <!-- USER PHOTO -->
             <article class="profile-photo">
-                <img class="_1mgxxu3" src="<?=$imagePath?>" alt="User Photo" title="User Photo">
+                <img class="_1mgxxu3" src="<?=$image?>" alt="User Photo" title="User Photo">
                 <div class="profile-change-photo">
                     <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
                         <input type="file" name="image" id='image'>

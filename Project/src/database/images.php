@@ -1,6 +1,10 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
 
+    define('ORIGINAL', 0, true);
+    define('MEDIUM', 1, true);
+    define('SMALL', 2, true);
+
     //Returns all images for a property with id = id
     function getImagesByPropertyId($id){
         $db = Database::instance()->db();
@@ -37,22 +41,22 @@
         return $db->lastInsertId();
     }
 
-    function getImagePathsByPropertyId($id, $option=0){
+    function getImagePathsByPropertyId($id, $option='ORIGINAL'){
         $images = getImagesByPropertyId($id);
         $imagePaths= array();
 
         foreach ($images as $image) {
-            if(file_exists("../../assets/images/original/p_$id.jpg")){
+            if(file_exists("../../assets/images/originals/p_$id.jpg")){
                 switch ($option) {
-                    case 0:
-                        array_push($imagePaths, "../../assets/images/original/p_$id.jpg");
+                    case 'ORIGINAL':
+                        array_push($imagePaths, "../../assets/images/originals/p_$id.jpg");
                         break;
                     
-                    case 1:
+                    case 'MEDIUM':
                         array_push($imagePaths, "../../assets/images/thumbs_medium/p_$id.jpg");
                         break;
                     
-                    case 2:
+                    case 'SMALL':
                         array_push($imagePaths, "../../assets/images/thumbs_small/p_$id.jpg");
                         break;
                     
@@ -60,17 +64,17 @@
                         break;
                 }
             }
-            else if(file_exists("../../assets/images/thumbs_medium/p_$id.png"))
+            else if(file_exists("../../assets/images/originals/p_$id.png"))
                 switch ($option) {
-                    case 0:
-                        array_push($imagePaths, "../../assets/images/original/p_$id.png");
+                    case 'ORIGINAL':
+                        array_push($imagePaths, "../../assets/images/originals/p_$id.png");
                         break;
                     
-                    case 1:
+                    case 'MEDIUM':
                         array_push($imagePaths, "../../assets/images/thumbs_medium/p_$id.png");
                         break;
                     
-                    case 2:
+                    case 'SMALL':
                         array_push($imagePaths, "../../assets/images/thumbs_small/p_$id.png");
                         break;
                     
@@ -82,35 +86,35 @@
         return $imagePaths;
     }
 
-    function getFirstImagePathOfProperty($id, $option=0){
-        if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg"))
+    function getFirstImagePathOfProperty($id, $option = 'ORIGINAL'){
+        if(file_exists("../../assets/images/originals/p_$id.jpg"))
             switch ($option) {
-                case 0:
-                    return "../../assets/images/original/p_$id.jpg";
+                case 'ORIGINAL':
+                    return "../../assets/images/originals/p_$id.jpg";
                     break;
                 
-                case 1:
+                case 'MEDIUM':
                     return "../../assets/images/thumbs_medium/p_$id.jpg";
                     break;
                 
-                case 2:
+                case 'SMALL':
                     return "../../assets/images/thumbs_small/p_$id.jpg";
                     break;
                 
                 default:
                     break;
             }
-        else if(file_exists("../../assets/images/original/p_$id.png"))
+        else if(file_exists("../../assets/images/originals/p_$id.png"))
             switch ($option) {
-                case 0:
-                    return "../../assets/images/original/p_$id.png";
+                case 'ORIGINAL':
+                    return "../../assets/images/originals/p_$id.png";
                     break;
                 
-                case 1:
+                case 'MEDIUM':
                     return "../../assets/images/thumbs_medium/p_$id.png";
                     break;
                 
-                case 2:
+                case 'SMALL':
                     return "../../assets/images/thumbs_small/p_$id.png";
                     break;
                 
@@ -118,38 +122,38 @@
                     break;
             }
             
-        return "../../assets/images/noImage.jpg";
+        return;
     }
 
-    function getUserImagePath($id, $option=0){
-        if(file_exists("../../assets/images/thumbs_medium/u_$id.jpg"))
+    function getUserImagePath($id, $option = 'ORIGINAL'){
+        if(file_exists("../../assets/images/originals/u_$id.jpg"))
             switch ($option) {
-                case 0:
-                    return "../../assets/images/original/u_$id.jpg";
+                case 'ORIGINAL':
+                    return "../../assets/images/originals/u_$id.jpg";
                     break;
                 
-                case 1:
+                case 'MEDIUM':
                     return "../../assets/images/thumbs_medium/u_$id.jpg";
                     break;
                 
-                case 2:
+                case 'SMALL':
                     return "../../assets/images/thumbs_small/u_$id.jpg";
                     break;
                 
                 default:
                     break;
             }
-        else if(file_exists("../../assets/images/original/u_$id.png"))
+        else if(file_exists("../../assets/images/originals/u_$id.png"))
             switch ($option) {
-                case 0:
+                case 'ORIGINAL':
                     return "../../assets/images/original/u_$id.png";
                     break;
                 
-                case 1:
+                case 'MEDIUM':
                     return "../../assets/images/thumbs_medium/u_$id.png";
                     break;
                 
-                case 2:
+                case 'SMALL':
                     return "../../assets/images/thumbs_small/u_$id.png";
                     break;
                 

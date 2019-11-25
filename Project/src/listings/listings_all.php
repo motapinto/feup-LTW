@@ -10,6 +10,6 @@
     draw_header('All Listings');
     draw_navBar();
     $listings = getAllListings();                        // gets all listings from the database
-    draw_allListings($listings);
+    draw_list_all($listings);
     draw_footer();
 ?>
