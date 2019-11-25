@@ -82,7 +82,7 @@
         return $imagePaths;
     }
 
-    function getUserImagePath($id, $option){
+    function getFirstImagePathOfProperty($id, $option=0){
         if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg"))
             switch ($option) {
                 case 0:
@@ -112,6 +112,45 @@
                 
                 case 2:
                     return "../../assets/images/thumbs_small/p_$id.png";
+                    break;
+                
+                default:
+                    break;
+            }
+            
+        return "../../assets/images/noImage.jpg";
+    }
+
+    function getUserImagePath($id, $option=0){
+        if(file_exists("../../assets/images/thumbs_medium/u_$id.jpg"))
+            switch ($option) {
+                case 0:
+                    return "../../assets/images/original/u_$id.jpg";
+                    break;
+                
+                case 1:
+                    return "../../assets/images/thumbs_medium/u_$id.jpg";
+                    break;
+                
+                case 2:
+                    return "../../assets/images/thumbs_small/u_$id.jpg";
+                    break;
+                
+                default:
+                    break;
+            }
+        else if(file_exists("../../assets/images/original/u_$id.png"))
+            switch ($option) {
+                case 0:
+                    return "../../assets/images/original/u_$id.png";
+                    break;
+                
+                case 1:
+                    return "../../assets/images/thumbs_medium/u_$id.png";
+                    break;
+                
+                case 2:
+                    return "../../assets/images/thumbs_small/u_$id.png";
                     break;
                 
                 default:
