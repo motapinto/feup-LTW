@@ -32,31 +32,51 @@ function draw_list_all($listings) { ?>
 
 <?php }
 
-function draw_item($item) { ?>
+function draw_item($item, $owner=false) { 
+    $comments = getCommentsByPropertyId($item['id']);
+    $images = getImagesByPropertyId($item['id']);
+?>
 
     <section id='list'>
-      <!-- <article class='property'>
-          <h2>
-            <?=$item['title']?>
-          </h2>
-          <p><?=$item['description']?></p>
-          <p>Property type: 
+        <article class='property'>
+            <h2><input type="<?php if($owner){ ?>text<?php } else { ?>disable <?php } ?>" name="title" value="<?=$item['title']?>"></h2>
+            <ul> 
+            <?php foreach ($images as $image) { 
+                $imageId = $image['id'];
+                if(file_exists("../../assets/images/thumbs_medium/p_$imageId.jpg"))
+                    $imagePath = "../../assets/images/thumbs_medium/p_$imageId.jpg";
+                else if(file_exists("../../assets/images/thumbs_medium/p_$imageId.png"))
+                    $imagePath = "../../assets/images/thumbs_medium/p_$imageId.png"; ?>
+                    
+                <li><img src=<?=$imagePath?> alt='Image of the property '></li>          
+            <?php } ?>
+            </ul>
+            <?php if($owner){ ?>
+                <a href="../properties/add_property_image.php?id=<?=$id?>">Add image(s)</a>
+            <?php } ?>
+            <!-- Galeria de imagens, possivelmente usando scripts? -->
+            <textarea name='description' <?php if(!$owner){ ?>readonly <?php } ?>>
+            <?=$item['description']?>
+            </textarea>
+            <p>Rating: <?=$item['rating']?></p>
+            <p>Property type: 
             <?php
-              switch ($item['property_type']) {
+                switch ($item['property_type']) {
                 case 0:
-                  ?> House <?php
-                  break;
+                    ?> House <?php
+                    break;
                 case 1:
-                  ?> Appartment <?php
-                  break;
+                    ?> Appartment <?php
+                    break;
                 default:
-                  ?> Undefined <?php
-                  break;
-              } 
+                    ?> Undefined <?php
+                    break;
+                } 
             ?>
-          </p>
-          <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
-      </article> -->
+            </p>
+            <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
+            <p>Price per day: <?=$item['price_day']?>$</p>
+        </article>
       
 <!--*********************** CALENDER + RENT (RIGHT SIDE) ***********************-->
       <aside class='rent'>

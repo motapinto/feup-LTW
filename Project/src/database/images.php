@@ -36,4 +36,88 @@
 
         return $db->lastInsertId();
     }
+
+    function getImagePathsByPropertyId($id, $option=0){
+        $images = getImagesByPropertyId($id);
+        $imagePaths= array();
+
+        foreach ($images as $image) {
+            if(file_exists("../../assets/images/original/p_$id.jpg")){
+                switch ($option) {
+                    case 0:
+                        array_push($imagePaths, "../../assets/images/original/p_$id.jpg");
+                        break;
+                    
+                    case 1:
+                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$id.jpg");
+                        break;
+                    
+                    case 2:
+                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$id.jpg");
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+            else if(file_exists("../../assets/images/thumbs_medium/p_$id.png"))
+                switch ($option) {
+                    case 0:
+                        array_push($imagePaths, "../../assets/images/original/p_$id.png");
+                        break;
+                    
+                    case 1:
+                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$id.png");
+                        break;
+                    
+                    case 2:
+                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$id.png");
+                        break;
+                    
+                    default:
+                        break;
+                }
+        }
+
+        return $imagePaths;
+    }
+
+    function getUserImagePath($id, $option){
+        if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg"))
+            switch ($option) {
+                case 0:
+                    return "../../assets/images/original/p_$id.jpg";
+                    break;
+                
+                case 1:
+                    return "../../assets/images/thumbs_medium/p_$id.jpg";
+                    break;
+                
+                case 2:
+                    return "../../assets/images/thumbs_small/p_$id.jpg";
+                    break;
+                
+                default:
+                    break;
+            }
+        else if(file_exists("../../assets/images/original/p_$id.png"))
+            switch ($option) {
+                case 0:
+                    return "../../assets/images/original/p_$id.png";
+                    break;
+                
+                case 1:
+                    return "../../assets/images/thumbs_medium/p_$id.png";
+                    break;
+                
+                case 2:
+                    return "../../assets/images/thumbs_small/p_$id.png";
+                    break;
+                
+                default:
+                    break;
+            }
+            
+        return "../../assets/images/noImage.jpg";
+    }
 ?>

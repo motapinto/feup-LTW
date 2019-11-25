@@ -5,9 +5,9 @@
     function getCommentsByPropertyId($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT comment, date, rating
-                              FROM Comment 
-                              WHERE user_id = ?'
+        $stmt = $db->prepare('SELECT comment, date, Comment.rating AS rating, name
+                              FROM Comment, User
+                              WHERE property_id = ? AND User.id = user_id'
                             );
         $stmt->execute(array($id));
         return $stmt->fetchAll();
