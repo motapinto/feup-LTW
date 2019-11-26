@@ -23,7 +23,7 @@
             <input name="name" type="text" placeholder="name" required maxlength=20/>
             <input name="age" type="number" placeholder="age" required min=18 max=120/>
             <input name="email" type="email" placeholder="email" required />
-            <input name="password" type="password" placeholder="password" required maxlength=30/>
+            <input type="password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character" placeholder="Password">
             <a href="#">Forgot your password?</a>
             <a href="#"><button class="signup_buttons">SIGN UP</button></a>
         </form>
