@@ -2,10 +2,9 @@
     include_once("../database/comments.php");
     include_once("../database/images.php");
 
-    $id = $user['id'];
-    $comments = getCommentsByUserId($id);
-    $image = getUserImagePath($id, 'MEDIUM');
-    ?>
+    $comments = getCommentsByUserId($user['id']);
+    $image = getUserImagePath($user['id'], 'MEDIUM');
+?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <section class="profile">
         <section class='side-drawer'>
@@ -62,7 +61,7 @@
                 <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
                 
                 <i class="fas fa-shield-alt"></i>
-                <button class='no-button' onclick='profileSettings();'>Security Settings</button>
+                <button class='no-button' onclick='profileSecurity();'>Security Details</button>
 
                 <i class="far fa-comments"></i>
                 <button class='no-button' onclick='profileComments();'>Comments</button>
@@ -70,51 +69,59 @@
         </section> 
 
 <!--*********************** PROFILE OVERVIEW ***********************-->
-        <section id='profile-overview-tab' class='selected-tab'>
-        </section>
-
-
+    <section id='profile-overview-tab' class='selected-tab'>
+    </section>
 <!--*********************** PROFILE SETTINGS ***********************-->
-        <section id='profile-settings-tab' class='selected-tab'>
-            <h1 id='profile-settings-title'>Edit Profile</h1>
-                <article id='profile-setting-name' class='profile-setting-elem'>
-                    <header> Name </header>
-                    <input id='name' type='text' value='<?=$user['name']?>'>
-                    <button class="submit-button" onclick='submitForm(0);'>
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
-                </article>
+    <section id='profile-settings-tab' class='selected-tab'>
+        <h1 id='profile-settings-title'>Edit Profile</h1>
+            <article id='profile-setting-name' class='profile-setting-elem'>
+                <header> Name </header>
+                <input id='name' type='text' value='<?=$user['name']?>'>
+                <button class="submit-button" onclick='submitForm(0);'>
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </article>
 
-                <article id='profile-setting-email' class='profile-setting-elem'>
-                    <header> Email </header>
-                    <input id='email' type='email' value='<?=$user['email']?>'>
-                    <button class="submit-button" onclick='submitForm(1);'>
-                        <i class="fas fa-sync-alt"></i>
-                    </button>                
-                </article>
+            <article id='profile-setting-email' class='profile-setting-elem'>
+                <header> Email </header>
+                <input id='email' type='email' value='<?=$user['email']?>'>
+                <button class="submit-button" onclick='submitForm(1);'>
+                    <i class="fas fa-sync-alt"></i>
+                </button>                
+            </article>
 
-                <article id='profile-setting-age' class='profile-setting-elem'>
-                    <header> Age </header>
-                    <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
-                    <button class="submit-button" onclick='submitForm(2);'>
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
-                </article>
+            <article id='profile-setting-age' class='profile-setting-elem'>
+                <header> Age </header>
+                <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
+                <button class="submit-button" onclick='submitForm(2);'>
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </article>
+    </section>
+<!--*********************** PROFILE SECURITY ***********************-->
+    <section id='profile-security-tab' class='selected-tab'>
+        <h1 id='profile-security-title'>Security Details</h1>
+            <article id='profile-security-password' class='profile-setting-elem'>
+                <header> Current Password </header>
+                <input id='current-password' type='password' value=''>
+            </article>
 
-                <article id='profile-setting-password' class='profile-setting-elem'>
-                    <header> Password </header>
-                    <input type="password" id="password" onkeyup='checkPass();' pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character" placeholder="Password">
-                    <button class="submit-button" onclick='submitForm(3);'>
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
-                </article>
+            <article id='profile-setting-password' class='profile-setting-elem'>
+                <header> New Password </header>
+                <input type="password" id="password" onkeyup='checkPass();' 
+                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                    title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character">
+                <button class="submit-button" onclick='submitForm(3);'>
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </article>
 
-                <article id='profile-settings-confirm_password' class='profile-setting-elem'>
-                    <header> Confirm password </header>
-                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
-                </article>
-                <footer id='profile-settings-msg'></footer>
-        </section>
+            <article id='profile-settings-confirm_password' class='profile-setting-elem'>
+                <header> Confirm password </header>
+                <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
+            </article>
+            <footer id='profile-settings-msg'></footer>
+    </section>
 
 <!--*********************** PROFILE COMMENTS ***********************-->
         <section id='profile-comments-tab' class='selected-tab'>
