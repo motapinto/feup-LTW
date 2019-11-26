@@ -88,7 +88,7 @@ header {
 }
 
 .circular-button:hover {
-    background-color: rgba(117, 227, 255, 0.8);
+    background-color: grey;;
     cursor: pointer;
 }
 
