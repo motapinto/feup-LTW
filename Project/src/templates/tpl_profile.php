@@ -103,7 +103,7 @@
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> Password </header>
-                    <input type="password" name="password" value='' onkeyup='checkPass();' pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character" placeholder="Password">
+                    <input type="password" id="password" onkeyup='checkPass();' pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character" placeholder="Password">
                     <button class="submit-button" onclick='submitForm(3);'>
                         <i class="fas fa-sync-alt"></i>
                     </button>
