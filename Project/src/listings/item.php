@@ -14,7 +14,7 @@
     $item = getListingById($id);
 
     draw_header('Campus Rentals');
-    draw_navBar();
+    draw_navBar(1);
 
     if(isset($_SESSION['id']) && $item['user_id'] === $_SESSION['id'])
         draw_item($item, true);

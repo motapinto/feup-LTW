@@ -18,35 +18,6 @@
     font-size: .75rem;
 }
 
-.search-form {
-    width: 20em;
-    display: block;
-    padding-right: 20em;
-    height: 4em;
-}
-
-#search-bar {
-    margin: 0 auto;
-    width: 100%;
-    height: 2.5em;
-    padding: 0 40px;
-    font-size: 1em;
-    border: none;
-    outline: none;
-}
-
-#search-bar:hover {
-    border: 1px solid #D0CFCE;
-}
-
-.search-icon {
-    position: relative;
-    float: right;
-    width: 75px;
-    height: 75px;
-    top: -62px;
-    right: -45px;
-}
 
 .common-navbar a:hover {
     border-bottom: solid 2px grey;
@@ -56,4 +27,33 @@
 .selected-navbar-elem {
     border-bottom: solid 2px teal;
     color: teal;
+}
+
+.search-form {
+    width: 20em;
+    display: block;
+    padding-right: 20em;
+    height: 3em;
+}
+
+#search-bar {
+    margin: 0 auto;
+    width: 100%;
+    height: 2.5em;
+    font-size: 1em;
+    border: none;
+    outline: none;
+}
+
+#search-bar:hover {
+    border-bottom: 1px solid #D0CFCE;
+}
+
+.search-icon {
+    position: relative;
+    float: right;
+    width: 75px;
+    height: 75px;
+    top: -62px;
+    right: -45px;
 }

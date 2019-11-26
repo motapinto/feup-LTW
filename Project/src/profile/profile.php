@@ -10,7 +10,7 @@
       header('Location: ../listings/all_listings.php');
 
     draw_header('User Profile');
-    draw_navBar(1);
+    draw_navBar(2);
     $user = userProfile($_SESSION['id']);        // get's current user
     draw_profile($user);
     draw_footer()
