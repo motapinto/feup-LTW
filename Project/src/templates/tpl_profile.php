@@ -1,4 +1,4 @@
-<?php function draw_profile($user) { 
+<?php function draw_profile($user, $canEditProfile) { 
     include_once("../database/comments.php");
     include_once("../database/images.php");
 
@@ -99,29 +99,31 @@
             </article>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
-    <section id='profile-security-tab' class='selected-tab'>
-        <h1 id='profile-security-title'>Security Details</h1>
-            <article id='profile-security-password' class='profile-setting-elem'>
-                <header> Current Password </header>
-                <input id='current-password' type='password' value=''>
-            </article>
+    <?php if($canEditProfile) { ?>
+        <section id='profile-security-tab' class='selected-tab'>
+            <h1 id='profile-security-title'>Security Details</h1>
+                <article id='profile-security-password' class='profile-setting-elem'>
+                    <header> Current Password </header>
+                    <input id='current-password' type='password' value=''>
+                </article>
 
-            <article id='profile-setting-password' class='profile-setting-elem'>
-                <header> New Password </header>
-                <input type="password" id="password" onkeyup='checkPass();' 
-                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
-                    title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character">
-                <button class="submit-button" onclick='submitForm(3);'>
-                    <i class="fas fa-sync-alt"></i>
-                </button>
-            </article>
+                <article id='profile-setting-password' class='profile-setting-elem'>
+                    <header> New Password </header>
+                    <input type="password" id="password" onkeyup='checkPass();' 
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+                        title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character">
+                    <button class="submit-button" onclick='submitForm(3);'>
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </article>
 
-            <article id='profile-settings-confirm_password' class='profile-setting-elem'>
-                <header> Confirm password </header>
-                <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
-            </article>
-            <footer id='profile-settings-msg'></footer>
-    </section>
+                <article id='profile-settings-confirm_password' class='profile-setting-elem'>
+                    <header> Confirm password </header>
+                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
+                </article>
+                <footer id='profile-settings-msg'></footer>
+        </section>
+    <?php } ?>
 
 <!--*********************** PROFILE COMMENTS ***********************-->
         <section id='profile-comments-tab' class='selected-tab'>
@@ -136,4 +138,3 @@
 <!--*********************** SECTION END ****************************-->
     </section>>
 <?php } ?>
-
