@@ -39,7 +39,7 @@
                         $rating -= 1;
                     }
                     ?>
-                </div>
+                </article>
             </header>
 
             <!-- SIDEBAR BUTTONS -->

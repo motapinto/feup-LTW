@@ -10,17 +10,16 @@
     	header('Location: ../listings/all_listings.php');
 
 	draw_header('User Profile');
-	draw_navBar(2);
-
-	$canEditProfile = true;
 	
-    if(isset($_SESSION['profile']) && $_SESSION['profile'] != $_SESSION['id']) {
-		$user = userProfile($_SESSION['profile']); //other user
-		draw_profile($user, !$canEditProfile);
+    if(isset($_GET['id']) && $_GET['id'] != $_SESSION['id']) {
+        draw_navBar(-1);
+		$user = userProfile($_GET['id']); //other user
+		draw_profile($user, false);
 	}
 	else {
+        draw_navBar(2);
 		$user = userProfile($_SESSION['id']); // own user
-		draw_profile($user, $canEditProfile);
+		draw_profile($user, true);
 	}
     
     draw_footer()

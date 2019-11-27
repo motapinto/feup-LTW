@@ -1,10 +1,11 @@
 <?php
+include_once('../database/images.php');
+include_once('../templates/tpl_common.php');
 
 function draw_comment($comment) {
-    include_once('../database/images.php');
     $image = getUserImagePath($comment['user_id']);?>
     <article class='comment'>
-        <img src=<?= $comment['id'] ?> alt="Image of <?= $image ?>">
+        <img src=<?= getUserImagePath($comment['user_id'], 'SMALL') ?> alt="Image of <?= $image ?>">
         <h3><?= $comment['name'] ?></h3>
         <h6><?= $comment['date'] ?>  Rating:<?= $comment['rating'] ?></h6> <!-- missing star image -->
         <p><?= $comment['comment'] ?></p>

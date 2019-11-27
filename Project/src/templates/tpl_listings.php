@@ -34,6 +34,7 @@ function draw_list_all($listings) { ?>
 function draw_item($item, $owner=false) { 
     $comments = getCommentsByPropertyId($item['id']);
     $images = getImagePathsByPropertyId($item['id'], 'MEDIUM');
+    $user = userProfile($item['id']);
     ?>
 
     <section id='list'>
@@ -49,7 +50,6 @@ function draw_item($item, $owner=false) {
             <?php } ?>
             <!-- Galeria de imagens, possivelmente usando scripts? -->
             <p><?=$item['description']?></p>
-            <p>Rating: <?=$item['rating']?></p>
             <p>Property type: 
             <?php
                 switch ($item['property_type']) {
@@ -66,11 +66,11 @@ function draw_item($item, $owner=false) {
             ?>
             </p>
             <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
-			<p>Price per day: <?=$item['price_day']?>$</p>
-			<a href='../profile/profile.php'>
-				<p>Owner: <?=$user['name']?></p>
-				<?=$_SESSION['profile'] = $user['id']?>
-			</a>
+            <p>Owner: 
+                <a href="../profile/profile.php?id=<?=$user['id']?>">
+                    <?=$user['name']?>
+                </a>
+            </p>
         </article>
       
 <!--*********************** CALENDER + RENT (RIGHT SIDE) ***********************-->
@@ -83,7 +83,7 @@ function draw_item($item, $owner=false) {
 				<span>
 					per night
 				</p>
-				<i id='rent-star' class='material-icons'> star_border</i>
+				<i id='rent-star' class='material-icons'> star</i>
 				<span class='rent-rating_comments'>
 					<?=$item['rating']?>
 					(<?=numberCommentsByProperty($item['id'])?> comments)
