@@ -7,7 +7,7 @@ function draw_comment($comment) {
     <article class='comment'>
         <img src=<?= getUserImagePath($comment['user_id'], 'SMALL') ?> alt="Image of <?= $image ?>">
         <h3><?= $comment['name'] ?></h3>
-        <h6><?= $comment['date'] ?>  Rating:<?= $comment['rating'] ?></h6> <!-- missing star image -->
+        <h6><?= $comment['date'] ?><?php draw_rating($comment['rating']); ?></h6> <!-- missing star image -->
         <p><?= $comment['comment'] ?></p>
     </article>
 <?php }

@@ -1,29 +1,33 @@
 <?php
     include_once('../includes/session.php');        // starts the session
-    include_once('../database/users.php');          // user functions
-    changeUser(2, 'adas@asd.com', 'asdasd', 12, 'hhh'); //NAO ESTA A CHEGAR AQUI!
 
-    if(isset($_POST['name'])) $option = 0;
-    else if(isset($_POST['email'])) $option = 1;
-    else if(isset($_POST['age'])) $option = 2;
-    else if(isset($_POST['password'])) $option = 3;
+    if(!isset($_SESSION['id']))
+        die(header('Location: ../listings/listings_all.php'));
+
+    include_once('../database/users.php');          // user functions
+
+    if(isset($_GET['name'])) $option = 0;
+    else if(isset($_GET['email'])) $option = 1;
+    else if(isset($_GET['age'])) $option = 2;
+    else if(isset($_GET['password'])) $option = 3;
+    $user = userProfile($_SESSION['id']);
 
     switch ($option){
         // user name
         case 0:
-            changeUser($user['id'], $user['email'], $_POST['name'], $user['age'], $user['password']);
+            changeUser($user['id'], $user['email'], $_GET['name'], $user['age'], $user['password']);
             break;
         // user mail
         case 1:
-            changeUser($user['id'], $_POST['email'], $user['name'], $user['age'], $user['password']);
+            changeUser($user['id'], $_GET['email'], $user['name'], $user['age'], $user['password']);
             break;
         // user age
         case 2:
-            changeUser($user['id'], $user['email'], $user['name'], $_POST['age'], $user['password']);
+            changeUser($user['id'], $user['email'], $user['name'], $_GET['age'], $user['password']);
             break;   
         // user password
         case 3:
-            changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_POST['password']);
+            changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
             break; 
         
         default:

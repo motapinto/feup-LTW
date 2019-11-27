@@ -46,36 +46,37 @@
         $imagePaths= array();
 
         foreach ($images as $image) {
-            if(file_exists("../../assets/images/originals/p_$id.jpg")){
+            $imageId = $image['id'];
+            if(file_exists("../../assets/images/originals/p_$imageId.jpg")){
                 switch ($option) {
                     case 'ORIGINAL':
-                        array_push($imagePaths, "../../assets/images/originals/p_$id.jpg");
+                        array_push($imagePaths, "../../assets/images/originals/p_$imageId.jpg");
                         break;
                     
                     case 'MEDIUM':
-                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$id.jpg");
+                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$imageId.jpg");
                         break;
                     
                     case 'SMALL':
-                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$id.jpg");
+                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$imageId.jpg");
                         break;
                     
                     default:
                         break;
                 }
             }
-            else if(file_exists("../../assets/images/originals/p_$id.png"))
+            else if(file_exists("../../assets/images/originals/p_$imageId.png"))
                 switch ($option) {
                     case 'ORIGINAL':
-                        array_push($imagePaths, "../../assets/images/originals/p_$id.png");
+                        array_push($imagePaths, "../../assets/images/originals/p_$imageId.png");
                         break;
                     
                     case 'MEDIUM':
-                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$id.png");
+                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$imageId.png");
                         break;
                     
                     case 'SMALL':
-                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$id.png");
+                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$imageId.png");
                         break;
                     
                     default:

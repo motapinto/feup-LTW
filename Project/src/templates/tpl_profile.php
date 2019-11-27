@@ -24,21 +24,7 @@
             <header>
                 <h1><?=$user['name']?></h1>
                 <article class="rating">
-                    <?php 
-                    $rating = $user['rating'];
-                    for($i = 0; $i < 5; $i++){
-                        if ($rating <= 0) { ?>
-                            <i class="material-icons"> star_border</i>
-                        <?php }
-                        else if ($rating <= 0.5) { ?>
-                            <i class="material-icons"> star_half</i>
-                        <?php }
-                        else { ?>
-                            <i class="material-icons"> star</i>
-                        <?php }
-                        $rating -= 1;
-                    }
-                    ?>
+                    <?php draw_rating($user['rating']); ?>
                 </article>
             </header>
 

@@ -10,13 +10,14 @@ function draw_list_item($item){
   	?>
   	<article class='item'>
 		<a href='item.php?id=<?=$item['id']?>'>
-			<!-- missing image -->
 			<?php if(isset($image)) { ?>
-				<!-- <img src=<?=$image?> alt='Image of property'> -->
+				<img src=<?=$image?> alt='Image of property'>
 			<?php } ?>
 
 			<h1> <?=$item['title']?> </h1>
-			<p><!-- missing star image -->Rating: <?=$item['rating']?> stars</p>
+            <p>
+                <span class="rating"><?php draw_rating($item['rating']); ?></span>
+            </p>
 			<p class='comments'>Comments: <?=numberCommentsByProperty($item['id'])?></p>
 		</a>
   	</article>
@@ -34,7 +35,7 @@ function draw_list_all($listings) { ?>
 function draw_item($item, $owner=false) { 
     $comments = getCommentsByPropertyId($item['id']);
     $images = getImagePathsByPropertyId($item['id'], 'MEDIUM');
-    $user = userProfile($item['id']);
+    $user = userProfile($item['user_id']);
     ?>
 
     <section id='list'>
@@ -46,7 +47,7 @@ function draw_item($item, $owner=false) {
             <?php } ?>
             </ul>
             <?php if($owner){ ?>
-                <a href='../properties/add_property_image.php?id=<?=$id?>'>Add image(s)</a>
+                <a href='../properties/add_property_image.php?id=<?=$item['id']?>'>Add image(s)</a>
             <?php } ?>
             <!-- Galeria de imagens, possivelmente usando scripts? -->
             <p><?=$item['description']?></p>

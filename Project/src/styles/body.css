@@ -91,7 +91,8 @@ header {
 }
 
 .circular-button:hover {
-    background-color: grey;;
+    background-color: grey;
+    ;
     cursor: pointer;
 }
 
@@ -149,6 +150,10 @@ header {
     width: 10em;
     height: 10em;
     margin-right: 1em;
+}
+
+.item p i {
+    margin: 0;
 }
 
 #list {
