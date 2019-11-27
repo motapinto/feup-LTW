@@ -156,12 +156,12 @@ i {
     height: 2em;
 }
 
-#profile-setting-email button {
+.selected-tab button {
     background-color: white;
     color: teal;
     font-weight: bold;
 }
 
-#profile-setting-email button:hover {
+.selected-tab button:hover {
     text-decoration: underline;
 }

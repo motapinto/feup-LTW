@@ -1,31 +1,38 @@
 let startEmail = document.getElementById('email').value;
 
-function profileOverview() {
-    document.getElementById('profile-settings-tab').style.display = 'none';
-    document.getElementById('profile-security-tab').style.display = 'none';
-    document.getElementById('profile-comments-tab').style.display = 'none';
-    document.getElementById('profile-overview-tab').style.display = 'display';
-}
+function profileSubMenu(option) {
+    switch(option) {
+        case 0:
+            document.getElementById('profile-settings-tab').style.display = 'none';
+            document.getElementById('profile-security-tab').style.display = 'none';
+            document.getElementById('profile-comments-tab').style.display = 'none';
+            document.getElementById('profile-overview-tab').style.display = 'display';
+            break;
 
-function profileSettings() {
-    document.getElementById('profile-overview-tab').style.display = 'none';
-    document.getElementById('profile-security-tab').style.display = 'none';
-    document.getElementById('profile-comments-tab').style.display = 'none';
-    document.getElementById('profile-settings-tab').style.display = 'block';
-}
+        case 1:
+            document.getElementById('profile-overview-tab').style.display = 'none';
+            document.getElementById('profile-security-tab').style.display = 'none';
+            document.getElementById('profile-comments-tab').style.display = 'none';
+            document.getElementById('profile-settings-tab').style.display = 'block';
+            break;
 
-function profileComments() {
-    document.getElementById('profile-overview-tab').style.display = 'none';
-    document.getElementById('profile-settings-tab').style.display = 'none';
-    document.getElementById('profile-security-tab').style.display = 'none';
-    document.getElementById('profile-comments-tab').style.display = 'block';
-}
+        case 2:
+            document.getElementById('profile-overview-tab').style.display = 'none';
+            document.getElementById('profile-settings-tab').style.display = 'none';
+            document.getElementById('profile-comments-tab').style.display = 'none';
+            document.getElementById('profile-security-tab').style.display = 'block';
+            break;
+        case 3:
 
-function profileSecurity() {
-    document.getElementById('profile-overview-tab').style.display = 'none';
-    document.getElementById('profile-settings-tab').style.display = 'none';
-    document.getElementById('profile-comments-tab').style.display = 'none';
-    document.getElementById('profile-security-tab').style.display = 'block';
+            document.getElementById('profile-overview-tab').style.display = 'none';
+            document.getElementById('profile-settings-tab').style.display = 'none';
+            document.getElementById('profile-security-tab').style.display = 'none';
+            document.getElementById('profile-comments-tab').style.display = 'block';
+            break;
+            
+        default:
+            break;
+    }
 }
 
 function checkName() {
@@ -35,12 +42,16 @@ function checkName() {
     if(isLegal) {
         document.getElementById('icon-name').style.color = 'black';
         document.getElementById('icon-name').className = 'fas fa-check';
+        document.getElementById('name').style.backgroundColor = 'white';
+        document.getElementById('name').style.border = 'solid 1px rgb(176, 183, 187)';
         document.getElementById('profile-settings-msg-name').innerHTML = '';
         submitForm(0);
     }
     else {
         document.getElementById('icon-name').style.color = 'red';
         document.getElementById('icon-name').className = 'fas fa-times';
+        document.getElementById('name').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('name').style.border = 'solid 1px rgb(233, 76, 76)';
         document.getElementById('profile-settings-msg-name').innerHTML = 'Name can only contain letters, spaces and \'-\'';
         document.getElementById('profile-settings-msg-name').style.color = 'red';
         submitForm(-1);
@@ -51,12 +62,17 @@ function checkEmail() {
     let email = document.getElementById('email').value;
     let emailTest = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
     let isLegal = emailTest.test(email);
+
     if(isLegal) {
         document.getElementById('profile-settings-msg-email').innerHTML = '';
+        document.getElementById('email').style.backgroundColor = 'white';
+        document.getElementById('email').style.border = 'solid 1px rgb(176, 183, 187)';
         submitForm(1);
     }
     else {
-        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';;
+        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
+        document.getElementById('email').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('email').style.border = 'solid 1px rgb(233, 76, 76)';
         document.getElementById('profile-settings-msg-email').style.color = 'red';
         document.getElementById('email').value = startEmail;
         submitForm(-1);
@@ -67,35 +83,53 @@ function checkAge() {
     if(document.getElementById('age').value >= 18) {
         document.getElementById('icon-age').style.color = 'black';
         document.getElementById('icon-age').className = 'fas fa-check';
+        document.getElementById('age').style.backgroundColor = 'white';
+        document.getElementById('age').style.border = 'solid 1px rgb(176, 183, 187)';
         document.getElementById('profile-settings-msg-age').innerHTML = '';
         submitForm(2);
     }
     else {
         document.getElementById('icon-age').style.color = 'red';
-        document.getElementById('icon-age').className = 'fas fa-times';
-        document.getElementById('profile-settings-msg-age').innerHTML = 'Must be over than 18';
         document.getElementById('profile-settings-msg-age').style.color = 'red';
+        document.getElementById('icon-age').className = 'fas fa-times';
+        document.getElementById('age').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('age').style.border = 'solid 1px rgb(233, 76, 76)';
+        document.getElementById('profile-settings-msg-age').innerHTML = 'Must be over than 18';
         submitForm(-1);
     }
 }
 
 function checkPass() {
-    if (document.getElementById('password').value.length == 0 ||
-        document.getElementById('password').value == document.getElementById('confirm_password').value) {
 
-        document.getElementById('password').style.backgroundColor = 'white';
-        document.getElementById('password').style.border = 'solid 1px rgb(176, 183, 187)'
-        document.getElementById('confirm_password').style.backgroundColor = 'white';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
-        document.getElementById('profile-settings-msg').innerHTML = '';
-        document.getElementById('profile-settings-submit').disabled = false;
-    } else {
+    let criteria = new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}");
+
+    if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
-        document.getElementById('profile-settings-msg').innerHTML = 'The password\'s don\'t match';
-        document.getElementById('profile-settings-msg').style.color = 'red';
+        document.getElementById('profile-security-msg-password').innerHTML = 'The password\'s don\'t match';
+        document.getElementById('profile-security-msg-password').style.color = 'red';
         document.getElementById('profile-settings-submit').disabled = true;
     }
+    if (!criteria.test(document.getElementById('password'))) {
+        document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)';
+        document.getElementById('profile-security-msg-newPassword').innerHTML = 'The password must have at least eight characters, at least one uppercase letter, one lowercase letter and one number';
+        document.getElementById('profile-security-msg-newPassword').style.color = 'red';
+        document.getElementById('profile-settings-submit').disabled = true;
+    }
+    else {
+        document.getElementById('password').style.backgroundColor = 'white';
+        document.getElementById('password').style.border = 'solid 1px rgb(176, 183, 187)';
+        document.getElementById('confirm_password').style.backgroundColor = 'white';
+        document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)';
+        document.getElementById('profile-security-msg-password').innerHTML = '';
+        document.getElementById('profile-security-msg-newPassword').innerHTML = '';
+        document.getElementById('profile-settings-submit').disabled = false;
+    } 
+}
+
+function checkCurrentPassword() {
+    getCurrentPassword();
 }
 
 function encodeForAjax(data) {
@@ -108,21 +142,22 @@ function getCurrentPassword() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
     let password = document.getElementById('current-password').value;
+    let request = 'currentPassword=' + password;
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        console.log(response);
+        alert(response['response']);
         switch (response['response']) {
-            case 0:
-                document.getElementById('profile-security-msg-password').innerHTML = '';
+            case -1:
+                document.getElementById('profile-security-msg-password').innerHTML = 'Current password is not correct';
+                document.getElementById('profile-security-msg-password').style.color = 'red';
                 break;
 
             default:
-                document.getElementById('profile-security-msg-password').innerHTML = 'Current password is not correct';
+                document.getElementById('profile-security-msg-password').innerHTML = '';
                 break;
         }
-        break;
     });
 
     // Define what happens in case of error

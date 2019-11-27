@@ -11,6 +11,7 @@
     else if(isset($_GET['email'])) $option = 1;
     else if(isset($_GET['age'])) $option = 2;
     else if(isset($_GET['password'])) $option = 3;
+    else if(isset($_GET['currentPassword'])) $option = 4;
     $user = userProfile($_SESSION['id']);
 
     $ret = array('response' => '');
@@ -32,6 +33,12 @@
         case 3:
             $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
             break; 
+
+        case 4:
+            if($user['password'] === $_GET['currentPassword'])
+                $ret['response'] = 0;
+            else
+                $ret['response'] = -1;
         
         default:
             break;

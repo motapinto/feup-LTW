@@ -41,16 +41,16 @@
             <!-- SIDEBAR MENU -->
             <article class='profile-usermenu'>
                 <i class='fas fa-bars'></i>
-                <button class='no-button' onclick='profileOverview();'> Overview </button>
+                <button class='no-button' onclick='profileSubMenu(0);'> Overview </button>
                 
                 <i class='fas fa-users-cog'></i>
-                <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
+                <button class='no-button' onclick='profileSubMenu(1);'> Profile Settings</button>
                 
                 <i class='fas fa-shield-alt'></i>
-                <button class='no-button' onclick='profileSecurity();'>Security Details</button>
+                <button class='no-button' onclick='profileSubMenu(2);'>Security Details</button>
 
                 <i class='far fa-comments'></i>
-                <button class='no-button' onclick='profileComments();'>Comments</button>
+                <button class='no-button' onclick='profileSubMenu(3);'>Comments</button>
             </article>
         </section> 
 
@@ -87,7 +87,7 @@
             <h1 id='profile-security-title'>Security Details</h1>
                 <article id='profile-security-password' class='profile-setting-elem'>
                     <header> Current Password </header>
-                    <input id='current-password' type='password' value=''>
+                    <input id='current-password' type='password' onkeyup="checkCurrentPassword();"value=''>
                 </article>
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
@@ -95,9 +95,7 @@
                     <input type='password' id='password' onkeyup='checkPass();' 
                         pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}' 
                         title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
-                    <button class='submit-button' onclick='submitForm(3);'>
-                        <i class='fas fa-sync-alt'></i>
-                    </button>
+                    <button onclick='submitForm();'> Save </button>
                 </article>
 
                 <article id='profile-settings-confirm_password' class='profile-setting-elem'>
