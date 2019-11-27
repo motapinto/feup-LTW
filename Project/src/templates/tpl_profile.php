@@ -22,7 +22,7 @@
             
             <!-- USER NAME -->
             <header>
-                <h1><?=$user['name']?></h1>
+                <h1 id="user-name"><?=$user['name']?></h1>
                 <article class="rating">
                     <?php draw_rating($user['rating']); ?>
                 </article>
@@ -62,28 +62,22 @@
         <h1 id='profile-settings-title'>Edit Profile</h1>
             <article id='profile-setting-name' class='profile-setting-elem'>
                 <header> Name </header>
-                <input id='name' type='text' value='<?=$user['name']?>'>
-                <button class="submit-button" onclick='submitForm(0);'>
-                    <i id="icon-name" class="fas fa-sync-alt"></i>
-                </button>
+                <input id='name' type='text' onkeyup="checkName();" value='<?=$user['name']?>'>
+                <i id="icon-name"></i>
             </article>
 
             <article id='profile-setting-email' class='profile-setting-elem'>
                 <header> Email </header>
-                <input id='email' type='email' value='<?=$user['email']?>'>
-                <button class="submit-button" onclick='submitForm(1);'>
-                    <i id="icon-email" class="fas fa-sync-alt"></i>
-                </button>                
+                <input id='email' type='email' onkeyup="checkEmail();" value='<?=$user['email']?>'>
+                <i id="icon-email"></i>
             </article>
 
             <article id='profile-setting-age' class='profile-setting-elem'>
                 <header> Age </header>
-                <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
-                <button class="submit-button" onclick='submitForm(2);'>
-                    <i id="icon-age" class="fas fa-sync-alt"></i>
-                </button>
+                <input id='age' type='number' min='2' onkeyup="checkAge();" value='<?=$user['age']?>'>
+                <i id="icon-age"></i>
             </article>
-            <footer id='profile-settings-msg-email'></footer>
+            <footer id='profile-settings-msg'></footer>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
     <?php if($canEditProfile) { ?>

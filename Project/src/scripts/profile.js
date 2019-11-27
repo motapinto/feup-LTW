@@ -1,31 +1,71 @@
 let startEmail = document.getElementById('email').value;
 
 function profileOverview() {
-    document.getElementById("profile-settings-tab").style.display = "none";
-    document.getElementById("profile-security-tab").style.display = "none";
-    document.getElementById("profile-comments-tab").style.display = "none";
-    document.getElementById("profile-overview-tab").style.display = "display";
+    document.getElementById('profile-settings-tab').style.display = 'none';
+    document.getElementById('profile-security-tab').style.display = 'none';
+    document.getElementById('profile-comments-tab').style.display = 'none';
+    document.getElementById('profile-overview-tab').style.display = 'display';
 }
 
 function profileSettings() {
-    document.getElementById("profile-overview-tab").style.display = "none";
-    document.getElementById("profile-security-tab").style.display = "none";
-    document.getElementById("profile-comments-tab").style.display = "none";
-    document.getElementById("profile-settings-tab").style.display = "block";
+    document.getElementById('profile-overview-tab').style.display = 'none';
+    document.getElementById('profile-security-tab').style.display = 'none';
+    document.getElementById('profile-comments-tab').style.display = 'none';
+    document.getElementById('profile-settings-tab').style.display = 'block';
 }
 
 function profileComments() {
-    document.getElementById("profile-overview-tab").style.display = "none";
-    document.getElementById("profile-settings-tab").style.display = "none";
-    document.getElementById("profile-security-tab").style.display = "none";
-    document.getElementById("profile-comments-tab").style.display = "block";
+    document.getElementById('profile-overview-tab').style.display = 'none';
+    document.getElementById('profile-settings-tab').style.display = 'none';
+    document.getElementById('profile-security-tab').style.display = 'none';
+    document.getElementById('profile-comments-tab').style.display = 'block';
 }
 
 function profileSecurity() {
-    document.getElementById("profile-overview-tab").style.display = "none";
-    document.getElementById("profile-settings-tab").style.display = "none";
-    document.getElementById("profile-comments-tab").style.display = "none";
-    document.getElementById("profile-security-tab").style.display = "block";
+    document.getElementById('profile-overview-tab').style.display = 'none';
+    document.getElementById('profile-settings-tab').style.display = 'none';
+    document.getElementById('profile-comments-tab').style.display = 'none';
+    document.getElementById('profile-security-tab').style.display = 'block';
+}
+
+// REGULAR EXPRESSON IS WRONG! WHY?
+function checkName() {
+    let name = document.getElementById('name').value;
+    var nameTest = new RegExp("^[a-zA-Z]+(([ -][a-zA-Z ])?[a-zA-Z]*)*");
+    var isLegal = nameTest.test(name);
+    if(isLegal) {
+        document.getElementById('icon-name').style.color = 'black';
+        document.getElementById('icon-name').className = 'fas fa-check';
+        document.getElementById('profile-settings-msg').innerHTML = '';
+        submitForm(0);
+    }
+    else {
+        document.getElementById('icon-name').style.color = 'red';
+        document.getElementById('icon-name').className = 'fas fa-times';
+        document.getElementById('profile-settings-msg').innerHTML = 'Name can only contain letters, spaces and \'-\'';
+        document.getElementById('profile-settings-msg').style.color = 'red';
+        submitForm(-1);
+    }
+}
+
+function checkEmail() {
+    submitForm(1);
+}
+
+function checkAge() {
+    if(document.getElementById('age').value >= 18) {
+        document.getElementById('icon-age').style.color = 'black';
+        document.getElementById('icon-age').className = 'fas fa-check';
+        document.getElementById('profile-settings-msg').innerHTML = '';
+        submitForm(2);
+    }
+    else {
+        document.getElementById('icon-age').style.color = 'red';
+        document.getElementById('icon-age').className = 'fas fa-times';
+        document.getElementById('profile-settings-msg').innerHTML = 'Must be over than 18';
+        document.getElementById('profile-settings-msg').style.color = 'red';
+        submitForm(-1);
+    }
 }
 
 function checkPass() {
@@ -66,17 +106,19 @@ function submitForm(option) {
             requestName = requestName.join('+');
             request = 'name=' + requestName;
             break;
-            // user email
+        // user email
         case 1:
             email = document.getElementById('email').value;
             let requestEmail = email.replace('@', '%40');
             request = 'email=' + requestEmail;
             break;
-            // user age
+        // user age
         case 2:
             age = document.getElementById('age').value;
             request = 'age=' + age;
             break;
+
+        case 3:
 
         default:
             break;
@@ -89,28 +131,27 @@ function submitForm(option) {
         switch (option) {
             // user name
             case 0:
-                document.getElementById('icon-name').className = 'fas fa-check';
-                // user email
-                break;
-
+                document.getElementById('user-name').innerHTML = name;
+                
+            // user email
             case 1:
                 emailAfter = document.getElementById('email').value;
                 switch (response['response']) {
                     case 0:
-                        document.getElementById('profile-settings-msg-email').innerHTML = '';
+                        document.getElementById('profile-settings-msg').innerHTML = '';
                         break;
 
                     case 1:
                         document.getElementById('email').value = startEmail;
-                        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
-                        document.getElementById('profile-settings-msg-email').style.color = 'red';
+                        document.getElementById('profile-settings-msg').innerHTML = 'Failled to change email';
+                        document.getElementById('profile-settings-msg').style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
 
                     case 2:
                         document.getElementById('email').value = startEmail;
-                        document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
-                        document.getElementById('profile-settings-msg-email').style.color = 'red';
+                        document.getElementById('profile-settings-msg').innerHTML = 'Email already exists';
+                        document.getElementById('profile-settings-msg').style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
 
@@ -118,10 +159,6 @@ function submitForm(option) {
                         break;
                 }
                 break;
-
-                //user age
-            case 2:
-                document.getElementById('icon-age').className = 'fas fa-check';
 
             default:
                 break;
