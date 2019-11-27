@@ -5,6 +5,7 @@
         die(header('Location: ../listings/listings_all.php'));
 
     include_once('../database/users.php');          // user functions
+    include_once('../templates/tpl_common.php');
 
     if(isset($_GET['name'])) $option = 0;
     else if(isset($_GET['email'])) $option = 1;
@@ -12,26 +13,29 @@
     else if(isset($_GET['password'])) $option = 3;
     $user = userProfile($_SESSION['id']);
 
+    $ret = array('response' => '');
+
     switch ($option){
         // user name
         case 0:
-            changeUser($user['id'], $user['email'], $_GET['name'], $user['age'], $user['password']);
+            $ret['response'] = changeUser($user['id'], $user['email'], $_GET['name'], $user['age'], $user['password']);
             break;
         // user mail
         case 1:
-            changeUser($user['id'], $_GET['email'], $user['name'], $user['age'], $user['password']);
+            $ret['response'] = changeUser($user['id'], $_GET['email'], $user['name'], $user['age'], $user['password']);
             break;
         // user age
         case 2:
-            changeUser($user['id'], $user['email'], $user['name'], $_GET['age'], $user['password']);
+            $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $_GET['age'], $user['password']);
             break;   
         // user password
         case 3:
-            changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
+            $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
             break; 
         
         default:
             break;
     }
 
+    encodeForAJAX($ret);
 ?>

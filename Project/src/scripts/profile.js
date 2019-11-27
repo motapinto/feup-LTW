@@ -1,3 +1,5 @@
+let startEmail = document.getElementById('email').value;
+
 function profileOverview() {
     document.getElementById("profile-settings-tab").style.display = "none";
     document.getElementById("profile-security-tab").style.display = "none";
@@ -82,21 +84,38 @@ function submitForm(option) {
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
-
+        let response = JSON.parse(this.responseText);
+        console.log(response);
         switch (option) {
             // user name
             case 0:
                 document.getElementById('icon-name').className = 'fas fa-check';
                 // user email
+                break;
+
             case 1:
                 emailAfter = document.getElementById('email').value;
-                if (email != emailAfter) {
-                    document.getElementById('profile-settings-msg-email').innerHTML = '';
-                } else {
-                    document.getElementById('email').value = email;
-                    document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
-                    document.getElementById('profile-settings-msg-email').style.color = 'red';
-                    document.getElementById('icon-name').className = 'fas fa-times';
+                switch (response['response']) {
+                    case 0:
+                        document.getElementById('profile-settings-msg-email').innerHTML = '';
+                        break;
+
+                    case 1:
+                        document.getElementById('email').value = startEmail;
+                        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
+                        document.getElementById('profile-settings-msg-email').style.color = 'red';
+                        document.getElementById('icon-name').className = 'fas fa-times';
+                        break;
+
+                    case 2:
+                        document.getElementById('email').value = startEmail;
+                        document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
+                        document.getElementById('profile-settings-msg-email').style.color = 'red';
+                        document.getElementById('icon-name').className = 'fas fa-times';
+                        break;
+
+                    default:
+                        break;
                 }
                 break;
 

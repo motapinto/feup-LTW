@@ -1,6 +1,3 @@
-<!-- Idea based on fare-niente page: André Restivo-->
-<!-- Previously in database/connection.php -->
-
 <?php
     /**
      * A singleton representing the app connection 

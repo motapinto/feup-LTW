@@ -11,10 +11,10 @@
             <link rel="stylesheet" href="../styles/body.css">
 <!--************************ ITEM  ************************-->
             <link rel="stylesheet" href="../styles/item.css">
-            <script src="../scripts/item.js"></script>
+            <script src="../scripts/item.js" defer></script>
 <!--************************ PROFILE  ************************-->
             <link rel="stylesheet" href="../styles/profile.css">
-            <script src="../scripts/profile.js"></script>
+            <script src="../scripts/profile.js" defer></script>
         </head>
         <body>
 <?php } ?>
@@ -37,4 +37,13 @@ function draw_rating($rating) {
         <?php }
         $rating -= 1;
     }
-} ?>
+} 
+
+function encodeForAJAX($array){
+    print('{');
+    foreach ($array as $key => $value) {
+        print(' "'.$key.'"'.':'.$value.' ');
+    }
+    print('}');
+}
+?>
