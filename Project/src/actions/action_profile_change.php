@@ -1,6 +1,8 @@
 <?php
     include_once('../includes/session.php');        // starts the session
     include_once('../database/users.php');          // user functions
+    include_once('../templates/tpl_common.php');    // encodeForAJAX
+
 
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
@@ -42,5 +44,5 @@
             break;
     }
 
-    encodeForAjax($ret);
+    encodeForAJAX($ret);
 ?>

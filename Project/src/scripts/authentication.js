@@ -1,9 +1,3 @@
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k) {
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&')
-}
-
 function submitLogin() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -16,28 +10,33 @@ function submitLogin() {
     password = 'password=' + password;
 
     let request = email + '&' + password;
-    alert(request);
-
+    
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        alert(response);
         
         switch (response['response']) {
             case -1:
-                alert('-1');
                 document.getElementById('login-msg').innerHTML = 'User does not exist';
                 document.getElementById('login-msg').style.color = 'red';
+                document.getElementById('login-password').style.backgroundColor = 'white';
+                document.getElementById('login-password').style.border = 'solid 1px rgb(176, 183, 187)';
+                document.getElementById('login-email').style.backgroundColor = 'rgb(246, 220, 220)';
+                document.getElementById('login-email').style.border = 'solid 1px rgb(233, 76, 76)';
                 break;
 
             case -2:
-                    alert('-2');
-                document.getElementById('login-msg').innerHTML = 'User does not exist';
-                document.getElementById('login-msg').style.color = 'Password incorrect';
+                document.getElementById('login-msg').innerHTML = 'Password incorrect';
+                document.getElementById('login-msg').style.color = 'red';
+                document.getElementById('login-email').style.backgroundColor = 'white';
+                document.getElementById('login-email').style.border = 'solid 1px rgb(176, 183, 187)';
+                document.getElementById('login-password').style.backgroundColor = 'rgb(246, 220, 220)';
+                document.getElementById('login-password').style.border = 'solid 1px rgb(233, 76, 76)';
                 break;
 
             default:
-                document.getElementById('login-msg').innerHTML = '';
+                document.getElementById('login-msg').innerHTML = '';       
+                window.location = "../listings/listings_all.php"
                 break;
         }
     });
