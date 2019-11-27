@@ -26,21 +26,6 @@ function profileSecurity() {
     document.getElementById("profile-security-tab").style.display = "block";
 }
 
-function checkEmail() {
-    var xhttp = new XMLHttpRequest();
-    var asynchronous = true;
-
-    //if(!isset($_POST['email']) || !isset($_POST['name']) || !isset($_POST['age']) || !isset($_POST['password']))
-    
-    xhttp.open('GET', 'getcustomer.php?q='+str, asynchronous);
-    xhttp.send();
-
-    /*if(se der erro dentro da funcao acrtion_profile_change) {
-        document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
-        document.getElementById('profile-settings-submit').disabled = false;
-    }*/
-}
-
 function checkPass() {
     if(document.getElementById('password').value.length == 0 ||
         document.getElementById('password').value ==document.getElementById('confirm_password').value) {
@@ -59,6 +44,18 @@ function checkPass() {
         document.getElementById('profile-settings-msg').style.color = 'red';
         document.getElementById('profile-settings-submit').disabled = true;
     }
+}
+
+function encodeForAjax(data) {
+    return Object.keys(data).map(function(k){
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&')
+}
+
+function decodeForAjax(data) {
+    return Object.keys(data).reduce(function(k){
+        return decodeURIComponent(k) + '=' + decodeURIComponent(data[k])
+    })
 }
 
 function submitForm(option){
@@ -85,31 +82,36 @@ function submitForm(option){
             age = document.getElementById('age').value;
             request = 'age=' + age;
             break;
-        // user password
-        case 3:
-            password = document.getElementById('password').value;
-            request = 'password=' + password;
-            break;
+
         default:
             break;
     }
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
+        //deencodeForAjax()
         switch(option) {
-        // user email
-        case 1:
-            emailAfter = document.getElementById('email').value;
-            if(email != emailAfter) {
-                document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
-                document.getElementById('profile-settings-msg-email').style.color = 'red';
-                alert('error');
-            }
-            else {
-                alert('no error');
-                document.getElementById('profile-settings-msg-email').innerHTML = '';
-            }
-            break;
+            // user name
+            case 0:
+                document.getElementById('icon-name').className = 'fas fa-check';
+            // user email
+            case 1:
+                emailAfter = document.getElementById('email').value;
+                if(email != emailAfter) {
+                    document.getElementById('profile-settings-msg-email').innerHTML = '';
+                }
+                else {
+                    document.getElementById('email').value = email;
+                    document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
+                    document.getElementById('profile-settings-msg-email').style.color = 'red';
+                    document.getElementById('icon-name').className = 'fas fa-times';
+                }
+                break;
+            
+            //user age
+            case 2:
+                document.getElementById('icon-age').className = 'fas fa-check';
+
         default:
             break;
     }
