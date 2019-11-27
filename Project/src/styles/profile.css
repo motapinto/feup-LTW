@@ -156,23 +156,12 @@ i {
     height: 2em;
 }
 
-.submit-button {
-    border: none;
+#profile-setting-email button {
     background-color: white;
-    color: grey;
+    color: teal;
+    font-weight: bold;
 }
 
-.submit-button:hover {
-    color: black;
-    cursor: pointer;
-    /*animation: rotation 2s infinite linear;*/
-}
-
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
+#profile-setting-email button:hover {
+    text-decoration: underline;
 }

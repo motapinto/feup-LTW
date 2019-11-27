@@ -28,42 +28,53 @@ function profileSecurity() {
     document.getElementById('profile-security-tab').style.display = 'block';
 }
 
-// REGULAR EXPRESSON IS WRONG! WHY?
 function checkName() {
     let name = document.getElementById('name').value;
-    var nameTest = new RegExp("^[a-zA-Z]+(([ -][a-zA-Z ])?[a-zA-Z]*)*");
+    var nameTest = new RegExp("^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$");
     var isLegal = nameTest.test(name);
     if(isLegal) {
         document.getElementById('icon-name').style.color = 'black';
         document.getElementById('icon-name').className = 'fas fa-check';
-        document.getElementById('profile-settings-msg').innerHTML = '';
+        document.getElementById('profile-settings-msg-name').innerHTML = '';
         submitForm(0);
     }
     else {
         document.getElementById('icon-name').style.color = 'red';
         document.getElementById('icon-name').className = 'fas fa-times';
-        document.getElementById('profile-settings-msg').innerHTML = 'Name can only contain letters, spaces and \'-\'';
-        document.getElementById('profile-settings-msg').style.color = 'red';
+        document.getElementById('profile-settings-msg-name').innerHTML = 'Name can only contain letters, spaces and \'-\'';
+        document.getElementById('profile-settings-msg-name').style.color = 'red';
         submitForm(-1);
     }
 }
 
 function checkEmail() {
-    submitForm(1);
+    let email = document.getElementById('email').value;
+    let emailTest = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+    let isLegal = emailTest.test(email);
+    if(isLegal) {
+        document.getElementById('profile-settings-msg-email').innerHTML = '';
+        submitForm(1);
+    }
+    else {
+        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';;
+        document.getElementById('profile-settings-msg-email').style.color = 'red';
+        document.getElementById('email').value = startEmail;
+        submitForm(-1);
+    }
 }
 
 function checkAge() {
     if(document.getElementById('age').value >= 18) {
         document.getElementById('icon-age').style.color = 'black';
         document.getElementById('icon-age').className = 'fas fa-check';
-        document.getElementById('profile-settings-msg').innerHTML = '';
+        document.getElementById('profile-settings-msg-age').innerHTML = '';
         submitForm(2);
     }
     else {
         document.getElementById('icon-age').style.color = 'red';
         document.getElementById('icon-age').className = 'fas fa-times';
-        document.getElementById('profile-settings-msg').innerHTML = 'Must be over than 18';
-        document.getElementById('profile-settings-msg').style.color = 'red';
+        document.getElementById('profile-settings-msg-age').innerHTML = 'Must be over than 18';
+        document.getElementById('profile-settings-msg-age').style.color = 'red';
         submitForm(-1);
     }
 }
@@ -93,6 +104,36 @@ function encodeForAjax(data) {
     }).join('&')
 }
 
+function getCurrentPassword() {
+    let xhttp = new XMLHttpRequest();
+    let asynchronous = true;
+    let password = document.getElementById('current-password').value;
+
+    // Define what happens on successful data submission
+    xhttp.addEventListener('load', function(event) {
+        let response = JSON.parse(this.responseText);
+        console.log(response);
+        switch (response['response']) {
+            case 0:
+                document.getElementById('profile-security-msg-password').innerHTML = '';
+                break;
+
+            default:
+                document.getElementById('profile-security-msg-password').innerHTML = 'Current password is not correct';
+                break;
+        }
+        break;
+    });
+
+    // Define what happens in case of error
+    xhttp.addEventListener('error', function(event) {
+        alert('Oops! Something goes wrong.');
+    });
+
+    xhttp.open('POST', '../actions/action_profile_change.php?' + request, asynchronous);
+    xhttp.send();
+}
+
 function submitForm(option) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -118,7 +159,11 @@ function submitForm(option) {
             request = 'age=' + age;
             break;
 
+        // user password
         case 3:
+            password = document.getElementById('password').value;
+            request = 'password=' + password;
+            break;
 
         default:
             break;
@@ -135,23 +180,22 @@ function submitForm(option) {
                 
             // user email
             case 1:
-                emailAfter = document.getElementById('email').value;
                 switch (response['response']) {
                     case 0:
-                        document.getElementById('profile-settings-msg').innerHTML = '';
+                        document.getElementById('profile-settings-msg-email').innerHTML = '';
                         break;
 
                     case 1:
                         document.getElementById('email').value = startEmail;
-                        document.getElementById('profile-settings-msg').innerHTML = 'Failled to change email';
-                        document.getElementById('profile-settings-msg').style.color = 'red';
+                        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
+                        document.getElementById('profile-settings-msg-email').style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
 
                     case 2:
                         document.getElementById('email').value = startEmail;
-                        document.getElementById('profile-settings-msg').innerHTML = 'Email already exists';
-                        document.getElementById('profile-settings-msg').style.color = 'red';
+                        document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
+                        document.getElementById('profile-settings-msg-email').style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
 

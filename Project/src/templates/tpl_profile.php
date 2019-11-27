@@ -1,29 +1,29 @@
 <?php function draw_profile($user, $canEditProfile) { 
-    include_once("../database/comments.php");
-    include_once("../database/images.php");
+    include_once('../database/comments.php');
+    include_once('../database/images.php');
 
     $comments = getCommentsByUserId($user['id']);
     $image = getUserImagePath($user['id'], 'MEDIUM');
 ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
-    <section class="profile">
+    <section class='profile'>
         <section class='side-drawer'>
             <!-- USER PHOTO -->
-            <article class="profile-photo">
-                <img class="_1mgxxu3" src="<?=$image?>" alt="User Photo" title="User Photo">
-                <div class="profile-change-photo">
-                    <form action="../actions/action_user_image.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="image" id='image'>
-                        <label for="image">Choose Image</label>
-                        <input type="submit" name="Submit" value="Upload">
+            <article class='profile-photo'>
+                <img class='_1mgxxu3' src='<?=$image?>' alt='User Photo' title='User Photo'>
+                <div class='profile-change-photo'>
+                    <form action='../actions/action_user_image.php' method='post' enctype='multipart/form-data'>
+                        <input type='file' name='image' id='image'>
+                        <label for='image'>Choose Image</label>
+                        <input type='submit' name='Submit' value='Upload'>
                     </form>
                 </div>
             </article>
             
             <!-- USER NAME -->
             <header>
-                <h1 id="user-name"><?=$user['name']?></h1>
-                <article class="rating">
+                <h1 id='user-name'><?=$user['name']?></h1>
+                <article class='rating'>
                     <?php draw_rating($user['rating']); ?>
                 </article>
             </header>
@@ -40,16 +40,16 @@
 
             <!-- SIDEBAR MENU -->
             <article class='profile-usermenu'>
-                <i class="fas fa-bars"></i>
+                <i class='fas fa-bars'></i>
                 <button class='no-button' onclick='profileOverview();'> Overview </button>
                 
-                <i class="fas fa-users-cog"></i>
+                <i class='fas fa-users-cog'></i>
                 <button class='no-button' onclick='profileSettings();'> Profile Settings</button>
                 
-                <i class="fas fa-shield-alt"></i>
+                <i class='fas fa-shield-alt'></i>
                 <button class='no-button' onclick='profileSecurity();'>Security Details</button>
 
-                <i class="far fa-comments"></i>
+                <i class='far fa-comments'></i>
                 <button class='no-button' onclick='profileComments();'>Comments</button>
             </article>
         </section> 
@@ -62,22 +62,24 @@
         <h1 id='profile-settings-title'>Edit Profile</h1>
             <article id='profile-setting-name' class='profile-setting-elem'>
                 <header> Name </header>
-                <input id='name' type='text' onkeyup="checkName();" value='<?=$user['name']?>'>
-                <i id="icon-name"></i>
+                <input id='name' type='text' onkeyup='checkName();' value='<?=$user['name']?>'>
+                <i id='icon-name'></i>
             </article>
 
             <article id='profile-setting-email' class='profile-setting-elem'>
                 <header> Email </header>
-                <input id='email' type='email' onkeyup="checkEmail();" value='<?=$user['email']?>'>
-                <i id="icon-email"></i>
+                <input id='email' type='email' value='<?=$user['email']?>'>
+                <button onclick='checkEmail();'> Save </button>
             </article>
 
             <article id='profile-setting-age' class='profile-setting-elem'>
                 <header> Age </header>
-                <input id='age' type='number' min='2' onkeyup="checkAge();" value='<?=$user['age']?>'>
-                <i id="icon-age"></i>
+                <input id='age' type='number' min='2' onkeyup='checkAge();' value='<?=$user['age']?>'>
+                <i id='icon-age'></i>
             </article>
-            <footer id='profile-settings-msg'></footer>
+            <footer id='profile-settings-msg-name'></footer>
+            <footer id='profile-settings-msg-email'></footer>
+            <footer id='profile-settings-msg-age'></footer>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
     <?php if($canEditProfile) { ?>
@@ -90,11 +92,11 @@
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> New Password </header>
-                    <input type="password" id="password" onkeyup='checkPass();' 
-                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
-                        title="Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character">
-                    <button class="submit-button" onclick='submitForm(3);'>
-                        <i class="fas fa-sync-alt"></i>
+                    <input type='password' id='password' onkeyup='checkPass();' 
+                        pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}' 
+                        title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
+                    <button class='submit-button' onclick='submitForm(3);'>
+                        <i class='fas fa-sync-alt'></i>
                     </button>
                 </article>
 
@@ -102,7 +104,8 @@
                     <header> Confirm password </header>
                     <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
                 </article>
-                <footer id='profile-settings-msg'></footer>
+                <footer id='profile-security-msg-password'></footer>
+                <footer id='profile-security-msg-newPassword'></footer>
         </section>
     <?php } ?>
 
