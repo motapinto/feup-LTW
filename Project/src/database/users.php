@@ -37,30 +37,22 @@
     function changeUser($id, $newEmail, $name, $age, $password){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT email FROM User WHERE email = ?');
-        $stmt->execute(array($newEmail));
-        $user = $stmt->fetch();
-
-        if (isset($user['email'])) 
-            return 2;
-
-        if($password != ''){
-            $stmt = $db->prepare('UPDATE User SET 
-                                email = ?,
-                                name = ?,
-                                age = ?,
-                                password = ?
-                                WHERE id = ?');
-            $stmt->execute(array($id, $newEmail, $name, $age, sha1($password), $id));
-        }
-        else {
-            $stmt = $db->prepare('UPDATE User
-                                SET email = ?,
-                                name = ?,
-                                age = ?,
-                                WHERE id = ?');
-            $stmt->execute(array($newEmail, $name, $age, $id));
-        }
+        $user = userProfile($id);
+        if($user['email'] !== $newEmail) {
+            $stmt = $db->prepare('SELECT email FROM User WHERE email = ?');
+            $stmt->execute(array($newEmail));
+            $res = $stmt->fetch();
+            if($res !== false)
+                return 2;
+            }
+            
+        $stmt = $db->prepare('UPDATE User
+                            SET email = ?,
+                            name = ?,
+                            age = ?
+                            WHERE id = ?');
+        $stmt->execute(array($newEmail, $name, $age, $id));
+        
         $user = $stmt->fetch();
         return !$user?0:1;
     }

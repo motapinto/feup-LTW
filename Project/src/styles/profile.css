@@ -140,7 +140,7 @@
         border-bottom: solid 1px rgb(136, 189, 234);   
     }
 
-    .profile-setting-elem:last-child {
+    .selected-tab article:last-of-type {
         border: none;
     }
 
