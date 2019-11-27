@@ -4,17 +4,17 @@
         <a href="../listings/listings_all.php">
             <button>Continue without login</button>
         </a> 
-        <h2>Log in</h2>
-        <input id='login-email' name="email" class="auth-input" type="email" placeholder="email" required/>
-        <input id='login-password' name="password" class="auth-input" type="password" placeholder="password" maxlength=30 required/>
-        <?php if(isset($_SESSION['msg'])) { ?>
-            <p><?=$_SESSION['msg']?></p>
-        <?php } ?>
-        <p id='login-msg'></p>
-        <a href="#">Forgot your password?</a>
-        <button onclick="submitLogin();" class="loginin_button">LOG IN</button>
-        <button class="signup_button" formaction="signup.php" formmethod="post">SIGN UP</button>
+        <article class="login-elem">
+            <h2>Log in</h2>
+            <input id='login-email' name="email" class="auth-input" type="email" placeholder="email" required/>
+            <input id='login-password' name="password" class="auth-input" type="password" placeholder="password" maxlength=30 required/>
+            <p id='login-msg'></p>
+            <a href="#">Forgot your password?</a>
+            <button onclick="submitLogin();" class="loginin_button">LOG IN</button>
+            <button class="signup_button" formaction="signup.php" formmethod="post">SIGN UP</button>
+        </article>
     </section>
+    <p>Copyright © FEUP | Developed by Martim Pinto da Silva and Luís Ramos</p>
 <?php } ?>
 
 <?php function draw_signup() { ?>

@@ -5,7 +5,6 @@
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
 
-
     if(isset($_GET['name'])) $option = 0;
     else if(isset($_GET['email'])) $option = 1;
     else if(isset($_GET['age'])) $option = 2;
@@ -43,5 +42,5 @@
             break;
     }
 
-    encodeForAJAX($ret);
+    encodeForAjax($ret);
 ?>

@@ -8,8 +8,6 @@ function submitLogin() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
-    alert('sad');
-
     let email = document.getElementById('login-email').value;
     email = email.replace('@', '%40');
     email = 'email=' + email;
@@ -17,7 +15,7 @@ function submitLogin() {
     let password = document.getElementById('login-password').value;
     password = 'password=' + password;
 
-    let request = email + ' ' + password;
+    let request = email + '&' + password;
     alert(request);
 
     // Define what happens on successful data submission
@@ -27,17 +25,15 @@ function submitLogin() {
         
         switch (response['response']) {
             case -1:
-                document.getElementById('email').value = startEmail;
-                document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
-                document.getElementById('profile-settings-msg-email').style.color = 'red';
-                document.getElementById('icon-name').className = 'fas fa-times';
+                alert('-1');
+                document.getElementById('login-msg').innerHTML = 'User does not exist';
+                document.getElementById('login-msg').style.color = 'red';
                 break;
 
             case -2:
-                document.getElementById('email').value = startEmail;
-                document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
-                document.getElementById('profile-settings-msg-email').style.color = 'red';
-                document.getElementById('icon-name').className = 'fas fa-times';
+                    alert('-2');
+                document.getElementById('login-msg').innerHTML = 'User does not exist';
+                document.getElementById('login-msg').style.color = 'Password incorrect';
                 break;
 
             default:
