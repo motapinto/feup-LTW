@@ -106,39 +106,29 @@ function checkPass() {
     if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
-        document.getElementById('profile-security-msg-password').innerHTML = 'The password\'s don\'t match';
-        document.getElementById('profile-security-msg-password').style.color = 'red';
-        document.getElementById('profile-settings-submit').disabled = true;
+        document.getElementById('profile-security-msg1-newPassword').innerHTML = 'The password\'s don\'t match';
+        document.getElementById('profile-security-msg1-newPassword').style.color = 'red';
     }
+    else {
+        document.getElementById('confirm_password').style.backgroundColor = 'white';
+        document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
+        document.getElementById('profile-security-msg1-newPassword').innerHTML = '';
+    }
+    
     if (!criteria.test(document.getElementById('password'))) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)';
-        document.getElementById('profile-security-msg-newPassword').innerHTML = 'The password must have at least eight characters, at least one uppercase letter, one lowercase letter and one number';
-        document.getElementById('profile-security-msg-newPassword').style.color = 'red';
-        document.getElementById('profile-settings-submit').disabled = true;
+        document.getElementById('profile-security-msg2-newPassword').innerHTML = 'The password must have at least eight characters, at least one uppercase letter, one lowercase letter and one number';
+        document.getElementById('profile-security-msg2-newPassword').style.color = 'red';
     }
     else {
-        document.getElementById('password').style.backgroundColor = 'white';
-        document.getElementById('password').style.border = 'solid 1px rgb(176, 183, 187)';
         document.getElementById('confirm_password').style.backgroundColor = 'white';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)';
-        document.getElementById('profile-security-msg-password').innerHTML = '';
-        document.getElementById('profile-security-msg-newPassword').innerHTML = '';
-        document.getElementById('profile-settings-submit').disabled = false;
+        document.getElementById('profile-security-msg2-newPassword').innerHTML = '';
     } 
 }
 
 function checkCurrentPassword() {
-    getCurrentPassword();
-}
-
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k) {
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&')
-}
-
-function getCurrentPassword() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
     let password = document.getElementById('current-password').value;
@@ -147,15 +137,19 @@ function getCurrentPassword() {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        alert(response['response']);
+        console.log(response['response']);
         switch (response['response']) {
             case -1:
                 document.getElementById('profile-security-msg-password').innerHTML = 'Current password is not correct';
                 document.getElementById('profile-security-msg-password').style.color = 'red';
+                document.getElementById('current-password').style.backgroundColor = 'rgb(246, 220, 220)';
+                document.getElementById('current-password').style.border = 'solid 1px rgb(233, 76, 76)';
                 break;
 
             default:
                 document.getElementById('profile-security-msg-password').innerHTML = '';
+                document.getElementById('current-password').style.backgroundColor = 'white';
+                document.getElementById('current-password').style.border = 'solid 1px rgb(176, 183, 187)';
                 break;
         }
     });
@@ -165,8 +159,14 @@ function getCurrentPassword() {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('POST', '../actions/action_profile_change.php?' + request, asynchronous);
+    xhttp.open('GET', '../actions/action_profile_change.php?' + request, asynchronous);
     xhttp.send();
+}
+
+function encodeForAjax(data) {
+    return Object.keys(data).map(function(k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&')
 }
 
 function submitForm(option) {
@@ -249,6 +249,6 @@ function submitForm(option) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('POST', '../actions/action_profile_change.php?' + request, asynchronous);
+    xhttp.open('GET', '../actions/action_profile_change.php?' + request, asynchronous);
     xhttp.send();
 }

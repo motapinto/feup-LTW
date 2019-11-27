@@ -35,7 +35,7 @@
             break; 
 
         case 4:
-            if($user['password'] === $_GET['currentPassword'])
+            if($user['password'] === sha1($_GET['currentPassword']))
                 $ret['response'] = 0;
             else
                 $ret['response'] = -1;

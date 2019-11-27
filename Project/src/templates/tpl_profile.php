@@ -77,8 +77,8 @@
                 <input id='age' type='number' min='2' onkeyup='checkAge();' value='<?=$user['age']?>'>
                 <i id='icon-age'></i>
             </article>
-            <footer id='profile-settings-msg-name'></footer>
-            <footer id='profile-settings-msg-email'></footer>
+            <footer id='profile-settings-msg-name'></footer> <br>
+            <footer id='profile-settings-msg-email'></footer> <br>
             <footer id='profile-settings-msg-age'></footer>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
@@ -102,8 +102,9 @@
                     <header> Confirm password </header>
                     <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
                 </article>
-                <footer id='profile-security-msg-password'></footer>
-                <footer id='profile-security-msg-newPassword'></footer>
+                <footer id='profile-security-msg-password'></footer> <br>
+                <footer id='profile-security-msg1-newPassword'></footer> <br>
+                <footer id='profile-security-msg2-newPassword'></footer>
         </section>
     <?php } ?>
 
