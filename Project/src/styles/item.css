@@ -2,9 +2,9 @@
     position: fixed;
     right: 5%;
     top: 8em;
-    height: 40%;
-    width: 30%;
-    border: 1px solid rgb(212,212,212);
+    min-width: 184px;
+    min-height: 300px;
+    border: 1px solid rgb(212, 212, 212);
     background-color: white;
 }
 
@@ -13,8 +13,9 @@
     font-size: larger;
     margin-bottom: 0;
 }
+
 .rent-header {
-    display:flex;
+    display: flex;
     flex-direction: row;
     padding-left: 8%;
     padding-top: 8%;
@@ -23,14 +24,17 @@
 .rent-rating_comments {
     padding-top: 10px;
 }
+
 .rent form {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .rent input {
     width: 10em;
 }
+
 .rent form button {
     width: 10em;
     background-color: rgb(250, 130, 130);
@@ -42,33 +46,12 @@
 #rent-star {
     font-size: 10px;
     color: teal;
-    border:none;
+    border: none;
 }
 
 .rent label {
     margin-top: 1em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #comments {
     border-top: white solid 0.1em;
@@ -132,4 +115,6 @@
     outline: none;
     resize: none;
     border-radius: 4px;
-}s
+}
+
+s

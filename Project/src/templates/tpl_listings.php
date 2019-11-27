@@ -34,11 +34,11 @@ function draw_list_all($listings) { ?>
 function draw_item($item, $owner=false) { 
     $comments = getCommentsByPropertyId($item['id']);
     $images = getImagePathsByPropertyId($item['id'], 'MEDIUM');
-    $user = userProfile($item['user_id']);
-?>
+    ?>
+
     <section id='list'>
         <article class='property'>
-            <h2><input type='<?php if($owner){ ?>text<?php } else { ?>disable <?php } ?>' name='title' value='<?=$item['title']?>'></h2>
+            <h2><?=$item['title']?></h2>
             <ul> 
             <?php foreach ($images as $image) { ?>
                 <li><img src=<?=$image?> alt='Image of the property '></li>          
@@ -48,9 +48,7 @@ function draw_item($item, $owner=false) {
                 <a href='../properties/add_property_image.php?id=<?=$id?>'>Add image(s)</a>
             <?php } ?>
             <!-- Galeria de imagens, possivelmente usando scripts? -->
-            <textarea name='description' <?php if(!$owner){ ?>readonly <?php } ?>>
-            <?=$item['description']?>
-            </textarea>
+            <p><?=$item['description']?></p>
             <p>Rating: <?=$item['rating']?></p>
             <p>Property type: 
             <?php
@@ -79,12 +77,12 @@ function draw_item($item, $owner=false) {
       <aside class='rent'>
         <section class='rent-header'>
           	<header>
-				<span id='rent-price'>
+				<p id='rent-price'>
 					€<?=$item['price_day']?>
 				</span>
 				<span>
 					per night
-				</span><br>
+				</p>
 				<i id='rent-star' class='material-icons'> star_border</i>
 				<span class='rent-rating_comments'>
 					<?=$item['rating']?>
@@ -122,10 +120,10 @@ function draw_item($item, $owner=false) {
           <input name='property_id' type='hidden' value='<?=$id?>'/>
           <button class='comment_button'>Comment</button>
       </form>
-<?php }
+    <?php }
     else { ?>
       <p id='comment_form'>To leave a comment please log in.</p>
-<?php } 
+    <?php } 
  } ?>
 
 
