@@ -43,7 +43,10 @@ button:focus {
     outline: none;
 }
 
+
 /*Elimantes num pad arrows when input is number*/
+
+
 /*https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
 
 input[type=number]::-webkit-inner-spin-button,
@@ -51,11 +54,13 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input[type=date]::-webkit-inner-spin-button,
 input[type=date]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 
 /* arranjar este topico */
 
@@ -73,8 +78,6 @@ header {
     margin: var(--main-margin);
     width: var(--main-width);
 }
-
-
 
 .circular-button {
     display: flex;
@@ -146,4 +149,9 @@ header {
     width: 10em;
     height: 10em;
     margin-right: 1em;
+}
+
+#list {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
