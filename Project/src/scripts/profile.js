@@ -1,19 +1,29 @@
 function profileOverview() {
     document.getElementById("profile-settings-tab").style.display = "none";
+    document.getElementById("profile-security-tab").style.display = "none";
     document.getElementById("profile-comments-tab").style.display = "none";
     document.getElementById("profile-overview-tab").style.display = "display";
 }
 
 function profileSettings() {
     document.getElementById("profile-overview-tab").style.display = "none";
+    document.getElementById("profile-security-tab").style.display = "none";
     document.getElementById("profile-comments-tab").style.display = "none";
     document.getElementById("profile-settings-tab").style.display = "block";
 }
 
 function profileComments() {
     document.getElementById("profile-overview-tab").style.display = "none";
-    document.getElementById("profile-comments-tab").style.display = "block";
     document.getElementById("profile-settings-tab").style.display = "none";
+    document.getElementById("profile-security-tab").style.display = "none";
+    document.getElementById("profile-comments-tab").style.display = "block";
+}
+
+function profileSecurity() {
+    document.getElementById("profile-overview-tab").style.display = "none";
+    document.getElementById("profile-settings-tab").style.display = "none";
+    document.getElementById("profile-comments-tab").style.display = "none";
+    document.getElementById("profile-security-tab").style.display = "block";
 }
 
 function checkEmail() {

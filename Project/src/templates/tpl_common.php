@@ -8,9 +8,11 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <link rel="stylesheet" href="../styles/nav_bar.css">
             <link rel="stylesheet" href="../styles/login.css">
-            <link rel="stylesheet" href="../styles/item.css">
             <link rel="stylesheet" href="../styles/body.css">
-            <!--*********************************************** PROFILE  ***********************************************-->
+<!--************************ ITEM  ************************-->
+            <link rel="stylesheet" href="../styles/item.css">
+            <script src="../scripts/item.js"></script>
+<!--************************ PROFILE  ************************-->
             <link rel="stylesheet" href="../styles/profile.css">
             <script src="../scripts/profile.js"></script>
         </head>

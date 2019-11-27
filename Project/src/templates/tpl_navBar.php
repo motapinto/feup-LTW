@@ -7,23 +7,35 @@
         <?php if(isset($_SESSION['id'])) { 
             switch ($option) {
                 case 0: ?>
-                    <a id='navbar-properties' class='selected-navbar-elem' href='../properties/properties.php'>My Properties </a>
+                    <a id='navbar-properties' class='selected-navbar-elem' href='../listings/listings_all.php'> Home </a>
+                    <a id='navbar-properties' class='common-navbar-elem' href='../properties/properties.php'>My Properties </a>
                     <a id='navbar-profile' class='common-navbar-elem' href='../profile/profile.php'> Profile </a>
                     <a id='navbar-logout' class='common-navbar-elem' href='../actions/action_logout.php'> Log Out </a>
                 <?php break;
                 
                 case 1: ?>
+                    <a id='navbar-properties' class='common-navbar-elem' href='../listings/listings_all.php'> Home </a>
+                    <a id='navbar-properties' class='selected-navbar-elem' href='../properties/properties.php'>My Properties </a>
+                    <a id='navbar-profile' class='common-navbar-elem' href='../profile/profile.php'> Profile </a>
+                    <a id='navbar-logout' class='common-navbar-elem' href='../actions/action_logout.php'> Log Out </a>
+                <?php break;
+
+                case 2: ?>
+                    <a id='navbar-properties' class='common-navbar-elem' href='../listings/listings_all.php'> Home </a>
                     <a id='navbar-properties' class='common-navbar-elem' href='../properties/properties.php'>My Properties </a>
                     <a id='navbar-profile' class='selected-navbar-elem' href='../profile/profile.php'> Profile </a>
                     <a id='navbar-logout' class='common-navbar-elem' href='../actions/action_logout.php'> Log Out </a>
                 <?php break;
 
-                case 2: ?>
+                case 3: ?>
+                    <a id='navbar-properties' class='common-navbar-elem' href='../listings/listings_all.php'> Home </a>
                     <a id='navbar-properties' class='common-navbar-elem' href='../properties/properties.php'>My Properties </a>
                     <a id='navbar-profile' class='common-navbar-elem' href='../profile/profile.php'> Profile </a>
                     <a id='navbar-logout' class='selected-navbar-elem' href='../actions/action_logout.php'> Log Out </a>
                 <?php break;
+
                 default: ?>
+                    <a id='navbar-properties' class='common-navbar-elem' href='../listings/listings_all.php'> Home </a>
                     <a id='navbar-properties' class='common-navbar-elem' href='../properties/properties.php'>My Properties </a>
                     <a id='navbar-profile' class='common-navbar-elem' href='../profile/profile.php'> Profile </a>
                     <a id='navbar-logout' class='common-navbar-elem' href='../actions/action_logout.php'> Log Out </a>

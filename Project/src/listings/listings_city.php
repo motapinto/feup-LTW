@@ -13,7 +13,7 @@
     $listings = getListingByCity($_GET['search']);               // gets all listings in city from the database
 
     draw_header('Listings City');
-    draw_navBar();
+    draw_navBar(0);
 
     draw_allListings($listings);
 

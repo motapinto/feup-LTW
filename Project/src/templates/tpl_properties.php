@@ -8,7 +8,7 @@ function draw_property($property){
     $image = getFirstImagePathOfProperty($property['id']);
     ?>
     <li class='property'>
-        <a href="property.php?id=<?=$property['id']?>">
+        <a href="../listings/item.php?id=<?=$property['id']?>">
         <?php if(isset($image)) { ?>
             <img src=<?=$image?> alt="Image of property">
         <?php } ?>

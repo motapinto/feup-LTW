@@ -2,29 +2,28 @@
   include_once('../includes/database.php');
   include_once('../database/images.php');
   include_once('../database/comments.php');
+  include_once('../database/users.php');
 
 
 function draw_list_item($item){ 
-  $image = getFirstImagePathOfProperty($item['id']);
-  ?>
-  <article class='item'>
-    <a href="item.php?id=<?=$item['id']?>">
-    <!-- missing image -->
-    <?php if(isset($image)) { ?>
-      <!-- <img src=<?=$image?> alt="Image of property"> -->
-    <?php } ?>
+  	$image = getFirstImagePathOfProperty($item['id']);
+  	?>
+  	<article class='item'>
+		<a href='item.php?id=<?=$item['id']?>'>
+			<!-- missing image -->
+			<?php if(isset($image)) { ?>
+				<!-- <img src=<?=$image?> alt='Image of property'> -->
+			<?php } ?>
 
-      <h1>
-          <?=$item['title']?>
-      </h1>
-      <p><!-- missing star image -->Rating: <?=$item['rating']?> stars</p>
-      <p class="comments">Comments: <?=numberCommentsByProperty($item['id'])?></p>
-    </a>
-  </article>
+			<h1> <?=$item['title']?> </h1>
+			<p><!-- missing star image -->Rating: <?=$item['rating']?> stars</p>
+			<p class='comments'>Comments: <?=numberCommentsByProperty($item['id'])?></p>
+		</a>
+  	</article>
 <?php }
 
 function draw_list_all($listings) { ?>
-  <section id="listings">
+  <section id='listings'>
     <?php foreach($listings as $item) { 
       draw_list_item($item);
     } ?>
@@ -46,7 +45,7 @@ function draw_item($item, $owner=false) {
             <?php } ?>
             </ul>
             <?php if($owner){ ?>
-                <a href="../properties/add_property_image.php?id=<?=$id?>">Add image(s)</a>
+                <a href='../properties/add_property_image.php?id=<?=$id?>'>Add image(s)</a>
             <?php } ?>
             <!-- Galeria de imagens, possivelmente usando scripts? -->
             <p><?=$item['description']?></p>
@@ -67,54 +66,59 @@ function draw_item($item, $owner=false) {
             ?>
             </p>
             <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
-            <p>Price per day: <?=$item['price_day']?>$</p>
+			<p>Price per day: <?=$item['price_day']?>$</p>
+			<a href='../profile/profile.php'>
+				<p>Owner: <?=$user['name']?></p>
+				<?=$_SESSION['profile'] = $user['id']?>
+			</a>
         </article>
       
-    <!--*********************** CALENDER + RENT (RIGHT SIDE) ***********************-->
-        <aside class='rent'>
-            <section class="rent-header">
-                <header>
-                    <span id="rent-price">
-                        €<?=$item['price_day']?>
-                    </span>
-                    <span>
-                        per night
-                    </span><br>
-                    <i id="rent-star" class="material-icons"> star_border</i>
-                    <span class="rent-rating_comments">
-                        <?=$item['rating']?>
-                        (<?=numberCommentsByProperty($item['id'])?> comments)
-                    </span>
-                </header>
-            
+<!--*********************** CALENDER + RENT (RIGHT SIDE) ***********************-->
+      <aside class='rent'>
+        <section class='rent-header'>
+          	<header>
+				<p id='rent-price'>
+					€<?=$item['price_day']?>
+				</span>
+				<span>
+					per night
+				</p>
+				<i id='rent-star' class='material-icons'> star_border</i>
+				<span class='rent-rating_comments'>
+					<?=$item['rating']?>
+					(<?=numberCommentsByProperty($item['id'])?> comments)
+				</span>
+			</header>
+		
 
-            </section class="rent-body">
-                <form action="../rent/rent.php" method="POST">
-                    <input name="id" type='hidden' value=<?=$item['id']?>/>
-                    <label>Check In</label>
-                    <input type="date" name="check_in" title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-                    <label>Check Out</label>
-                    <input type="date" name="check_out" title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-                    <label>Number of Guests</label>
-                    <input type="number" min="1" max=<?=$item['guests']?> value="1"/>
-                    <!-- <label>Number of Adults</label>
-                    <input type="number" min="1" max=<?=$item['guests']?> value="1"/>
-                    <label>Number of Children</label>
-                    <input type="number" min="1" max=<?=$item['guests']?> value="1"/>
-                    <label>Number of Babies</label>
-                    <input type="number" min="1" max=<?=$item['guests']?> value="1"/> -->
-                    <button class="rent_button">Rent</button>
-                </form>
-            </section>
-        </aside>
-    <?php
+        </section class='rent-body'>
+			<form action='../rent/rent.php' method='POST'>
+				<input name='id' type='hidden' value=<?=$item['id']?>/>
+				<label>Check In</label>
+				<input type='date' name='check_in' title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
+				<label>Check Out</label>
+				<input type='date' name='check_out' title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
+				<label>Number of Guests</label>
+				<input type='number' min='1' max=<?=$item['guests']?> value='1'/>
+				<!-- <label>Number of Adults</label>
+				<input type='number' min='1' max=<?=$item['guests']?> value='1'/>
+				<label>Number of Children</label>
+				<input type='number' min='1' max=<?=$item['guests']?> value='1'/>
+				<label>Number of Babies</label>
+				<input type='number' min='1' max=<?=$item['guests']?> value='1'/> -->
+				<button class='rent_button'>Rent</button>
+			</form>
+		  </section>
+
+    </aside>
+<?php
     draw_allComments($comments);
     if(isset($_SESSION['id'])){ ?>
-      <form id='comment_form' action="../actions/action_comment.php" method="POST">
+      <form id='comment_form' action='../actions/action_comment.php' method='POST'>
           <h4>Leave a comment</h4>
-          <textarea name="comment" cols="40" rows="5" placeholder="Describe your experience" required></textarea>
-          <input name="property_id" type="hidden" value="<?=$id?>"/>
-          <button class="comment_button">Comment</button>
+          <textarea name='comment' cols='40' rows='5' placeholder='Describe your experience' required></textarea>
+          <input name='property_id' type='hidden' value='<?=$id?>'/>
+          <button class='comment_button'>Comment</button>
       </form>
     <?php }
     else { ?>
