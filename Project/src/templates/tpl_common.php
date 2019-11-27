@@ -7,9 +7,11 @@
             <script src="https://kit.fontawesome.com/2ebd8c9c01.js" crossorigin="anonymous"></script>
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <link rel="stylesheet" href="../styles/nav_bar.css">
-            <link rel="stylesheet" href="../styles/login.css">
             <link rel="stylesheet" href="../styles/body.css">
-<!--************************ ITEM  ************************-->
+<!--******************** AUTHENTICATION  *********************-->
+            <link rel="stylesheet" href="../styles/authentication.css">
+            <script src="../scripts/authentication.js" defer></script>
+<!--************************* ITEM  **************************-->
             <link rel="stylesheet" href="../styles/item.css">
             <script src="../scripts/item.js" defer></script>
 <!--************************ PROFILE  ************************-->

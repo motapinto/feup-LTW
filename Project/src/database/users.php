@@ -1,9 +1,6 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
 
-    define("User does not exist", -1);
-    define("User exists but wrong password", -2);
-
     // Checks if the input user exists
     function checkUser($email, $password){
         $db = Database::instance()->db();
@@ -13,13 +10,13 @@
         $user = $stmt->fetch();
 
         if (!$user) 
-            return "User does not exist";
+            return -1;
         
         if(strtoupper(sha1($password)) === strtoupper($user['password']))
             return $user['id'];
 
         else
-            return "User exists but wrong password";
+            return -2;
     }
 
     // Returns the user with the received email

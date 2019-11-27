@@ -137,7 +137,6 @@ function checkCurrentPassword() {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        console.log(response['response']);
         switch (response['response']) {
             case -1:
                 document.getElementById('profile-security-msg-password').innerHTML = 'Current password is not correct';
@@ -207,7 +206,6 @@ function submitForm(option) {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        console.log(response);
         switch (option) {
             // user name
             case 0:

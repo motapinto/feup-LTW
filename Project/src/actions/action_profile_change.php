@@ -1,11 +1,10 @@
 <?php
     include_once('../includes/session.php');        // starts the session
+    include_once('../database/users.php');          // user functions
 
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
 
-    include_once('../database/users.php');          // user functions
-    include_once('../templates/tpl_common.php');
 
     if(isset($_GET['name'])) $option = 0;
     else if(isset($_GET['email'])) $option = 1;
