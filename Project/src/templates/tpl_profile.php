@@ -78,7 +78,7 @@
                 <header> Name </header>
                 <input id='name' type='text' value='<?=$user['name']?>'>
                 <button class="submit-button" onclick='submitForm(0);'>
-                    <i class="fas fa-sync-alt"></i>
+                    <i id="icon-name" class="fas fa-sync-alt"></i>
                 </button>
             </article>
 
@@ -86,7 +86,7 @@
                 <header> Email </header>
                 <input id='email' type='email' value='<?=$user['email']?>'>
                 <button class="submit-button" onclick='submitForm(1);'>
-                    <i class="fas fa-sync-alt"></i>
+                    <i id="icon-email" class="fas fa-sync-alt"></i>
                 </button>                
             </article>
 
@@ -94,9 +94,10 @@
                 <header> Age </header>
                 <input id='age' type='number' min='18' max='120' value='<?=$user['age']?>'>
                 <button class="submit-button" onclick='submitForm(2);'>
-                    <i class="fas fa-sync-alt"></i>
+                    <i id="icon-age" class="fas fa-sync-alt"></i>
                 </button>
             </article>
+            <footer id='profile-settings-msg-email'></footer>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
     <?php if($canEditProfile) { ?>
