@@ -7,7 +7,7 @@ function profileSubMenu(option) {
             document.getElementById('profile-settings-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'none';
             document.getElementById('profile-comments-tab').style.display = 'none';
-            document.getElementById('profile-overview-tab').style.display = 'display';
+            document.getElementById('profile-overview-tab').style.display = 'block';
             break;
 
         case 1:
