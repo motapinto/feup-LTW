@@ -21,6 +21,15 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+#photo-submit {
+    background-color: white;
+}
+
+#photo-submit:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .profile-name {
     text-align: center;
     color: black;
