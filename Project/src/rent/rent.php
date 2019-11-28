@@ -24,13 +24,28 @@
     draw_navBar(-1);
 ?>
     <section id='Rent'>
-        <form action="">
-            <input type="date" name="checkin" <?php if(isset($_GET['checkin'])) { ?> value="<?=$_GET['checkin']?>" <?php } ?>>
-            <input type="date" name="checkout" <?php if(isset($_GET['checkout'])) { ?> value="<?=$_GET['checkout']?>" <?php } ?>>
-            <p>Maximum number of guests: <?=$property['guests']?></p>
-            <input type="number" name="adults" min='0' max="<?=$property['guests']?>" value="<?=$adults?>">
-            <input type="number" name="children" min='0' max="<?=$property['guests']?>" value="<?=$children?>">
-            <input type="number" name="babies" min='0' max="<?=$property['guests']?>" value="<?=$babies?>">
+        <form action=".">
+            <section>
+                <p>Check In Date</p>
+                <input type="date" name="checkin" <?php if(isset($_GET['checkin'])) { ?> value="<?=$_GET['checkin']?>" <?php } ?>>
+            </section>
+            <section>
+                <p>Check Out Date</p>
+                <input type="date" name="checkout" <?php if(isset($_GET['checkout'])) { ?> value="<?=$_GET['checkout']?>" <?php } ?>>
+            </section>
+            <section>
+                <input type="hidden" value="<?=$property['guests']?>">
+                <p>Maximum number of guests: <?=$property['guests']?></p>   
+                <button class="button-guests" onclick="addAdult()">+</button>
+                <input id="adults" type="disabled" name="adults" min='0' max="<?=$property['guests']?>" value="<?=$adults?>">
+                <button class="button-guests" onclick="subAdult()">-</button>
+                <button class="button-guests" onclick="addChild()">+</button>
+                <input id="children" type="disabled" name="children" min='0' max="<?=$property['guests']?>" value="<?=$children?>">
+                <button class="button-guests" onclick="subChild()">-</button>
+                <button class="button-guests" onclick="addBaby()">+</button>
+                <input id="babies" type="disabled" name="babies" min='0' max="<?=$property['guests']?>" value="<?=$babies?>">
+                <button class="button-guests" onclick="subBaby()">-</button>
+            </section>
             <button>Rent</button>
         </form>
     </section>
