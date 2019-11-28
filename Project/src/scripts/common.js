@@ -10,7 +10,7 @@ function checkName(inProfile=false) {
             document.getElementsByClassName('name')[0].style.border = 'solid 1px rgb(176, 183, 187)';
             document.getElementById('icon-name').style.color = 'black';
             document.getElementById('icon-name').className = 'fas fa-check';
-            document.getElementById('user-name').value = document.getElementsByClassName('name')[0].value;
+            document.getElementById('user-name').textContent = document.getElementsByClassName('name')[0].value;
             submitForm(0);
         }
         return true;
