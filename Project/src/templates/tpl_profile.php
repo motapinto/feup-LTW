@@ -34,7 +34,7 @@
                     <button type='button' class='circular-button'>Properties</button>
                 </a>
                 <a href='#'>
-                    <button type='button' class='circular-button'>Message</button>
+                    <button type='button' class='circular-button'>Message/Messages</button>
                 </a>
             </article>
 
@@ -77,9 +77,9 @@
                 <input id='age' type='number' min='2' onkeyup='checkAge();' value='<?=$user['age']?>'>
                 <i id='icon-age'></i>
             </article>
-            <footer id='profile-settings-msg-name'></footer> <br>
-            <footer id='profile-settings-msg-email'></footer> <br>
-            <footer id='profile-settings-msg-age'></footer>
+            <p id='profile-settings-msg-name'></p>
+            <p id='profile-settings-msg-email'></p>
+            <p id='profile-settings-msg-age'></p>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
     <?php if($canEditProfile) { ?>
@@ -87,24 +87,23 @@
             <h1 id='profile-security-title'>Security Details</h1>
                 <article id='profile-security-password' class='profile-setting-elem'>
                     <header> Current Password </header>
-                    <input id='current-password' type='password' onkeyup="checkCurrentPassword();"value=''>
+                    <input id='current-password' type='password' onkeyup='checkCurrentPassword();'value=''>
                 </article>
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> New Password </header>
-                    <input type='password' id='password' onkeyup='checkPass();' 
-                        pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}' 
+                    <input type='password' id='password' onkeyup='checkPass();' disabled 
                         title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
-                    <button onclick='submitForm();'> Save </button>
+                        <button id='password-change' style='display:none;' onclick='submitForm();'> Save</button>
                 </article>
 
                 <article id='profile-settings-confirm_password' class='profile-setting-elem'>
                     <header> Confirm password </header>
-                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
+                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();' disabled >
                 </article>
-                <footer id='profile-security-msg-password'></footer> <br>
-                <footer id='profile-security-msg1-newPassword'></footer> <br>
-                <footer id='profile-security-msg2-newPassword'></footer>
+                <p id='profile-security-msg-password'></p>
+                <p id='profile-security-msg1-newPassword'></p>
+                <p id='profile-security-msg2-newPassword'></p>
         </section>
     <?php } ?>
 

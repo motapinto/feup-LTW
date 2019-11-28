@@ -6,8 +6,11 @@
             <meta charset="UTF-8">
             <script src="https://kit.fontawesome.com/2ebd8c9c01.js" crossorigin="anonymous"></script>
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
+            
             <link rel="stylesheet" href="../styles/nav_bar.css">
+<!--************************ COMMON  *************************-->
             <link rel="stylesheet" href="../styles/body.css">
+            <script src="../scripts/common.js" defer></script>
 <!--******************** AUTHENTICATION  *********************-->
             <link rel="stylesheet" href="../styles/authentication.css">
 <!--************************* ITEM  **************************-->

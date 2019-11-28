@@ -1,10 +1,10 @@
 <?php
     include_once('../includes/session.php');        // starts the session
     include_once('../database/users.php');          // user functions
+    include_once('../templates/tpl_common.php');    // encodeForAJAX
 
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
-
 
     if(isset($_GET['name'])) $option = 0;
     else if(isset($_GET['email'])) $option = 1;
@@ -33,6 +33,7 @@
             $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
             break; 
 
+        // confirms current password
         case 4:
             if($user['password'] === sha1($_GET['currentPassword']))
                 $ret['response'] = 0;
