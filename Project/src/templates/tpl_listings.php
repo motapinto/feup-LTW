@@ -99,25 +99,28 @@ function draw_item($item, $owner=false) {
 				<input type='date' name='check_in' title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
 				<label>Check Out</label>
 				<input type='date' name='check_out' title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
-				<label>Number of Guests</label>
+				<label>Number of Guests <span id="current-guests">1</span></label>
+                <button onclick="dropdown()"><i class="fas fa-chevron-down"></i></button>
                 <section id='dropdown'>
-                    <p>Maximum number of guests: <?=$item['guests']?></p>   
+                    <p>Maximum number of guests: <?=$item['guests']?></p>  
                     <input id="guests" type="hidden" value="<?=$item['guests']?>">
-                    <label>Number of adults</label>
-                    <button class="button-guests" onclick="guestsChange(ADULTS, ADD)">+</button>
-                    <input id="adults" type="disabled" name="adults" min='1' max="<?=$item['guests']?>" value="1">
-                    <button class="button-guests" onclick="guestsChange(ADULTS, SUB)">-</button>
-                    <label>Number of children</label>
-                    <button class="button-guests" onclick="guestsChange(CHILDREN, ADD)">+</button>
-                    <input id="children" type="disabled" name="children" min='0' max="<?=$item['guests']?>" value="0">
-                    <button class="button-guests" onclick="guestsChange(CHILDREN, SUB)">-</button>
-                    <label>Number of babies</label>
-                    <button class="button-guests" onclick="guestsChange(BABIES, ADD)">+</button>
-                    <input id="babies" type="disabled" name="babies" min='0' max="<?=$item['guests']?>" value="0">
-                    <button class="button-guests" onclick="guestsChange(BABIES, SUB)">-</button>
-                    <span class='error' id='msg-guests'></span>
+                    <section id='change-guests'>
+                        <label>Number of adults</label>
+                        <button class="button-guests" onclick="guestsChange(ADULTS, ADD)" type="button">+</button>
+                        <input id="adults" type="disabled" name="adults" min='1' max="<?=$item['guests']?>" value="1">
+                        <button class="button-guests" onclick="guestsChange(ADULTS, SUB)" type="button">-</button>
+                        <label>Number of children</label>
+                        <button class="button-guests" onclick="guestsChange(CHILDREN, ADD)" type="button">+</button>
+                        <input id="children" type="disabled" name="children" min='0' max="<?=$item['guests']?>" value="0">
+                        <button class="button-guests" onclick="guestsChange(CHILDREN, SUB)" type="button">-</button>
+                        <label>Number of babies</label>
+                        <button class="button-guests" onclick="guestsChange(BABIES, ADD)" type="button">+</button>
+                        <input id="babies" type="disabled" name="babies" min='0' max="<?=$item['guests']?>" value="0">
+                        <button class="button-guests" onclick="guestsChange(BABIES, SUB)" type="button">-</button>
+                        <span class='error' id='msg-guests'></span>
+                    </section>
                 </section>
-				<button class='rent_button'>Rent</button>
+				<input class='rent_button' type="submit" value="Rent">
 			</form>
 		  </section>
 

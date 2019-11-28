@@ -90,7 +90,7 @@ function checkEmail(inProfile=false) {
 
 function checkPass() {
     let password = document.getElementsByClassName('name')[0].value;
-    let isLegal = /(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*/.test(password);
+    let isLegal = /(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])./.test(password);
 
     if(isLegal) {
         document.getElementsByClassName('password')[0].style.backgroundColor = 'white';

@@ -13,7 +13,7 @@
     $id = $_GET['id'];
     $item = getListingById($id);
 
-    draw_header('Campus Rentals');
+    draw_header('Campus Rentals', 'rent');
     draw_navBar(1);
 
     if(isset($_SESSION['id']) && $item['user_id'] === $_SESSION['id'])
