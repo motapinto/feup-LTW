@@ -34,6 +34,7 @@
             $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
             break; 
 
+        // confirms current password
         case 4:
             if($user['password'] === sha1($_GET['currentPassword']))
                 $ret['response'] = 0;

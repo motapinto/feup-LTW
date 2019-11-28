@@ -87,20 +87,20 @@
             <h1 id='profile-security-title'>Security Details</h1>
                 <article id='profile-security-password' class='profile-setting-elem'>
                     <header> Current Password </header>
-                    <input id='current-password' type='password' onkeyup="checkCurrentPassword();"value=''>
+                    <input id='current-password' type='password' onkeyup='checkCurrentPassword();'value=''>
                 </article>
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> New Password </header>
-                    <input type='password' id='password' onkeyup='checkPass();' 
+                    <input type='password' id='password' onkeyup='checkPass();' disabled 
                         pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}' 
                         title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
-                    <button onclick='submitForm();'> Save </button>
+                        <button id='password-change' style='display:none;' onclick='submitForm();'> Save</button>
                 </article>
 
                 <article id='profile-settings-confirm_password' class='profile-setting-elem'>
                     <header> Confirm password </header>
-                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();'/>
+                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();' disabled >
                 </article>
                 <p id='profile-security-msg-password'></p>
                 <p id='profile-security-msg1-newPassword'></p>

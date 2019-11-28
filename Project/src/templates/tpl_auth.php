@@ -30,11 +30,11 @@
             <input name="email" type="email" id="signup-email" onkeyup="aa();" class="auth-input" placeholder="email" required />
             <input type="password" name="password" id="signup-password" class="auth-input" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}" title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" placeholder="Password">
             
-            <p class="signup-msg-name"></p> 
-            <p class="signup-msg-age"></p> 
-            <p class="signup-msg-email"></p> 
-            <p class="signup-msg-password1"></p> 
-            <p class="signup-msg-password2"></p> 
+            <span class="signup-msg-name"></span> 
+            <span class="signup-msg-age"></span> 
+            <span class="signup-msg-email"></span> 
+            <span class="signup-msg-password1"></span> 
+            <span class="signup-msg-password2"></span> 
 
             <a href="#">Forgot your password?</a>
             <a href="#"><button class="signup_buttons">SIGN UP</button></a>

@@ -22,8 +22,8 @@ function profileSubMenu(option) {
             document.getElementById('profile-comments-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'block';
             break;
-        case 3:
 
+        case 3:
             document.getElementById('profile-overview-tab').style.display = 'none';
             document.getElementById('profile-settings-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'none';
@@ -37,8 +37,8 @@ function profileSubMenu(option) {
 
 function checkName() {
     let name = document.getElementById('name').value;
-    var nameTest = new RegExp("^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$");
-    var isLegal = nameTest.test(name);
+    let nameTest = new RegExp("^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$");
+    let isLegal = nameTest.test(name);
     if(isLegal) {
         document.getElementById('icon-name').style.color = 'black';
         document.getElementById('icon-name').className = 'fas fa-check';
@@ -101,7 +101,8 @@ function checkAge() {
 
 function checkPass() {
 
-    let criteria = new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}");
+    let criteria = new RegExp("[A-Za-z]");
+    let isLegal = criteria.test(document.getElementById('password').value);
 
     if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
@@ -113,17 +114,19 @@ function checkPass() {
         document.getElementById('confirm_password').style.backgroundColor = 'white';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
         document.getElementById('profile-security-msg1-newPassword').innerHTML = '';
+        if(isLegal) 
+            submitForm(3);
     }
     
-    if (!criteria.test(document.getElementById('password'))) {
-        document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)';
+    if (!isLegal) {
+        document.getElementById('password').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('password').style.border = 'solid 1px rgb(233, 76, 76)';
         document.getElementById('profile-security-msg2-newPassword').innerHTML = 'The password must have at least eight characters, at least one uppercase letter, one lowercase letter and one number';
         document.getElementById('profile-security-msg2-newPassword').style.color = 'red';
     }
     else {
-        document.getElementById('confirm_password').style.backgroundColor = 'white';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)';
+        document.getElementById('password').style.backgroundColor = 'white';
+        document.getElementById('password').style.border = 'solid 1px rgb(176, 183, 187)';
         document.getElementById('profile-security-msg2-newPassword').innerHTML = '';
     } 
 }
@@ -143,12 +146,18 @@ function checkCurrentPassword() {
                 document.getElementById('profile-security-msg-password').style.color = 'red';
                 document.getElementById('current-password').style.backgroundColor = 'rgb(246, 220, 220)';
                 document.getElementById('current-password').style.border = 'solid 1px rgb(233, 76, 76)';
+                document.getElementById('password').disabled = true;
+                document.getElementById('confirm_password').disabled = true;
+                document.getElementById('password-change').style.display = 'none';
                 break;
 
             default:
                 document.getElementById('profile-security-msg-password').innerHTML = '';
                 document.getElementById('current-password').style.backgroundColor = 'white';
                 document.getElementById('current-password').style.border = 'solid 1px rgb(176, 183, 187)';
+                document.getElementById('password').disabled = false;
+                document.getElementById('confirm_password').disabled = false;
+                document.getElementById('password-change').style.display = 'block';
                 break;
         }
     });
