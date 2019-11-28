@@ -37,8 +37,7 @@ function profileSubMenu(option) {
 
 function checkName() {
     let name = document.getElementById('name').value;
-    let nameTest = new RegExp("^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$");
-    let isLegal = nameTest.test(name);
+    let isLegal = /^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$/.test(name);
     if(isLegal) {
         document.getElementById('icon-name').style.color = 'black';
         document.getElementById('icon-name').className = 'fas fa-check';
@@ -60,8 +59,7 @@ function checkName() {
 
 function checkEmail() {
     let email = document.getElementById('email').value;
-    let emailTest = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
-    let isLegal = emailTest.test(email);
+    let isLegal = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email);
 
     if(isLegal) {
         document.getElementById('profile-settings-msg-email').innerHTML = '';
@@ -102,8 +100,7 @@ function checkAge() {
 function checkPass() {
 
     let password = document.getElementById('password').value;
-    let criteria = new RegExp("[\w]{8,}");
-    let isLegal = criteria.test(password);
+    let isLegal = /\w{8,}/.test(password);
     if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
