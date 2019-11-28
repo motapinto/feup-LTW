@@ -46,9 +46,10 @@
         $stmt = $db->prepare('UPDATE User
                             SET email = ?,
                             name = ?,
-                            age = ?
+                            age = ?,
+                            password = ?
                             WHERE id = ?');
-        $stmt->execute(array($newEmail, $name, $age, $id));
+        $stmt->execute(array($newEmail, $name, $age, $id, $password));
         
         $user = $stmt->fetch();
         return !$user?0:1;

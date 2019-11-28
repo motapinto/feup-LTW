@@ -34,7 +34,7 @@
                     <button type='button' class='circular-button'>Properties</button>
                 </a>
                 <a href='#'>
-                    <button type='button' class='circular-button'>Message</button>
+                    <button type='button' class='circular-button'>Message/Messages</button>
                 </a>
             </article>
 
@@ -93,7 +93,6 @@
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> New Password </header>
                     <input type='password' id='password' onkeyup='checkPass();' disabled 
-                        pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}' 
                         title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
                         <button id='password-change' style='display:none;' onclick='submitForm();'> Save</button>
                 </article>

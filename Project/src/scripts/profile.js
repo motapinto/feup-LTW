@@ -37,7 +37,7 @@ function profileSubMenu(option) {
 
 function checkName() {
     let name = document.getElementById('name').value;
-    let nameTest = new RegExp("^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$");
+    let nameTest = new RegExp("^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$");
     let isLegal = nameTest.test(name);
     if(isLegal) {
         document.getElementById('icon-name').style.color = 'black';
@@ -101,9 +101,9 @@ function checkAge() {
 
 function checkPass() {
 
-    let criteria = new RegExp("[A-Za-z]");
-    let isLegal = criteria.test(document.getElementById('password').value);
-
+    let password = document.getElementById('password').value;
+    let criteria = new RegExp("[A-Z]");
+    let isLegal = criteria.test(password);
     if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
@@ -210,10 +210,6 @@ function submitForm(option) {
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
         switch (option) {
-            // user name
-            case 0:
-                document.getElementById('user-name').innerHTML = name;
-                
             // user email
             case 1:
                 switch (response['response']) {
@@ -238,6 +234,9 @@ function submitForm(option) {
                     default:
                         break;
                 }
+                break;
+            case 3:
+                alert(response['response']);
                 break;
 
             default:

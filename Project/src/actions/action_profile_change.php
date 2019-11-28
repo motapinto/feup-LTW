@@ -3,7 +3,6 @@
     include_once('../database/users.php');          // user functions
     include_once('../templates/tpl_common.php');    // encodeForAJAX
 
-
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
 
