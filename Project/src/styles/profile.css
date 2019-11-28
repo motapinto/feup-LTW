@@ -178,3 +178,11 @@ i {
 #user-name{
     text-align: center;
 }
+
+/******************** PROFILE MESSAGES *********************/
+
+#profile-sendMessage {
+    display: flexbox;
+    flex-direction: row;
+}
+

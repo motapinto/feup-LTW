@@ -140,7 +140,7 @@
         <section id='profile-sendMessage-tab' class='selected-tab'>
             <h1 id='profile-settings-title'>Edit Profile</h1>
                 <form id='profile-sendMessage' class='profile-setting-elem' action="../actions/action_message_add.php" method="get">
-                    <label for="sendMessage"></label>
+                    <label for="sendMessage"></label> <br>
                     <textarea name="sendMessage" id="sendMessage" cols="10" rows="10"></textarea> 
                     <input name="receiver" type="number" value='<?=$user['id']?>' style="display: none">
                     <button class="no-button"> Send Message </button>
