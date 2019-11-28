@@ -34,7 +34,10 @@
                     <button type='button' class='circular-button'>Properties</button>
                 </a>
                 <a href='#'>
-                    <button type='button' class='circular-button'>Message/Messages</button>
+                    <button type='button' class='circular-button'>
+                    <?php if($canEditProfile) { ?> Messages <?php } ?>    
+                    <?php if(!$canEditProfile) { ?> Send Message <?php } ?>    
+                    </button>
                 </a>
             </article>
 
@@ -62,20 +65,35 @@
         <h1 id='profile-settings-title'>Edit Profile</h1>
             <article id='profile-setting-name' class='profile-setting-elem'>
                 <header> Name </header>
+                <?php if($canEditProfile) { ?>
                 <input class='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
                 <i id='icon-name'></i>
+                <?php } ?>    
+                <?php if(!$canEditProfile) { ?> 
+                <input value='<?=$user['name']?>' disabled> 
+                <?php } ?>  
             </article>
 
             <article id='profile-setting-email' class='profile-setting-elem'>
                 <header> Email </header>
+                <?php if($canEditProfile) { ?>
                 <input class='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
                 <button onclick='submitForm(1)'> Save </button>
+                <?php } ?>    
+                <?php if(!$canEditProfile) { ?> 
+                <input value='<?=$user['email']?>' disabled> 
+                <?php } ?>    
             </article>
 
             <article id='profile-setting-age' class='profile-setting-elem'>
+                <?php if($canEditProfile) { ?>
                 <header> Age </header>
                 <input class='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
                 <i id='icon-age'></i>
+                <?php } ?>    
+                <?php if(!$canEditProfile) { ?> 
+                <input value='<?=$user['age']?>' disabled> 
+                <?php } ?>  
             </article>
             <p class='msg-name'></p>
             <p class='msg-email'></p>

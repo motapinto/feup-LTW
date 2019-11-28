@@ -10,7 +10,7 @@
 
         private function __construct() {
             try {
-              $this->db = new PDO('sqlite:'.__DIR__.'/campus_rentals.db');
+              $this->db = new PDO('sqlite:../../assets/db/campus_rentals.db');
               $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
               $this->db->query('PRAGMA foreign_keys = ON');
