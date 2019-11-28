@@ -24,7 +24,7 @@ function submitLogin() {
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
         alert(response);
-        
+
         switch (response['response']) {
             case -1:
                 document.getElementById('email').value = startEmail;
