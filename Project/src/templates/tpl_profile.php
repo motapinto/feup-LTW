@@ -62,24 +62,24 @@
         <h1 id='profile-settings-title'>Edit Profile</h1>
             <article id='profile-setting-name' class='profile-setting-elem'>
                 <header> Name </header>
-                <input id='name' type='text' onkeyup='checkName();' value='<?=$user['name']?>'>
+                <input class='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
                 <i id='icon-name'></i>
             </article>
 
             <article id='profile-setting-email' class='profile-setting-elem'>
                 <header> Email </header>
-                <input id='email' type='email' value='<?=$user['email']?>'>
-                <button onclick='checkEmail();'> Save </button>
+                <input class='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
+                <button onclick='submitForm(1)'> Save </button>
             </article>
 
             <article id='profile-setting-age' class='profile-setting-elem'>
                 <header> Age </header>
-                <input id='age' type='number' min='2' onkeyup='checkAge();' value='<?=$user['age']?>'>
+                <input class='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
                 <i id='icon-age'></i>
             </article>
-            <p id='profile-settings-msg-name'></p>
-            <p id='profile-settings-msg-email'></p>
-            <p id='profile-settings-msg-age'></p>
+            <p class='msg-name'></p>
+            <p class='msg-email'></p>
+            <p class='msg-age'></p>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
     <?php if($canEditProfile) { ?>
@@ -101,9 +101,9 @@
                     <header> Confirm password </header>
                     <input id='confirm_password' type='password' value='' onkeyup='checkPass();' disabled >
                 </article>
-                <p id='profile-security-msg-password'></p>
-                <p id='profile-security-msg1-newPassword'></p>
-                <p id='profile-security-msg2-newPassword'></p>
+                <p class='msg-password'></p>
+                <p class='msg-password1'></p>
+                <p class='msg-password2'></p>
         </section>
     <?php } ?>
 

@@ -1,5 +1,6 @@
 let startEmail = document.getElementById('email').value;
 
+//  Selects user menu
 function profileSubMenu(option) {
     switch(option) {
         case 0:
@@ -35,68 +36,6 @@ function profileSubMenu(option) {
     }
 }
 
-function checkName11() {
-    let name = document.getElementById('name').value;
-    let isLegal = /^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$/.test(name);
-    if(isLegal) {
-        document.getElementById('icon-name').style.color = 'black';
-        document.getElementById('icon-name').className = 'fas fa-check';
-        document.getElementById('name').style.backgroundColor = 'white';
-        document.getElementById('name').style.border = 'solid 1px rgb(176, 183, 187)';
-        document.getElementById('profile-settings-msg-name').innerHTML = '';
-        submitForm(0);
-    }
-    else {
-        document.getElementById('icon-name').style.color = 'red';
-        document.getElementById('icon-name').className = 'fas fa-times';
-        document.getElementById('name').style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById('name').style.border = 'solid 1px rgb(233, 76, 76)';
-        document.getElementById('profile-settings-msg-name').innerHTML = 'Name can only contain letters, spaces and \'-\'';
-        document.getElementById('profile-settings-msg-name').style.color = 'red';
-        submitForm(-1);
-    }
-}
-
-function checkEmail11() {
-    let email = document.getElementById('email').value;
-    let isLegal = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email);
-
-    if(isLegal) {
-        document.getElementById('profile-settings-msg-email').innerHTML = '';
-        document.getElementById('email').style.backgroundColor = 'white';
-        document.getElementById('email').style.border = 'solid 1px rgb(176, 183, 187)';
-        submitForm(1);
-    }
-    else {
-        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
-        document.getElementById('email').style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById('email').style.border = 'solid 1px rgb(233, 76, 76)';
-        document.getElementById('profile-settings-msg-email').style.color = 'red';
-        document.getElementById('email').value = startEmail;
-        submitForm(-1);
-    }
-}
-
-function checkAge11() {
-    if(document.getElementById('age').value >= 18) {
-        document.getElementById('icon-age').style.color = 'black';
-        document.getElementById('icon-age').className = 'fas fa-check';
-        document.getElementById('age').style.backgroundColor = 'white';
-        document.getElementById('age').style.border = 'solid 1px rgb(176, 183, 187)';
-        document.getElementById('profile-settings-msg-age').innerHTML = '';
-        submitForm(2);
-    }
-    else {
-        document.getElementById('icon-age').style.color = 'red';
-        document.getElementById('profile-settings-msg-age').style.color = 'red';
-        document.getElementById('icon-age').className = 'fas fa-times';
-        document.getElementById('age').style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById('age').style.border = 'solid 1px rgb(233, 76, 76)';
-        document.getElementById('profile-settings-msg-age').innerHTML = 'Must be over than 18';
-        submitForm(-1);
-    }
-}
-
 function checkPass11() {
 
     let password = document.getElementById('password').value;
@@ -128,6 +67,7 @@ function checkPass11() {
     } 
 }
 
+//  Confirms current password
 function checkCurrentPassword() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -139,8 +79,8 @@ function checkCurrentPassword() {
         let response = JSON.parse(this.responseText);
         switch (response['response']) {
             case -1:
-                document.getElementById('profile-security-msg-password').innerHTML = 'Current password is not correct';
-                document.getElementById('profile-security-msg-password').style.color = 'red';
+                document.getElementsByClassName('msg-password')[0].innerHTML = 'Current password is not correct';
+                document.getElementsByClassName('msg-password')[0].style.color = 'red';
                 document.getElementById('current-password').style.backgroundColor = 'rgb(246, 220, 220)';
                 document.getElementById('current-password').style.border = 'solid 1px rgb(233, 76, 76)';
                 document.getElementById('password').disabled = true;
@@ -149,7 +89,7 @@ function checkCurrentPassword() {
                 break;
 
             default:
-                document.getElementById('profile-security-msg-password').innerHTML = '';
+                document.getElementsByClassName('msg-password')[0].innerHTML = '';
                 document.getElementById('current-password').style.backgroundColor = 'white';
                 document.getElementById('current-password').style.border = 'solid 1px rgb(176, 183, 187)';
                 document.getElementById('password').disabled = false;
@@ -168,6 +108,7 @@ function checkCurrentPassword() {
     xhttp.send();
 }
 
+//  Submit form to change profile details
 function submitForm(option) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -176,20 +117,20 @@ function submitForm(option) {
     switch (option) {
         // user name
         case 0:
-            name = document.getElementById('name').value;
-            let requestName = name.split(' ');
-            requestName = requestName.join('+');
-            request = 'name=' + requestName;
+            name = document.getElementsByClassName('name')[0].value;
+            name = name.split(' ');
+            name = name.join('+');
+            request = 'name=' + name;
             break;
         // user email
         case 1:
-            email = document.getElementById('email').value;
-            let requestEmail = email.replace('@', '%40');
-            request = 'email=' + requestEmail;
+            email = document.getElementsByClassName('email')[0].value;
+            email = email.replace('@', '%40');
+            request = 'email=' + email;
             break;
         // user age
         case 2:
-            age = document.getElementById('age').value;
+            age = document.getElementsByClassName('age')[0].value;
             request = 'age=' + age;
             break;
 
@@ -207,51 +148,44 @@ function submitForm(option) {
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
         switch (option) {
+            //User name
             case 0:
                 switch (response['response']) {
-                    case 0:
-                        document.getElementById('profile-settings-msg-name').innerHTML = '';
-                        document.getElementById('user-name').value = name;
-                        break;
-
+                    //Error in db
                     case 1:
-                        document.getElementById('profile-settings-msg-name').innerHTML = 'Failled to change name';
-                        document.getElementById('profile-settings-msg-name').style.color = 'red';
+                        document.getElementsByClassName('msg-name')[0].innerHTML = 'Failled to change name';
+                        document.getElementsByClassName('msg-name')[0].style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
-
+                    
                     default:
+                        //alert(document.getElementsByClassName('name')[0].value)
+                        alert(document.getElementById('user-name').value)
                         break;
                 }
                 break;
 
-            // user email
+            // User email
             case 1:
                 switch (response['response']) {
-                    case 0:
-                        document.getElementById('profile-settings-msg-email').innerHTML = '';
-                        break;
-
+                    //Error in db
                     case 1:
-                        document.getElementById('email').value = startEmail;
-                        document.getElementById('profile-settings-msg-email').innerHTML = 'Failled to change email';
-                        document.getElementById('profile-settings-msg-email').style.color = 'red';
+                        document.getElementsByClassName('email')[0].value = startEmail;
+                        document.getElementsByClassName('msg-email')[0].innerHTML = 'Failled to change email';
+                        document.getElementsByClassName('msg-email')[0].style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
-
+                    //Error in db
                     case 2:
-                        document.getElementById('email').value = startEmail;
-                        document.getElementById('profile-settings-msg-email').innerHTML = 'Email already exists';
-                        document.getElementById('profile-settings-msg-email').style.color = 'red';
+                        document.getElementsByClassName('email')[0].value = startEmail;
+                        document.getElementsByClassName('msg-email')[0].innerHTML = 'Email already exists';
+                        document.getElementsByClassName('msg-email')[0].style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
 
                     default:
                         break;
                 }
-                break;
-            case 3:
-                alert(response['response']);
                 break;
 
             default:
