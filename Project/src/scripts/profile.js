@@ -35,7 +35,7 @@ function profileSubMenu(option) {
     }
 }
 
-function checkName() {
+function checkName11() {
     let name = document.getElementById('name').value;
     let isLegal = /^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$/.test(name);
     if(isLegal) {
@@ -57,7 +57,7 @@ function checkName() {
     }
 }
 
-function checkEmail() {
+function checkEmail11() {
     let email = document.getElementById('email').value;
     let isLegal = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email);
 
@@ -77,7 +77,7 @@ function checkEmail() {
     }
 }
 
-function checkAge() {
+function checkAge11() {
     if(document.getElementById('age').value >= 18) {
         document.getElementById('icon-age').style.color = 'black';
         document.getElementById('icon-age').className = 'fas fa-check';
@@ -97,7 +97,7 @@ function checkAge() {
     }
 }
 
-function checkPass() {
+function checkPass11() {
 
     let password = document.getElementById('password').value;
     let isLegal = /\w{8,}/.test(password);

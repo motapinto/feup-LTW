@@ -5,6 +5,10 @@
 }
 
 .log_in, .sign_up {
+	background: url("../../assets/images/background.jpg");
+    background-position: center center;
+	background-size: cover;
+	
     box-sizing: border-box;
     display: flex;
 	justify-content: center;
