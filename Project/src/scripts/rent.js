@@ -16,7 +16,8 @@ function checkGuests(option) {
             return (adults + children + babies) < maxGuests;
 
         case SUB:
-            return maxGuests > 0;
+            let currentGuests = parseInt(document.getElementById('current-guests').textContent);
+            return currentGuests > 1;
         default:
             return -1;
     }
@@ -45,7 +46,7 @@ function guestsChange(type, option) {
     switch (option) {
         case ADD:
             if (checkGuests(ADD)) {
-                document.getElementById('adults').value++;
+                document.getElementById(id).value++;
                 document.getElementById('msg-guests').textContent = '';
             }
             else {
@@ -55,7 +56,7 @@ function guestsChange(type, option) {
     
         case SUB:
             if (checkGuests(SUB)) {
-                document.getElementById('adults').value--;
+                document.getElementById(id).value--;
                 document.getElementById('msg-guests').textContent = '';
             }
             else {
@@ -66,5 +67,11 @@ function guestsChange(type, option) {
         default:
             break;
     }
+
+    // Change current-guests number
+    document.getElementById('current-guests').textContent = ((document.getElementById('adults').value + document.getElementById('children').value + document.getElementById('babies').value)/100).toString();
 }
 
+function dropdown() {
+    document.getElementById('dropdown').style.display = (document.getElementById('dropdown').style.display == 'none') ? 'block' : 'none';
+}
