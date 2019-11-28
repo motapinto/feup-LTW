@@ -207,6 +207,24 @@ function submitForm(option) {
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
         switch (option) {
+            case 0:
+                switch (response['response']) {
+                    case 0:
+                        document.getElementById('profile-settings-msg-name').innerHTML = '';
+                        document.getElementById('user-name').value = name;
+                        break;
+
+                    case 1:
+                        document.getElementById('profile-settings-msg-name').innerHTML = 'Failled to change name';
+                        document.getElementById('profile-settings-msg-name').style.color = 'red';
+                        document.getElementById('icon-name').className = 'fas fa-times';
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+
             // user email
             case 1:
                 switch (response['response']) {

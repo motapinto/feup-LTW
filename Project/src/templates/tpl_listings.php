@@ -118,7 +118,7 @@ function draw_item($item, $owner=false) {
       <form id='comment_form' action='../actions/action_comment.php' method='POST'>
           <h4>Leave a comment</h4>
           <textarea name='comment' cols='40' rows='5' placeholder='Describe your experience' required></textarea>
-          <input name='property_id' type='hidden' value='<?=$id?>'/>
+          <input name='property_id' type='hidden' value='<?=$item['id']?>'/>
           <button class='comment_button'>Comment</button>
       </form>
     <?php }

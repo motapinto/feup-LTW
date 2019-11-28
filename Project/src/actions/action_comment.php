@@ -8,5 +8,7 @@
     if(!addComment($_SESSION['id'], $_POST['property_id'], $_POST['comment']))
       $_SESSION['msg'] = 'Failled to post Comment';
 
+    $property_id = $_POST['property_id'];
+
     header("Location: ../listings/item.php?id=$property_id");
 ?>

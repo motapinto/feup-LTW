@@ -5,44 +5,25 @@
 
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
-
-    if(isset($_GET['name'])) $option = 0;
-    else if(isset($_GET['email'])) $option = 1;
-    else if(isset($_GET['age'])) $option = 2;
-    else if(isset($_GET['password'])) $option = 3;
-    else if(isset($_GET['currentPassword'])) $option = 4;
+        
+    $ret = array('response' => -3);
     $user = userProfile($_SESSION['id']);
 
-    $ret = array('response' => '');
-
-    switch ($option){
-        // user name
-        case 0:
-            $ret['response'] = changeUser($user['id'], $user['email'], $_GET['name'], $user['age'], $user['password']);
-            break;
-        // user mail
-        case 1:
-            $ret['response'] = changeUser($user['id'], $_GET['email'], $user['name'], $user['age'], $user['password']);
-            break;
-        // user age
-        case 2:
-            $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $_GET['age'], $user['password']);
-            break;   
-        // user password
-        case 3:
-            $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $_GET['password']);
-            break; 
-
-        // confirms current password
-        case 4:
-            if($user['password'] === sha1($_GET['currentPassword']))
-                $ret['response'] = 0;
-            else
-                $ret['response'] = -1;
-        
-        default:
-            break;
+    if(isset($_GET['name'])) $user['name'] = $_GET['name'];
+    else if(isset($_GET['email'])) $user['email'] = $_GET['email'];
+    else if(isset($_GET['age'])) $user['age'] = $_GET['age'];
+    else if(isset($_GET['password'])) $user['password'] = $_GET['password'];
+    else if(isset($_GET['currentPassword'])) {
+        if($user['password'] === sha1($_GET['currentPassword']))
+            $ret['response'] = 0;
+        else
+            $ret['response'] = -1;
     }
+    else 
+        die(header('Location: ../listings/listings_all.php'));
+
+    if($ret['response'] === -3)
+        $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $user['password']);
 
     encodeForAJAX($ret);
 ?>

@@ -26,17 +26,20 @@
     }
 
     //Adds a comment to the database
-    function addComment($id, $property_id, $comment){
+    function addComment($user_id, $property_id, $comment){
         $db = Database::instance()->db();
 
+        print_r([$user_id, $property_id, $comment]);
+
         $stmt = $db->prepare('INSERT INTO Comment (
-                  id,
+                  user_id,
                   property_id,
-                  comment
+                  comment,
+                  date
                 )
-                VALUES (?, ?, ?);'
+                VALUES (?, ?, ?, date(\'now\', \'%d-%m-%Y\'));'
         );
-        $stmt->execute(array($id, $property_id, $comment));
+        $stmt->execute(array($user_id, $property_id, $comment));
 
         return (!$stmt->fetch())?true:false;
     }

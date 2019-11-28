@@ -49,9 +49,10 @@
                             age = ?,
                             password = ?
                             WHERE id = ?');
-        $stmt->execute(array($newEmail, $name, $age, $id, $password));
+        $stmt->execute(array($newEmail, $name, $age, sha1($password), $id));
         
         $user = $stmt->fetch();
+        print_r($user);
         return !$user?0:1;
     }
 
