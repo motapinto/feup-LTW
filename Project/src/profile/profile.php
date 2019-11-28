@@ -9,7 +9,7 @@
     if(!isset($_SESSION['id']))
     	header('Location: ../listings/all_listings.php');
 
-	draw_header('User Profile');
+	draw_header('User Profile', 'profile');
 	
     if(isset($_GET['id']) && $_GET['id'] != $_SESSION['id']) {
         draw_navBar(-1);

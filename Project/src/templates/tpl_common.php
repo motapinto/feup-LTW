@@ -1,4 +1,4 @@
-<?php function draw_header($title) {  ?>
+<?php function draw_header($title, $script = NULL) {  ?>
     <!DOCTYPE html>
         <html lang="en-US">
         <head>
@@ -13,13 +13,13 @@
             <script src="../scripts/common.js" defer></script>
 <!--******************** AUTHENTICATION  *********************-->
             <link rel="stylesheet" href="../styles/authentication.css">
-            <script src="../scripts/authentication.js" defer></script>
 <!--************************* ITEM  **************************-->
             <link rel="stylesheet" href="../styles/item.css">
-            <script src="../scripts/item.js" defer></script>
 <!--************************ PROFILE  ************************-->
             <link rel="stylesheet" href="../styles/profile.css">
-            <script src="../scripts/profile.js" defer></script>
+            <?php if($script !== NULL){ ?>
+                <script src="../scripts/<?=$script?>.js" defer></script>  
+            <?php } ?>
         </head>
         <body>
 <?php } ?>
