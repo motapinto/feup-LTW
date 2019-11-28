@@ -32,18 +32,17 @@
     }
 
     // Adds a new message to the database
-    function addMessage($receiverId, $senderId, $message, $date) {
+    function addMessage($receiverId, $senderId, $message) {
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO Message (
                 message,
                 receiver,
                 sender,
-                date
             )
-            VALUES (?, ?, ?, ?);
+            VALUES (?, ?, ?);
         ');
-        $stmt->execute(array($message, $receiverId, $senderId, $date));
+        $stmt->execute(array($message, $receiverId, $senderId));
         $user = $stmt->fetch();
         return !$user?true:false;
     }

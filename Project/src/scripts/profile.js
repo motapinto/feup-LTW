@@ -7,6 +7,7 @@ function profileSubMenu(option) {
             document.getElementById('profile-settings-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'none';
             document.getElementById('profile-comments-tab').style.display = 'none';
+            document.getElementById('profile-sendMessage-tab').style.display = 'none';
             document.getElementById('profile-overview-tab').style.display = 'block';
             break;
 
@@ -14,6 +15,7 @@ function profileSubMenu(option) {
             document.getElementById('profile-overview-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'none';
             document.getElementById('profile-comments-tab').style.display = 'none';
+            document.getElementById('profile-sendMessage-tab').style.display = 'none';
             document.getElementById('profile-settings-tab').style.display = 'block';
             break;
 
@@ -21,6 +23,7 @@ function profileSubMenu(option) {
             document.getElementById('profile-overview-tab').style.display = 'none';
             document.getElementById('profile-settings-tab').style.display = 'none';
             document.getElementById('profile-comments-tab').style.display = 'none';
+            document.getElementById('profile-sendMessage-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'block';
             break;
 
@@ -28,9 +31,17 @@ function profileSubMenu(option) {
             document.getElementById('profile-overview-tab').style.display = 'none';
             document.getElementById('profile-settings-tab').style.display = 'none';
             document.getElementById('profile-security-tab').style.display = 'none';
+            document.getElementById('profile-sendMessage-tab').style.display = 'none';
             document.getElementById('profile-comments-tab').style.display = 'block';
             break;
-            
+
+        case 4:
+                document.getElementById('profile-overview-tab').style.display = 'none';
+                document.getElementById('profile-settings-tab').style.display = 'none';
+                document.getElementById('profile-security-tab').style.display = 'none';
+                document.getElementById('profile-comments-tab').style.display = 'none';
+                document.getElementById('profile-sendMessage-tab').style.display = 'block';
+                break;
         default:
             break;
     }
