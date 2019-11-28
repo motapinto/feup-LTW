@@ -15,7 +15,7 @@
                     <form action='../actions/action_user_image.php' method='post' enctype='multipart/form-data'>
                         <input type='file' name='image' id='image'>
                         <label for='image'>Choose Image</label>
-                        <input type='submit' name='Submit' value='Upload'>
+                        <input id="photo-submit" type='submit' name='Submit' value='Upload'>
                     </form>
                 </div>
             </article>
@@ -44,11 +44,11 @@
                 <button class='no-button' onclick='profileSubMenu(0);'> Overview </button>
                 
                 <i class='fas fa-users-cog'></i>
-                <button class='no-button' onclick='profileSubMenu(1);'> Profile Settings</button>
-                
-                <i class='fas fa-shield-alt'></i>
-                <button class='no-button' onclick='profileSubMenu(2);'>Security Details</button>
-
+                <button class='no-button' onclick='profileSubMenu(1);'> Profile Details</button>
+                <?php if($canEditProfile) { ?>
+                    <i class='fas fa-shield-alt'></i>
+                    <button class='no-button' onclick='profileSubMenu(2);'>Security Details</button>
+                <?php } ?>       
                 <i class='far fa-comments'></i>
                 <button class='no-button' onclick='profileSubMenu(3);'>Comments</button>
             </article>

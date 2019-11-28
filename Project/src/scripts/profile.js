@@ -157,11 +157,6 @@ function submitForm(option) {
                         document.getElementsByClassName('msg-name')[0].style.color = 'red';
                         document.getElementById('icon-name').className = 'fas fa-times';
                         break;
-                    
-                    default:
-                        //alert(document.getElementsByClassName('name')[0].value)
-                        alert(document.getElementById('user-name').value)
-                        break;
                 }
                 break;
 
