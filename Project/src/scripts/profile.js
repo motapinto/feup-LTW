@@ -1,4 +1,4 @@
-let startEmail = document.getElementById('email').value;
+let startEmail = document.getElementsByClassName('email')[0].value;
 
 //  Selects user menu
 function profileSubMenu(option) {
