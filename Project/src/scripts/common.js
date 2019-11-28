@@ -3,7 +3,7 @@ function checkName() {
     let nameTest = new RegExp("^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$");
     let isLegal = nameTest.test(name);
 
-    if(isLegal || name.length === 0) {
+    if(isLegal) {
         document.getElementsByClassName('name')[0].style.backgroundColor = 'white';
         document.getElementsByClassName('msg-name')[0].innerHTML = '';
         return true;
@@ -18,9 +18,9 @@ function checkName() {
 
 function checkAge() {
     let age = document.getElementsByClassName('age')[0].value;
-    let isLegal = document.getElementsByClassName('age')[0].value>=18 ? true : false;
+    let isLegal = age>=18 ? true : false;
 
-    if(isLegal || age.length === 0) {
+    if(isLegal) {
         document.getElementsByClassName('age')[0].style.backgroundColor = 'white';
         document.getElementsByClassName('msg-age')[0].innerHTML = '';
         return true;
@@ -38,7 +38,7 @@ function checkEmail() {
     let emailTest = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
     let isLegal = emailTest.test(email);
 
-    if(isLegal || email.length === 0) {
+    if(isLegal) {
         document.getElementsByClassName('email')[0].style.backgroundColor = 'white';
         document.getElementsByClassName('msg-email')[0].innerHTML = '';
         return true;
@@ -57,9 +57,9 @@ function checkPass() {
     //let isLegal = passwordTest.test(password);
     let isLegal = true;
 
-    if(isLegal || password.length === 0) {
+    if(isLegal) {
         document.getElementsByClassName('password')[0].style.backgroundColor = 'white';
-        document.getElementsByClassName('msg-password')[0].innerHTML = '';
+        document.getElementsByClassName('msg-password1')[0].innerHTML = '';
         return true;
     }
     else {
