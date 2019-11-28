@@ -18,8 +18,14 @@
         <h2>Add Property Details</h2>
         <h4>Stage 1/2</h4>
         <form action="../actions/action_add_property.php" method='POST'>
-            <input type="text" name="title" placeholder="Title" required>
-            <textarea name="description" cols="50" rows="10" required placeholder="Description"></textarea>
+            <section>
+                <p>Title</p>
+                <input type="text" name="title" placeholder="Title" required>
+            </section>
+            <section>
+                <p>Description</p>
+                <textarea name="description" cols="50" rows="10" required placeholder="Briefe description of the property"></textarea>
+            </section>
             <input type="number" name="price_day" min="1" placeholder="Price per Day" required>
             <input type="number" name="guests" min="1" placeholder="Number of Guests" required>
             <input type="text" name="city" placeholder='City' required>

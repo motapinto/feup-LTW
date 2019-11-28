@@ -6,7 +6,7 @@
   if(isset($_SESSION['id']))
     header('Location: ../listings/listings_all.php');
 
-  draw_header('Login', 'auth');
+  draw_header('Login', 'authentication');
   draw_login();
   draw_footer();
 ?>

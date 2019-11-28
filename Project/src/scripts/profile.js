@@ -102,7 +102,7 @@ function checkAge() {
 function checkPass() {
 
     let password = document.getElementById('password').value;
-    let criteria = new RegExp("[A-Z]");
+    let criteria = new RegExp("[\w]{8,}");
     let isLegal = criteria.test(password);
     if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
         document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
