@@ -165,3 +165,7 @@ i {
 .selected-tab button:hover {
     text-decoration: underline;
 }
+
+#user-name{
+    text-align: center;
+}

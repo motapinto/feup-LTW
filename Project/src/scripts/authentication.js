@@ -50,7 +50,7 @@ function submitLogin() {
     xhttp.send();
 }
 
-function submitLogin() {
+function submitSignup() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
