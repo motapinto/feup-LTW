@@ -1,8 +1,8 @@
 <?php
     include_once('../includes/session.php');              // starts session
 
-    // if(!isset($_SESSION['id']) || !isset($_GET['id']))
-    //     header('Location: ../listings/listings_all.php');
+    if(!isset($_SESSION['id']) || !isset($_GET['id']))
+        header('Location: ../listings/listings_all.php');
 
     include_once('../includes/database.php');                   // connects to the database
     include_once('../database/listings.php');                   // listings functions
@@ -24,7 +24,7 @@
     draw_navBar(-1);
 ?>
     <section id='Rent'>
-        <form action=".">
+        <form action="../actions/rent.php" method='GET'>
             <section>
                 <p>Check In Date</p>
                 <input type="date" name="checkin" <?php if(isset($_GET['checkin'])) { ?> value="<?=$_GET['checkin']?>" <?php } ?>>
@@ -36,15 +36,16 @@
             <section>
                 <input type="hidden" value="<?=$property['guests']?>">
                 <p>Maximum number of guests: <?=$property['guests']?></p>   
-                <button class="button-guests" onclick="addAdult()">+</button>
+                <button class="button-guests" onclick="guestsChange(ADULTS, ADD)">+</button>
                 <input id="adults" type="disabled" name="adults" min='0' max="<?=$property['guests']?>" value="<?=$adults?>">
-                <button class="button-guests" onclick="subAdult()">-</button>
-                <button class="button-guests" onclick="addChild()">+</button>
+                <button class="button-guests" onclick="guestsChange(ADULTS, SUB)">-</button>
+                <button class="button-guests" onclick="guestsChange(CHILDREN, ADD)">+</button>
                 <input id="children" type="disabled" name="children" min='0' max="<?=$property['guests']?>" value="<?=$children?>">
-                <button class="button-guests" onclick="subChild()">-</button>
-                <button class="button-guests" onclick="addBaby()">+</button>
+                <button class="button-guests" onclick="guestsChange(CHILDREN, SUB)">-</button>
+                <button class="button-guests" onclick="guestsChange(BABIES, ADD)">+</button>
                 <input id="babies" type="disabled" name="babies" min='0' max="<?=$property['guests']?>" value="<?=$babies?>">
-                <button class="button-guests" onclick="subBaby()">-</button>
+                <button class="button-guests" onclick="guestsChange(BABIES, SUB)">-</button>
+                <span class='error' id='msg-guests'></span>
             </section>
             <button>Rent</button>
         </form>

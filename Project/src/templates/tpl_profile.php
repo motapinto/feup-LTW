@@ -82,8 +82,8 @@
             <p class='msg-age'></p>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
-    <?php if($canEditProfile) { ?>
-        <section id='profile-security-tab' class='selected-tab'>
+    <section id='profile-security-tab' class='selected-tab'>
+        <?php if($canEditProfile) { ?>
             <h1 id='profile-security-title'>Security Details</h1>
                 <article id='profile-security-password' class='profile-setting-elem'>
                     <header> Current Password </header>
@@ -104,8 +104,8 @@
                 <p class='msg-password'></p>
                 <p class='msg-password1'></p>
                 <p class='msg-password2'></p>
-        </section>
-    <?php } ?>
+        <?php } ?>
+    </section>
 
 <!--*********************** PROFILE COMMENTS ***********************-->
         <section id='profile-comments-tab' class='selected-tab'>
