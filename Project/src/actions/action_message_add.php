@@ -17,7 +17,7 @@
         print_r($sender);
 
   
-    $result = addMessage($_GET['sendMessage'], $_GET['receiver'], $sender);
+    $result = addMessage($_GET['receiver'], $sender, $_GET['sendMessage']);
     
     print_r($result);
 ?>
