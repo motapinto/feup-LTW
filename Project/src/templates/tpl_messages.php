@@ -49,7 +49,7 @@
                 </div>
             </a>
             <p class="chat-message"> <?=$item['message']?> </p>
-            <p> <?=$item['date']?> </p>
+            <p id="chat-date"> <?=$item['date']?> </p>
         </article>
     <?php } ?>
 

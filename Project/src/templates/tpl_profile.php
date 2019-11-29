@@ -139,7 +139,7 @@
         </section>
 
 <!--********************* PROFILE SEND MESSAGE *********************-->
-        <section id='profile-messages-tab' class='selected-tab'>
+        <section id='profile-sendMessage-tab' class='selected-tab'>
             <h1 id='profile-settings-title'>Edit Profile</h1>
                 <form id='profile-sendMessage' class='profile-setting-elem' action="../actions/action_message_add.php" method="get">
                     <label for="sendMessage"></label> <br>
