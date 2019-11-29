@@ -23,7 +23,6 @@ function checkName(inProfile=false) {
             document.getElementById('name').style.border = 'solid 1px rgb(233, 76, 76)';
             document.getElementById('icon-name').style.color = 'red';
             document.getElementById('icon-name').className = 'fas fa-times';
-            submitForm(-1);
         }
         return false;
     }
@@ -31,9 +30,8 @@ function checkName(inProfile=false) {
 
 function checkAge(inProfile=false) {
     let age = document.getElementById('age').value;
-    let isLegal = age>=18 ? true : false;
 
-    if(isLegal) {
+    if (age >= 18) {
         document.getElementById('age').style.backgroundColor = 'white';
         document.getElementById('msg-age').innerHTML = '';
         if(inProfile) {
@@ -52,7 +50,6 @@ function checkAge(inProfile=false) {
             document.getElementById('age').style.border = 'solid 1px rgb(233, 76, 76)';
             document.getElementById('icon-age').style.color = 'red';
             document.getElementById('icon-age').className = 'fas fa-times';
-            submitForm(-1);
         }
         return false;
     }
@@ -82,7 +79,6 @@ function checkEmail(inProfile=false) {
             document.getElementById('email').style.border = 'solid 1px rgb(233, 76, 76)';
             // document.getElementById('icon-email').style.color = 'red';
             // document.getElementById('icon-email').className = 'fas fa-times';
-            submitForm(-1);
         }
         return false;
     }

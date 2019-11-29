@@ -4,6 +4,43 @@
     define('ORIGINAL', 0, true);
     define('MEDIUM', 1, true);
     define('SMALL', 2, true);
+    define('USER', 0, true);
+    define('PROPERTY', 1, true);
+    
+
+    // Deletes image with id = id
+    function deleteImage($id, $option){
+        switch ($option) {
+            case 'USER':
+                if(file_exists("../../assets/images/originals/u_$id.jpg")){
+                    unlink("../../assets/images/originals/u_$id.jpg");
+                    unlink("../../assets/images/thumbs_small/u_$id.jpg");
+                    unlink("../../assets/images/thumbs_medium/u_$id.jpg");
+                }
+                else if(file_exists("../../assets/images/originals/u_$id.png")){
+                    unlink("../../assets/images/originals/u_$id.png");
+                    unlink("../../assets/images/thumbs_small/u_$id.png");
+                    unlink("../../assets/images/thumbs_medium/u_$id.png");
+                }
+                break;
+            case 'PROPERTY':
+                if(file_exists("../../assets/images/originals/u_$id.jpg")){
+                    unlink("../../assets/images/originals/u_$id.jpg");
+                    unlink("../../assets/images/thumbs_small/u_$id.jpg");
+                    unlink("../../assets/images/thumbs_medium/u_$id.jpg");
+                }
+                else if(file_exists("../../assets/images/originals/u_$id.png")){
+                    unlink("../../assets/images/originals/u_$id.png");
+                    unlink("../../assets/images/thumbs_small/u_$id.png");
+                    unlink("../../assets/images/thumbs_medium/u_$id.png");
+                }
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
 
     //Returns all images for a property with id = id
     function getImagesByPropertyId($id){
