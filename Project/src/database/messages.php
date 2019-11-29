@@ -1,14 +1,18 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
 
-    // returns all messages from user with id=senderId to user with id=receiverId
-    function getAllMessagesFromUser($receiverId, $senderId) {
+    // returns all messages exchange between $user1 and $user2
+    function getAllMessagesFromUser($user1, $user2) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Message WHERE receiver = ? AND sender = ?');
-        $stmt->execute(array($receiverId, $senderId));
+        $stmt = $db->prepare('SELECT * FROM Message WHERE 
+                              receiver = ? AND sender = ? OR
+                              receiver = ? AND sender = ?
+                              ORDER BY date');
+        $stmt->execute(array($receiverId, $senderId, $senderId, $receiverId));
         $messages = $stmt->fetchAll();
 
+        // have not exchange messages
         if (!$messages) 
             return -1;
         
@@ -16,19 +20,24 @@
             return $messages;
     }
 
-    // True if user with id=receiverId has received a message from user with id=senderId
-    function haveExchangeMessages($receiverId, $senderId) {
+    function getAllMessages($user) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Message WHERE receiver = ? AND sender = ?');
-        $stmt->execute(array($receiverId, $senderId));
-        $messages = $stmt->fetchAll();
+        $stmt = $db->prepare('SELECT * FROM Message WHERE 
+                              receiver = ? OR sender = ? 
+                              ORDER BY date'
+                            );
 
-        if (!$messages) 
-            return false;
+
+        $stmt->execute(array($user, $user));
+        $users = $stmt->fetchAll();
+
+        // have not exchange any messages
+        if (!$users) 
+            return -1;
         
         else 
-            return true;
+            return $users;
     }
 
     // Adds a new message to the database
