@@ -14,33 +14,39 @@
         $conversation = getAllMessagesBetweenUsers($_SESSION['id'], $messenger['user']);
         $user = userProfile($messenger['user']);
         $self = userProfile($_SESSION['id']);
+        $userImage = getUserImagePath($user['id'], 'MEDIUM');
+        $selfImage = getUserImagePath($self['id'], 'MEDIUM');
         foreach($conversation as $item) { 
-            draw_item($item, $user, $self);
+            draw_item($item, $user, $self, $userImage, $selfImage);
         } 
     ?>
             <article class="chat-form">
                 <textarea></textarea>
-                <button>Send</button>
+                <button><i class="fas fa-paper-plane"></i></button>
             </article>
         </section>
     </section>
 <?php  } ?>
 
-<?php function draw_item($item, $user, $self) { ?>
+<?php function draw_item($item, $user, $self, $userImage, $selfImage) { ?>
     <?php if($item['sender'] === $self['id']) { ?>
         <article class="chat friend">
             <a href="../profile/profile.php?id=<?=$user['id']?>">
-                <div class="user-photo"></div>
+                <div class="user-photo">
+                    <!-- <img class='_1mgxxu3' src='//$userImage?>' alt='User Photo' title='User Photo'> -->
+                </div>
             </a>
             <p> <?=$user['name']?> </p>
             <p class="chat-message"> <?=$item['message']?> </p>
-            <p> <?=$item['date']?> </p>
+            <p id="chat-date"> <?=$item['date']?> </p>
         </article>
     <?php } ?>
     <?php if($item['sender'] === $user['id']) { ?>
         <article class="chat self">
             <a href="../profile/profile.php?id=<?=$self['id']?>">
-                <div class="user-photo"></div>
+                <div class="user-photo">
+                    <!-- <img class='_1mgxxu3' src='//$selfImage?>' alt='User Photo' title='User Photo'> -->
+                </div>
             </a>
             <p class="chat-message"> <?=$item['message']?> </p>
             <p> <?=$item['date']?> </p>
@@ -98,16 +104,17 @@
     margin: 5px 10px 0;
     
     border-radius: 10px;
-    color: #fff;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .friend .chat-message {
-    background: #1adda4;
+    background: rgb(220, 220, 220);
+    color: black;
 }
 
 .self .chat-message {
-    background: #1ddced;
+    background: teal;
+    color: #fff;
     order: -1;
 }
 
@@ -151,6 +158,10 @@
 
 .chat-form button:hover {
     background: #13c8d9;
+}
+
+#chat-date {
+    color: grey;
 }
 
 
