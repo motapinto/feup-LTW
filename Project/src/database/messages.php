@@ -2,14 +2,14 @@
     include_once('../includes/database.php');      // connects to the database
 
     // returns all messages exchange between $user1 and $user2
-    function getAllMessagesFromUser($user1, $user2) {
+    function getAllMessagesBetweenUsers($user1, $user2) {
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Message WHERE 
                               receiver = ? AND sender = ? OR
                               receiver = ? AND sender = ?
                               ORDER BY date');
-        $stmt->execute(array($receiverId, $senderId, $senderId, $receiverId));
+        $stmt->execute(array($user1, $user2, $user2, $user1));
         $messages = $stmt->fetchAll();
 
         // have not exchange messages
@@ -20,14 +20,17 @@
             return $messages;
     }
 
-    function getAllMessages($user) {
+    function getAllMessengers($user) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Message WHERE 
-                              receiver = ? OR sender = ? 
-                              ORDER BY date'
+        $stmt = $db->prepare('SELECT DISTINCT user FROM 
+                              (
+                                SELECT receiver as user, date FROM Message Where sender = ? 
+                                UNION 
+                                SELECT sender as user, date FROM Message Where receiver = ?
+                              )
+                              ORDER BY DATE;'
                             );
-
 
         $stmt->execute(array($user, $user));
         $users = $stmt->fetchAll();
