@@ -97,9 +97,9 @@
                 <input value='<?=$user['age']?>' disabled> 
                 <?php } ?>  
             </article>
-            <p class='msg-name'></p>
-            <p class='msg-email'></p>
-            <p class='msg-age'></p>
+            <p id='msg-name'></p>
+            <p id='msg-email'></p>
+            <p id='msg-age'></p>
     </section>
 <!--*********************** PROFILE SECURITY ***********************-->
     <section id='profile-security-tab' class='selected-tab'>
