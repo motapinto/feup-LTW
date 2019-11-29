@@ -33,12 +33,12 @@
                 <a href='../properties/properties.php'>
                     <button type='button' class='circular-button'>Properties</button>
                 </a>
-                <a href='#'>
-                    <button type='button' class='circular-button'>
-                    <?php if($canEditProfile) { ?> Messages <?php } ?>    
-                    <?php if(!$canEditProfile) { ?> Send Message <?php } ?>    
-                    </button>
-                </a>
+                <?php if($canEditProfile) { ?> 
+                <button type='button' class='circular-button'> Messages </button> 
+                <?php } ?>    
+                <?php if(!$canEditProfile) { ?> 
+                <button onclick="profileSubMenu(4)" type='button' class='circular-button'> Send Message </button> 
+                <?php } ?>   
             </article>
 
             <!-- SIDEBAR MENU -->
@@ -134,6 +134,17 @@
             <?php } else { ?>
                 <h1><?=count($comments)?> comments</h1>
             <?php } ?>
+        </section>
+
+<!--*********************** PROFILE MESSAGES ***********************-->
+        <section id='profile-sendMessage-tab' class='selected-tab'>
+            <h1 id='profile-settings-title'>Edit Profile</h1>
+                <form id='profile-sendMessage' class='profile-setting-elem' action="../actions/action_message_add.php" method="get">
+                    <label for="sendMessage"></label> <br>
+                    <textarea name="sendMessage" id="sendMessage" cols="10" rows="10"></textarea> 
+                    <input name="receiver" type="number" value='<?=$user['id']?>' style="display: none">
+                    <button class="no-button"> Send Message </button>
+                </form>
         </section>
 <!--*********************** SECTION END ****************************-->
     </section>>
