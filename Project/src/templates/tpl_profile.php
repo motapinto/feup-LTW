@@ -66,7 +66,7 @@
             <article id='profile-setting-name' class='profile-setting-elem'>
                 <header> Name </header>
                 <?php if($canEditProfile) { ?>
-                <input class='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
+                <input id='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
                 <i id='icon-name'></i>
                 <?php } ?>    
                 <?php if(!$canEditProfile) { ?> 
@@ -77,7 +77,7 @@
             <article id='profile-setting-email' class='profile-setting-elem'>
                 <header> Email </header>
                 <?php if($canEditProfile) { ?>
-                <input class='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
+                <input id='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
                 <button onclick='submitForm(1)'> Save </button>
                 <?php } ?>    
                 <?php if(!$canEditProfile) { ?> 
@@ -88,7 +88,7 @@
             <article id='profile-setting-age' class='profile-setting-elem'>
                 <?php if($canEditProfile) { ?>
                 <header> Age </header>
-                <input class='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
+                <input id='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
                 <i id='icon-age'></i>
                 <?php } ?>    
                 <?php if(!$canEditProfile) { ?> 
@@ -110,18 +110,18 @@
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> New Password </header>
-                    <input type='password' id='password' onkeyup='checkPass();' disabled 
+                    <input type='password' id='password' onkeyup='checkPass(); checkPass11();' disabled 
                         title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
-                        <button id='password-change' style='display:none;' onclick='submitForm();'> Save</button>
+                        <button id='password-change' style='display:none;' onclick='submitForm(3);'> Save</button>
                 </article>
 
                 <article id='profile-settings-confirm_password' class='profile-setting-elem'>
                     <header> Confirm password </header>
-                    <input id='confirm_password' type='password' value='' onkeyup='checkPass();' disabled >
+                    <input id='confirm_password' type='password' value='' onkeyup='checkPass11();' disabled >
                 </article>
-                <p class='msg-password'></p>
-                <p class='msg-password1'></p>
-                <p class='msg-password2'></p>
+                <p id='msg-password'></p>
+                <p id='msg-password1'></p>
+                <p id='msg-password2'></p>
         <?php } ?>
     </section>
 

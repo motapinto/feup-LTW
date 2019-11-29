@@ -9,7 +9,7 @@
         $stmt->execute(array($email));
         $user = $stmt->fetch();
 
-        if (!$user) 
+        if ($user === false) 
             return -1;
         
         if(strtoupper(sha1($password)) === strtoupper($user['password']))
@@ -70,7 +70,7 @@
         ');
         $stmt->execute(array($email, sha1($password), $name, $age));
         $user = $stmt->fetch();
-        return !$user?true:false;
+        return $user!==false?true:false;
     }
 
     // Returns the user with the received email

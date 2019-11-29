@@ -1,26 +1,26 @@
 function checkName(inProfile=false) {
-    let name = document.getElementsByClassName('name')[0].value;
+    let name = document.getElementById('name').value;
     let nameTest = new RegExp("^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$");
     let isLegal = nameTest.test(name);
 
     if(isLegal) {
-        document.getElementsByClassName('name')[0].style.backgroundColor = 'white';
-        document.getElementsByClassName('msg-name')[0].innerHTML = '';
+        document.getElementById('name').style.backgroundColor = 'white';
+        document.getElementById('msg-name').innerHTML = '';
         if(inProfile) {
-            document.getElementsByClassName('name')[0].style.border = 'solid 1px rgb(176, 183, 187)';
+            document.getElementById('name').style.border = 'solid 1px rgb(176, 183, 187)';
             document.getElementById('icon-name').style.color = 'black';
             document.getElementById('icon-name').className = 'fas fa-check';
-            document.getElementById('user-name').textContent = document.getElementsByClassName('name')[0].value;
+            document.getElementById('user-name').textContent = document.getElementById('name').value;
             submitForm(0);
         }
         return true;
     }
     else {
-        document.getElementsByClassName('name')[0].style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementsByClassName('msg-name')[0].style.color = 'red';
-        document.getElementsByClassName('msg-name')[0].innerHTML = 'Name can only contain letters, spaces and \'-\'';
+        document.getElementById('name').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('msg-name').style.color = 'red';
+        document.getElementById('msg-name').innerHTML = 'Name can only contain letters, spaces and \'-\'';
         if(inProfile) {
-            document.getElementsByClassName('name')[0].style.border = 'solid 1px rgb(233, 76, 76)';
+            document.getElementById('name').style.border = 'solid 1px rgb(233, 76, 76)';
             document.getElementById('icon-name').style.color = 'red';
             document.getElementById('icon-name').className = 'fas fa-times';
             submitForm(-1);
@@ -30,14 +30,14 @@ function checkName(inProfile=false) {
 }
 
 function checkAge(inProfile=false) {
-    let age = document.getElementsByClassName('age')[0].value;
+    let age = document.getElementById('age').value;
     let isLegal = age>=18 ? true : false;
 
     if(isLegal) {
-        document.getElementsByClassName('age')[0].style.backgroundColor = 'white';
-        document.getElementsByClassName('msg-age')[0].innerHTML = '';
+        document.getElementById('age').style.backgroundColor = 'white';
+        document.getElementById('msg-age').innerHTML = '';
         if(inProfile) {
-            document.getElementsByClassName('age')[0].style.border = 'solid 1px rgb(176, 183, 187)';
+            document.getElementById('age').style.border = 'solid 1px rgb(176, 183, 187)';
             document.getElementById('icon-age').style.color = 'black';
             document.getElementById('icon-age').className = 'fas fa-check';
             submitForm(2);
@@ -45,11 +45,11 @@ function checkAge(inProfile=false) {
         return true;
     }
     else {
-        document.getElementsByClassName('age')[0].style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementsByClassName('msg-age')[0].style.color = 'red';
-        document.getElementsByClassName('msg-age')[0].innerHTML = 'Must be over than 18';
+        document.getElementById('age').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('msg-age').style.color = 'red';
+        document.getElementById('msg-age').innerHTML = 'Must be over than 18';
         if(inProfile) {
-            document.getElementsByClassName('age')[0].style.border = 'solid 1px rgb(233, 76, 76)';
+            document.getElementById('age').style.border = 'solid 1px rgb(233, 76, 76)';
             document.getElementById('icon-age').style.color = 'red';
             document.getElementById('icon-age').className = 'fas fa-times';
             submitForm(-1);
@@ -59,15 +59,15 @@ function checkAge(inProfile=false) {
 }
 
 function checkEmail(inProfile=false) {
-    let email = document.getElementsByClassName('email')[0].value;
+    let email = document.getElementById('email').value;
     let emailTest = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
     let isLegal = emailTest.test(email);
 
     if(isLegal) {
-        document.getElementsByClassName('email')[0].style.backgroundColor = 'white';
-        document.getElementsByClassName('msg-email')[0].innerHTML = '';
+        document.getElementById('email').style.backgroundColor = 'white';
+        document.getElementById('msg-email').innerHTML = '';
         if(inProfile) {
-            document.getElementsByClassName('email')[0].style.border = 'solid 1px rgb(176, 183, 187)';
+            document.getElementById('email').style.border = 'solid 1px rgb(176, 183, 187)';
             document.getElementById('icon-email').style.color = 'black';
             document.getElementById('icon-email').className = 'fas fa-check';
             submitForm(1);
@@ -75,11 +75,11 @@ function checkEmail(inProfile=false) {
         return true;
     }
     else {
-        document.getElementsByClassName('email')[0].style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementsByClassName('msg-email')[0].style.color = 'red';
-        document.getElementsByClassName('msg-email')[0].innerHTML = 'Enter a valid email';
+        document.getElementById('email').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('msg-email').style.color = 'red';
+        document.getElementById('msg-email').innerHTML = 'Enter a valid email';
         if(inProfile) {
-            document.getElementsByClassName('email')[0].style.border = 'solid 1px rgb(233, 76, 76)';
+            document.getElementById('email').style.border = 'solid 1px rgb(233, 76, 76)';
             document.getElementById('icon-email').style.color = 'red';
             document.getElementById('icon-email').className = 'fas fa-times';
             submitForm(-1);
@@ -89,18 +89,18 @@ function checkEmail(inProfile=false) {
 }
 
 function checkPass() {
-    let password = document.getElementsByClassName('name')[0].value;
+    let password = document.getElementById('password').value;
     let isLegal = /(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])./.test(password);
 
-    if(isLegal) {
-        document.getElementsByClassName('password')[0].style.backgroundColor = 'white';
-        document.getElementsByClassName('msg-password1')[0].innerHTML = '';
+    if (isLegal) {
+        document.getElementById('password').style.backgroundColor = 'white';
+        document.getElementById('msg-password1').innerHTML = '';
         return true;
     }
     else {
-        document.getElementsByClassName('password')[0].style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementsByClassName('msg-password1')[0].style.color = 'red';
-        document.getElementsByClassName('msg-password1')[0].innerHTML = 'Enter a valid password';
+        document.getElementById('password').style.backgroundColor = 'rgb(246, 220, 220)';
+        document.getElementById('msg-password1').style.color = 'red';
+        document.getElementById('msg-password1').innerHTML = 'Enter a valid password';
         return false; 
     }
 }
