@@ -50,9 +50,10 @@
         $stmt = $db->prepare('INSERT INTO Message (
                 message,
                 receiver,
-                sender
+                sender,
+                date
             )
-            VALUES (?, ?, ?);
+            VALUES (?, ?, ?, DEFAULT(date));
         ');
         $stmt->execute(array($message, $receiverId, $senderId));
         $message = $stmt->fetch();

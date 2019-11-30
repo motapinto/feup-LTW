@@ -17,9 +17,10 @@
                   city,
                   street,
                   door_number,
-                  property_type
+                  property_type,
+                  post_date
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)');
+                VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, DEFAULT(date))');
                 $stmt->execute(array($user_id, $title, $description, $price_day,
                                      $guests, $city, $street, $door_number,
                                      $property_type));
@@ -36,9 +37,10 @@
                   street,
                   door_number,
                   apartment_number,
-                  property_type
+                  property_type,
+                  date
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT(date))');
                 $stmt->execute(array($email, $title, $description, $price_day,
                                      $guests, $city, $street, $door_number,
                                      $apartment_number, $property_type));

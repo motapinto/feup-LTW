@@ -37,7 +37,7 @@
                   comment,
                   date
                 )
-                VALUES (?, ?, ?, date(\'now\', \'%d-%m-%Y\'));'
+                VALUES (?, ?, ?, DEFAULT(date));'
         );
         $stmt->execute(array($user_id, $property_id, $comment));
 
