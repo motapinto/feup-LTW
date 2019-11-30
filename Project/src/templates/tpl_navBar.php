@@ -55,8 +55,9 @@
                 <?php break;
             } ?>
         <?php }
-          else { ?>
-              <a id='navbar-login' class='common-navbar-elem' href='../authentication/login.php'> Log In </a>
-        <?php  } ?>
+            else { ?>
+                <a id='navbar-properties' class='selected-navbar-elem' href='../listings/listings_all.php'> Home </a>
+                <a id='navbar-login' class='common-navbar-elem' href='../authentication/login.php'> Log In </a>
+            <?php } ?>
     </nav>
 <?php } ?>
