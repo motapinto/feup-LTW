@@ -17,6 +17,8 @@
             <link rel="stylesheet" href="../styles/item.css">
 <!--************************ PROFILE  ************************-->
             <link rel="stylesheet" href="../styles/profile.css">
+<!--************************ MESSAGES  ************************-->
+            <link rel="stylesheet" href="../styles/messages.css">
             <?php if($script !== NULL){ ?>
                 <script src="../scripts/<?=$script?>.js" defer></script>  
             <?php } ?>
