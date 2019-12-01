@@ -5,7 +5,10 @@
     if (!isset($_GET['price']) || price < 0)            // check if input is valid (check if any property exists with that price?)
         die("Invalid price!");
 
-    $listings = getListingsBelowPrice($_GET['price']); // gets all listings below price from the database
+    $price = $_GET['price'];
+    htmlentities($price, ENT_QUOTES, 'UTF-8');
+
+    $listings = getListingsBelowPrice($price); // gets all listings below price from the database
 
     include('../templates/common/header.php');             // prints the initial part of the HTML document
     include('../templates/common/nav_bar.php');            // prints the menu in HTML

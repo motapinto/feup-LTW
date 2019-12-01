@@ -12,9 +12,9 @@
 
     $sendMessage = $_GET['sendMessage'];
     $receiver = $_GET['receiver'];
-    // Remove disallowed characters -XSS protection
-    // $sendMessage = preg_replace ("/[^a-zA-Z\s]/", '', $sendMessage);
-    // $receiver = preg_replace ("/[^a-zA-Z\s]/", '', $receiver);
+
+    htmlentities($sendMessage, ENT_QUOTES, 'UTF-8');
+    htmlentities($receiver, ENT_QUOTES, 'UTF-8');
   
     $result = addMessage($receiver, $_SESSION['id'], $sendMessage);
 ?>

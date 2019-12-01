@@ -11,6 +11,8 @@
     include_once('../templates/tpl_navBar.php');                     // prints the menu in HTML
 
     $id = $_GET['id'];
+    htmlentities($id, ENT_QUOTES, 'UTF-8');
+
     $property = getListingById($id);
     if($property === false){
         header('Location: ../listings/listings_all.php');
@@ -20,6 +22,10 @@
     $children = isset($_GET['children'])?$_GET['children']:0;
     $babies = isset($_GET['babies'])?$_GET['babies']:0;
 
+    htmlentities($adults, ENT_QUOTES, 'UTF-8');
+    htmlentities($children, ENT_QUOTES, 'UTF-8');
+    htmlentities($babies, ENT_QUOTES, 'UTF-8');
+
     draw_header('Rent');
     draw_navBar(-1);
 ?>
@@ -27,11 +33,11 @@
         <form action="../actions/rent.php" method='GET'>
             <section>
                 <p>Check In Date</p>
-                <input type="date" name="checkin" <?php if(isset($_GET['checkin'])) { ?> value="<?=$_GET['checkin']?>" <?php } ?>>
+                <input type="date" name="checkin" <?php if(isset($_GET['checkin'])) { ?> value="<?=htmlentities($_GET['checkin'], ENT_QUOTES, 'UTF-8');?>" <?php } ?>>
             </section>
             <section>
                 <p>Check Out Date</p>
-                <input type="date" name="checkout" <?php if(isset($_GET['checkout'])) { ?> value="<?=$_GET['checkout']?>" <?php } ?>>
+                <input type="date" name="checkout" <?php if(isset($_GET['checkout'])) { ?> value="<?=htmlentities($_GET['checkout'], ENT_QUOTES, 'UTF-8');?>" <?php } ?>>
             </section>
             <section>
                 <input type="hidden" value="<?=$property['guests']?>">

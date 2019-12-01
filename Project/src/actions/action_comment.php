@@ -6,10 +6,10 @@
         header('Location: ../listings/listings_all.php');
 	
 	$property_id = $_POST['property_id'];
-	$comment = $_POST['comment'];
-	// Remove disallowed characters -XSS protection
-	// $property_id = preg_replace ("/[^a-zA-Z\s]/", '', $property_id);
-	// $comment = preg_replace ("/[^a-zA-Z\s]/", '', $comment);
+    $comment = $_POST['comment'];
+    
+	htmlentities($property_id, ENT_QUOTES, 'UTF-8');
+    htmlentities($comment, ENT_QUOTES, 'UTF-8');
 
     if(!addComment($_SESSION['id'], $property_id, $comment))
         $_SESSION['msg'] = 'Failled to post Comment';

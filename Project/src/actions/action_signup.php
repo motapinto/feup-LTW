@@ -4,16 +4,26 @@
     include_once('../templates/tpl_common.php');   // encodeForAJAX
 
     $ret = array('response' => '');
-    $check = checkUser($_GET['email'], $_GET['password']);
+
+    $email = $_GET['email'];
+    $password = $_GET['password'];
+    $name = $_GET['name'];
+    $age = $_GET['age'];
+    htmlentities($email, ENT_QUOTES, 'UTF-8');
+    htmlentities($password, ENT_QUOTES, 'UTF-8');
+    htmlentities($name, ENT_QUOTES, 'UTF-8');
+    htmlentities($passageword, ENT_QUOTES, 'UTF-8');
+
+    $check = checkUser($email, $password);
+
 
     if($check === -1) {
-        if(addUser($_GET['email'], $_GET['password'], $_GET['name'], $_GET['age']))
+        if(addUser($email, $password, $name, $age))
             $ret['response'] = 0;
     }
     else {
         $ret['response'] = -1;
     }
-
 
     encodeForAJAX($ret);
 ?>

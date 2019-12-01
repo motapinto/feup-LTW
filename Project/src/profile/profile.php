@@ -9,11 +9,14 @@
     if(!isset($_SESSION['id']))
     	header('Location: ../listings/all_listings.php');
 
-	draw_header('User Profile', 'profile');
-	
+    draw_header('User Profile', 'profile');
+    	
     if(isset($_GET['id']) && $_GET['id'] != $_SESSION['id']) {
         draw_navBar(-1);
-		$user = userProfile($_GET['id']); //other user
+
+        $id = $_GET['id'];
+        htmlentities($id, ENT_QUOTES, 'UTF-8');
+		$user = userProfile($id); //other user
 		draw_profile($user, false);
 	}
 	else {

@@ -6,12 +6,15 @@
   if (!isset($_GET['id']) || id < 0)
     die("Invalid id!");
 
+  $id = $_GET['id'];
+  htmlentities($id, ENT_QUOTES, 'UTF-8');
+
   include_once('../templates/common/header.php');
 
-  $listing = getListingById($_GET['id']);
+  $listing = getListingById($id);
   include_once('../templates/listings/some_listing.php');
 
-  $comments = getCommentsByPropertyId($_GET['id']);
+  $comments = getCommentsByPropertyId($id);
   include_once('../templates/comments/list_comments.php');
   
   include_once('../templates/common/footer.php');

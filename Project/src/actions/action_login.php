@@ -3,14 +3,13 @@
     include_once('../database/users.php');         // user functions
     include_once('../templates/tpl_common.php');   // encodeForAJAX
 
-
     $ret = array('response' => '');
 
     $email = $_GET['email'];
     $password = $_GET['password'];
-    // Remove disallowed characters -XSS protection
-    // $email = preg_replace ("/[^a-zA-Z\s]/", '', $email);
-    // $password = preg_replace ("/[^a-zA-Z\s]/", '', $password);
+    
+    htmlentities($email, ENT_QUOTES, 'UTF-8');
+    htmlentities($password, ENT_QUOTES, 'UTF-8');
 
     $ret['response'] = checkUser($email, $password);
 

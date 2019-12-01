@@ -10,6 +10,8 @@
     $id = addImage($property_id);
     $name = $_FILES['image']['name'];
 
+    htmlentities($property_id, ENT_QUOTES, 'UTF-8');
+
     if(strpos($name, '.jpg') !== false || strpos($name, '.jpeg') !== false){ //Contains .jpg
 
         // Generate filenames for original, small and medium files

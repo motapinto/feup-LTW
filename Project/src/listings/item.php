@@ -6,11 +6,13 @@
     include_once('../database/images.php');               // images functions
 
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
-    include('../templates/tpl_navBar.php');                  // prints the menu in HTML
-    include('../templates/tpl_listings.php');    // prints the list of listings in HTML
-    include('../templates/tpl_comments.php');    // prints the list of listings in HTML
+    include('../templates/tpl_navBar.php');               // prints the menu in HTML
+            include('../templates/tpl_listings.php');     // prints the list of listings in HTML
+            include('../templates/tpl_comments.php');     // prints the list of listings in HTML
 
     $id = $_GET['id'];
+    htmlentities($id, ENT_QUOTES, 'UTF-8');
+
     $item = getListingById($id);
 
     draw_header('Campus Rentals', 'rent');

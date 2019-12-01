@@ -15,16 +15,14 @@
     $door_number = $_POST['door_number'];
     $apartment_number = $_POST['apartment_number'];
     $property_type = $_POST['property_type'];
-    // Remove disallowed characters -XSS protection
-    // $title = preg_replace ("/[^a-zA-Z\s]/", '', $title);
-    // $description = preg_replace ("/[^a-zA-Z\s]/", '', $description);
-    // $price_day = preg_replace ("/[^a-zA-Z\s]/", '', $price_day);
-    // $guests = preg_replace ("/[^a-zA-Z\s]/", '', $guests);
-    // $city = preg_replace ("/[^a-zA-Z\s]/", '', $city);
-    // $street = preg_replace ("/[^a-zA-Z\s]/", '', $street);
-    // $door_number = preg_replace ("/[^a-zA-Z\s]/", '', $door_number);
-    // $apartment_number = preg_replace ("/[^a-zA-Z\s]/", '', $apartment_number);
-    // $property_type = preg_replace ("/[^a-zA-Z\s]/", '', $property_type);
+
+    htmlentities($title, ENT_QUOTES, 'UTF-8');
+    htmlentities($description, ENT_QUOTES, 'UTF-8');
+    htmlentities($price_day, ENT_QUOTES, 'UTF-8');
+    htmlentities($guests, ENT_QUOTES, 'UTF-8');
+    htmlentities($city, ENT_QUOTES, 'UTF-8');
+    htmlentities($title, ENT_QUOTES, 'UTF-8');
+    htmlentities($title, ENT_QUOTES, 'UTF-8');
 
     print_r($_POST['property_type']);
     $result = addListing($_SESSION['id'], $title, $description, 

@@ -16,22 +16,22 @@
     }
     else if(isset($_GET['email'])) {
         $aux = $_GET['email'];
-        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        htmlentities($aux, ENT_QUOTES, 'UTF-8');
         $user['email'] = $aux;
     }
     else if(isset($_GET['age'])) {
         $aux = $_GET['age'];
-        // $aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        htmlentities($aux, ENT_QUOTES, 'UTF-8');
         $user['age'] = $aux;
     }
     else if(isset($_GET['password'])) {
         $aux = $_GET['password'];
-        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        htmlentities($aux, ENT_QUOTES, 'UTF-8');
         $user['password'] = $aux;
     }
     else if(isset($_GET['currentPassword'])) {
-        $aux = $_GET['password'];
-        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        $aux = $_GET['currentPassword'];
+        htmlentities($aux, ENT_QUOTES, 'UTF-8');
         if($user['password'] === sha1($_GET['currentPassword']))
             $ret['response'] = 0;
         else

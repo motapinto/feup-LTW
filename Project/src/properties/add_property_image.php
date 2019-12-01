@@ -17,10 +17,9 @@
     if(!isset($_GET['id']))
         header('Location: ../listings/listings_all.php');                                 // main webpage
 
-    $images = getImagesByPropertyId($_GET['id']);
-
-
-
+    $id = $_GET['id'];
+    htmlentities($id, ENT_QUOTES, 'UTF-8');
+    $images = getImagesByPropertyId($id);
 ?>
     <section id='addProperty'>
         <h2>Add Property Images</h2>
