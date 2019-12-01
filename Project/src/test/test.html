@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!-- https://www.youtube.com/watch?v=f8el0g_rXbY&t=10s -->
+<!-- minuto 5:50  -->
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/2ebd8c9c01.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  	<section id="chat-container">
+    	<article id="messages-search">
+      		<input type="text" placeholder="search">
+		</article>
+		
+    	<article id="messages-menu">
+			<div class="message-menu-item active">
+				<img width="50px" src="images/noone.png" alt="default">
+				<div class="message-menu-item-title">
+					Luis Ramos
+				</div>
+				<div class="message-menu-item-date">
+					Apr 16
+				</div>
+				<div class="message-menu-item-lastmsg">
+					Hey this is message
+				</div>
+			</div>
+			<div class="message-menu-item">
+				<img width="50px" src="images/noone.png" alt="default">
+				<div class="message-menu-item-title">
+					Carlos 
+				</div>
+				<div class="message-menu-item-date">
+					Apr 16
+				</div>
+				<div class="message-menu-item-lastmsg">
+					Hey this is message
+				</div>
+			</div>
+			<div class="message-menu-item">
+				<img width="50px" src="images/noone.png" alt="default">
+				<div class="message-menu-item-title">
+					Martim Silva
+				</div>
+				<div class="message-menu-item-date">
+					Apr 16
+				</div>
+				<div class="message-menu-item-lastmsg">
+					Hey this is message
+				</div>
+			</div>
+		</article>
+
+		<article id="messages-chatTitle">
+			<img width="50px" src="images/noone.png" alt="default">
+			<span> Luis Ramos </span>
+			<img width="50px" src="images/trash.png" alt="">
+		</article>
+	
+		<article id="messages-chatSelected">
+			<div class="message-row sent">
+				<div class="message-content">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row received">
+				<div class="message-content">
+					<img width="50px" src="images/noone.png" alt="default">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row sent">
+				<div class="message-content">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row received">
+				<div class="message-content">
+					<img width="50px" src="images/noone.png" alt="default">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row sent">
+				<div class="message-content">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row received">
+				<div class="message-content">
+					<img width="50px" src="images/noone.png" alt="default">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row sent">
+				<div class="message-content">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row received">
+				<div class="message-content">
+					<img width="50px" src="images/noone.png" alt="default">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row sent">
+				<div class="message-content">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row received">
+				<div class="message-content">
+					<img width="50px" src="images/noone.png" alt="default">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row sent">
+				<div class="message-content">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+			<div class="message-row received">
+				<div class="message-content">
+					<img width="50px" src="images/noone.png" alt="default">
+					<div class="message-text"> Ok then</div>
+					<div class="message-time"> Apr 16</div>
+				</div>
+			</div>
+		</article>
+	
+		<article id="messages-input">
+			<img src="images/atta.png" alt="add attachment" width="25px">
+			<input type="text" placeholder="write a message">
+		</article>
+  	</section>
+</body>
+</html>
+
+<style>
+	#chat-container {
+		display: grid;
+		grid-template-areas: 
+		'messages-search messages-chatTitle' 
+		'messages-menu messages-chatSelected' 
+		'messages-input messages-input';
+		grid-template-columns: 300px 850px;
+		grid-template-rows: 50px 500px 100px;
+		
+		background: #fff;
+		border-radius: 10px;
+	}
+
+	#messages-search {
+		background-color: white ;
+		grid-area: messages-search;
+		padding: 10px 20px;
+		grid-area: messages-search;
+		border-radius: 20px 0 0 0;
+		border-right: solid 1px rgba(39, 39, 39, 0.2);
+	}
+
+	#messages-search input{
+		font-weight: lighter;
+		padding: 5px 0;
+		padding-left: 45px;
+		font-size: 16px;
+		border: none;
+		border-bottom: solid 1px rgb(211, 209, 209);
+		
+		background: url('images/search.png') no-repeat;
+		background-position: 15px center;
+		background-size: 18px 18px
+	}
+
+	#messages-search input::placeholder {
+		color: rgb(122, 121, 121);
+		font-size: 20px;
+	}
+
+	#messages-menu {
+		background-color: white ;
+		grid-area: messages-menu;
+		border-right: solid 1px rgba(39, 39, 39, 0.2);
+		padding-right: 10px;
+	}
+
+	.message-menu-item {
+		display: grid;
+		grid-template-columns: 40px 1fr max-content ;
+		gap: 8px;
+		color: rgba(39, 39, 39, 0.5);
+		font-size: 18px;
+		font-weight: lighter;
+		padding: 20px 20px 20px 15px;
+		border-radius: 10px;
+	}
+
+	.message-menu-item > img {
+		grid-row-start: span 2;
+		border-radius: 100%;
+	}
+
+	.message-menu-item.active,
+	.message-menu-item:hover {
+		background: rgb(236, 234, 234);
+		cursor: pointer;
+	}
+
+	.message-menu-item-title {
+		color: black;
+		padding-left: 5px;
+	}
+
+	.message-menu-item-date {
+		color: rgba(39, 39, 39, 0.4);
+		font-size: 15px;
+	}
+
+	.message-menu-item-lastmsg {
+		padding-left: 5px;
+	}
+
+	#messages-chatTitle {
+		display: grid;
+		grid-template-columns: 80px 650px 500px;
+		align-content: center;
+		align-items: center;
+
+		grid-area: messages-chatTitle;
+		color: black;
+		font-size: 30px;
+		padding: 0 20px;
+		border-bottom: solid 1px rgb(236, 234, 234);
+	}
+
+	#messages-chatTitle > img {
+		cursor: pointer;
+		border-radius: 100%;
+	}
+
+	#messages-chatSelected {
+		display: grid;
+		grid-area: messages-chatSelected;
+		display: fleX;
+		flex-direction: column-reverse;
+		padding: 0 20px;
+		overflow-y: scroll	
+	}
+
+	#messages-chatSelected::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	#messages-chatSelected::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background: rgba(0,0,0,-1);
+	}
+
+	.message-row {
+		display: grid;
+		grid-template-columns: 100%;
+		margin-bottom: 20px;
+	}
+
+	.message-content {
+		display: grid;
+	}
+
+	.sent {
+		justify-items: end;
+	}
+
+	.sent .message-content {
+		justify-items: end;
+	}
+
+	.received {
+		justify-items: start;
+	}
+
+	.received .message-content {
+		grid-template-columns: 48px 1fr;
+		column-gap: 15px;
+	}
+
+	.message-row img {
+		border-radius: 100%;
+		grid-row: span 2;
+	}
+
+	.message-row{
+		margin-bottom: 20px;
+	}
+
+	.message-text {
+		padding: 9px 14px;
+		font-size: 1.6rem;
+		margin-bottom: 5px;
+	}
+
+	.message-time {
+		font-size: 1.3rem;
+		color: #787;
+	}
+
+	.sent .message-text {
+		background: teal;
+		color: #eee;
+		border-radius: 20px 20px 0 20px;
+	}
+
+	.received .message-text {
+		background: rgb(218, 218, 218);
+		color: black;
+		border-radius: 20px 20px 20px 0;
+	}
+  
+	#messages-input {
+		display: grid;
+		grid-template-columns: 40px 700px;
+		align-content: space-around;
+		align-items: center;
+		grid-area: messages-input;
+		gap: 15px;
+		border-radius: 0 0 10px 0;
+		border-top: 1px solid rgba(0,0,0,0.25);
+		padding-left: 350px;
+		padding-right: 22px;
+	}
+
+	#messages-input input{
+		outline: none;
+		padding: 15px;
+		border: 2px solid #ddd;
+		color: #331;
+		border-radius: 6px;
+		font-size: 1.4rem;
+	}
+
+</style>
