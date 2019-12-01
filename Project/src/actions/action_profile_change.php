@@ -9,11 +9,29 @@
     $ret = array('response' => -3);
     $user = userProfile($_SESSION['id']);
 
-    if(isset($_GET['name'])) $user['name'] = $_GET['name'];
-    else if(isset($_GET['email'])) $user['email'] = $_GET['email'];
-    else if(isset($_GET['age'])) $user['age'] = $_GET['age'];
-    else if(isset($_GET['password'])) $user['password'] = $_GET['password'];
+    if(isset($_GET['name'])) {
+        $aux = $_GET['name'];
+        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        $user['name'] = $aux;
+    }
+    else if(isset($_GET['email'])) {
+        $aux = $_GET['email'];
+        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        $user['email'] = $aux;
+    }
+    else if(isset($_GET['age'])) {
+        $aux = $_GET['age'];
+        // $aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        $user['age'] = $aux;
+    }
+    else if(isset($_GET['password'])) {
+        $aux = $_GET['password'];
+        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
+        $user['password'] = $aux;
+    }
     else if(isset($_GET['currentPassword'])) {
+        $aux = $_GET['password'];
+        //$aux = preg_replace ("/[^a-zA-Z\s]/", '', $aux);
         if($user['password'] === sha1($_GET['currentPassword']))
             $ret['response'] = 0;
         else

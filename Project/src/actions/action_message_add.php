@@ -10,14 +10,11 @@
     if(!isset($_GET['sendMessage']) || !isset($_GET['receiver'])) 
         header('Location: ../profile/profile.php'); 
 
-        $sender = $_SESSION['id'];
-
-        print_r($_GET['sendMessage']);
-        print_r($_GET['receiver']);
-        print_r($sender);
-
+    $sendMessage = $_GET['sendMessage'];
+    $receiver = $_GET['receiver'];
+    // Remove disallowed characters -XSS protection
+    // $sendMessage = preg_replace ("/[^a-zA-Z\s]/", '', $sendMessage);
+    // $receiver = preg_replace ("/[^a-zA-Z\s]/", '', $receiver);
   
-    $result = addMessage($_GET['receiver'], $sender, $_GET['sendMessage']);
-    
-    print_r($result);
+    $result = addMessage($receiver, $_SESSION['id'], $sendMessage);
 ?>

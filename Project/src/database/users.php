@@ -11,8 +11,8 @@
 
         if ($user === false) 
             return -1;
-        
-        if(strtoupper(sha1($password)) === strtoupper($user['password']))
+
+        if(password_verify($password, $user['password']))
             return $user['id'];
 
         else
@@ -49,7 +49,7 @@
                             age = ?,
                             password = ?
                             WHERE id = ?');
-        $stmt->execute(array($newEmail, $name, $age, sha1($password), $id));
+        $stmt->execute(array($newEmail, $name, $age, password_hash($password, PASSWORD_DEFAULT, $options), $id));
         
         $user = $stmt->fetch();
         print_r($user);
@@ -68,7 +68,9 @@
             )
             VALUES (?, ?, ?, ?);
         ');
-        $stmt->execute(array($email, sha1($password), $name, $age));
+
+        $options = ['cost' => 12];
+        $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options), $name, $age));
         $user = $stmt->fetch();
         return $user!==false?true:false;
     }
