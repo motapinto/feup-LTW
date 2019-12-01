@@ -57,9 +57,6 @@ function submitSignup() {
     if(!(checkName() && checkAge() && checkEmail() && checkPass()))
         return; 
 
-        alert('2');
-
-
     let email = document.getElementById('email').value;
     email = email.replace('@', '%40');
     email = 'email=' + email;
@@ -74,7 +71,6 @@ function submitSignup() {
     age = 'age=' + age;
 
     let request = email + '&' + password + '&' + name + '&' + age;
-    alert(request);
     
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
