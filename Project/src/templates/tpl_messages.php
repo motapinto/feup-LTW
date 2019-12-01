@@ -2,9 +2,6 @@
     <section id='chat-container'>
         <?php if($messengers !== -1) 
             draw_menu($messengers);
-            $allMessengers = getAllMessengers($_SESSION['id']);
-            $lastMessengerId = $allMessengers[0]['user'];
-            draw_conversation($lastMessengerId);
         ?>
     </section>
 
@@ -19,17 +16,21 @@
     	<article id="messages-menu">
             <?php 
                 $num = 0;
+                $allMessengers = getAllMessengers($_SESSION['id']);
+                $lastMessengerId = $allMessengers[0]['user'];
+                
                 foreach($messengers as $messenger) {
                     $num += 1;
                     $user = userProfile($messenger['user']);
                     $lastMessage = getLastMessageFromConversation($messenger['user'], $_SESSION['id']);
+                    $image = getUserImagePath($user['id'], 'MEDIUM');
                     if($num == 1) { ?>
                         <div class="message-menu-item active">
                     <?php } if($num > 1) { ?>
                         <div class="message-menu-item ">
                     <?php } ?> 
 
-                            <img width="50px" src="../../assets/icons/noone.png" alt="default">
+                            <img width="60px" src="<?=$image?>" alt="default">
                             <div class="message-menu-item-title">
                             <?=$user['name']?>
                             </div>
@@ -41,8 +42,9 @@
                             </div>
                         </div>
                 <?php } ?>
-		</article>
+        </article>
     </section>
+    <?php draw_conversation($lastMessengerId); ?>
 
 <?php } ?>
 
@@ -50,15 +52,13 @@
     
     $messenger = userProfile($messengerId);
     $conversation = getAllMessagesBetweenUsers($messengerId, $_SESSION['id']);
-    // print_r($conversation);
-    // print_r($messenger);
+    $image = getUserImagePath($messengerId, 'MEDIUM');
     ?>
 
     <section class="messages">
         <article id="messages-chatTitle">
-            <img width="50px" src="../../assets/icons/noone.png" alt="default">
+            <img width="50px" src="<?= $image ?>" alt="default">
             <span> <?= $messenger['name'] ?> </span>
-            <img width="50px" src="../../assets/icons/trash.png" alt="">
         </article>
     
         <article id="messages-chatSelected">
@@ -74,14 +74,12 @@
                 else { ?>
                     <div class="message-row received">
                         <div class="message-content">
-                            <img width="50px" src="../../assets/icons/noone.png" alt="default">
+                            <img width="50px" src="<?= $image ?>" alt="default">
                             <div class="message-text"> <?=$message['message']?> </div>
                             <div class="message-time"> Apr 16</div>
                         </div>
                     </div>
-                <?php } ?>
-    
-    
+                <?php } ?>    
             <?php } ?>
     
         </article>
