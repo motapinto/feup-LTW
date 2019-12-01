@@ -1,171 +1,96 @@
 <?php function draw_messages($messengers) { ?>
-    <section id='messages'>
-    <?php foreach($messengers as $messenger) { 
-        draw_conversation($messenger);
-    } ?>
+    <section class='chat-container'>
+        <?php if($messengers !== -1) 
+            //draw_menu($messengers);
+            $allMessengers = getAllMessengers($_SESSION['id']);
+            $lastMessengerId = $allMessengers[0]['user'];
+            draw_conversation($lastMessengerId);
+        ?>
     </section>
 
 <?php } ?>
 
-<?php function draw_conversation($messenger) { ?>
-    <section class='chatbox'>
-        <section class="chatLogs">
-    <?php 
-        $conversation = getAllMessagesBetweenUsers($_SESSION['id'], $messenger['user']);
-        $user = userProfile($messenger['user']);
-        $self = userProfile($_SESSION['id']);
-        $userImage = getUserImagePath($user['id'], 'MEDIUM');
-        $selfImage = getUserImagePath($self['id'], 'MEDIUM');
-        foreach($conversation as $item) { 
-            draw_item($item, $user, $self, $userImage, $selfImage);
-        } 
-    ?>
-            <article class="chat-form">
-                <textarea></textarea>
-                <button><i class="fas fa-paper-plane"></i></button>
-            </article>
-        </section>
+<?php function draw_menu($messengers) { ?>
+    <section class='messages-menu'>
+        <article id="messages-search">
+      		<input type="text" placeholder="search">
+		</article>
+		
+    	<article id="messages-menu">
+            <?php 
+                $num = 0;
+                foreach($messengers as $messenger) {
+                    $num += 1;
+                    $user = userProfile($messenger['user']);
+                    $lastMessage = getLastMessageFromConversation($messenger['user'], $_SESSION['id']);
+                    if($num == 1) { ?>
+                        <div class="message-menu-item active">
+                    <?php if($num > 1) { ?>
+                        <div class="message-menu-item ">
+
+                            <img width="50px" src="../../assets/icons/noone.png" alt="default">
+                            <div class="message-menu-item-title">
+                            <?php $user['name'] ?>
+                            </div>
+                            <div class="message-menu-item-date">
+                                Apr 16
+                            </div>
+                            <div class="message-menu-item-lastmsg">
+                            <?php 
+                            print_r($lastMessage['message']);
+                            
+                            $lastMessage['message'] ?>
+                            </div>
+                        </div>
+                    <?php } 
+                    } 
+                } ?>
+		</article>
     </section>
-<?php  } ?>
 
-<?php function draw_item($item, $user, $self, $userImage, $selfImage) { ?>
-    <?php if($item['sender'] === $self['id']) { ?>
-        <article class="chat friend">
-            <a href="../profile/profile.php?id=<?=$user['id']?>">
-                <div class="user-photo">
-                    <!-- <img class='_1mgxxu3' src='//$userImage?>' alt='User Photo' title='User Photo'> -->
-                </div>
-            </a>
-            <p> <?=$user['name']?> </p>
-            <p class="chat-message"> <?=$item['message']?> </p>
-            <p id="chat-date"> <?=$item['date']?> </p>
-        </article>
-    <?php } ?>
-    <?php if($item['sender'] === $user['id']) { ?>
-        <article class="chat self">
-            <a href="../profile/profile.php?id=<?=$self['id']?>">
-                <div class="user-photo">
-                    <!-- <img class='_1mgxxu3' src='//$selfImage?>' alt='User Photo' title='User Photo'> -->
-                </div>
-            </a>
-            <p class="chat-message"> <?=$item['message']?> </p>
-            <p id="chat-date"> <?=$item['date']?> </p>
-        </article>
-    <?php } ?>
+<?php } ?>
 
-<?php  } ?>
-
-<style>
-.chatbox {
-    box-sizing: border-box;
-    width: 500px;
-    min-width: 390px;
-    height: 600px;
-    background: #fff;
-    padding: 25px;
-    margin: 20px auto;
-    box-shadow: 0 3px #ccc
-}
-
-.chatLogs {
-    padding: 10px;
-    width: 100%;
-    height: 450px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.chat-form textarea::-webkit-scrollbar {
-    width: 10px;
-}
-
-.chat-form textarea::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(0,0,0,-1);
-}
-
-.chat {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-    margin-bottom: 10px;    
-}
-
-.chat .user-photo {
-    width: 60px;
-    height: 60px;
-    background: #ccc;
-    border-radius: 50%
-}
-
-.chat .chat-message {
-    width: 70%;
-    padding: 15px;
-    margin: 5px 10px 0;
+<?php function draw_conversation($messengerId) { 
     
-    border-radius: 10px;
-    font-size: 15px;
-}
+    $messenger = userProfile($messengerId);
+    $conversation = getAllMessagesBetweenUsers($messengerId, $_SESSION['id']);
+    print_r($conversation);
+    print_r($messenger);
+    ?>
 
-.friend .chat-message {
-    background: rgb(220, 220, 220);
-    color: black;
-}
+    <article id="messages-chatTitle">
+        <img width="50px" src="../../assets/icons/noone.png" alt="default">
+        <span> <?php $messenger['name'] ?> </span>
+        <img width="50px" src="../../assets/icons/trash.png" alt="">
+    </article>
 
-.self .chat-message {
-    background: teal;
-    color: #fff;
-    order: -1;
-}
-
-.chat-form {
-    margin-top: 20px;
-    display: flex;
-    align-items: flex-start
-}
-
-.chat-form textarea {
-    background: #fbfbfb;
-    width: 75%;
-    height: 50px;
-    border: 2px solid #eee;
-    border-radius: 3px;
-    resize: none;
-    padding: 10px;
-    font-size: 18px;
-    color: #333;
-}
-
-.chat-form textarea: focus {
-    background: #fff;
-}
-
-.chat-form button {
-    background: #1ddced;
-    font-size: 30px;
-    border: none;
-    color: #fff;
-    padding: 5px 15px;
-    margin: 0 10px;
-    border-radius: 3px;
-    box-shadow: 0 3px 0 #0eb2c1;
-    cursor: pointer;
-
-    -webkit-transition: background .2s ease;
-    -moz-transition: background .2s ease;
-    -o-transition: background .2s ease;
-}
-
-.chat-form button:hover {
-    background: #13c8d9;
-}
-
-#chat-date {
-    color: grey;
-}
+    <article id="messages-chatSelected">
+        <?php foreach($conversation as $message) { 
+            if($message['sender'] == $_SESSION['id']) { ?>
+                <div class="message-row sent">
+                    <div class="message-content">
+                        <div class="message-text"> <?php $message['message'] ?> </div>
+                        <div class="message-time"> Apr 16</div>
+                    </div>
+                </div>
+            <?php }
+            else { ?>
+                <div class="message-row received">
+                    <div class="message-content">
+                        <img width="50px" src="../../assets/icons/noone.png" alt="default">
+                        <div class="message-text"> <?php $message['message'] ?> </div>
+                        <div class="message-time"> Apr 16</div>
+                    </div>
+                </div>
+            <?php } ?>
 
 
+        <?php } ?>
 
+    </article>
 
-
-</style>
+    <article id="messages-input">
+        <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
+        <input type="text" placeholder="write a message">
+    </article>
+<?php  } ?>
