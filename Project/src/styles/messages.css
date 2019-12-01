@@ -6,10 +6,6 @@
     border-radius: 10px;
 }
 
-#messages {
-    grid-area: 'messages';
-}
-
 #messages-search {
     background-color: white;
     padding: 10px 20px;

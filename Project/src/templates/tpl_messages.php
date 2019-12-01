@@ -54,41 +54,39 @@
     // print_r($messenger);
     ?>
 
-    <section class="messages">
-        <article id="messages-chatTitle">
-            <img width="50px" src="../../assets/icons/noone.png" alt="default">
-            <span> <?= $messenger['name'] ?> </span>
-            <img width="50px" src="../../assets/icons/trash.png" alt="">
-        </article>
-    
-        <article id="messages-chatSelected">
-            <?php foreach($conversation as $message) { 
-                if($message['sender'] == $_SESSION['id']) { ?>
-                    <div class="message-row sent">
-                        <div class="message-content">
-                            <div class="message-text"> <?=$message['message']?> </div>
-                            <div class="message-time"> Apr 16</div>
-                        </div>
+    <section id="messages-chatTitle">
+        <img width="50px" src="../../assets/icons/noone.png" alt="default">
+        <span> <?= $messenger['name'] ?> </span>
+        <img width="50px" src="../../assets/icons/trash.png" alt="">
+    </section>
+
+    <section id="messages-chatSelected">
+        <?php foreach($conversation as $message) { 
+            if($message['sender'] == $_SESSION['id']) { ?>
+                <div class="message-row sent">
+                    <div class="message-content">
+                        <div class="message-text"> <?=$message['message']?> </div>
+                        <div class="message-time"> Apr 16</div>
                     </div>
-                <?php }
-                else { ?>
-                    <div class="message-row received">
-                        <div class="message-content">
-                            <img width="50px" src="../../assets/icons/noone.png" alt="default">
-                            <div class="message-text"> <?=$message['message']?> </div>
-                            <div class="message-time"> Apr 16</div>
-                        </div>
+                </div>
+            <?php }
+            else { ?>
+                <div class="message-row received">
+                    <div class="message-content">
+                        <img width="50px" src="../../assets/icons/noone.png" alt="default">
+                        <div class="message-text"> <?=$message['message']?> </div>
+                        <div class="message-time"> Apr 16</div>
                     </div>
-                <?php } ?>
-    
-    
+                </div>
             <?php } ?>
-    
-        </article>
-    
-        <article id="messages-input">
-            <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
-            <input type="text" placeholder="write a message">
-        </article>
+
+
+        <?php } ?>
+
+    </section>
+
+    <section id="messages-input">
+        <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
+        <input type="text" placeholder="write a message">
     </section>
 <?php  } ?>
