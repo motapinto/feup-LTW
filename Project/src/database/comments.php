@@ -29,8 +29,6 @@
     function addComment($user_id, $property_id, $comment){
         $db = Database::instance()->db();
 
-        print_r([$user_id, $property_id, $comment]);
-
         $stmt = $db->prepare('INSERT INTO Comment (
                   user_id,
                   property_id,

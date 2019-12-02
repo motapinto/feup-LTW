@@ -12,18 +12,21 @@
     htmlentities($email, ENT_QUOTES, 'UTF-8');
     htmlentities($password, ENT_QUOTES, 'UTF-8');
     htmlentities($name, ENT_QUOTES, 'UTF-8');
-    htmlentities($passageword, ENT_QUOTES, 'UTF-8');
+    htmlentities($password, ENT_QUOTES, 'UTF-8');
 
     $check = checkUser($email, $password);
 
 
     if($check === -1) {
-        if(addUser($email, $password, $name, $age))
+        if(addUser($email, $password, $name, $age) !== false)
             $ret['response'] = 0;
+        else 
+            $ret['response'] = -2;
     }
     else {
         $ret['response'] = -1;
     }
 
     encodeForAJAX($ret);
+    print_r($ret);
 ?>

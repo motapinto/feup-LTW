@@ -71,18 +71,6 @@
 
         $options = ['cost' => 12];
         $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options), $name, $age));
-        $user = $stmt->fetch();
-        return $user!==false?true:false;
-    }
-
-    // Returns the user with the received email
-    function userCommentsAll($email, $comments) {
-        $db = Database::instance()->db();
-
-        $stmt = $db->prepare('SELECT * FROM Comment WHERE email = ?');
-        $stmt->execute(array($email));
-        $comments = $stmt->fetch();
-
-        return $comments;
+        return $stmt->fetchAll();
     }
 ?>
