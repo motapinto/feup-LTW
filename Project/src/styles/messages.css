@@ -8,9 +8,11 @@
     grid-template-rows: 15% 70% 15%;
     background: #fff;
     border-radius: 10px;
+    height: 150%;
 }
 
 #messages-search {
+    grid-area: messages-search;
     background-color: white;
     padding: 10px 20px;
     border-radius: 20px 0 0 0;
@@ -35,7 +37,7 @@
 }
 
 #messages-menu {
-    grid-row: 1 / span 3;
+    grid-area: messages-menu;
     background-color: white;
     overflow-y: scroll;
     display: flex;
@@ -89,6 +91,7 @@
 }
 
 #messages-chatTitle {
+    grid-area: messages-chatTitle;
     display: grid;
     grid-template-columns: 80px 650px 500px;
     align-content: center;
@@ -107,6 +110,7 @@
 }
 
 #messages-chatSelected {
+    grid-area: messages-chatSelected;
     padding: 0.1em 20px;
     padding-top: 20px;
     overflow-y: scroll;
@@ -178,6 +182,7 @@
 }
 
 #messages-input {
+    grid-area: messages-input;
     display: grid;
     grid-template-columns: 40px 95%;
     align-content: space-around;

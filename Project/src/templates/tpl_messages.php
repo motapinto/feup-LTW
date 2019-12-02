@@ -8,12 +8,11 @@
 <?php } ?>
 
 <?php function draw_menu($messengers) { ?>
-    <section id='messages-menu'>
-        <article id="messages-search">
+        <section id="messages-search">
       		<input type="text" placeholder="search">
-		</article>
+		</section>
 		
-    	<article id="messages-menu">
+    	<section id="messages-menu">
             <?php 
                 $num = 0;
                 $allMessengers = getAllMessengers($_SESSION['id']);
@@ -42,8 +41,7 @@
                             </div>
                         </div>
                 <?php } ?>
-        </article>
-    </section>
+        </section>
     <?php draw_conversation($lastMessengerId); ?>
 
 <?php } ?>
