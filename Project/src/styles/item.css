@@ -1,11 +1,10 @@
 .rent {
-    position: fixed;
-    right: 5%;
-    top: 8em;
     min-width: 184px;
     min-height: 300px;
     border: 1px solid rgb(212, 212, 212);
     background-color: white;
+    align-items: center;
+    grid-row: span 3;
 }
 
 #rent-price {
@@ -36,7 +35,6 @@
 }
 
 .rent form button {
-    width: 10em;
     background-color: rgb(250, 130, 130);
     border-radius: 5px;
     border: none;
@@ -53,10 +51,15 @@
     margin-top: 1em;
 }
 
+#rent_button {
+    margin: 1em;
+}
+
 #comments {
     border-top: white solid 0.1em;
     margin: var(--main-margin);
     width: var(--main-width);
+    grid-row: 2;
 }
 
 
@@ -112,6 +115,7 @@
 #comment_form {
     margin: var(--main-margin);
     width: var(--main-width);
+    grid-row: 3;
 }
 
 
@@ -121,4 +125,32 @@
     outline: none;
     resize: none;
     border-radius: 4px;
+}
+
+#list {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+#dropdown {
+    max-width: 184px;
+    min-height: 300px;
+}
+
+#change-guests {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+#change-guests input {
+    text-align: center;
+}
+
+#change-guests label {
+    grid-column: span 3;
+}
+
+#msg-guests {
+    grid-column: span 3;
+    display: none;
 }

@@ -47,20 +47,22 @@ function guestsChange(type, option) {
         case ADD:
             if (checkGuests(ADD)) {
                 document.getElementById(id).value++;
-                document.getElementById('msg-guests').textContent = '';
+                document.getElementById('msg-guests').display = 'none';
             }
             else {
                 document.getElementById('msg-guests').textContent = 'Maximum number of guests reached';
+                document.getElementById('msg-guests').display = 'block';
             }
             break;
     
         case SUB:
             if (checkGuests(SUB)) {
                 document.getElementById(id).value--;
-                document.getElementById('msg-guests').textContent = '';
+                document.getElementById('msg-guests').display = 'none';
             }
             else {
                 document.getElementById('msg-guests').textContent = 'Number of guests must be higher then 0';
+                document.getElementById('msg-guests').display = 'block';
             }
             break;
 

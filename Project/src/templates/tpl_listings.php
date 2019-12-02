@@ -99,8 +99,7 @@ function draw_item($item, $owner=false) {
 				<input type='date' name='check_in' title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
 				<label>Check Out</label>
 				<input type='date' name='check_out' title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
-				<label>Number of Guests <span id="current-guests">1</span></label>
-                <button onclick="dropdown()"><i class="fas fa-chevron-down"></i></button>
+				<label>Number of Guests: <span id="current-guests">1</span><button onclick="dropdown()"><i class="fas fa-chevron-down"></i></button></label>
                 <section id='dropdown'>
                     <p>Maximum number of guests: <?=$item['guests']?></p>  
                     <input id="guests" type="hidden" value="<?=$item['guests']?>">
@@ -120,7 +119,7 @@ function draw_item($item, $owner=false) {
                         <span class='error' id='msg-guests'></span>
                     </section>
                 </section>
-				<input class='rent_button' type="submit" value="Rent">
+				<input id='rent_button' type="submit" value="Rent">
 			</form>
 		  </section>
 
