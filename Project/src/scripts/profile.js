@@ -104,7 +104,7 @@ function checkCurrentPassword() {
     xhttp.send();
 }
 
-//  Submit form to change profile details
+//  Submit form to change/delete profile
 function submitForm(option) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -135,6 +135,9 @@ function submitForm(option) {
             password = document.getElementById('password').value;
             request = 'password=' + password;
             break;
+        
+        case 4:
+            request = 'deleteUser=0'
 
         default:
             break;
@@ -191,4 +194,11 @@ function submitForm(option) {
 
     xhttp.open('GET', '../actions/action_profile_change.php?' + request, asynchronous);
     xhttp.send();
+}
+
+function deleteUser() {
+    if (confirm("Are you sure?"))
+        submitForm(4);
+    else 
+        submitForm(-1);
 }

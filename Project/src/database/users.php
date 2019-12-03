@@ -56,6 +56,15 @@
         return !$user?0:1;
     }
 
+     // Deletes a user to the database
+    function deleteUser($id){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('DELETE FROM User WHERE id = ?');
+        $stmt->execute(array($id));
+        return $stmt->fetchAll();
+    }
+
     // Adds a new user to the database
     function addUser($email, $password, $name, $age){
         $db = Database::instance()->db();

@@ -97,6 +97,17 @@
                 <input value='<?=$user['age']?>' disabled> 
                 <?php } ?>  
             </article>
+
+            <article class='profile-setting-elem'>
+                <?php if($canEditProfile) { ?>
+                <header> Delete User </header>
+                <span> All your information will be deleted with no possibility to cancelling after confirm</span>
+                <button onclick="deleteUser()">
+                    <i class="fas fa-user-slash" style="color: red"></i>
+                </button>
+                <?php } ?>     
+            </article>
+
             <p id='msg-name'></p>
             <p id='msg-email'></p>
             <p id='msg-age'></p>

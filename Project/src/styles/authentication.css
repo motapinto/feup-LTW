@@ -5,6 +5,12 @@
 	width: 30%;
 }
 
+.login-elem h2 {
+	background-color: white;
+	width: 110%;
+	text-align: center;
+}
+
 .log_in, .sign_up {
 	background: url("../../assets/images/background.jpg");
     background-position: center center;
