@@ -48,21 +48,6 @@ function profileSubMenu(option) {
     }
 }
 
-function checkPass11() {
-    if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
-        document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
-        document.getElementById('msg-password2').innerHTML = 'The password\'s don\'t match';
-        document.getElementById('msg-password2').style.color = 'red';
-        return;
-    }
-    else {
-        document.getElementById('confirm_password').style.backgroundColor = 'white';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
-        document.getElementById('msg-password2').innerHTML = '';
-    }
-}
-
 //  Confirms current password
 function checkCurrentPassword() {
     let xhttp = new XMLHttpRequest();
@@ -196,6 +181,7 @@ function submitForm(option) {
     xhttp.send();
 }
 
+// Deletes the current user
 function deleteUser() {
     if (confirm("Are you sure?"))
         submitForm(4);

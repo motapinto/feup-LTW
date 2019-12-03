@@ -123,14 +123,13 @@
 
                 <article id='profile-setting-password' class='profile-setting-elem'>
                     <header> New Password </header>
-                    <input type='password' id='password' onkeyup='checkPass(); checkPass11();' disabled 
-                        title='Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'>
+                    <input type='password' id='password' onkeyup='checkPass();' disabled >
                         <button id='password-change' style='display:none;' onclick='submitForm(3);'> Save</button>
                 </article>
 
                 <article id='profile-settings-confirm_password' class='profile-setting-elem'>
                     <header> Confirm password </header>
-                    <input id='confirm_password' type='password' value='' onkeyup='checkPass11();' disabled >
+                    <input id='confirm_password' type='password' onkeyup='checkPass();' disabled >
                 </article>
                 <p id='msg-password'></p>
                 <p id='msg-password1'></p>
