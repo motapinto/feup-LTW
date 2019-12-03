@@ -58,13 +58,9 @@
     function getFirstImageOfProperty($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT id
-                              FROM Image 
-                              WHERE property_id = ?
-                              GROUP BY id'
-                            );
+        $stmt = $db->prepare('SELECT id FROM Image where property_id = ? LIMIT 1');
         $stmt->execute(array($id));
-        return $stmt->fetch()['id'];
+        return $stmt->fetch();
     }
 
     // Adds an image path to the database

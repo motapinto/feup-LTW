@@ -5,8 +5,7 @@
 
 
 function draw_property($property){ 
-    $image = getFirstImagePathOfProperty($property['id']);
-    ?>
+    $image = getFirstImagePathOfProperty($property['id']); ?>
     <li class='property'>
         <a href="../listings/item.php?id=<?=$property['id']?>">
         <?php if(isset($image)) { ?>
@@ -24,24 +23,23 @@ function draw_property($property){
                     <i class="material-icons"> star_half</i>
                 <?php }
                 else { ?>
-                    <i class="material-icons"> star</i>
+                	<i class="material-icons"> star</i>
                 <?php }
                 $rating -= 1;
             }
             ?>
         </div>
-        <p class="comments">Comments: <?=numberCommentsByProperty($property['id'])?></p>
+        <a href="../listings/item.php?id=<?=$property['id']?>">
+            <p class="comments">Comments: <?=numberCommentsByProperty($property['id'])?></p>
         </a>
-  </li>
+        </a>
+    </li>
 <?php }
 
 function draw_properties($properties) { ?>
-  <ul id="properties">
-    <?php foreach($properties as $property) { 
-      draw_property($property);
-    } ?>
-  </ul>
-
-<?php }
-
-?>
+    <ul id="properties">
+        <?php foreach($properties as $property) { 
+            draw_property($property);
+        } ?>
+    </ul>
+<?php } ?>
