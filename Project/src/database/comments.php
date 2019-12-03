@@ -32,10 +32,9 @@
         $stmt = $db->prepare('INSERT INTO Comment (
                   user_id,
                   property_id,
-                  comment,
-                  date
+                  comment
                 )
-                VALUES (?, ?, ?, DEFAULT(date));'
+                VALUES (?, ?, ?);'
         );
         $stmt->execute(array($user_id, $property_id, $comment));
 

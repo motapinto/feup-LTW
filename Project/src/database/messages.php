@@ -71,13 +71,12 @@
         $stmt = $db->prepare('INSERT INTO Message (
                 message,
                 receiver,
-                sender,
-                date
+                sender
             )
-            VALUES (?, ?, ?, DEFAULT(date));
+            VALUES (?, ?, ?);
         ');
         $stmt->execute(array($message, $receiverId, $senderId));
         $message = $stmt->fetch();
-        return !$message?true:false;
+        return $message !== false;
     }
 ?>

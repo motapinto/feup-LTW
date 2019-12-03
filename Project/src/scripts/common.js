@@ -1,4 +1,10 @@
-function checkName(inProfile=false) {
+function encodeForAjax(data) {
+    return Object.keys(data).map(function (k) {
+        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&')
+}
+
+function checkName(inProfile = false) {
     let name = document.getElementById('name').value;
     let nameTest = new RegExp("^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$");
     let isLegal = nameTest.test(name);

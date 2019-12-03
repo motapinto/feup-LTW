@@ -25,7 +25,7 @@
                     $image = getUserImagePath($user['id'], 'MEDIUM');
                     if($num == 1) { ?>
                         <div class="message-menu-item active">
-                    <?php } if($num > 1) { ?>
+                    <?php } else { ?>
                         <div class="message-menu-item ">
                     <?php } ?> 
 
@@ -82,6 +82,8 @@
 
     <section id="messages-input">
         <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
-        <input type="text" placeholder="write a message">
+        <input type="hidden" value='<?=$messengerId?>' id='receiver'>
+        <input type="text" placeholder="write a message" id='message'>
+        <i id="sendMessage" class="far fa-paper-plane"></i>
     </section>
 <?php  } ?>
