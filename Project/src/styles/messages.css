@@ -184,7 +184,7 @@
 #messages-input {
     grid-area: messages-input;
     display: grid;
-    grid-template-columns: 40px 95%;
+    grid-template-columns: 2em 40em 2em;
     align-content: space-around;
     align-items: center;
     gap: 15px;
