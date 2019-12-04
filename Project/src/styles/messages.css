@@ -116,14 +116,6 @@
     border-left: solid 1px rgb(236, 234, 234);
 }
 
-#messages-chatSelected::-webkit-scrollbar {
-    width: 10px;
-}
-
-#messages-chatSelected::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(0, 0, 0, -1);
-}
 
 .message-content {
     display: grid;
