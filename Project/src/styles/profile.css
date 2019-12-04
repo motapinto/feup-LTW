@@ -140,6 +140,10 @@ i {
     margin-right: 2%;
 }
 
+.selected-tab span {
+    color: grey;
+}
+
 .selected-tab input:focus {
     border: solid rgb(176, 183, 187) 2px;
 }

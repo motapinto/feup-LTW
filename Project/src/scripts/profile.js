@@ -76,21 +76,6 @@ function profileSubMenu(option) {
     }
 }
 
-function checkPass11() {
-    if(document.getElementById('password').value !== document.getElementById('confirm_password').value) {
-        document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
-        document.getElementById('msg-password2').innerHTML = 'The password\'s don\'t match';
-        document.getElementById('msg-password2').style.color = 'red';
-        return;
-    }
-    else {
-        document.getElementById('confirm_password').style.backgroundColor = 'white';
-        document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
-        document.getElementById('msg-password2').innerHTML = '';
-    }
-}
-
 //  Confirms current password
 function checkCurrentPassword() {
     let xhttp = new XMLHttpRequest();
@@ -132,7 +117,7 @@ function checkCurrentPassword() {
     xhttp.send();
 }
 
-//  Submit form to change profile details
+//  Submit form to change/delete profile
 function submitForm(option) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -163,6 +148,9 @@ function submitForm(option) {
             password = document.getElementById('password').value;
             request = 'password=' + password;
             break;
+        
+        case 4:
+            request = 'deleteUser=0'
 
         default:
             break;
@@ -217,4 +205,12 @@ function submitForm(option) {
 
     xhttp.open('GET', '../actions/action_profile_change.php?' + request, asynchronous);
     xhttp.send();
+}
+
+// Deletes the current user
+function deleteUser() {
+    if (confirm("Are you sure?"))
+        submitForm(4);
+    else 
+        submitForm(-1);
 }

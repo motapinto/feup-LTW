@@ -97,9 +97,20 @@ function checkPass() {
     if (isLegal) {
         document.getElementById('password').style.backgroundColor = 'white';
         document.getElementById('msg-password1').innerHTML = '';
+        if(document.getElementById('confirm_password') != null) {
+            document.getElementById('confirm_password').style.backgroundColor = 'rgb(246, 220, 220)';
+            document.getElementById('confirm_password').style.border = 'solid 1px rgb(233, 76, 76)'
+            document.getElementById('msg-password2').innerHTML = 'The password\'s don\'t match';
+            document.getElementById('msg-password2').style.color = 'red';
+        }
         return true;
     }
     else {
+        if(document.getElementById('confirm_password') != null) {
+            document.getElementById('confirm_password').style.backgroundColor = 'white';
+            document.getElementById('confirm_password').style.border = 'solid 1px rgb(176, 183, 187)'
+            document.getElementById('msg-password2').innerHTML = '';
+        }
         document.getElementById('password').style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById('msg-password1').style.color = 'red';
         document.getElementById('msg-password1').innerHTML = 'Enter a valid password';
