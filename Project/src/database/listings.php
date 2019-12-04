@@ -47,9 +47,7 @@
             default:
                 return false;
         }
-        $result = $stmt->fetchAll();
-
-        return $result;
+        return $db->lastInsertId();
     }
 
     // Returns all listings

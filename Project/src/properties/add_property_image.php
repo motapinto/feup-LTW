@@ -19,20 +19,14 @@
 
     $id = $_GET['id'];
     htmlentities($id, ENT_QUOTES, 'UTF-8');
-    $images = getImagesByPropertyId($id);
+    $images = getImagePathsByPropertyId($id);
 ?>
     <section id='addProperty'>
         <h2>Add Property Images</h2>
         <h4>Stage 2/2</h4>
-        <?php foreach($images as $image){
-            $id = $image['id'];
-            if(file_exists("../../assets/images/thumbs_medium/p_$id.jpg")){ ?>
-                <img src="../../assets/images/thumbs_medium/p_<?=$id?>.jpg" alt="">
-            <?php }
-            else if(file_exists("../../assets/images/thumbs_medium/p_$id.png")) { ?>
-                <img src="../../assets/images/thumbs_medium/p_<?=$id?>.png" alt="">
-            <?php }
-        }?>
+        <?php foreach($images as $image){ ?>
+                <img src="<?=$image?>" alt="image of property">
+        <?php } ?>
         <form action="../actions/action_property_image.php" method='POST' enctype="multipart/form-data">
             <input type="hidden" name="property_id" value="<?=$_GET['id']?>">
             <input type="file" name="image" required>

@@ -86,7 +86,6 @@ function submitSignup() {
 
             //  fail -> user exists
             default:
-                window.location = '../authentication/signup.php';
                 document.getElementById('msg-email').innerHTML = 'Email already exists';
                 break;
         }

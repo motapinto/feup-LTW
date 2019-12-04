@@ -7,37 +7,30 @@
     define('USER', 0, true);
     define('PROPERTY', 1, true);
     
+    // Generates a random token to be used to store an image
+    function generate_random_token() {
+    return bin2hex(openssl_random_pseudo_bytes(32));
+    }
 
-    // Deletes image with id = id
-    function deleteImage($id, $option){
+    // Deletes image with name = name
+    function deleteImage($name, $option){
         switch ($option) {
             case 'USER':
-                if(file_exists("../../assets/images/originals/u_$id.jpg")){
-                    unlink("../../assets/images/originals/u_$id.jpg");
-                    unlink("../../assets/images/thumbs_small/u_$id.jpg");
-                    unlink("../../assets/images/thumbs_medium/u_$id.jpg");
-                }
-                else if(file_exists("../../assets/images/originals/u_$id.png")){
-                    unlink("../../assets/images/originals/u_$id.png");
-                    unlink("../../assets/images/thumbs_small/u_$id.png");
-                    unlink("../../assets/images/thumbs_medium/u_$id.png");
+                if(file_exists("../../assets/images/users/o_$name.png")){
+                    unlink("../../assets/images/users/o_$name.png");
+                    unlink("../../assets/images/users/m_$name.png");
+                    unlink("../../assets/images/users/s_$name.png");
                 }
                 break;
             case 'PROPERTY':
-                if(file_exists("../../assets/images/originals/u_$id.jpg")){
-                    unlink("../../assets/images/originals/u_$id.jpg");
-                    unlink("../../assets/images/thumbs_small/u_$id.jpg");
-                    unlink("../../assets/images/thumbs_medium/u_$id.jpg");
-                }
-                else if(file_exists("../../assets/images/originals/u_$id.png")){
-                    unlink("../../assets/images/originals/u_$id.png");
-                    unlink("../../assets/images/thumbs_small/u_$id.png");
-                    unlink("../../assets/images/thumbs_medium/u_$id.png");
+                if(file_exists("../../assets/images/properties/o_$name.png")){
+                    unlink("../../assets/images/properties/o_$name.png");
+                    unlink("../../assets/images/properties/m_$name.png");
+                    unlink("../../assets/images/properties/s_$name.png");
                 }
                 break;
             
             default:
-                # code...
                 break;
         }
     }
@@ -46,7 +39,7 @@
     function getImagesByPropertyId($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT id
+        $stmt = $db->prepare('SELECT *
                               FROM Image 
                               WHERE property_id = ?'
                             );
@@ -58,18 +51,19 @@
     function getFirstImageOfProperty($id){
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT id FROM Image where property_id = ? LIMIT 1');
+        $stmt = $db->prepare('SELECT * FROM Image where property_id = ? LIMIT 1');
         $stmt->execute(array($id));
         return $stmt->fetch();
     }
 
     // Adds an image path to the database
-    function addImage($property_id){
+    function addImage($property_id, $name){
+        print_r($property_id); print('\n');print_r($name);
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('INSERT INTO Image (property_id)
-                VALUES (?)');
-        $stmt->execute(array($property_id));
+        $stmt = $db->prepare('INSERT INTO Image (property_id, name)
+                VALUES (?, ?)');
+        $stmt->execute(array($property_id, $name));
 
         return $db->lastInsertId();
     }
@@ -79,37 +73,19 @@
         $imagePaths= array();
 
         foreach ($images as $image) {
-            $imageId = $image['id'];
-            if(file_exists("../../assets/images/originals/p_$imageId.jpg")){
+            $name = $image['name'];
+            if(file_exists("../../assets/images/properties/o_$name.png"))
                 switch ($option) {
                     case 'ORIGINAL':
-                        array_push($imagePaths, "../../assets/images/originals/p_$imageId.jpg");
+                        array_push($imagePaths, "../../assets/images/properties/o_$name.png");
                         break;
                     
                     case 'MEDIUM':
-                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$imageId.jpg");
+                        array_push($imagePaths, "../../assets/images/properties/m_$name.png");
                         break;
                     
                     case 'SMALL':
-                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$imageId.jpg");
-                        break;
-                    
-                    default:
-                        break;
-                }
-            }
-            else if(file_exists("../../assets/images/originals/p_$imageId.png"))
-                switch ($option) {
-                    case 'ORIGINAL':
-                        array_push($imagePaths, "../../assets/images/originals/p_$imageId.png");
-                        break;
-                    
-                    case 'MEDIUM':
-                        array_push($imagePaths, "../../assets/images/thumbs_medium/p_$imageId.png");
-                        break;
-                    
-                    case 'SMALL':
-                        array_push($imagePaths, "../../assets/images/thumbs_small/p_$imageId.png");
+                        array_push($imagePaths, "../../assets/images/properties/s_$name.png");
                         break;
                     
                     default:
@@ -121,35 +97,19 @@
     }
 
     function getFirstImagePathOfProperty($id, $option = 'ORIGINAL'){
-        if(file_exists("../../assets/images/originals/p_$id.jpg"))
+        $name = getFirstImageOfProperty($id)['name'];
+        if(file_exists("../../assets/images/properties/o_$name.png"))
             switch ($option) {
                 case 'ORIGINAL':
-                    return "../../assets/images/originals/p_$id.jpg";
+                    return "../../assets/images/properties/o_$name.png";
                     break;
                 
                 case 'MEDIUM':
-                    return "../../assets/images/thumbs_medium/p_$id.jpg";
+                    return "../../assets/images/properties/m_$name.png";
                     break;
                 
                 case 'SMALL':
-                    return "../../assets/images/thumbs_small/p_$id.jpg";
-                    break;
-                
-                default:
-                    break;
-            }
-        else if(file_exists("../../assets/images/originals/p_$id.png"))
-            switch ($option) {
-                case 'ORIGINAL':
-                    return "../../assets/images/originals/p_$id.png";
-                    break;
-                
-                case 'MEDIUM':
-                    return "../../assets/images/thumbs_medium/p_$id.png";
-                    break;
-                
-                case 'SMALL':
-                    return "../../assets/images/thumbs_small/p_$id.png";
+                    return "../../assets/images/properties/s_$name.png";
                     break;
                 
                 default:
@@ -160,35 +120,19 @@
     }
 
     function getUserImagePath($id, $option = 'ORIGINAL'){
-        if(file_exists("../../assets/images/originals/u_$id.jpg"))
+        $image = userProfile($id)['image'];
+        if(file_exists("../../assets/images/users/o_$image.png"))
             switch ($option) {
                 case 'ORIGINAL':
-                    return "../../assets/images/originals/u_$id.jpg";
+                    return "../../assets/images/users/o_$image.png";
                     break;
                 
                 case 'MEDIUM':
-                    return "../../assets/images/thumbs_medium/u_$id.jpg";
+                    return "../../assets/images/users/m_$image.png";
                     break;
                 
                 case 'SMALL':
-                    return "../../assets/images/thumbs_small/u_$id.jpg";
-                    break;
-                
-                default:
-                    break;
-            }
-        else if(file_exists("../../assets/images/originals/u_$id.png"))
-            switch ($option) {
-                case 'ORIGINAL':
-                    return "../../assets/images/original/u_$id.png";
-                    break;
-                
-                case 'MEDIUM':
-                    return "../../assets/images/thumbs_medium/u_$id.png";
-                    break;
-                
-                case 'SMALL':
-                    return "../../assets/images/thumbs_small/u_$id.png";
+                    return "../../assets/images/users/s_$image.png";
                     break;
                 
                 default:

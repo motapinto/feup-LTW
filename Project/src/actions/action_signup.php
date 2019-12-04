@@ -28,5 +28,4 @@
     }
 
     encodeForAJAX($ret);
-    print_r($ret);
 ?>

@@ -2,6 +2,9 @@
     <section id='chat-container'>
         <?php if($messengers !== -1) 
             draw_menu($messengers);
+        else { ?>
+            <h3>You have no messages.</h3>
+        <?php }
         ?>
     </section>
 
@@ -29,7 +32,7 @@
                         <div class="message-menu-item ">
                     <?php } ?> 
 
-                            <img width="60px" src="<?=$image?>" alt="default">
+                            <img width="60px" height="60px" src="<?=$image?>" alt="default">
                             <div class="message-menu-item-title">
                             <?=$user['name']?>
                             </div>
@@ -54,7 +57,7 @@
     ?>
 
     <section id="messages-chatTitle">
-        <img width="50px" src="<?= $image ?>" alt="default">
+        <img width="50px" height="50px" src="<?= $image ?>" alt="default">
         <span> <?= $messenger['name'] ?> </span>
     </section>
     
@@ -84,6 +87,6 @@
         <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
         <input type="hidden" value='<?=$messengerId?>' id='receiver'>
         <input type="text" placeholder="write a message" id='message'>
-        <i id="sendMessage" class="far fa-paper-plane"></i>
+        <button id="sendMessage"><i class="far fa-paper-plane"></i></button>
     </section>
 <?php  } ?>

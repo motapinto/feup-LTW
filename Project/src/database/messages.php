@@ -76,7 +76,7 @@
             VALUES (?, ?, ?);
         ');
         $stmt->execute(array($message, $receiverId, $senderId));
-        $message = $stmt->fetch();
+        $message = $stmt->fetchAll();
         return $message !== false;
     }
 ?>

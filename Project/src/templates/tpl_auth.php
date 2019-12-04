@@ -22,9 +22,9 @@
         <a href="../listings/listings_all.php">
             <button>Continue without signup</button>
         </a> 
-        <form class="login-elem">
+        <section class="login-elem">
             <h2>Sign up</h2>
-            <input name="name" type="text" id="name" onkeyup="checkName();" placeholder="name" required maxlength=20/>
+            <input name="name" type="text" id="name" onkeyup="checkName();" placeholder="name" required maxlength=50/>
             <input name="age" type="number" id="age" onkeyup="checkAge();" placeholder="age" required min=18 max=120/>
             <input name="email" type="email" id="email" onkeyup="checkEmail();" placeholder="email" required />
             <input type="password" name="password" id="password" onkeyup="checkPass();" title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" placeholder="Password">
@@ -35,8 +35,8 @@
             <span id="msg-password1"></span> 
 
             <a href="#">Forgot your password?</a>
-            <button onclick="submitSignup();" class="signup_buttons" type="submit">SIGN UP</button>
+            <button onclick="submitSignup();" class="signup_buttons" type="button">SIGN UP</button>
             <a href="login.php"><button class="loginin_button" type="button">LOG IN</button></a>
-        </form>
+        </section>
     </section>
 <?php } ?>

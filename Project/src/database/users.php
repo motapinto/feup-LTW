@@ -1,5 +1,6 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
+    include_once('../database/images.php');
 
     // Checks if the input user exists
     function checkUser($email, $password){
@@ -49,7 +50,7 @@
                             age = ?,
                             password = ?
                             WHERE id = ?');
-        $stmt->execute(array($newEmail, $name, $age, password_hash($password, PASSWORD_DEFAULT, $options), $id));
+        $stmt->execute(array($newEmail, $name, $age, password_hash($password, PASSWORD_DEFAULT), $id));
         
         $user = $stmt->fetch();
         print_r($user);
@@ -64,13 +65,14 @@
                 email,
                 password,
                 name,
-                age
+                age,
+                image
             )
-            VALUES (?, ?, ?, ?);
+            VALUES (?, ?, ?, ?, ?);
         ');
 
         $options = ['cost' => 12];
-        $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT, $options), $name, $age));
+        $stmt->execute(array($email, password_hash($password, PASSWORD_DEFAULT), $name, $age, generate_random_token()));
         return $stmt->fetchAll();
     }
 ?>

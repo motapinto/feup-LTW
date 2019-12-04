@@ -3,88 +3,84 @@
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/listings.php');      // properties functions
     include_once('../database/images.php');
+    include_once('../database/users.php');
     
     if(!isset($_SESSION['id']))
-        header('Location: ../listings/listings_all.php');                                 // main webpage
+        die(header('Location: ../listings/listings_all.php'));                                 // main webpage
 
-    $id = $_SESSION['id'];
-    $name = $_FILES['image']['name'];
+    if(!isset($_FILES))
+        die(header('Location: ../profile/profile.php'));                                 // main webpage
 
-    if(strpos($name, '.jpg') !== false || strpos($name, '.jpeg') !== false){ //Contains .jpg
-        deleteImage($id, 'USER');
+    $name = userProfile($_SESSION['id'])['image'];
 
-        // Generate filenames for original, small and medium files
-        $originalFileName = "../../assets/images/originals/u_$id.jpg";
-        $smallFileName = "../../assets/images/thumbs_small/u_$id.jpg";
-        $mediumFileName = "../../assets/images/thumbs_medium/u_$id.jpg";
+    deleteImage($name, 'USER');
 
-        // Move the uploaded file to its final destination
-        move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
+    // Generate filenames for original, small and medium files
+    $originalFileName = "../../assets/images/users/o_$name.png";
+    $smallFileName = "../../assets/images/users/s_$name.png";
+    $mediumFileName = "../../assets/images/users/m_$name.png";
 
-        // Crete an image representation of the original image
-        $original = imagecreatefromjpeg($originalFileName);
+    // Crete an image representation of the original image
+    $original = imagecreatefrompng($_FILES['image']['tmp_name']);
+    if($original === false){
+        $original = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+        if($original === false){
+            $original = imagecreatefrombmp($_FILES['image']['tmp_name']);
+            if($original === false){
+                $original = imagecreatefromgd2($_FILES['image']['tmp_name']);
+                if($original === false){
+                    $original = imagecreatefromgd2part($_FILES['image']['tmp_name']);
+                    if($original === false){
+                        $original = imagecreatefromgd($_FILES['image']['tmp_name']);
+                        if($original === false){
+                            $original = imagecreatefromgif($_FILES['image']['tmp_name']);
+                            if($original === false){
+                                $original = imagecreatefromwbmp($_FILES['image']['tmp_name']);
+                                if($original === false){
+                                    $original = imagecreatefromxbm($_FILES['image']['tmp_name']);
+                                    if($original === false){
+                                        $original = imagecreatefromwebp($_FILES['image']['tmp_name']);
+                                        if($original === false)
+                                            $original = imagecreatefromxpm($_FILES['image']['tmp_name']); 
 
-        $width = imagesx($original);     // width of the original image
-        $height = imagesy($original);    // height of the original image
-        $square = min($width, $height);  // size length of the maximum square
-
-        // Create and save a small square thumbnail
-        $small = imagecreatetruecolor(200, 200);
-        imagecopyresized($small, $original, 0, 0, ($width>$square)?($width-$square)/2:0, ($height>$square)?($height-$square)/2:0, 200, 200, $square, $square);
-        imagejpeg($small, $smallFileName);
-
-        // Calculate width and height of medium sized image (max width: 400)
-        $mediumwidth = $width;
-        $mediumheight = $height;
-        if ($mediumwidth > 400) {
-            $mediumwidth = 400;
-            $mediumheight = $mediumheight * ( $mediumwidth / $width );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        // Create and save a medium image
-        $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
-        imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
-        imagejpeg($medium, $mediumFileName);
     }
-    else if(strpos($name, '.png') !== false){ //Contains .png
-        deleteImage($id, 'USER');
-
-        // Generate filenames for original, small and medium files
-        $originalFileName = "../../assets/images/originals/u_$id.png";
-        $smallFileName = "../../assets/images/thumbs_small/u_$id.png";
-        $mediumFileName = "../../assets/images/thumbs_medium/u_$id.png";
-
-        // Move the uploaded file to its final destination
-        move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
-
-        // Crete an image representation of the original image
-        $original = imagecreatefrompng($originalFileName);
-
-        $width = imagesx($original);     // width of the original image
-        $height = imagesy($original);    // height of the original image
-        $square = min($width, $height);  // size length of the maximum square
-
-        // Create and save a small square thumbnail
-        $small = imagecreatetruecolor(200, 200);
-        imagecopyresized($small, $original, 0, 0, ($width>$square)?($width-$square)/2:0, ($height>$square)?($height-$square)/2:0, 200, 200, $square, $square);
-        imagepng($small, $smallFileName);
-
-        // Calculate width and height of medium sized image (max width: 400)
-        $mediumwidth = $width;
-        $mediumheight = $height;
-        if ($mediumwidth > 400) {
-            $mediumwidth = 400;
-            $mediumheight = $mediumheight * ( $mediumwidth / $width );
-        }
-
-        // Create and save a medium image
-        $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
-        imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
-        imagepng($medium, $mediumFileName);
+    if($original === false){
+        $_SESSION['msg'] = 'File is not an image, please choose a valid image';
+        die();
     }
-    else
-        $_SESSION['errorMsg'] = "Invalid image type, please use a .jpg/.jpeg or .png image.";
 
+    // Move the uploaded file to its final destination
+    move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName);
+
+    $width = imagesx($original);     // width of the original image
+    $height = imagesy($original);    // height of the original image
+    $square = min($width, $height);  // size length of the maximum square
+
+    // Create and save a small square thumbnail
+    $small = imagecreatetruecolor(200, 200);
+    imagecopyresized($small, $original, 0, 0, ($width>$square)?($width-$square)/2:0, ($height>$square)?($height-$square)/2:0, 200, 200, $square, $square);
+    imagepng($small, $smallFileName);
+
+    // Calculate width and height of medium sized image (max width: 400)
+    $mediumwidth = $width;
+    $mediumheight = $height;
+    if ($mediumwidth > 400) {
+        $mediumwidth = 400;
+        $mediumheight = $mediumheight * ( $mediumwidth / $width );
+    }
+
+    // Create and save a medium image
+    $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
+    imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
+    imagepng($medium, $mediumFileName);
     
 
     header('Location: ../profile/profile.php');
