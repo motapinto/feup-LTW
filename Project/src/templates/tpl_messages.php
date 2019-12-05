@@ -12,7 +12,7 @@
 
 <?php function draw_menu($messengers) { ?>
         <section id="messages-search">
-      		<input type="text" placeholder="search">
+      		<input type="text" placeholder="search by name">
 		</section>
 		
     	<section id="messages-menu">
@@ -67,7 +67,7 @@
                 <div class="message-row sent">
                     <div class="message-content">
                         <div class="message-text"> <?=$message['message']?> </div>
-                        <div class="message-time"> Apr 16</div>
+                        <div class="message-time"> <?=$message['date']?></div>
                     </div>
                 </div>
             <?php }
@@ -76,7 +76,7 @@
                     <div class="message-content">
                         <img width="50px" src="<?= $image ?>" alt="default">
                         <div class="message-text"> <?=$message['message']?> </div>
-                        <div class="message-time"> Apr 16</div>
+                        <div class="message-time"> <?=$message['date']?></div>
                     </div>
                 </div>
             <?php } ?>    
@@ -84,9 +84,10 @@
     </section>
 
     <section id="messages-input">
-            <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
             <input type="hidden" value='<?=$messengerId?>' id='receiver'>
             <input type="text" placeholder="write a message" id='message'>
-            <button id="sendMessage"><i class="far fa-paper-plane"></i></button>
+            <button id="sendMessage">
+                <img src="../../assets/icons/send.png" alt="">
+            </button>
     </section>
 <?php  } ?>

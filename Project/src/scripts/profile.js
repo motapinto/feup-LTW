@@ -192,6 +192,9 @@ function submitForm(option) {
                         break;
                 }
                 break;
+            
+            case 4:
+                window.location = "../actions/action_logout.php";
 
             default:
                 break;

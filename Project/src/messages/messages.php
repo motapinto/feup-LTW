@@ -9,6 +9,9 @@
     include('../templates/tpl_navBar.php');               // prints the menu in HTML
     include('../templates/tpl_messages.php');             // messages template
 
+    if(!isset($_SESSION['id']))
+        die(header('Location: ../listings/listings_all.php'));
+
     draw_header('Messages', 'messages');
     draw_navBar(4);
     $messengers = getAllMessengers($_SESSION['id']);      // gets all users that have exchange messages with from the database 

@@ -11,7 +11,7 @@
 
     if(isset($_GET['name'])) {
         $aux = $_GET['name'];
-        tmlentities($aux, ENT_QUOTES, 'UTF-8');
+        htmlentities($aux, ENT_QUOTES, 'UTF-8');
         $user['name'] = $aux;
     }
     else if(isset($_GET['email'])) {
@@ -39,7 +39,6 @@
     }
     else if(isset($_GET['deleteUser'])) {
         deleteUser($_SESSION['id']);
-        die(header('Location: ../action/action_logout.php'));
     }
     else 
         die(header('Location: ../listings/listings_all.php'));

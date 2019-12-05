@@ -5,12 +5,12 @@ document.getElementById("sendMessage").onclick = function (event) {
     let receiver = document.getElementById('receiver').value;
     let request = encodeForAjax({ sendMessage: message, receiver: receiver});
 
-
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
         switch (response['response']) {
             case 0:
+                document.getElementById('message').value = '';
                 // Create new message
                 let newMessage = document.createElement('div');
                 newMessage.className = 'message-row sent';
@@ -24,8 +24,9 @@ document.getElementById("sendMessage").onclick = function (event) {
 
                 let newMessageContentTime = document.createElement('div');
                 newMessageContentTime.className = 'message-time';
-                // let newMessageContentTimeText = document.createTextNode(processTime(response.time));
-                let newMessageContentTimeText = document.createTextNode('Unfinished');
+                let today = new Date();
+                let date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+                let newMessageContentTimeText = document.createTextNode(date);
 
                 // Construct message
                 newMessageContentText.appendChild(newMessageContentTextText);
