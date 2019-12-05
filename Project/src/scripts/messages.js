@@ -11,6 +11,7 @@ document.getElementById("sendMessage").onclick = function (event) {
         let response = JSON.parse(this.responseText);
         switch (response['response']) {
             case 0:
+                document.getElementById('message').value = '';
                 // Create new message
                 let newMessage = document.createElement('div');
                 newMessage.className = 'message-row sent';
@@ -24,8 +25,10 @@ document.getElementById("sendMessage").onclick = function (event) {
 
                 let newMessageContentTime = document.createElement('div');
                 newMessageContentTime.className = 'message-time';
-                // let newMessageContentTimeText = document.createTextNode(processTime(response.time));
-                let newMessageContentTimeText = document.createTextNode('Unfinished');
+                let today = new Date();
+                let date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + 
+                ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+                let newMessageContentTimeText = document.createTextNode(date);
 
                 // Construct message
                 newMessageContentText.appendChild(newMessageContentTextText);

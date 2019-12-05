@@ -7,8 +7,7 @@
 
         $stmt = $db->prepare('SELECT * FROM Message WHERE 
                               receiver = ? AND sender = ? OR
-                              receiver = ? AND sender = ?
-                              ORDER BY date');
+                              receiver = ? AND sender = ?');
         $stmt->execute(array($user1, $user2, $user2, $user1));
         $messages = $stmt->fetchAll();
 
@@ -25,8 +24,8 @@
 
         $stmt = $db->prepare('SELECT message FROM Message WHERE 
                               receiver = ? AND sender = ? OR
-                              receiver = ? AND sender = ?
-                              ORDER BY date LIMIT 1');
+                              receiver = ? AND sender = ? 
+                              LIMIT 1');
         $stmt->execute(array($user1, $user2, $user2, $user1));
         $message = $stmt->fetch();
 
@@ -48,9 +47,7 @@
                                 SELECT receiver as user, date FROM Message Where sender = ? 
                                 UNION 
                                 SELECT sender as user, date FROM Message Where receiver = ?
-                              )
-                              ORDER BY DATE;'
-                            );
+                              )');
 
         $stmt->execute(array($user, $user));
         $users = $stmt->fetchAll();

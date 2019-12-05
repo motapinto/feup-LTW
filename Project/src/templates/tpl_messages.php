@@ -67,7 +67,7 @@
                 <div class="message-row sent">
                     <div class="message-content">
                         <div class="message-text"> <?=$message['message']?> </div>
-                        <div class="message-time"> Apr 16</div>
+                        <div class="message-time"> <?=$message['date']?></div>
                     </div>
                 </div>
             <?php }
@@ -76,7 +76,7 @@
                     <div class="message-content">
                         <img width="50px" src="<?= $image ?>" alt="default">
                         <div class="message-text"> <?=$message['message']?> </div>
-                        <div class="message-time"> Apr 16</div>
+                        <div class="message-time"> <?=$message['date']?></div>
                     </div>
                 </div>
             <?php } ?>    

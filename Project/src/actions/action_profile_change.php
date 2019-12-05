@@ -39,7 +39,6 @@
     }
     else if(isset($_GET['deleteUser'])) {
         deleteUser($_SESSION['id']);
-        die(header('Location: ../action/action_logout.php'));
     }
     else 
         die(header('Location: ../listings/listings_all.php'));
