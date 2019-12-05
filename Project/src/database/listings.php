@@ -68,11 +68,41 @@
         return $stmt->fetchAll();
     }
 
-    function getListingsFilter($type=null, $price=null, $city=null, $street=null, $checkin=null, $checkout=null) {
+    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkin='%', $checkout='%') {
+        $db = Database::instance()->db();
+
+        $return = array();
+        
+        foreach ($types as $type) {
+            $stmt = $db->prepare('SELECT * FROM Property WHERE price_day >= ? AND price_day <= ? AND city LIKE ? AND property_type = ?');
+            $stmt->execute(array($priceLow, $priceHigh, $city, $type));
+            $return = array_merge($return, $stmt->fetchAll());
+        }
+
+        return $return;
+    }
+
+    function getAllListings() {
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Property');
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    function getMaxPrice(){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT price_day FROM Property ORDER BY price_day DESC LIMIT 1');
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    function getMinPrice(){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT price_day FROM Property ORDER BY price_day ASC LIMIT 1');
+        $stmt->execute();
+        return $stmt->fetch();
     }
 ?>

@@ -1,34 +1,40 @@
-<?php function draw_filters() { ?>
+<?php function draw_filters($max) { ?>
     <aside class="filter">
-        <div class="filter-elem">
-            <label for="apartment"> Apartment </label>
-            <input type="checkbox" value="apartment">
-        </div>
+        <form action="" method="post">
+            <div class="filter-elem">
+                <label for="apartment"> Apartment </label>
+                <input type="checkbox" value="apartment">
+            </div>
 
-        <div class="filter-elem">
-            <label for="house"> House </label>
-            <input type="checkbox" value="house">
-        </div>
+            <div class="filter-elem">
+                <label for="house"> House </label>
+                <input type="checkbox" value="house">
+            </div>
 
-        <div class="filter-elem">
-            <label for="price">Price Range</label>
-            <select name="Price" value="price">
-                <option value="price1">0-20 €</option>
-                <option value="price2">20-40 €</option>
-                <option value="price3">40-60 €</option>
-                <option value="price4">60-80 €</option>
-            </select>
-        </div>
+            <div class="filter-elem">
+                <label>Minimum Price</label>
+                <input type="range" name="price_min" id="price_min" min="0" value="0" max="<?=$max-1?>">
+                <input type="number" value='0' id='price_min_display'>
+            </div>
 
-        <div class="filter-elem">
-            <label for="checkin"> Check in </label>
-            <input name="check-in" type="date" value="checkin">
-        </div>
+            <div class="filter-elem">
+                <label>Maximum Price</label>
+                <input type="range" name="price_max" id="price_max" min="1" value="<?=$max?>" max="<?=$max?>">
+                <input type="number" value="<?=$max?>" id='price_max_display'>
+            </div>
 
-        <div class="filter-elem">
-            <label for="checkout"> Check out </label>
-            <input name="check-out" type="date" value="checkout">
-        </div>
+            <div class="filter-elem">
+                <label for="checkin"> Check in </label>
+                <input name="checkin" type="date" value="checkin">
+            </div>
+
+            <div class="filter-elem">
+                <label for="checkout"> Check out </label>
+                <input name="checkout" type="date" value="checkout">
+            </div>
+
+            <button>Filter</button>
+        </form>
     </aside>
     
 <style>

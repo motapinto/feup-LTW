@@ -2,6 +2,7 @@
   include_once('../includes/database.php');
   include_once('../database/images.php');
   include_once('../database/comments.php');
+  include_once('../database/listings.php');
   include_once('../database/users.php');
 
 function draw_list_item($item){ 
@@ -24,7 +25,7 @@ function draw_list_item($item){
 
 function draw_list_all($listings) { ?>
   <section class="listings-filter">
-    <?php draw_filters(); ?>
+    <?php draw_filters(getMaxPrice()['price_day']); ?>
         <section id='listings'>
             <?php foreach($listings as $item) { 
                 draw_list_item($item);
