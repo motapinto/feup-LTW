@@ -5,8 +5,7 @@
     /* or inline-flex */
     flex-direction: column;
     background-color: white;
-    padding: 5%;
-    margin: 5%;
+    margin-top: 5%;
     align-items: center;
 }
 
@@ -115,10 +114,10 @@ i {
 .selected-tab {
     display: none;
     background-color: white;
-    margin: 5%;
+    margin-top: 5%;
     padding: 0 5%;
     width: 60%;
-    height: 45em;
+    height: 90%;
     border-left: solid 1px rgb(175, 175, 175);
 }
 
