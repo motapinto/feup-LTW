@@ -1,0 +1,33 @@
+.listings-filter {
+    display: grid;
+    grid-template-areas: 'filter properties';
+    grid-template-columns: 1fr 5fr;
+}
+
+#listings {
+    grid-area: 'properties';
+}
+
+.filter {
+    grid-area: 'filter';
+    background-color: #4D3DB6;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-elem {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-elem label {
+    grid-area: 'label';
+    padding-right: 10px;
+}
+
+.filter-elem input,
+.filter-elem select {
+    grid-area: 'label';
+    margin-right: 10px;
+}

@@ -31,6 +31,7 @@
             <input name="age" type="number" id="age" onkeyup="checkAge();" placeholder="age" required min=18 max=120/>
             <input name="email" type="email" id="email" onkeyup="checkEmail();" placeholder="email" required />
             <input type="password" name="password" id="password" onkeyup="checkPass();" title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" placeholder="Password">
+            <input type="password" name="confirm_password" id="confirm_password" onkeyup="checkPass();" title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" placeholder="Password">
             
             <span id="msg-name"></span> 
             <span id="msg-age"></span> 

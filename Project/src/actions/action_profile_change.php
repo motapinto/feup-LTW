@@ -32,7 +32,7 @@
     else if(isset($_GET['currentPassword'])) {
         $aux = $_GET['currentPassword'];
         htmlentities($aux, ENT_QUOTES, 'UTF-8');
-        if($user['password'] === sha1($_GET['currentPassword']))
+        if(password_verify($aux, $user['password']))
             $ret['response'] = 0;
         else
             $ret['response'] = -1;
