@@ -7,7 +7,7 @@
     include('../templates/tpl_profile.php');        // prints the user profile
 
     if(!isset($_SESSION['id']))
-    	header('Location: ../listings/all_listings.php');
+    	die(header('Location: ../listings/listings_all.php'));
 
     draw_header('User Profile', 'profile');
     	
@@ -16,7 +16,9 @@
 
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
-		$user = userProfile($id); //other user
+        $user = userProfile($id); //other user
+        if($user === false)
+            die(header('Location: ../listings/listings_all.php'));
 		draw_profile($user, false);
 	}
 	else {

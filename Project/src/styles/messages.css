@@ -1,14 +1,12 @@
 #chat-container {
     display: grid;
-    grid-template-areas: 
-		'messages-search messages-chatTitle' 
-		'messages-menu messages-chatSelected' 
-		'messages-menu messages-input';
+    grid-template-areas: 'messages-search messages-chatTitle' 'messages-menu messages-chatSelected' 'messages-menu messages-input';
     grid-template-columns: 25% 75%;
     grid-template-rows: 15% 70% 15%;
     background: #fff;
     border-radius: 10px;
     height: 150%;
+    overflow-x: none;
 }
 
 #messages-search {
@@ -93,7 +91,7 @@
 #messages-chatTitle {
     grid-area: messages-chatTitle;
     display: grid;
-    grid-template-columns: 80px 650px 500px;
+    grid-template-columns: 20% 80%;
     align-content: center;
     align-items: center;
     color: black;
@@ -101,6 +99,10 @@
     padding: 0 20px;
     border-bottom: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
+}
+
+#messages-chatTitle span {
+    width: 100%;
 }
 
 #messages-chatTitle>img {
@@ -115,7 +117,6 @@
     overflow-y: scroll;
     border-left: solid 1px rgb(236, 234, 234);
 }
-
 
 .message-content {
     display: grid;
@@ -175,10 +176,9 @@
 #messages-input {
     grid-area: messages-input;
     display: grid;
-    grid-template-columns: 2em 40em 2em;
+    grid-template-columns: 10% 80% 10%;
     align-content: space-around;
     align-items: center;
-    gap: 15px;
     border-radius: 0 0 10px 0;
     border-top: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
