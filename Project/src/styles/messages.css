@@ -6,7 +6,6 @@
     background: #fff;
     border-radius: 10px;
     height: 150%;
-    overflow-x: none;
 }
 
 #messages-search {
@@ -18,8 +17,8 @@
 
 #messages-search input {
     font-weight: lighter;
-    width: 100%;
-    padding: 5px 0;
+    width: 70%;
+    padding-top: 20px;
     padding-left: 45px;
     font-size: 16px;
     border: none;
@@ -114,7 +113,8 @@
     grid-area: messages-chatSelected;
     padding: 0.1em 20px;
     padding-top: 20px;
-    overflow-y: scroll;
+    overflow: auto;
+    max-height: 500px;
     border-left: solid 1px rgb(236, 234, 234);
 }
 
@@ -176,13 +176,14 @@
 #messages-input {
     grid-area: messages-input;
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 80% 5%;
+    gap: 3%;
     align-content: space-around;
     align-items: center;
     border-radius: 0 0 10px 0;
     border-top: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
-    margin: 0.2em;
+    padding-left: 2em;
 }
 
 #messages-input input {
@@ -192,4 +193,9 @@
     color: #331;
     border-radius: 6px;
     font-size: 1.4rem;
+}
+
+#messages-input button {
+    background-color: white;
+    opacity: 30%;   
 }

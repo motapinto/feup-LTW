@@ -11,7 +11,7 @@
 
     if(isset($_GET['name'])) {
         $aux = $_GET['name'];
-        tmlentities($aux, ENT_QUOTES, 'UTF-8');
+        htmlentities($aux, ENT_QUOTES, 'UTF-8');
         $user['name'] = $aux;
     }
     else if(isset($_GET['email'])) {

@@ -5,7 +5,6 @@ document.getElementById("sendMessage").onclick = function (event) {
     let receiver = document.getElementById('receiver').value;
     let request = encodeForAjax({ sendMessage: message, receiver: receiver});
 
-
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
@@ -26,8 +25,7 @@ document.getElementById("sendMessage").onclick = function (event) {
                 let newMessageContentTime = document.createElement('div');
                 newMessageContentTime.className = 'message-time';
                 let today = new Date();
-                let date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + 
-                ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+                let date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
                 let newMessageContentTimeText = document.createTextNode(date);
 
                 // Construct message
