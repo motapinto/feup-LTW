@@ -84,9 +84,11 @@
     </section>
 
     <section id="messages-input">
-        <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
-        <input type="hidden" value='<?=$messengerId?>' id='receiver'>
-        <input type="text" placeholder="write a message" id='message'>
-        <button id="sendMessage"><i class="far fa-paper-plane"></i></button>
+        <form action="" >
+            <img src="../../assets/icons/atta.png" alt="add attachment" width="25px">
+            <input type="hidden" value='<?=$messengerId?>' id='receiver'>
+            <input type="text" placeholder="write a message" id='message'>
+            <button id="sendMessage"><i class="far fa-paper-plane"></i></button>
+        </form>
     </section>
 <?php  } ?>

@@ -75,7 +75,6 @@ function submitSignup() {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        alert(response['response']);
         
         switch (response['response']) {
             //  success
