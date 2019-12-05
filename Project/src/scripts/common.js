@@ -71,8 +71,6 @@ function checkEmail(inProfile=false) {
         document.getElementById('msg-email').innerHTML = '';
         if(inProfile) {
             document.getElementById('email').style.border = 'solid 1px rgb(176, 183, 187)';
-            // document.getElementById('icon-email').style.color = 'black';
-            // document.getElementById('icon-email').className = 'fas fa-check';
             submitForm(1);
         }
         return true;

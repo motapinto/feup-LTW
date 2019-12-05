@@ -4,7 +4,6 @@
   include_once('../database/comments.php');
   include_once('../database/users.php');
 
-
 function draw_list_item($item){ 
   	$image = getFirstImagePathOfProperty($item['id']);
   	?>
@@ -24,13 +23,21 @@ function draw_list_item($item){
 <?php }
 
 function draw_list_all($listings) { ?>
-  <section id='listings'>
-    <?php foreach($listings as $item) { 
-      draw_list_item($item);
-    } ?>
-  </section>
+  <section class="listings-filter">
+    <?php draw_filters(); ?>
+        <section id='listings'>
+            <?php foreach($listings as $item) { 
+                draw_list_item($item);
+            } ?>
+        </section>
+    </section>
 
-<?php }
+<?php } ?>
+
+<?php
+
+
+
 
 function draw_item($item, $owner=false) { 
     $comments = getCommentsByPropertyId($item['id']);
