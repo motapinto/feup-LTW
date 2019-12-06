@@ -16,10 +16,12 @@
             <script src="../../assets/materialize/extras/noUiSlider/nouislider.js"></script>
 
             
-            <link rel="stylesheet" href="../styles/nav_bar.css">
 <!--************************ COMMON  *************************-->
             <link rel="stylesheet" href="../styles/body.css">
             <script src="../scripts/common.js" defer></script>
+            <link rel="stylesheet" href="../styles/nav_bar.css">
+<!--************************* HOME  **************************-->
+            <link rel="stylesheet" href="../styles/filter.css">
 <!--******************** AUTHENTICATION  *********************-->
             <link rel="stylesheet" href="../styles/authentication.css">
 <!--************************* ITEM  **************************-->
@@ -29,8 +31,7 @@
 <!--************************ MESSAGES  ************************-->
             <link rel="stylesheet" href="../styles/messages.css">
             <link rel="stylesheet" href="../styles/item.css">
-<!--************************* HOME  **************************-->
-            <link rel="stylesheet" href="../styles/filter.css">
+
             <?php if($script !== NULL){ ?>
                 <script src="../scripts/<?=$script?>.js" defer></script>  
             <?php } ?>

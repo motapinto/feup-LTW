@@ -12,22 +12,26 @@
     grid-area: 'filter';
     display: flex;
     flex-direction: column;
-    background-color: royalblue;
+}
+
+.filter-form {
+    background-color: #3D4849;
 }
 
 .filter h2{
     text-align: center;
     color: white;
     font-size: 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
+    padding-bottom: 20px;
 }
 
 .filter-form ul {
     list-style-type: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
-.filter li {
+.filter li{
     margin: 20px 0;
 }
 
@@ -40,12 +44,15 @@
     margin-left: 50px;
 }
 
-
-
 #price-slider {
     left: 50px;
     width: 70%;
     margin-top: 20px;
+}
+
+.filter button {
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 

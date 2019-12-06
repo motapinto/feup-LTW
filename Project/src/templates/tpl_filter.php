@@ -19,28 +19,34 @@
             <label> 
                 <span>Price Range (per night)</span>
                 <div id="price-slider"></div>
-            </label>
+            </label>      
 
-            <button>Filter</button>
+            <button class="circular-button" style="background-color: teal;">Update Results</button>
         </form>
+
+  
     </aside>
 
     <script>
-     var slider = document.getElementById('price-slider');
-  noUiSlider.create(slider, {
-   start: [0, 100],
-   connect: true,
-   step: 1,
-   orientation: 'horizontal', // 'horizontal' or 'vertical'
-   range: {
-     'min': 0,
-     'max': 100
-   },
-   format: wNumb({
-     decimals: 0
-   })
-  });
-    
+        var slider = document.getElementById('price-slider');
+        noUiSlider.create(slider, {
+            start: [0, 100],
+            connect: true,
+            step: 1,
+            orientation: 'horizontal', // 'horizontal' or 'vertical'
+            range: {
+                'min': 0,
+                'max': 100
+            },
+            format: wNumb({
+                decimals: 0
+            })
+        });
+
+        slider.noUiSlider.on('update', function (values, handle) {
+            let min = values[0];
+            let max = values[1];
+        });
     </script>
 
 
