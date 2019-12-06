@@ -8,9 +8,23 @@
     include('../templates/tpl_listings.php');             // prints the list of listings in HTML
     include('../templates/tpl_filter.php');               // prints the listings filter in HTML
 
+    $types = array();
+    if(isset($_POST['price_min'])){
+        $priceMin = $_POST['price_min'];
+        $priceMax = $_POST['price_max'];
+        if(isset($_POST['house']))
+            array_push($types, $_POST['house']);
+        if(isset($_POST['apartment']))
+            array_push($types, $_POST['apartment']);
+        $city = $_POST['city'];
+        $checkin = $_POST['checkin'];
+        $checkout = $_POST['checkout'];
+        $listings = getListingsFilter($types, $priceMin, $priceMax, $city, $checkin, $checkout);                        // gets all listings from the database
+    }    
+    else $listings = getAllListings();
+
     draw_header('All Listings');
-    draw_navBar(0);
-    $listings = getListingsFilter();                        // gets all listings from the database
+    draw_navBar(0);    
     draw_list_all($listings);
     draw_footer();
 ?>
