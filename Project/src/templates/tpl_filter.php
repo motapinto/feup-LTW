@@ -5,7 +5,7 @@
             <ul>
                 <li>	
                     <label>
-                        <input type="checkbox" class="filled-in" checked />
+                        <input name="apartment" type="checkbox" class="filled-in" checked onclick="aux();"/>
                         <span>Apartment</span>
                     </label>
                 </li>
@@ -28,6 +28,13 @@
     </aside>
 
     <script>
+        let min;
+        let max;
+
+        function aux() {
+            alert(max);
+        }
+
         var slider = document.getElementById('price-slider');
         noUiSlider.create(slider, {
             start: [0, 100],
@@ -44,8 +51,8 @@
         });
 
         slider.noUiSlider.on('update', function (values, handle) {
-            let min = values[0];
-            let max = values[1];
+            min = values[0];
+            max = values[1];
         });
     </script>
 
