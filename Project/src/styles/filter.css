@@ -1,33 +1,51 @@
 .listings-filter {
     display: grid;
     grid-template-areas: 'filter properties';
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 25% 75%;
 }
 
-#listings {
+#listings{
     grid-area: 'properties';
 }
 
 .filter {
     grid-area: 'filter';
-    background-color: #4D3DB6;
     display: flex;
     flex-direction: column;
+    background-color: royalblue;
 }
 
-.filter-elem {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
+.filter h2{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
 }
 
-.filter-elem label {
-    grid-area: 'label';
-    padding-right: 10px;
+.filter-form ul {
+    list-style-type: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
 }
 
-.filter-elem input,
-.filter-elem select {
-    grid-area: 'label';
-    margin-right: 10px;
+.filter li {
+    margin: 20px 0;
 }
+
+.filter span {
+    margin-right: 20px;
+    color: white;
+}
+
+.filter label{
+    margin-left: 50px;
+}
+
+
+
+#price-slider {
+    left: 50px;
+    width: 70%;
+    margin-top: 20px;
+}
+
+
