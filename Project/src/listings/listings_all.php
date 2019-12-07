@@ -9,19 +9,28 @@
     include('../templates/tpl_filter.php');               // prints the listings filter in HTML
 
     $types = array();
-    if(isset($_POST['price_min'])){
-        $priceMin = $_POST['price_min'];
-        $priceMax = $_POST['price_max'];
-        if(isset($_POST['house']))
-            array_push($types, $_POST['house']);
-        if(isset($_POST['apartment']))
-            array_push($types, $_POST['apartment']);
-        $city = $_POST['city'];
-        $checkin = $_POST['checkin'];
-        $checkout = $_POST['checkout'];
-        $listings = getListingsFilter($types, $priceMin, $priceMax, $city, $checkin, $checkout);                        // gets all listings from the database
-    }    
-    else $listings = getAllListings();
+
+    if(isset($_POST['price_min'])) {
+        $min = $_POST['price_min'];
+        htmlentities($min, ENT_QUOTES, 'UTF-8');
+    
+        $max = $_POST['price_max'];
+        htmlentities($max, ENT_QUOTES, 'UTF-8');
+    
+        $house = $_POST['house'];
+        htmlentities($house, ENT_QUOTES, 'UTF-8');
+        array_push($types, $house);
+    
+        $apartment = $_POST['apartment'];
+        htmlentities($apartment, ENT_QUOTES, 'UTF-8');
+        array_push($types, $apartment);
+    
+        $listings = getListingsFilter($types, $min, $max);      
+    }
+
+    else {
+        $listings = getAllListings();
+    }
 
     draw_header('All Listings');
     draw_navBar(0);    

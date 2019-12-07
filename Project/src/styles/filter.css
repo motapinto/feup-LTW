@@ -28,10 +28,12 @@
 
 .filter-form ul {
     list-style-type: none;
+    padding-left: 0;
     border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
 .filter li{
+    list-style-type: none;
     margin: 20px 0;
 }
 

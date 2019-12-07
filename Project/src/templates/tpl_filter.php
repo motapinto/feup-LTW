@@ -5,13 +5,13 @@
             <ul>
                 <li>	
                     <label>
-                        <input name="apartment" type="checkbox" class="filled-in" checked onclick="aux();"/>
+                        <input name="apartment" type="checkbox" class="filled-in" checked onclick="submitFilter();"/>
                         <span>Apartment</span>
                     </label>
                 </li>
                 <li>	
                     <label>
-                        <input type="checkbox" class="filled-in" checked />
+                        <input type="checkbox" class="filled-in" checked onclick="submitFilter();"/>
                         <span>House</span>
                     </label>
                 </li>
@@ -31,8 +31,29 @@
         let min;
         let max;
 
-        function aux() {
-            alert(max);
+        //  Submit form to change filter settings
+        function submitFilter() {
+            let xhttp = new XMLHttpRequest();
+            let asynchronous = true;
+            let checkboxes = document.getElementsByClassName('filled-in');
+
+            let request = encodeForAjax({ price_min: min, price_max: max, 
+                apartment: checkboxes[0].checked, house: checkboxes[1].checked});
+
+            alert(request);
+
+            // Define what happens on successful data submission
+            xhttp.addEventListener('load', function(event) {
+                let response = JSON.parse(this.responseText);
+            });
+
+            // Define what happens in case of error
+            xhttp.addEventListener('error', function(event) {
+                alert('Oops! Something goes wrong.');
+            });
+
+            xhttp.open('GET', '../listings/listings_all.php?' + request, asynchronous);
+            xhttp.send();
         }
 
         var slider = document.getElementById('price-slider');
@@ -53,6 +74,7 @@
         slider.noUiSlider.on('update', function (values, handle) {
             min = values[0];
             max = values[1];
+            submitFilter();
         });
     </script>
 
