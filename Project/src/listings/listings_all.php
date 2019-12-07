@@ -19,11 +19,13 @@
     
         $house = $_POST['house'];
         htmlentities($house, ENT_QUOTES, 'UTF-8');
-        array_push($types, $house);
+        if($house === true)
+            array_push($types, 0);
     
         $apartment = $_POST['apartment'];
         htmlentities($apartment, ENT_QUOTES, 'UTF-8');
-        array_push($types, $apartment);
+        if($apartment === true)
+            array_push($types, 1);
     
         $listings = getListingsFilter($types, $min, $max);      
     }
