@@ -52,7 +52,7 @@
                 alert('Oops! Something goes wrong.');
             });
 
-            xhttp.open('GET', '../listings/listings_all.php?' + request, asynchronous);
+            xhttp.open('POST', '../listings/listings_all.php?' + request, asynchronous);
             xhttp.send();
         }
 

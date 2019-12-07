@@ -4,10 +4,12 @@
         <head>
             <title><?=$title?></title>
             <meta charset="UTF-8">
-            <script src="https://kit.fontawesome.com/2ebd8c9c01.js" crossorigin="anonymous"></script>
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+            <!--**************************** FONTAWESOME *****************************-->
+            <script src="../../assets/fontawesome/js/all.js"></script>
+            <link rel="stylesheet" href="../../assets/fontawesome/css/all.css">
             <!--************************ MATERIALIZE INPUTS  *************************-->
             <script src="../../assets/materialize/js/materialize.js"></script>
             <link rel="stylesheet" href="../../assets/materialize/css/materialize.css">
