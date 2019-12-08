@@ -37,6 +37,10 @@ function draw_filters($filter) {
                     <?php } ?>
                 </select>
             </section>
+            <section> 
+                <span>Dates</span>
+                <input id="calendar" type="text" name="daterange" value="" />
+            </section>
 
             <button class="circular-button" style="background-color: teal;">Update Results</button>
         </form>
