@@ -5,14 +5,12 @@
             <button>Continue without login</button>
         </a> 
         <article class="login-elem">
-        <form action="">
             <h2>Log in</h2>
             <input id="email" name="email" type="email" placeholder="email" required/>
             <input id="password" name="password" type="password" placeholder="password" maxlength=30 required/>
             <p id='login-msg'></p>
             <a href="#">Forgot your password?</a>
             <button onclick="submitLogin();" class="loginin_button">LOG IN</button>
-        </form>
             <a href="signup.php"><button class="signup_button">SIGN UP</button></a>
         </article>
     </section>
@@ -25,7 +23,6 @@
             <button>Continue without signup</button>
         </a> 
         <section class="login-elem">
-        <form action="">
             <h2>Sign up</h2>
             <input name="name" type="text" id="name" onkeyup="checkName();" placeholder="name" required maxlength=50/>
             <input name="age" type="number" id="age" onkeyup="checkAge();" placeholder="age" required min=18 max=120/>
@@ -39,7 +36,6 @@
             <span id="msg-password1"></span> 
             <a href="#">Forgot your password?</a>
             <button onclick="submitSignup();" class="signup_buttons" type="button">SIGN UP</button>
-        </form>
             <a href="login.php"><button class="loginin_button" type="button">LOG IN</button></a>
         </section>
     </section>
