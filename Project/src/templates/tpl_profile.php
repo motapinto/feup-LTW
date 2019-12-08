@@ -60,82 +60,82 @@
         </section> 
 
 <!--*********************** PROFILE OVERVIEW ***********************-->
-    <section id='profile-overview-tab' class='selected-tab'>
-    </section>
+        <section id='profile-overview-tab' class='selected-tab'>
+        </section>
 <!--*********************** PROFILE SETTINGS ***********************-->
-    <section id='profile-settings-tab' class='selected-tab'>
-        <h1 id='profile-settings-title'>Edit Profile</h1>
-            <article id='profile-setting-name' class='profile-setting-elem'>
-                <header> Name </header>
-                <?php if($canEditProfile) { ?>
-                <input id='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
-                <i id='icon-name'></i>
-                <?php } ?>    
-                <?php if(!$canEditProfile) { ?> 
-                <input value='<?=$user['name']?>' disabled> 
-                <?php } ?>  
-            </article>
+        <section id='profile-settings-tab' class='selected-tab'>
+            <h1 id='profile-settings-title'>Edit Profile</h1>
+                <article id='profile-setting-name' class='profile-setting-elem'>
+                    <header> Name </header>
+                    <?php if($canEditProfile) { ?>
+                    <input id='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
+                    <i id='icon-name'></i>
+                    <?php } ?>    
+                    <?php if(!$canEditProfile) { ?> 
+                    <input value='<?=$user['name']?>' disabled> 
+                    <?php } ?>  
+                </article>
 
-            <article id='profile-setting-email' class='profile-setting-elem'>
-                <header> Email </header>
-                <?php if($canEditProfile) { ?>
-                <input id='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
-                <button onclick='submitForm(1)'> Save </button>
-                <?php } ?>    
-                <?php if(!$canEditProfile) { ?> 
-                <input value='<?=$user['email']?>' disabled> 
-                <?php } ?>    
-            </article>
+                <article id='profile-setting-email' class='profile-setting-elem'>
+                    <header> Email </header>
+                    <?php if($canEditProfile) { ?>
+                    <input id='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
+                    <button onclick='submitForm(1)'> Save </button>
+                    <?php } ?>    
+                    <?php if(!$canEditProfile) { ?> 
+                    <input value='<?=$user['email']?>' disabled> 
+                    <?php } ?>    
+                </article>
 
-            <article id='profile-setting-age' class='profile-setting-elem'>
-                <?php if($canEditProfile) { ?>
-                <header> Age </header>
-                <input id='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
-                <i id='icon-age'></i>
-                <?php } ?>    
-                <?php if(!$canEditProfile) { ?> 
-                <input value='<?=$user['age']?>' disabled> 
-                <?php } ?>  
-            </article>
+                <article id='profile-setting-age' class='profile-setting-elem'>
+                    <?php if($canEditProfile) { ?>
+                    <header> Age </header>
+                    <input id='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
+                    <i id='icon-age'></i>
+                    <?php } ?>    
+                    <?php if(!$canEditProfile) { ?> 
+                    <input value='<?=$user['age']?>' disabled> 
+                    <?php } ?>  
+                </article>
 
-            <article class='profile-setting-elem'>
-                <?php if($canEditProfile) { ?>
-                <header> Delete User </header>
-                <span> All your information will be deleted with no possibility to cancelling after confirm</span>
-                <button onclick="deleteUser()">
-                    <i class="fas fa-user-slash" style="color: red"></i>
-                </button>
-                <?php } ?>     
-            </article>
+                <article class='profile-setting-elem'>
+                    <?php if($canEditProfile) { ?>
+                    <header> Delete User </header>
+                    <span> All your information will be deleted with no possibility to cancelling after confirm</span>
+                    <button onclick="deleteUser()">
+                        <i class="fas fa-user-slash" style="color: red"></i>
+                    </button>
+                    <?php } ?>     
+                </article>
 
-            <p id='msg-name'></p>
-            <p id='msg-email'></p>
-            <p id='msg-age'></p>
-    </section>
+                <p id='msg-name'></p>
+                <p id='msg-email'></p>
+                <p id='msg-age'></p>
+        </section>
 <!--*********************** PROFILE SECURITY ***********************-->
-    <section id='profile-security-tab' class='selected-tab'>
-        <?php if($canEditProfile) { ?>
-            <h1 id='profile-security-title'>Security Details</h1>
-                <article id='profile-security-password' class='profile-setting-elem'>
-                    <header> Current Password </header>
-                    <input id='current-password' type='password' onkeyup='checkCurrentPassword();'value=''>
-                </article>
+        <section id='profile-security-tab' class='selected-tab'>
+            <?php if($canEditProfile) { ?>
+                <h1 id='profile-security-title'>Security Details</h1>
+                    <article id='profile-security-password' class='profile-setting-elem'>
+                        <header> Current Password </header>
+                        <input id='current-password' type='password' onkeyup='checkCurrentPassword();'value=''>
+                    </article>
 
-                <article id='profile-setting-password' class='profile-setting-elem'>
-                    <header> New Password </header>
-                    <input type='password' id='password' onkeyup='checkPass();' disabled >
-                        <button id='password-change' style='display:none;' onclick='submitForm(3);'> Save</button>
-                </article>
+                    <article id='profile-setting-password' class='profile-setting-elem'>
+                        <header> New Password </header>
+                        <input type='password' id='password' onkeyup='checkPass();' disabled >
+                            <button id='password-change' style='display:none;' onclick='submitForm(3);'> Save</button>
+                    </article>
 
-                <article id='profile-settings-confirm_password' class='profile-setting-elem'>
-                    <header> Confirm password </header>
-                    <input id='confirm_password' type='password' onkeyup='checkPass();' disabled >
-                </article>
-                <p id='msg-password'></p>
-                <p id='msg-password1'></p>
-                <p id='msg-password2'></p>
-        <?php } ?>
-    </section>
+                    <article id='profile-settings-confirm_password' class='profile-setting-elem'>
+                        <header> Confirm password </header>
+                        <input id='confirm_password' type='password' onkeyup='checkPass();' disabled >
+                    </article>
+                    <p id='msg-password'></p>
+                    <p id='msg-password1'></p>
+                    <p id='msg-password2'></p>
+            <?php } ?>
+        </section>
 
 <!--*********************** PROFILE COMMENTS ***********************-->
         <section id='profile-comments-tab' class='selected-tab'>
@@ -152,7 +152,6 @@
         <section id='profile-sendMessage-tab' class='selected-tab'>
             <h1 id='profile-settings-title'>Edit Profile</h1>
                 <section id='profile-sendMessage' class='profile-setting-elem'>
-                    <label for="message"></label> <br>
                     <textarea name="message" id="message" cols="10" rows="10"></textarea> 
                     <input id='receiver' name="receiver" type="hidden" value='<?=$user['id']?>'>
                     <button class="no-button" id='sendMessage'> Send Message </button>
