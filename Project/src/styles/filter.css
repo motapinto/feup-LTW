@@ -38,9 +38,17 @@
 }
 
 #price-slider {
-    left: 50px;
+    left: 10%;
     width: 70%;
-    margin-top: 20px;
+    margin-top: 8%;
+}
+
+#calendar {
+    background-color: #3D4849;
+    color: white;
+    font-size: large;
+    margin-left: 10%;
+    margin-top: 5%;;
 }
 
 .filter button {
