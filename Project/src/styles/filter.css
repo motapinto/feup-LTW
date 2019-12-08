@@ -13,14 +13,12 @@
     text-align: center;
     color: white;
     font-size: 20px;
-    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
     padding-bottom: 20px;
 }
 
 .filter-form ul {
     list-style-type: none;
     padding-left: 0;
-    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
 .filter li{
@@ -37,10 +35,10 @@
     margin-left: 10%;
 }
 
-#price-slider {
-    left: 50px;
-    width: 70%;
-    margin-top: 20px;
+.filter section {
+    margin: 2em 0em;
+    padding-bottom: 10%;
+    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
 .filter button {
@@ -48,8 +46,19 @@
     margin-left: 50px;
 }
 
-.filter section {
-    margin: 2em 0em;
+#price-slider {
+    left: 10%;
+    width: 70%;
+    margin-top: 8%;
 }
+
+#calendar {
+    background-color: #3D4849;
+    color: white;
+    font-size: large;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
 
 
