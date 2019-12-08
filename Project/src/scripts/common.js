@@ -71,7 +71,6 @@ function checkEmail(inProfile=false) {
         document.getElementById('msg-email').innerHTML = '';
         if(inProfile) {
             document.getElementById('email').style.border = 'solid 1px rgb(176, 183, 187)';
-            submitForm(1);
         }
         return true;
     }
@@ -81,8 +80,6 @@ function checkEmail(inProfile=false) {
         document.getElementById('msg-email').innerHTML = 'Enter a valid email';
         if(inProfile) {
             document.getElementById('email').style.border = 'solid 1px rgb(233, 76, 76)';
-            // document.getElementById('icon-email').style.color = 'red';
-            // document.getElementById('icon-email').className = 'fas fa-times';
         }
         return false;
     }

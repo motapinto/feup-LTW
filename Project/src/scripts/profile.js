@@ -179,18 +179,15 @@ function submitForm(option) {
                     case 1:
                         document.getElementById('msg-email').innerHTML = 'Failled to change email';
                         document.getElementById('msg-email').style.color = 'red';
-                        document.getElementById('icon-name').className = 'fas fa-times';
                         break;
                     //Error in db
                     case 2:
                         document.getElementById('msg-email').innerHTML = 'Email already exists';
                         document.getElementById('msg-email').style.color = 'red';
-                        document.getElementById('icon-name').className = 'fas fa-times';
                         break;
 
                     default:
-                        document.getElementById('msg-email').innerHTML = 'Email changed successfully';
-                        
+                        alert('Email changed successfully!');                        
                         break;
                 }
                 break;
