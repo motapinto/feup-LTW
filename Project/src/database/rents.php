@@ -56,4 +56,9 @@
         $message = $stmt->fetch();
         return $message !== false;
     }
+
+    // Check if rented
+    function checkRented($id, $initial_date, $final_date) {
+
+    }
 ?>

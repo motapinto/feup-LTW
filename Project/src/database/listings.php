@@ -74,11 +74,15 @@
         $return = array();
         
         foreach ($types as $type) {
-            $stmt = $db->prepare('SELECT * FROM Property WHERE price_day >= ? AND price_day <= ? AND city LIKE ? AND property_type = ?');
+            $stmt = $db->prepare('SELECT Property.id AS id, Property.user_id AS user_id, city,
+                                        street, door_number, apartment_number, post_date, price_day, guests, rating, description, property_type 
+                                FROM Property, Rented 
+                                WHERE Property.id = property_id AND price_day >= ? AND price_day <= ? 
+                                    AND city LIKE ? AND property_type = ? AND initial_date > ? AND ');
             $stmt->execute(array($priceLow, $priceHigh, $city, $type));
             $return = array_merge($return, $stmt->fetchAll());
         }
-
+// initial_date > Rented.initial_date AND NEW.final_date < Rented.final_date AND NEW.property_id = Rented.property_id) 
         return $return;
     }
 
