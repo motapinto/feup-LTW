@@ -30,13 +30,11 @@
 
             <!-- SIDEBAR BUTTONS -->
             <article class='profile-userbuttons'>
-                <a href='../properties/properties.php'>
-                    <button type='button' class='circular-button'>Properties</button>
-                </a>
+                <button formaction="../properties/properties.php" type='button' class='circular-button'>Properties</button>
                 <?php if($canEditProfile) { ?> 
-                <a href='../messages/messages.php'>
-                    <button onclick="profileSubMenu(5)" type='button' class='circular-button'> Messages </button> 
-                </a>
+
+                <button formaction="../messages/messages.php" onclick="profileSubMenu(5)" type='button' class='circular-button'> Messages </button> 
+
                 <?php } ?>    
                 <?php if(!$canEditProfile) { ?> 
                 <button onclick="profileSubMenu(4)" type='button' class='circular-button'> Send Message </button> 
