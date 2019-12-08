@@ -1,7 +1,7 @@
 <?php
 include_once('../database/listings.php');
 
-function draw_filters($filter) { 
+function draw_filter($filter) { 
     $max = getMaxPrice()['price_day'];
     $min = getMinPrice()['price_day'];
     $cities = getCities();
@@ -30,10 +30,10 @@ function draw_filters($filter) {
 
             <section>
                 <span>City</span>
-                <select visible="6" name="city">
-                    <option selected value="%">Any</option>
+                <select visible="6" name="city" id="select-city">
+                    <option id="city-option" selected value="%">Any</option>
                     <?php foreach ($cities as $city) { ?>
-                        <option value="<?=$city?>"><?=$city?></option>
+                        <option id="city-option" value="<?=$city?>"><?=$city?></option>
                     <?php } ?>
                 </select>
             </section>

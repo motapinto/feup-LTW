@@ -131,14 +131,6 @@ header {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.item {
-    margin: 2em;
-}
-
-.item a img {
-    width: 50%;
-    height: 50%;
-}
 
 #properties {
     list-style: none;
@@ -153,23 +145,6 @@ header {
 
 #addProperty form {
     margin: var(--main-margin);
-}
-
-.rating {
-    color: #F9A602;
-    display: flex;
-    justify-content: left;
-}
-
-.property a img {
-    float: left;
-    width: 10em;
-    height: 10em;
-    margin-right: 1em;
-}
-
-.item p i {
-    margin: 0;
 }
 
 .error{

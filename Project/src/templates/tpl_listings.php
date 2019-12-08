@@ -11,25 +11,30 @@ function draw_list_item($item){
 		<a href='item.php?id=<?=$item['id']?>'>
 			<?php if(isset($image)) { ?>
 				<img src=<?=$image?> alt='Image of property'>
-			<?php } ?>
+            <?php } ?>
+            
+            <div class="listing-content">
+                <h1> <?=$item['title']?> </h1>
+                <h5> Price: <?=$item['price_day']?>€ </h5>
+                <p>
+                    <span class="rating"><?php draw_rating($item['rating']); ?></span>
+                </p>
+                <p class='comments'>Comments: <?=numberCommentsByProperty($item['id'])?></p>
+            </div>
 
-			<h1> <?=$item['title']?> </h1>
-            <p>
-                <span class="rating"><?php draw_rating($item['rating']); ?></span>
-            </p>
-			<p class='comments'>Comments: <?=numberCommentsByProperty($item['id'])?></p>
 		</a>
   	</article>
 <?php }
 
 function draw_list_all($listings, $filter) { ?>
-  <section class="listings-filter">
-    <?php draw_filters($filter); ?>
-        <section id='listings'>
-            <?php foreach($listings as $item) { 
-                draw_list_item($item);
-            } ?>
-        </section>
+    <section class="listings-filter">
+        <?php draw_filter($filter); ?>
+    </section>
+
+    <section id='listings'>
+        <?php foreach($listings as $item) { 
+            draw_list_item($item);
+        } ?>
     </section>
 
 <?php } ?>

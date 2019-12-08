@@ -27,6 +27,7 @@
             <script src="../scripts/common.js" defer></script>
             <link rel="stylesheet" href="../styles/nav_bar.css">
 <!--************************* HOME  **************************-->
+            <link rel="stylesheet" href="../styles/listings.css">            
             <link rel="stylesheet" href="../styles/filter.css">
 <!--******************** AUTHENTICATION  *********************-->
             <link rel="stylesheet" href="../styles/authentication.css">

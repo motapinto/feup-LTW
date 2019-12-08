@@ -1,0 +1,34 @@
+#listings {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.item {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 2em;
+}
+
+.item img {
+    width: 20%;
+    height: 20%;
+    border-radius: 15%;
+}
+
+.rating {
+    color: #F9A602;
+    display: flex;
+    justify-content: left;
+}
+
+.property a img {
+    float: left;
+    width: 10em;
+    height: 10em;
+    margin-right: 1em;
+}
+
+.item p i {
+    margin: 0;
+}
