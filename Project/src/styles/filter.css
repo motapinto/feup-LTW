@@ -13,14 +13,12 @@
     text-align: center;
     color: white;
     font-size: 20px;
-    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
     padding-bottom: 20px;
 }
 
 .filter-form ul {
     list-style-type: none;
     padding-left: 0;
-    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
 .filter li{
@@ -37,6 +35,11 @@
     margin-left: 10%;
 }
 
+.filter section {
+    padding-bottom: 10%;
+    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
+}
+
 #price-slider {
     left: 10%;
     width: 70%;
@@ -48,7 +51,7 @@
     color: white;
     font-size: large;
     margin-left: 10%;
-    margin-top: 5%;;
+    margin-top: 5%;
 }
 
 .filter button {
