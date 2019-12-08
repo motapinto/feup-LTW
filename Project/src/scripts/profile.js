@@ -189,9 +189,15 @@ function submitForm(option) {
                         break;
 
                     default:
+                        document.getElementById('msg-email').innerHTML = 'Email changed successfully';
+                        
                         break;
                 }
                 break;
+
+            case 3: 
+                    alert('Password changed successfully!');
+                    break;
             
             case 4:
                 window.location = "../actions/action_logout.php";
