@@ -6,13 +6,7 @@
 	z-index: 1;
 }
 
-.log_in, .sign_up {
-	background: url("../../assets/images/background.jpg");
-    background-position: center center;
-	background-size: cover;
-	opacity: 0.5;
-	z-index: -1;
-	
+.log_in, .sign_up {	
     display: flex;
 	justify-content: right;
 	align-items: center;
