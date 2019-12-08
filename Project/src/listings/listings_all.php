@@ -9,23 +9,23 @@
     include('../templates/tpl_filter.php');               // prints the listings filter in HTML
 
     $types = array();
+    $filter = false;
 
-    if(isset($_POST['price_min'])) {
-        $min = $_POST['price_min'];
+    if(isset($_GET['price_min'])) {
+        $filter = true;
+        $min = $_GET['price_min'];
         htmlentities($min, ENT_QUOTES, 'UTF-8');
     
-        $max = $_POST['price_max'];
+        $max = $_GET['price_max'];
         htmlentities($max, ENT_QUOTES, 'UTF-8');
     
-        $house = $_POST['house'];
-        htmlentities($house, ENT_QUOTES, 'UTF-8');
-        if($house === true)
+        if(isset($_GET['house'])){
             array_push($types, 0);
-    
-        $apartment = $_POST['apartment'];
-        htmlentities($apartment, ENT_QUOTES, 'UTF-8');
-        if($apartment === true)
+        }
+
+        if(isset($_GET['apartment'])){
             array_push($types, 1);
+        }
     
         $listings = getListingsFilter($types, $min, $max);      
     }
@@ -34,8 +34,8 @@
         $listings = getAllListings();
     }
 
-    draw_header('All Listings');
+    draw_header('All Listings', 'filter');
     draw_navBar(0);    
-    draw_list_all($listings);
+    draw_list_all($listings, $filter);
     draw_footer();
 ?>
