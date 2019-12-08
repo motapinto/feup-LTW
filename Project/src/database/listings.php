@@ -105,4 +105,12 @@
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    function getCities(){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT DISTINCT city FROM Property');
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 ?>

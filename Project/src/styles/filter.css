@@ -1,17 +1,8 @@
-.listings-filter {
-    display: grid;
-    grid-template-areas: 'filter properties';
-    grid-template-columns: 25% 75%;
-}
-
-#listings{
-    grid-area: 'properties';
-}
-
 .filter {
-    grid-area: 'filter';
+    float: left;
     display: flex;
     flex-direction: column;
+    height: 20em;
 }
 
 .filter-form {
@@ -38,7 +29,7 @@
 }
 
 .filter span {
-    margin-right: 20px;
+    margin-left: 10%;
     color: white;
 }
 
