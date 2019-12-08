@@ -68,15 +68,39 @@
         return $stmt->fetchAll();
     }
 
-    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkin='%', $checkout='%') {
+    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkdates = false, $checkin='now', $checkout='01-01-2300') {
         $db = Database::instance()->db();
 
         $return = array();
         
-        foreach ($types as $type) {
-            $stmt = $db->prepare('SELECT * FROM Property WHERE price_day >= ? AND price_day <= ? AND city LIKE ? AND property_type = ?');
-            $stmt->execute(array($priceLow, $priceHigh, $city, $type));
-            $return = array_merge($return, $stmt->fetchAll());
+        if($checkdates){
+            foreach ($types as $type) {
+                // $stmt = $db->prepare('SELECT DISTINCT Property.id AS id, Property.user_id AS user_id, city,
+                //                             street, door_number, apartment_number, post_date, price_day, guests, rating, description, property_type 
+                //                     FROM Property, Rented 
+                //                     WHERE Property.id = property_id AND price_day >= ? AND price_day <= ? 
+                //                         AND city LIKE ? AND property_type = ? AND strftime("%s", initial_date) > strftime("%s", ?) 
+                //                         AND strftime("%s", final_date) < strftime("%s", ?)');
+                $stmt = $db->prepare('SELECT * 
+                                    From Property AS P
+                                    WHERE price_day >= ? AND price_day <= ? AND city LIKE ? AND property_type = ? AND
+                                        id NOT IN (SELECT DISTINCT Property.id
+                                                    FROM Property, Rented 
+                                                    WHERE Property.id = property_id AND julianday(?) < julianday(initial_date)
+                                                        AND julianday(?) > julianday(final_date))');
+                $stmt->execute(array($priceLow, $priceHigh, $city, $type, $checkin, $checkout));
+                $return = array_merge($return, $stmt->fetchAll());
+            }
+        }
+        else {
+            foreach ($types as $type) {
+                $stmt = $db->prepare('SELECT * 
+                                    FROM Property
+                                    WHERE price_day >= ? AND price_day <= ? 
+                                        AND city LIKE ? AND property_type = ?');
+                $stmt->execute(array($priceLow, $priceHigh, $city, $type));
+                $return = array_merge($return, $stmt->fetchAll());
+            }
         }
 
         return $return;
