@@ -2,11 +2,11 @@
     float: left;
     display: flex;
     flex-direction: column;
-    height: 20em;
 }
 
 .filter-form {
     background-color: #3D4849;
+    height: 100%;
 }
 
 .filter h2{
@@ -46,6 +46,10 @@
 .filter button {
     margin-top: 50px;
     margin-left: 50px;
+}
+
+.filter section {
+    margin: 2em 0em;
 }
 
 

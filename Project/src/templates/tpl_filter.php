@@ -30,7 +30,7 @@ function draw_filters($filter) {
 
             <section>
                 <span>City</span>
-                <select visible="6">
+                <select visible="6" name="city">
                     <option selected value="%">Any</option>
                     <?php foreach ($cities as $city) { ?>
                         <option value="<?=$city?>"><?=$city?></option>
