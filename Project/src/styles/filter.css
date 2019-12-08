@@ -36,8 +36,14 @@
 }
 
 .filter section {
+    margin: 2em 0em;
     padding-bottom: 10%;
     border-bottom: 1px solid rgba(39, 39, 39, 0.4);
+}
+
+.filter button {
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 #price-slider {
@@ -54,13 +60,5 @@
     margin-top: 5%;
 }
 
-.filter button {
-    margin-top: 50px;
-    margin-left: 50px;
-}
-
-.filter section {
-    margin: 2em 0em;
-}
 
 
