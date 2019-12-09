@@ -8,6 +8,33 @@
     include('../templates/tpl_listings.php');             // prints the list of listings in HTML
     include('../templates/tpl_filter.php');               // prints the listings filter in HTML
 
+
+    function sortPrice($elem1, $elem2) {
+        if ($elem1['price_day'] == $elem2['price_day'])
+            return 0;
+        else if ($elem1['price_day'] > $elem2['price_day'])
+            return 1;
+        else
+            return -1;
+    }
+
+    function sortRating($elem1, $elem2) {
+        if ($elem1['rating'] == $elem2['rating'])
+            return 0;
+        else if ($elem1['rating'] > $elem2['rating'])
+            return 1;
+        else
+            return -1;
+    }
+    function sortNewest($elem1, $elem2) {
+        if ($elem1['post_date'] == $elem2['post_date'])
+            return 0;
+        else if ($elem1['post_date'] > $elem2['post_date'])
+            return 1;
+        else
+            return -1;
+    }
+
     $types = array();
     $filter = false;
 
@@ -25,6 +52,11 @@
     
         $city = $_GET['city'];
         htmlentities($city, ENT_QUOTES, 'UTF-8');
+
+        if(isset($_GET['order-by'])){
+            $order_by = $_GET['order-by'];
+            htmlentities($order_by, ENT_QUOTES, 'UTF-8');
+        }
 
         if(isset($_GET['house'])){
             htmlentities($_GET['apartment'], ENT_QUOTES, 'UTF-8');
@@ -53,6 +85,35 @@
     else {
         $listings = getAllListings();
     }
+
+    print_r($listings);
+
+    if(isset($order_by)) {
+        switch($order_by) {
+            case 1: 
+                usort($listings, 'sortPrice');
+                break;
+            case 2:
+                usort($listings, 'sortPrice');
+                array_reverse($listings);
+                break;
+            case 3:
+                usort($listings, 'sortRating');
+                break;
+            case 4:
+                usort($listings, 'sortRating');
+                array_reverse($listings);
+            case 5:
+                usort($listings, 'sortNewest');
+                break;
+            case 6:
+                usort($listings, 'sortNewest');
+                array_reverse($listings);
+            default: 
+                break;
+        }
+    }
+
 
     draw_header('All Listings', 'filter');
     draw_navBar(0);    
