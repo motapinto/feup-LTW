@@ -92,12 +92,7 @@
                 $stmt = $db->prepare('SELECT * 
                                     FROM Property
                                     WHERE price_day >= ? AND price_day <= ? 
-                                        AND city LIKE ? AND property_type = ? AND
-                                        id NOT IN (SELECT DISTINCT Property.id
-                                                    FROM Property, Rented 
-                                                    WHERE Property.id = property_id AND (julianday(?) BETWEEN julianday(initial_date) AND julianday(final_date)
-                                                        OR julianday(?) BETWEEN julianday(initial_date) AND julianday(final_date)
-                                                        OR julianday(initial_date) BETWEEN julianday(?) AND julianday(?)))');
+                                        AND city LIKE ? AND property_type = ?');
                 $stmt->execute(array($priceLow, $priceHigh, $city, $type));
                 $return = array_merge($return, $stmt->fetchAll());
             }

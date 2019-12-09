@@ -13,12 +13,18 @@
 
     if(isset($_GET['price_min'])) {
         $filter = true;
+        $checkdates = false;
+        $checkin = ''; 
+        $checkout = '';
+
         $min = $_GET['price_min'];
         htmlentities($min, ENT_QUOTES, 'UTF-8');
     
         $max = $_GET['price_max'];
         htmlentities($max, ENT_QUOTES, 'UTF-8');
     
+        $city = $_GET['city'];
+
         if(isset($_GET['house'])){
             array_push($types, 0);
         }
@@ -26,8 +32,16 @@
         if(isset($_GET['apartment'])){
             array_push($types, 1);
         }
+
+        if(isset($_GET['daterange'])){
+            if(preg_match('/([0-9]{2})\/([0-9]{2})\/([0-9]{4}) - ([0-9]{2})\/([0-9]{2})\/([0-9]{4})/', $_GET['daterange'], $output_array)){
+                $checkdates = true;
+                $checkin = $output_array[3] . '-' . $output_array[2] . '-' . $output_array[1];
+                $checkout = $output_array[6] . '-' . $output_array[5] . '-' . $output_array[4];
+            }
+        }
     
-        $listings = getListingsFilter($types, $min, $max);      
+        $listings = getListingsFilter($types, $min, $max, $city, $checkdates, $checkin, $checkout);      
     }
 
     else {
