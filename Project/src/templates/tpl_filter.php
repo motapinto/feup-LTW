@@ -22,14 +22,14 @@ function draw_filter($filter) {
                 </ul>
             </section>
             <section> 
-                <span>Price Range (per night)</span>
+                <span>Price Range (&euro; / night)</span>
                 <div id="price-slider"></div>
                 <input type="hidden" name="price_min" id='price_min' value="<?=isset($_GET['price_min'])?$_GET['price_min']:0?>" max="<?=$max - 1?>" min="<?=$min?>">
                 <input type="hidden" name="price_max" id='price_max' value="<?=isset($_GET['price_max'])?$_GET['price_max']:$max?>" max="<?=$max?>" min="<?=$min + 1?>">
             </section>
 
             <section>
-                <span>City</span>
+                <span>City: </span>
                 <select visible="6" name="city" id="select-city">
                     <option id="city-option" selected value="%">Any</option>
                     <?php foreach ($cities as $city) { ?>
@@ -38,8 +38,16 @@ function draw_filter($filter) {
                 </select>
             </section>
             <section> 
-                <span>Dates</span>
+                <span>Dates:</span>
                 <input id="calendar" type="text" name="daterange" value="<?=isset($_GET['daterange'])?$_GET['daterange']:''?>"/>
+            </section>
+
+            <section> 
+            <span> Order by: </span>
+                <select visible="6" name="city" id="select-city">
+                    <option id="city-option" selected value="%">Rating</option>
+                    <option id="city-option" value="%">Price</option>
+                </select>
             </section>
 
             <button class="circular-button" style="background-color: teal;">Update Results</button>
