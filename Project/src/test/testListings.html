@@ -29,25 +29,25 @@
                     <p class='comments'>Rating: estrelas + num reviews</p>
                 </div>
         </article>
-        <article class="elem2" id="elem4">
+        <article class="elem" id="elem4">
                 <img src="https://cdn.vox-cdn.com/thumbor/0__zWQZmmmwHA5OjBTAchz6_sBw=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/62922957/4854_Alonzo_Ave__Encino_FInals_34.0.jpg" alt='img' width="250" height="200">        
-                <div class="listing-content1">
+                <div class="listing-content">
                     <h1> Casa 1 </h1>
                     <span> Price: 5&euro;</span>
                     <p class='comments'>Rating: estrelas + num reviews</p>
                 </div>
         </article>
-        <article class="elem2" id="elem5">
+        <article class="elem" id="elem5">
                 <img src="https://cdn.vox-cdn.com/thumbor/0__zWQZmmmwHA5OjBTAchz6_sBw=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/62922957/4854_Alonzo_Ave__Encino_FInals_34.0.jpg" alt='img' width="250" height="200">        
-                <div class="listing-content1">
+                <div class="listing-content">
                     <h1> Casa 1 </h1>
                     <h5> Price: 5&euro; </h5>
                     <p class='comments'> Rating: estrelas + num reviews </p>
                 </div>
         </article>
-        <article class="elem2" id="elem6">
+        <article class="elem" id="elem6">
                 <img src="https://cdn.vox-cdn.com/thumbor/0__zWQZmmmwHA5OjBTAchz6_sBw=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/62922957/4854_Alonzo_Ave__Encino_FInals_34.0.jpg" alt='img' width="250" height="200">        
-                <div class="listing-content1">
+                <div class="listing-content">
                     <h1> Casa 1 </h1>
                     <h5> Price: 5&euro; </h5>
                     <p class='comments'>Rating: estrelas + num reviews</p>
@@ -66,16 +66,17 @@
     .listings {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     .listing-content {
-        position: absolute;
-        top: 25%;
-        margin-right: 200px;
-        width: 200px;
-        margin-left: 5%;
+        position: relative;
         background-color: white;
         border-radius:5%;
+        z-index: 1;
+        top: -20%;
+        left: 5%;
+        width: 14em;
 
         box-shadow: 0px 10px 5px 0px rgba(122,122,122,1);
     }
@@ -85,28 +86,12 @@
     }
 
     .elem img {
-        position: relative;
         border-radius:5%;
     }
 
 
 
 
-
-
-
-    .elem2 {
-        margin-top: 30%;
-    }
-
-    .elem2 img {
-        position: relative;
-        border-radius:5%;
-    }
-
-    .listing-content1 {
-        bottom: 40%;
-    }
 
 
 </style>
