@@ -68,10 +68,11 @@
         return $stmt->fetchAll();
     }
 
-    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkdates = false, $checkin='now', $checkout='01-01-2300') {
+    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkdates = false, $checkin='now', $checkout='01-01-2300', $page=0) {
         $db = Database::instance()->db();
 
         $return = array();
+        $offset = $page * 6;
         
         if($checkdates){
             foreach ($types as $type) {
@@ -82,8 +83,9 @@
                                                     FROM Property, Rented 
                                                     WHERE Property.id = property_id AND (julianday(?) BETWEEN julianday(initial_date) AND julianday(final_date)
                                                         OR julianday(?) BETWEEN julianday(initial_date) AND julianday(final_date)
-                                                        OR julianday(initial_date) BETWEEN julianday(?) AND julianday(?)))');
-                $stmt->execute(array($priceLow, $priceHigh, $city, $type, $checkin, $checkout, $checkin, $checkout));
+                                                        OR julianday(initial_date) BETWEEN julianday(?) AND julianday(?)))
+                                                        LIMIT 6 OFFSET ?');
+                $stmt->execute(array($priceLow, $priceHigh, $city, $type, $checkin, $checkout, $checkin, $checkout, $offset));
                 $return = array_merge($return, $stmt->fetchAll());
             }
         }
@@ -92,8 +94,9 @@
                 $stmt = $db->prepare('SELECT * 
                                     FROM Property
                                     WHERE price_day >= ? AND price_day <= ? 
-                                        AND city LIKE ? AND property_type = ?');
-                $stmt->execute(array($priceLow, $priceHigh, $city, $type));
+                                        AND city LIKE ? AND property_type = ?
+                                        LIMIT 6 OFFSET ?');
+                $stmt->execute(array($priceLow, $priceHigh, $city, $type, $offset));
                 $return = array_merge($return, $stmt->fetchAll());
             }
         }

@@ -97,3 +97,16 @@
     padding: 20px 0;
 }
 
+.pagination {
+    margin-left: 10%;
+}
+
+.pagination span{
+    margin: 10%;
+}
+
+.fas{
+    color: aquamarine;
+    background-color: blueviolet;
+    font-size: 200px;
+}

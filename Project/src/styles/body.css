@@ -60,7 +60,7 @@ button:focus {
 
 
 /*https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
-
+/*
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -72,7 +72,7 @@ input[type=date]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
+*/
 
 /* arranjar este topico */
 

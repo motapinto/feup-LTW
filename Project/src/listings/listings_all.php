@@ -24,12 +24,15 @@
         htmlentities($max, ENT_QUOTES, 'UTF-8');
     
         $city = $_GET['city'];
+        htmlentities($city, ENT_QUOTES, 'UTF-8');
 
         if(isset($_GET['house'])){
+            htmlentities($_GET['apartment'], ENT_QUOTES, 'UTF-8');
             array_push($types, 0);
         }
 
         if(isset($_GET['apartment'])){
+            htmlentities($_GET['apartment'], ENT_QUOTES, 'UTF-8');
             array_push($types, 1);
         }
 
@@ -40,8 +43,12 @@
                 $checkout = $output_array[6] . '-' . $output_array[5] . '-' . $output_array[4];
             }
         }
-    
-        $listings = getListingsFilter($types, $min, $max, $city, $checkdates, $checkin, $checkout);      
+
+        $page = $_GET['page'];
+        htmlentities($_GET['page'], ENT_QUOTES, 'UTF-8');
+        
+        print_r($page);
+        $listings = getListingsFilter($types, $min, $max, $city, $checkdates, $checkin, $checkout, $page);      
     }
 
     else {

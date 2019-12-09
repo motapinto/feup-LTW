@@ -43,7 +43,7 @@ function draw_filter($filter) {
             </section>
 
             <section> 
-            <span> Order by: </span>
+                <span> Order by: </span>
                 <select visible="6" name="city" class="order-by">
                     <option id="order-by" selected value="%">Highest Rating</option>
                     <option id="order-by" value="%">Lowest Rating</option>
@@ -51,6 +51,13 @@ function draw_filter($filter) {
                     <option id="order-by" value="%">Lowest Price</option>
                 </select>
             </section>
+                <div class="pagination">
+                    <i class="fas fa-arrow-circle-left"></i>
+                    <span>Change page</span>
+                    <input name="page" type="number" value="<?=isset($_GET['page'])?$_GET['page']:1?>">
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            <section> 
 
             <button class="circular-button" style="background-color: teal;">Update Results</button>
         </form>
