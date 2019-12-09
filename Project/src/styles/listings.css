@@ -2,30 +2,32 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    background-color: 	#EDF2F6;
+    overflow-y: scroll;
+    max-height: 93%;
 }
 
 .elem {
-    margin: 2px 5px;
-    align-items: center;
-    margin-left: 10%;
-    margin-top: 10%;
+    margin: 5%;
 }
 
 .elem img {
-    border-radius:5%;
+    border-radius: 5%;
+    margin: 0 5%;
+    max-width: 90%;
+    max-height: 250px;
 }
 
 .listing-content {
     position: relative;
     background-color: white;
-    border-radius:5%;
+    border-radius: 5%;
     z-index: 1;
     top: -20%;
-    left: 5%;
     padding-left: 5%;
-    width: 13em;
-
+    width: 80%;
+    margin: 7.5%;
+    margin-bottom: -6em;
+    align-items: center;
     box-shadow: 0px 10px 5px 0px rgba(122, 122, 122, 1);
 }
 
