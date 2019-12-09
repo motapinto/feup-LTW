@@ -79,16 +79,20 @@
     padding: 20px 0;
 }
 
-.rating {
-    font-size: 1.2em;
-    padding-bottom: 5%;
+.order-by {
+    border: none;
+    margin-top: 5%;
+    padding: 0 10%;
+    font-size: large;
+    background-color: inherit;
+    color: white;
 }
 
-.rating .comments {
-    margin-left: 1em;
-    font-size: 0.7em;
-    color: rgb(161, 161, 161);
+#order-by {
+    font-size: large;
+    border: none;
+    background-color: inherit;
+    color: black;
+    padding: 20px 0;
 }
-
-
 

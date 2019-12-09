@@ -44,9 +44,11 @@ function draw_filter($filter) {
 
             <section> 
             <span> Order by: </span>
-                <select visible="6" name="city" id="select-city">
-                    <option id="city-option" selected value="%">Rating</option>
-                    <option id="city-option" value="%">Price</option>
+                <select visible="6" name="city" class="order-by">
+                    <option id="order-by" selected value="%">Highest Rating</option>
+                    <option id="order-by" value="%">Lowest Rating</option>
+                    <option id="order-by" value="%">Highest Price</option>
+                    <option id="order-by" value="%">Lowest Price</option>
                 </select>
             </section>
 
