@@ -99,10 +99,16 @@
 
 .pagination {
     margin-left: 10%;
+    margin-top: 5%;
 }
 
-.pagination span{
-    margin: 10%;
+.pagination input{
+    background-color: inherit;
+    color: white;
+    font-size: 0.9em;
+    width: 32%;
+    padding-left: 32%;
+
 }
 
 .fas{

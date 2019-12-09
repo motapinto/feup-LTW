@@ -51,13 +51,14 @@ function draw_filter($filter) {
                     <option id="order-by" value="%">Lowest Price</option>
                 </select>
             </section>
-                <div class="pagination">
-                    <i class="fas fa-arrow-circle-left"></i>
-                    <span>Change page</span>
-                    <input name="page" type="number" value="<?=isset($_GET['page'])?$_GET['page']:1?>">
-                    <i class="fas fa-arrow-circle-right"></i>
-                </div>
             <section> 
+                <span>Change page</span>
+                    <div class="pagination">
+                        <i class="fas fa-minus" id="prev-page" onclick="prev_page();"></i>
+                        <input id="current-page" name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>">
+                        <i class="fas fa-plus" id="next-page" onclick="next_page();"></i>
+                    </div>  
+            </section>
 
             <button class="circular-button" style="background-color: teal;">Update Results</button>
         </form>

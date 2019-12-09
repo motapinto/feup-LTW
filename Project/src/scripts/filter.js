@@ -42,3 +42,11 @@ $(function() {
     });
 });
 
+function prev_page() { 
+    if(document.getElementById('current-page').value > 1)
+        document.getElementById('current-page').value -= 1;
+}
+
+function next_page() { 
+    document.getElementById('current-page').value ++;
+}

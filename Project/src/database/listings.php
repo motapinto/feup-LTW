@@ -68,11 +68,11 @@
         return $stmt->fetchAll();
     }
 
-    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkdates = false, $checkin='now', $checkout='01-01-2300', $page=0) {
+    function getListingsFilter($types=array(), $priceLow=0, $priceHigh='PHP_INT_MAX', $city='%', $checkdates = false, $checkin='now', $checkout='01-01-2300', $page=1) {
         $db = Database::instance()->db();
 
         $return = array();
-        $offset = $page * 6;
+        $offset = ($page - 1)*6;
         
         if($checkdates){
             foreach ($types as $type) {

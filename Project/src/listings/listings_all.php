@@ -47,7 +47,6 @@
         $page = $_GET['page'];
         htmlentities($_GET['page'], ENT_QUOTES, 'UTF-8');
         
-        print_r($page);
         $listings = getListingsFilter($types, $min, $max, $city, $checkdates, $checkin, $checkout, $page);      
     }
 
