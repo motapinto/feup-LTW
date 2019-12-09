@@ -42,6 +42,3 @@ $(function() {
     });
 });
 
-function aux() {
-    alert(document.getElementById('calendar').value);
-}

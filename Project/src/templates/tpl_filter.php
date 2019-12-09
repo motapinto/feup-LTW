@@ -39,7 +39,7 @@ function draw_filter($filter) {
             </section>
             <section> 
                 <span>Dates</span>
-                <input id="calendar" type="text" name="daterange" value="<?=isset($_GET['daterange'])?$_GET['daterange']:''?>" onclick="aux();" />
+                <input id="calendar" type="text" name="daterange" value="<?=isset($_GET['daterange'])?$_GET['daterange']:''?>"/>
             </section>
 
             <button class="circular-button" style="background-color: teal;">Update Results</button>
