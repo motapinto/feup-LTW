@@ -80,16 +80,18 @@
     padding: 20px 0;
 }
 
-.order-by {
+
+
+.order-S {
     border: none;
     margin-top: 5%;
-    padding: 0 10%;
     font-size: large;
+    padding-left: 5%;
     background-color: inherit;
     color: white;
 }
 
-#order-by {
+.order-by {
     font-size: large;
     border: none;
     background-color: inherit;

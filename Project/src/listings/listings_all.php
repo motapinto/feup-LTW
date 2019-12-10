@@ -26,6 +26,7 @@
         else
             return -1;
     }
+
     function sortNewest($elem1, $elem2) {
         if ($elem1['post_date'] == $elem2['post_date'])
             return 0;
@@ -34,6 +35,13 @@
         else
             return -1;
     }
+
+    function changePage($input, $page) {
+        $offset = $page * 6;
+        $start = $offset - 6;
+        return array_slice($input, $start, $offset);
+    }
+
 
     $types = array();
     $filter = false;
@@ -54,6 +62,7 @@
         htmlentities($city, ENT_QUOTES, 'UTF-8');
 
         if(isset($_GET['order-by'])){
+            print_r($order_by);
             $order_by = $_GET['order-by'];
             htmlentities($order_by, ENT_QUOTES, 'UTF-8');
         }
@@ -86,8 +95,7 @@
         $listings = getAllListings();
     }
 
-    print_r($listings);
-
+    //Order by user selection
     if(isset($order_by)) {
         switch($order_by) {
             case 1: 
@@ -114,6 +122,8 @@
         }
     }
 
+    // Limits the number of items per page after being ordered
+    $listings = changePage($listings, $page);
 
     draw_header('All Listings', 'filter');
     draw_navBar(0);    
