@@ -132,6 +132,6 @@
 
         $stmt = $db->prepare('SELECT DISTINCT city FROM Property');
         $stmt->execute();
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 ?>

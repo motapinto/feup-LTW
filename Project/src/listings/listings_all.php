@@ -92,7 +92,7 @@
 
     else {
         $listings = getAllListings();
-        $page = 0;
+        $page = 1;
     }
     //Order by user selection
     if(isset($order_by)) {
@@ -121,11 +121,14 @@
         }
     }
 
+    //Gets number max of page
+    $max_page = ceil(count($listings) / 6);
+
     // Limits the number of items per page after being ordered
     $listings = changePage($listings, $page);
 
     draw_header('All Listings', 'filter');
     draw_navBar(0);    
-    draw_list_all($listings, $filter);
+    draw_list_all($listings, $filter, $max_page);
     draw_footer();
 ?>

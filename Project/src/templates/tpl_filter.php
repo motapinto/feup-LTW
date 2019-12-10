@@ -1,7 +1,7 @@
 <?php
 include_once('../database/listings.php');
 
-function draw_filter($filter) { 
+function draw_filter($filter, $max_price) { 
     $max = getMaxPrice()['price_day'];
     $min = getMinPrice()['price_day'];
     $cities = getCities();
@@ -33,7 +33,7 @@ function draw_filter($filter) {
                 <select visible="6" name="city" id="select-city">
                     <option id="city-option" selected value="%">Any</option>
                     <?php foreach ($cities as $city) { ?>
-                        <option id="city-option" value="<?=$city?>"><?=$city?></option>
+                        <option id="city-option" value="<?=$city['city']?>"> <?=$city['city']?> </option>
                     <?php } ?>
                 </select>
             </section>
@@ -58,7 +58,7 @@ function draw_filter($filter) {
                     <div class="pagination">
                         <i class="fas fa-minus" id="prev-page" onclick="prev_page();"></i>
                         <input id="current-page" name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>">
-                        <i class="fas fa-plus" id="next-page" onclick="next_page();"></i>
+                        <i class="fas fa-plus" id="next-page" onclick="next_page(<?=$max_price?>);"></i>
                     </div>  
             </section>
 

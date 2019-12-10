@@ -47,6 +47,7 @@ function prev_page() {
         document.getElementById('current-page').value -= 1;
 }
 
-function next_page() { 
-    document.getElementById('current-page').value ++;
+function next_page(max_page) { 
+    if(document.getElementById('current-page').value < max_page)
+        document.getElementById('current-page').value ++;
 }

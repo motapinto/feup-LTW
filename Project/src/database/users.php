@@ -53,7 +53,6 @@
         $stmt->execute(array($newEmail, $name, $age, password_hash($password, PASSWORD_DEFAULT), $id));
         
         $user = $stmt->fetch();
-        print_r($user);
         return !$user?0:1;
     }
 
