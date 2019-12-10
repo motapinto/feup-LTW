@@ -189,3 +189,11 @@
     flex-direction: row;
 }
 
+/******************** PROFILE MESSAGES *********************/
+.profile-comments-elem {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'photo details'
+                          'comment comment';
+}
