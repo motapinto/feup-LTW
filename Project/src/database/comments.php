@@ -26,9 +26,9 @@
                 UNION 
 
                 SELECT  C.property_id, C.user_id as commentator, 
-                null, C.comment, C.rating, C.date FROM Comment C 
+                C.user_id, C.comment, C.rating, C.date FROM Comment C 
                 WHERE user_id = ?
-            ) ORDER BY date;'
+            ) ORDER BY date DESC;'
         );
         $stmt->execute(array($owner));
         return $stmt->fetchAll();
