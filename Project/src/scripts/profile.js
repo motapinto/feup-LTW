@@ -28,6 +28,53 @@ document.getElementById("sendMessage").onclick = function (event) {
     xhttp.send();
 }
 
+document.getElementById('properties-button').onclick = function (event) {
+    window.location = "../properties/properties.php";
+}
+
+if (document.getElementById('messages-button'))
+    document.getElementById('messages-button').onclick = function (event) { window.location = "../messages/messages.php"; }
+
+if (document.getElementById('send-message-button'))
+    document.getElementById('send-message-button').onclick = function (event) { profileSubMenu(4); }
+
+document.getElementById('overview-button').onclick = function (event) { profileSubMenu(0); }
+
+document.getElementById('profile-button').onclick = function (event) { profileSubMenu(1); }
+
+if (document.getElementById('security-button'))
+    document.getElementById('security-button').onclick = function (event) { profileSubMenu(2); }
+
+document.getElementById('comments-button').onclick = function (event) { profileSubMenu(3); }
+
+if (document.getElementById('name'))
+    document.getElementById('name').onkeyup = function (event) { checkName(true); }
+
+if (document.getElementById('email'))
+    document.getElementById('email').onkeyup = function (event) { checkEmail(true); }
+
+if (document.getElementById('email-button'))
+    document.getElementById('email-button').onkeyup = function (event) { submitForm(1); }
+
+if (document.getElementById('age'))
+    document.getElementById('age').onkeyup = function (event) { checkAge(true); }
+
+if (document.getElementById('delete-button'))
+    document.getElementById('delete-button').onclick = function (event) { deleteUser(); }
+
+if (document.getElementById('current-password'))
+    document.getElementById('current-password').onkeyup = function (event) { checkCurrentPassword(); }
+
+if (document.getElementById('password'))
+    document.getElementById('password').onkeyup = function (event) { checkPass(); }
+
+if (document.getElementById('password-change'))
+    document.getElementById('password-change').onkeyup = function (event) { submitForm(3); }
+
+if (document.getElementById('confirm_password'))
+    document.getElementById('confirm_password').onkeyup = function (event) { checkPass(); }
+
+
 //  Selects user menu
 function profileSubMenu(option) {
     switch(option) {

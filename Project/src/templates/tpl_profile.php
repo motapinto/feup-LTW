@@ -31,30 +31,30 @@
 
             <!-- SIDEBAR BUTTONS -->
             <article class='profile-userbuttons'>
-                <button formaction="../properties/properties.php" type='button' class='circular-button'>Properties</button>
+                <button class='circular-button' id="properties-button">Properties</button>
                 <?php if($canEditProfile) { ?> 
 
-                <button formaction="../messages/messages.php" onclick="profileSubMenu(5)" type='button' class='circular-button'> Messages </button> 
+                <button class='circular-button' id="messages-button"> Messages </button> 
 
                 <?php } ?>    
                 <?php if(!$canEditProfile) { ?> 
-                <button onclick="profileSubMenu(4)" type='button' class='circular-button'> Send Message </button> 
+                <button type='button' class='circular-button' id="send-message-button"> Send Message </button> 
                 <?php } ?>   
             </article>
 
             <!-- SIDEBAR MENU -->
             <article class='profile-usermenu'>
                 <i class='fas fa-bars' style="padding-top: 1em"></i>
-                <button class='no-button' onclick='profileSubMenu(0);' style="padding-top: 1em"> Overview </button>
+                <button class='no-button' style="padding-top: 1em" id="overview-button"> Overview </button>
                 
                 <i class='fas fa-users-cog'></i>
-                <button class='no-button' onclick='profileSubMenu(1);'> Profile Details</button>  
+                <button class='no-button' id="profile-button"> Profile Details</button>  
                 <?php if($canEditProfile) { ?>
                     <i class='fas fa-shield-alt'></i>
-                    <button class='no-button' onclick='profileSubMenu(2);'>Security Details</button>  
+                    <button class='no-button' id="security-button">Security Details</button>  
                 <?php } ?>       
                 <i class='far fa-comments'></i>
-                <button class='no-button' onclick='profileSubMenu(3);'>Comments</button>  
+                <button class='no-button' id="comments-button">Comments</button>  
             </article>
         </section> 
 
@@ -67,7 +67,7 @@
                 <article id='profile-setting-name' class='profile-setting-elem'>
                     <header> Name </header>
                     <?php if($canEditProfile) { ?>
-                    <input id='name' type='text' onkeyup='checkName(true);' value='<?=$user['name']?>'>
+                    <input id='name' type='text' value='<?=$user['name']?>'>
                     <i id='icon-name'></i>
                     <?php } ?>    
                     <?php if(!$canEditProfile) { ?> 
@@ -78,8 +78,8 @@
                 <article id='profile-setting-email' class='profile-setting-elem'>
                     <header> Email </header>
                     <?php if($canEditProfile) { ?>
-                    <input id='email' type='email' onkeyup="checkEmail(true);" value='<?=$user['email']?>'>
-                    <button onclick='submitForm(1)'> Save </button>
+                    <input id='email' type='email'  value='<?=$user['email']?>'>
+                    <button id="email-button"> Save </button>
                     <?php } ?>    
                     <?php if(!$canEditProfile) { ?> 
                     <input value='<?=$user['email']?>' disabled> 
@@ -89,7 +89,7 @@
                 <article id='profile-setting-age' class='profile-setting-elem'>
                     <?php if($canEditProfile) { ?>
                     <header> Age </header>
-                    <input id='age' type='number' onkeyup='checkAge(true);' value='<?=$user['age']?>'>
+                    <input id='age' type='number' value='<?=$user['age']?>'>
                     <i id='icon-age'></i>
                     <?php } ?>    
                     <?php if(!$canEditProfile) { ?> 
@@ -101,7 +101,7 @@
                     <?php if($canEditProfile) { ?>
                     <header> Delete User </header>
                     <span> All your information will be deleted with no possibility to cancelling after confirm</span>
-                    <button onclick="deleteUser()">
+                    <button id="delete-button">
                         <i class="fas fa-user-slash" style="color: red"></i>
                     </button>
                     <?php } ?>     
@@ -117,18 +117,18 @@
                 <h1 id='profile-security-title'>Security Details</h1>
                     <article id='profile-security-password' class='profile-setting-elem'>
                         <header> Current Password </header>
-                        <input id='current-password' type='password' onkeyup='checkCurrentPassword();'value=''>
+                        <input id='current-password' type='password' value=''>
                     </article>
 
                     <article id='profile-setting-password' class='profile-setting-elem'>
                         <header> New Password </header>
-                        <input type='password' id='password' onkeyup='checkPass();' disabled >
-                            <button id='password-change' style='display:none;' onclick='submitForm(3);'> Save</button>
+                        <input type='password' id='password' disabled >
+                            <button id='password-change' style='display:none;'> Save</button>
                     </article>
 
                     <article id='profile-settings-confirm_password' class='profile-setting-elem'>
                         <header> Confirm password </header>
-                        <input id='confirm_password' type='password' onkeyup='checkPass();' disabled >
+                        <input id='confirm_password' type='password' disabled >
                     </article>
                     <p id='msg-password'></p>
                     <p id='msg-password1'></p>
