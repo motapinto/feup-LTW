@@ -22,13 +22,11 @@
         $comments = getCommentsByUserId($id);
         if($user === false)
             die(header('Location: ../listings/listings_all.php'));
-		draw_profile($user, false);
+		draw_profile($user);
 	}
 	else {
         draw_navBar(2);
         $user = userProfile($_SESSION['id']); // own user
-        $rents = getAllRentsByUser($_SESSION['id']);
-        $comments = getCommentsByUserId($_SESSION['id']);
 		draw_profile($user, true);
 	}
     

@@ -33,7 +33,9 @@ function draw_filter($filter, $max_price) {
                 <select visible="6" name="city" id="select-city">
                     <option id="city-option" selected value="%">Any</option>
                     <?php foreach ($cities as $city) { ?>
-                        <option id="city-option" value="<?=$city['city']?>"> <?=$city['city']?> </option>
+                        <option id="city-option" value="<?=$city['city']?>" <?=(isset($_GET['city'])&&$_GET['city']===$city['city'])?'selected':''?>> 
+                            <?=$city['city']?> 
+                        </option>
                     <?php } ?>
                 </select>
             </section>

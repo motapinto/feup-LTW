@@ -1,8 +1,9 @@
-<?php function draw_profile($user, $canEditProfile) { 
+<?php function draw_profile($user, $canEditProfile=false) { 
     include_once('../database/comments.php');
     include_once('../database/images.php');
 
-    $comments = getCommentsByUserId($user['id']);
+    $allComments = getAllUserRelatedComments($user['id']);
+    $rents = getAllRentsByUser($_SESSION['id']);
     $image = getUserImagePath($user['id'], 'MEDIUM');
 ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
@@ -138,12 +139,27 @@
 <!--*********************** PROFILE COMMENTS ***********************-->
         <section id='profile-comments-tab' class='selected-tab'>
             <?php 
-            $nComments = count($comments);
+            $nComments = count($allComments);
             if($nComments === 1) { ?>
                 <h1>1 comment</h1>
             <?php } else { ?>
-                <h1><?=count($comments)?> comments</h1>
+                <h1><?=count($allComments)?> comments</h1>
+            <?php } 
+
+            foreach($allComments as $comment) { ?>
+                <article class='profile-comments-elem'>
+                    <header> property id : <?=$comment['property_id']?> </header>
+                    <header> commentator: <?=$comment['commentator']?> </header>
+                    <header> owner : <?=$comment['owner']?> </header>
+                    <header> comment: <?=$comment['comment']?> </header>
+                    <header> rating: <?=$comment['rating']?> </header>
+                    <header> date: <?=$comment['date']?> </header>
+                    <br><br><br><br><br>
+                </article>
             <?php } ?>
+
+
+
         </section>
 
 <!--********************* PROFILE SEND MESSAGE *********************-->
