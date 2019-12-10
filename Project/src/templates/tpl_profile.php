@@ -140,6 +140,7 @@
         <section id='profile-comments-tab' class='selected-tab'>
             <?php 
             $nComments = count($allComments);
+            print_r($allComments);
             if($nComments === 1) { ?>
                 <h1>1 comment</h1>
             <?php } else { ?>

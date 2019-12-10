@@ -18,19 +18,19 @@
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT* FROM (
-                SELECT C.property_id, C.user_id as commentator,
-                P.user_id as owner, C.comment, C.rating, C.date 
-                FROM Comment C JOIN Property P ON P.id = C.property_id
+                SELECT C.property_id, C.user_id AS commentator,
+                P.user_id AS owner, C.comment, C.rating, C.date 
+                FROM Comment AS C JOIN Property P ON P.id = C.property_id
                 WHERE owner = ?
                 
                 UNION 
 
-                SELECT  C.property_id, C.user_id as commentator, 
-                C.user_id, C.comment, C.rating, C.date FROM Comment C 
+                SELECT  C.property_id, C.user_id AS commentator, 
+                C.user_id, C.comment, C.rating, C.date FROM Comment AS C 
                 WHERE user_id = ?
             ) ORDER BY date DESC;'
         );
-        $stmt->execute(array($owner));
+        $stmt->execute(array($owner, $owner));
         return $stmt->fetchAll();
     }
 
