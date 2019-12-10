@@ -140,31 +140,34 @@
         <section id='profile-comments-tab' class='selected-tab'>
             <?php 
             $nComments = count($allComments);
-            print_r($allComments);
             if($nComments === 1) { ?>
-                <h1>1 comment</h1>
+                <h1>1 comment </h1>
             <?php } else { ?>
-                <h1><?=count($allComments)?> comments</h1>
-            <?php } 
-
-            foreach($allComments as $comment) { 
-                $user = userProfile($comment['commentator']);
-                $image = getUserImagePath($comment['commentator'], 'SMALL'); 
-                ?>
-                <a href="../listings/item.php?<?= $comment['property_id'] ?>">
-                    <article class='profile-comments-elem'>
-                        <header class="comment-details"> 
-                            <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
-                            <h2> <?= $user['name'] ?></h2>
-                            <span> <?= $comment['rating'] ?> </span>
-                            <span> <?= $comment['date'] ?> </span>
-                        </header>
-                        <p> <?=$comment['comment']?> </p>
-                        
-                        <br><br><br><br><br>
-                    </article>
-                </a>
+                <h1><?=count($allComments)?> comments </h1>
             <?php } ?>
+
+            <ul class="scrollable-comments">
+
+                <?php foreach($allComments as $comment) { 
+                    $user = userProfile($comment['commentator']);
+                    $image = getUserImagePath($comment['commentator'], 'SMALL'); 
+                    ?>
+                    <li class='profile-comments-elem'>          
+                    <a href="../listings/item.php?<?= $comment['property_id'] ?>">
+                            <header class="comment-details"> 
+                                <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
+                                <div>
+                                    <h2> <?= $user['name'] ?></h2>
+                                    <span id="comments-ratings"> <?= draw_rating($comment['rating']) ?> </span>
+                                    <span id="comments-date"> <?= $comment['date'] ?> </span>
+                                </div>
+                            </header>
+                            <p> <?=$comment['comment']?> </p>
+                    </a>
+                    </li>
+                <?php } ?>
+
+            </ul> 
         </section>
 
 <!--********************* PROFILE SEND MESSAGE *********************-->

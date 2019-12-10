@@ -17,17 +17,10 @@
     function getAllUserRelatedComments($owner) {
         $db = Database::instance()->db();
 
-<<<<<<< HEAD
-        $stmt = $db->prepare('SELECT* FROM (
-                SELECT C.property_id, C.user_id AS commentator,
-                P.user_id AS owner, C.comment, C.rating, C.date 
-                FROM Comment AS C JOIN Property P ON P.id = C.property_id
-=======
         $stmt = $db->prepare('SELECT * FROM (
                 SELECT C.property_id, C.user_id as commentator,
                 P.user_id as owner, C.comment, C.rating, C.date 
                 FROM Comment C JOIN Property P ON P.id = C.property_id
->>>>>>> a19b67379555d5ce3cda844dc71e8ce90b6ff662
                 WHERE owner = ?
                 
                 UNION 

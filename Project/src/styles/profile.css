@@ -183,17 +183,70 @@
 }
 
 /******************** PROFILE MESSAGES *********************/
-
 #profile-sendMessage {
     display: flexbox;
     flex-direction: row;
 }
 
 /******************** PROFILE MESSAGES *********************/
+
+#profile-comments-tab h1 > i {
+    color: black
+}
+
+.scrollable-comments {
+    overflow-y: scroll;
+    max-height: 530px;
+}
+
+.scrollable-comments::-webkit-scrollbar { 
+    width: 0
+}
+
 .profile-comments-elem {
+    border-bottom: solid 1px rgb(175, 175, 175);
+    margin-bottom: 5%;
+}
+
+
+.profile-comments-elem a{
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-details {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-details img {
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+
+.comment-details div {
+    margin-left: 0.5em;
     display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 'photo details'
-                          'comment comment';
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas: 'name name'
+                          'date rating';
+}
+
+.comment-details div h2{
+    grid-area: name;
+    font-size: 1em;
+    margin-top: 0.4em;
+    margin-bottom: 0.6em;
+}
+
+#comments-date {
+    grid-area: date;
+    padding-top: 0.2em;
+    margin-right: 2%;
+}
+
+#comments-ratings {
+    grid-area: rating;
+    color: teal;
 }
