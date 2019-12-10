@@ -83,14 +83,6 @@ header {
     font-size: 16px;
 }
 
-
-/* arranjar este topico */
-
-.property {
-    margin: var(--main-margin);
-    width: var(--main-width);
-}
-
 .circular-button {
     display: flex;
     border: none;
@@ -120,21 +112,6 @@ header {
 .no-button:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-#properties {
-    list-style: none;
-    padding: 0;
-    width: 90%;
-}
-
-#properties li {
-    border-bottom: 2px solid black;
-    min-height: 11em;
-}
-
-#addProperty form {
-    margin: var(--main-margin);
 }
 
 .error {

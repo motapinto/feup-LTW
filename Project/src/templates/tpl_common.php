@@ -29,6 +29,9 @@
 <!--************************* HOME  **************************-->
             <link rel="stylesheet" href="../styles/listings.css">            
             <link rel="stylesheet" href="../styles/filter.css">
+
+<!--********************** PROPERTIES  ***********************-->
+            <link rel="stylesheet" href="../styles/properties.css">
 <!--******************** AUTHENTICATION  *********************-->
             <link rel="stylesheet" href="../styles/authentication.css">
 <!--************************* ITEM  **************************-->

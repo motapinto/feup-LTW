@@ -1,11 +1,10 @@
 <?php
-    include_once('../includes/session.php');              // starts session
+    include_once('../includes/session.php');                    // starts session
+    include_once('../includes/database.php');                   // connects to the database
+    include_once('../database/listings.php');                   // listings functions
 
     if(!isset($_SESSION['id']))
         header('Location: ../listings/listings_all.php');
-
-    include_once('../includes/database.php');                   // connects to the database
-    include_once('../database/listings.php');                   // listings functions
 
     include('../templates/tpl_common.php');                     // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');                     // prints the menu in HTML

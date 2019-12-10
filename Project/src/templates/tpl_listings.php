@@ -29,6 +29,5 @@ function draw_list_all($listings, $filter, $max_page) { ?>
             draw_list_item($item);
         } ?>
     </section>
-
 <?php } ?>
 

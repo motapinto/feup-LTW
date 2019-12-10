@@ -13,15 +13,24 @@
         return $stmt->fetchAll();
     }
 
-    //Returns all comments with a email with email = email
-    function getCommentsByUserId($id){
+    //Returns all comments done by other users to user properties or from the user itself
+    function getAllUserRelatedComments($owner) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT comment, date, rating
-                              FROM Comment 
-                              WHERE user_id = ?'
-                            );
-        $stmt->execute(array($id));
+        $stmt = $db->prepare('SELECT* FROM (
+                SELECT C.property_id, C.user_id as commentator,
+                P.user_id as owner, C.comment, C.rating, C.date 
+                FROM Comment C JOIN Property P ON P.id = C.property_id
+                WHERE owner = ?
+                
+                UNION 
+
+                SELECT  C.property_id, C.user_id as commentator, 
+                null, C.comment, C.rating, C.date FROM Comment C 
+                WHERE user_id = ?
+            ) ORDER BY date;'
+        );
+        $stmt->execute(array($owner));
         return $stmt->fetchAll();
     }
 
@@ -39,18 +48,6 @@
         $stmt->execute(array($user_id, $property_id, $comment));
 
         return (!$stmt->fetch())?true:false;
-    }
-
-    //Returns number of comments the user with email = email has done
-    function numberCommentsByEmail($email){
-        $db = Database::instance()->db();
-
-        $stmt = $db->prepare('SELECT COUNT(*) as count
-                              FROM Comment 
-                              WHERE email = ?'
-                            );
-        $stmt->execute(array($email));
-        return $stmt->fetch()['count'];
     }
 
     //Returns number of comments the property has
