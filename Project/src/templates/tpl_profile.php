@@ -146,20 +146,24 @@
                 <h1><?=count($allComments)?> comments</h1>
             <?php } 
 
-            foreach($allComments as $comment) { ?>
-                <article class='profile-comments-elem'>
-                    <header> property id : <?=$comment['property_id']?> </header>
-                    <header> commentator: <?=$comment['commentator']?> </header>
-                    <header> owner : <?=$comment['owner']?> </header>
-                    <header> comment: <?=$comment['comment']?> </header>
-                    <header> rating: <?=$comment['rating']?> </header>
-                    <header> date: <?=$comment['date']?> </header>
-                    <br><br><br><br><br>
-                </article>
+            foreach($allComments as $comment) { 
+                $user = userProfile($comment['commentator']);
+                $image = getUserImagePath($comment['commentator'], 'SMALL'); 
+                ?>
+                <a href="../listings/item.php?<?= $comment['property_id'] ?>">
+                    <article class='profile-comments-elem'>
+                        <header class="comment-details"> 
+                            <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
+                            <h2> <?= $user['name'] ?></h2>
+                            <span> <?= $comment['rating'] ?> </span>
+                            <span> <?= $comment['date'] ?> </span>
+                        </header>
+                        <p> <?=$comment['comment']?> </p>
+                        
+                        <br><br><br><br><br>
+                    </article>
+                </a>
             <?php } ?>
-
-
-
         </section>
 
 <!--********************* PROFILE SEND MESSAGE *********************-->
