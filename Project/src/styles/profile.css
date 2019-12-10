@@ -190,8 +190,8 @@
 
 /******************** PROFILE MESSAGES *********************/
 
-#profile-comments-tab h1 > i {
-    color: black
+#profile-comments-tab{
+    display: block;
 }
 
 .scrollable-comments {

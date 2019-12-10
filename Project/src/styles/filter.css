@@ -111,5 +111,8 @@
     font-size: 0.9em;
     width: 32%;
     padding-left: 32%;
+}
 
+#next-page:hover, #prev-page:hover {
+    cursor: pointer;
 }

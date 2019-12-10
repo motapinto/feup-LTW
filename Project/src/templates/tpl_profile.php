@@ -153,7 +153,7 @@
                     $image = getUserImagePath($comment['commentator'], 'SMALL'); 
                     ?>
                     <li class='profile-comments-elem'>          
-                    <a href="../listings/item.php?<?= $comment['property_id'] ?>">
+                    <a href="../listings/item.php?id=<?= $comment['property_id'] ?>">
                             <header class="comment-details"> 
                                 <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
                                 <div>

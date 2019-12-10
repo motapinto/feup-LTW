@@ -25,7 +25,7 @@
         $stmt = $db->prepare('SELECT message FROM Message WHERE 
                               receiver = ? AND sender = ? OR
                               receiver = ? AND sender = ? 
-                              LIMIT 1');
+                              ORDER BY date ASC LIMIT 1');
         $stmt->execute(array($user1, $user2, $user2, $user1));
         $message = $stmt->fetch();
 

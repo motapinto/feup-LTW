@@ -25,6 +25,7 @@
                     $num += 1;
                     $user = userProfile($messenger['user']);
                     $lastMessage = getLastMessageFromConversation($messenger['user'], $_SESSION['id']);
+                    print_r($lastMessage);
                     $image = getUserImagePath($user['id'], 'MEDIUM');
                     if($num == 1) { ?>
                         <div class="message-menu-item active">
