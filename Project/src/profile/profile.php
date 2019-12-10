@@ -27,8 +27,8 @@
 	else {
         draw_navBar(2);
         $user = userProfile($_SESSION['id']); // own user
-        $rents = getAllRentsByUser($user);
-        $comments = getCommentsByUserId($user);
+        $rents = getAllRentsByUser($_SESSION['id']);
+        $comments = getCommentsByUserId($_SESSION['id']);
 		draw_profile($user, true);
 	}
     

@@ -92,6 +92,7 @@
 
     else {
         $listings = getAllListings();
+        $page = 0;
     }
     //Order by user selection
     if(isset($order_by)) {
