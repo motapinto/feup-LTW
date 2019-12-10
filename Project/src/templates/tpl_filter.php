@@ -8,6 +8,7 @@ function draw_filter($filter) {
     ?>
     <aside class="filter">
         <form action="" method="get" class="filter-form">
+            <h2> Custom Filter</h2>
             <section> 
                 <ul>
                     <li>	
