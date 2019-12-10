@@ -17,7 +17,7 @@
     function getAllUserRelatedComments($owner) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT* FROM (
+        $stmt = $db->prepare('SELECT * FROM (
                 SELECT C.property_id, C.user_id as commentator,
                 P.user_id as owner, C.comment, C.rating, C.date 
                 FROM Comment C JOIN Property P ON P.id = C.property_id
@@ -30,7 +30,7 @@
                 WHERE user_id = ?
             ) ORDER BY date DESC;'
         );
-        $stmt->execute(array($owner));
+        $stmt->execute(array($owner, $owner));
         return $stmt->fetchAll();
     }
 
