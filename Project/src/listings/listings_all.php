@@ -12,7 +12,7 @@
     function sortPrice($elem1, $elem2) {
         if ($elem1['price_day'] == $elem2['price_day'])
             return 0;
-        else if ($elem1['price_day'] > $elem2['price_day'])
+        else if ($elem1['price_day'] < $elem2['price_day'])
             return 1;
         else
             return -1;
@@ -21,7 +21,7 @@
     function sortRating($elem1, $elem2) {
         if ($elem1['rating'] == $elem2['rating'])
             return 0;
-        else if ($elem1['rating'] > $elem2['rating'])
+        else if ($elem1['rating'] < $elem2['rating'])
             return 1;
         else
             return -1;
@@ -30,7 +30,7 @@
     function sortNewest($elem1, $elem2) {
         if ($elem1['post_date'] == $elem2['post_date'])
             return 0;
-        else if ($elem1['post_date'] > $elem2['post_date'])
+        else if ($elem1['post_date'] < $elem2['post_date'])
             return 1;
         else
             return -1;
@@ -62,7 +62,6 @@
         htmlentities($city, ENT_QUOTES, 'UTF-8');
 
         if(isset($_GET['order-by'])){
-            print_r($order_by);
             $order_by = $_GET['order-by'];
             htmlentities($order_by, ENT_QUOTES, 'UTF-8');
         }
@@ -94,29 +93,28 @@
     else {
         $listings = getAllListings();
     }
-
     //Order by user selection
     if(isset($order_by)) {
         switch($order_by) {
-            case 1: 
-                usort($listings, 'sortPrice');
+            case 1:
+                usort($listings, 'sortRating');
                 break;
             case 2:
-                usort($listings, 'sortPrice');
-                array_reverse($listings);
-                break;
-            case 3:
                 usort($listings, 'sortRating');
+                $listings = array_reverse($listings);
+            case 3: 
+                usort($listings, 'sortPrice');
                 break;
             case 4:
-                usort($listings, 'sortRating');
-                array_reverse($listings);
+                usort($listings, 'sortPrice');
+                $listings = array_reverse($listings);
+                break;
             case 5:
                 usort($listings, 'sortNewest');
                 break;
             case 6:
                 usort($listings, 'sortNewest');
-                array_reverse($listings);
+                $listings = array_reverse($listings);
             default: 
                 break;
         }

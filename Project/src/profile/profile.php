@@ -1,6 +1,8 @@
 <?php
     include_once('../includes/session.php');        // starts session
     include_once('../database/users.php');          // user functions
+    include_once('../database/rents.php');          // rent's functions
+    include_once('../database/comments.php');       // comment's functions
     
     include('../templates/tpl_common.php');         // prints the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');         // prints the top navigation bar
@@ -17,13 +19,16 @@
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
         $user = userProfile($id); //other user
+        $comments = getCommentsByUserId($id);
         if($user === false)
             die(header('Location: ../listings/listings_all.php'));
 		draw_profile($user, false);
 	}
 	else {
         draw_navBar(2);
-		$user = userProfile($_SESSION['id']); // own user
+        $user = userProfile($_SESSION['id']); // own user
+        $rents = getAllRentsByUser($user);
+        $comments = getCommentsByUserId($user);
 		draw_profile($user, true);
 	}
     

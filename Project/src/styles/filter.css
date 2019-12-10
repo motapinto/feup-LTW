@@ -11,14 +11,6 @@
     background: -webkit-linear-gradient(-45deg, rgb(133, 119, 119) 0%, rgb(52, 54, 58) 100%);
 }
 
-.filter h2 {
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(39, 39, 39, 0.4);
-}
-
 .filter-form ul {
     list-style-type: none;
     padding-left: 0;
@@ -39,8 +31,8 @@
 }
 
 .filter section {
-    margin: 2em 0em;
-    padding-bottom: 10%;
+    margin: 1.5em 0em;
+    padding-bottom: 5%;
     border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 

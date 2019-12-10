@@ -8,7 +8,6 @@ function draw_filter($filter) {
     ?>
     <aside class="filter">
         <form action="" method="get" class="filter-form">
-        <h2> Custom Filter</h2>
             <section> 
                 <ul>
                     <li>	
@@ -44,13 +43,13 @@ function draw_filter($filter) {
 
             <section> 
                 <span> Order by: </span>
-                <select value="<?=isset($_GET['order-by'])?$_GET['order-by']:1?>" visible="6" name="order-by" class="order-S">
-                    <option class="order-by" value="1" selected>Highest Rating</option>
-                    <option class="order-by" value="2">Lowest Rating</option>
-                    <option class="order-by" value="3">Highest Price</option>
-                    <option class="order-by" value="4">Lowest Price</option>
-                    <option class="order-by" value="5">Newest First</option>
-                    <option class="order-by" value="6">Oldest First</option>
+                <select visible="6" name="order-by" class="order-S">
+                    <option class="order-by" value="1" <?=(isset($_GET['order-by'])&&$_GET['order-by']==1)?'selected':''?>>Highest Rating</option>
+                    <option class="order-by" value="2" <?=(isset($_GET['order-by'])&&$_GET['order-by']==2)?'selected':''?>>Lowest Rating</option>
+                    <option class="order-by" value="3" <?=(isset($_GET['order-by'])&&$_GET['order-by']==3)?'selected':''?>>Highest Price</option>
+                    <option class="order-by" value="4" <?=(isset($_GET['order-by'])&&$_GET['order-by']==4)?'selected':''?>>Lowest Price</option>
+                    <option class="order-by" value="5" <?=(isset($_GET['order-by'])&&$_GET['order-by']==5)?'selected':''?>>Newest First</option>
+                    <option class="order-by" value="6" <?=(isset($_GET['order-by'])&&$_GET['order-by']==6)?'selected':''?>>Oldest First</option>
                 </select>
             </section>
             <section>
