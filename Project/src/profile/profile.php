@@ -19,7 +19,6 @@
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
         $user = userProfile($id); //other user
-        $comments = getCommentsByUserId($id);
         if($user === false)
             die(header('Location: ../listings/listings_all.php'));
 		draw_profile($user);
