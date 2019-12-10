@@ -33,7 +33,16 @@ document.getElementById('price_max').onkeyup = function (event) {
     document.getElementById('price_min').max = max;
 }
 
-$(function() {
+let checkboxes = document.getElementsByClassName('type');
+
+for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].onclick = function (event) {
+        checkboxes[i].children[0].checked = !checkboxes[i].children[0].checked;
+    }
+    
+}
+
+$(function () {
     $('input[name="daterange"]').daterangepicker({
     opens: 'left',
     locale: {

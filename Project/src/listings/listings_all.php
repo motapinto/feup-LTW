@@ -59,20 +59,16 @@
         htmlentities($max, ENT_QUOTES, 'UTF-8');
     
         $city = $_GET['city'];
-        htmlentities($city, ENT_QUOTES, 'UTF-8');
 
         if(isset($_GET['order-by'])){
             $order_by = $_GET['order-by'];
-            htmlentities($order_by, ENT_QUOTES, 'UTF-8');
         }
 
         if(isset($_GET['house'])){
-            htmlentities($_GET['apartment'], ENT_QUOTES, 'UTF-8');
             array_push($types, 0);
         }
 
         if(isset($_GET['apartment'])){
-            htmlentities($_GET['apartment'], ENT_QUOTES, 'UTF-8');
             array_push($types, 1);
         }
 

@@ -1,23 +1,23 @@
 <?php function draw_login() { ?>
-    <section class="log_in">
+    <section id="log_in">
         <img class="logo" src="../../assets/logo.png" alt="logo">
-        <button formaction="../listings/listings_all.php">Continue without login</button>
+        <button class="btn" id="continue-btn">Continue without login</button>
         <article class="login-elem">
             <h2>Log in</h2>
             <input id="email" name="email" type="email" placeholder="email" required/>
             <input id="password" name="password" type="password" placeholder="password" maxlength=30 required/>
             <p id='login-msg'></p>
             <a href="#">Forgot your password?</a>
-            <button onclick="submitLogin();" class="loginin_button">LOG IN</button>
-            <button formaction="signup.php" class="signup_button">SIGN UP</button>
+            <button class="btn" id="login-btn">LOG IN</button>
+            <button class="btn" id="signup-btn">SIGN UP</button>
         </article>
     </section>
 <?php } ?>
 
 <?php function draw_signup() { ?>
-    <section class="sign_up">
+    <section id="sign_up">
         <img class="logo" src="../../assets/logo.png" alt="logo">
-        <button formaction="../listings/listings_all.php">Continue without signup</button>
+        <button class="btn" id="continue-btn">Continue without signup</button>
         <section class="login-elem">
             <h2>Sign up</h2>
             <input name="name" type="text" id="name" onkeyup="checkName();" placeholder="name" required maxlength=50/>
@@ -31,8 +31,8 @@
             <span id="msg-email"></span> 
             <span id="msg-password1"></span> 
             <a href="#">Forgot your password?</a>
-            <button onclick="submitSignup();" class="signup_buttons" type="button">SIGN UP</button>
-            <button formaction="login.php" class="loginin_button" type="button">LOG IN</button>
+            <button class="btn" type="button" id="signup-btn">SIGN UP</button>
+            <button class="btn" type="button" id="login-btn">LOG IN</button>
         </section>
     </section>
 <?php } ?>

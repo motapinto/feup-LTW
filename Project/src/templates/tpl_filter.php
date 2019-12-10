@@ -11,11 +11,11 @@ function draw_filter($filter, $max_price) {
             <h2> Custom Filter</h2>
             <section> 
                 <ul>
-                    <li>	
+                    <li class="type">	
                         <input name="apartment" type="checkbox" class="filled-in" <?php if($filter === false || isset($_GET['apartment'])) { ?> checked <?php } ?>/>
                         <span>Apartment</span>
                     </li>
-                    <li>	
+                    <li class="type">	
                         <input name="house" type="checkbox" class="filled-in" <?php if($filter === false || isset($_GET['house'])) { ?> checked <?php } ?>/>
                         <span>House</span>
                     </li>

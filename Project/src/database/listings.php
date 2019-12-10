@@ -95,7 +95,7 @@
                                       FROM Property
                                       WHERE price_day >= ? AND price_day <= ? 
                                       AND city LIKE ? AND property_type = ?');
-                $stmt->execute(array($priceLow, $priceHigh, $city, $type, $offset));
+                $stmt->execute(array($priceLow, $priceHigh, $city, $type));
                 $return = array_merge($return, $stmt->fetchAll());
             }
         }
