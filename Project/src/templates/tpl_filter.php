@@ -1,7 +1,7 @@
 <?php
 include_once('../database/listings.php');
 
-function draw_filter($filter, $max_page=null, $pagination=true) { 
+function draw_filter($filter, $max_page=null, $owner=false) { 
     $max = getMaxPrice()['price_day'];
     $min = getMinPrice()['price_day'];
     $cities = getCities();
@@ -39,10 +39,12 @@ function draw_filter($filter, $max_page=null, $pagination=true) {
                     <?php } ?>
                 </select>
             </section>
+            <?php if($owner) { ?>
             <section> 
                 <span>Dates:</span>
                 <input id="calendar" type="text" name="daterange" value="<?=isset($_GET['daterange'])?$_GET['daterange']:''?>"/>
             </section>
+            <?php } ?>
 
             <section> 
                 <span> Order by: </span>
@@ -55,7 +57,7 @@ function draw_filter($filter, $max_page=null, $pagination=true) {
                     <option class="order-by" value="6" <?=(isset($_GET['order-by'])&&$_GET['order-by']==6)?'selected':''?>>Oldest First</option>
                 </select>
             </section>
-            <?php if($pagination) { ?>
+            <?php if($owner) { ?>
             <section>
                     <span>Change page</span>
                     <div class="pagination">

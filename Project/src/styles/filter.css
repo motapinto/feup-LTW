@@ -119,6 +119,7 @@
 #next-page,
 #prev-page {
     border-radius: 100%;
+    color: white
 }
 
 #submit-btn,
