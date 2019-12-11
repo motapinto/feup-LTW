@@ -3,7 +3,7 @@
     $rents = getAllRentsByUser($_SESSION['id']);
     $image = getUserImagePath($user['id'], 'MEDIUM');
     $rents = getAllRentsByUser($user['id']);
-    $now = date("d-m-Y");
+    $now = date("Y-m-d");
 ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <section class='profile'>
@@ -69,9 +69,9 @@
                     
                     $image = getFirstImagePathOfProperty($rent['property_id'], 'MEDIUM');
                     $property = getListingById($rent['property_id']);
-                    preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['initial_date'], $date_init);
+                    preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['initial_date'], $date_init_array);
                     preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['final_date'], $date_final);
-                    $date_init = $date_init[3].'-'.$date_init[2].'-'.$date_init[1];
+                    $date_init = $date_init_array[3].'-'.$date_init_array[2].'-'.$date_init_array[1];
                     $date_final = $date_final[3].'-'.$date_final[2].'-'.$date_final[1];
                     ?>
                     <li class='profile-overview-elem'>          
@@ -92,11 +92,13 @@
                         </header>
                     </a>
 
-                    <?php if($canEditProfile) { ?>
-                        <?php if($date_init > $now) { ?>
-                            <button id="cancel-button" onclick="aux(<?php echo $rent['id']?>);"> Cancel </button>
-                        <?php } ?>
-                    <?php } ?>
+                    <?php if($canEditProfile) { 
+                        if(strcmp($date_init_array[1].'-'.$date_init_array[2].'-'.$date_init_array[3], $now) > 0) { ?>
+                            <input class="rent-id" type="hidden" value="<?=$rent['id']?>">
+                            <input class="owner" type="hidden" value="<?=$rent['id']?>">
+                            <button class="cancel-button"> Cancel </button>
+                        <?php }
+                    } ?>
 
                     </li>                    
                 <?php } ?>

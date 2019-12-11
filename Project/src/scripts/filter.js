@@ -1,6 +1,6 @@
 let min = parseInt(document.getElementById('price_min').value);
 let max = parseInt(document.getElementById('price_max').value);
-
+let max_page = parseInt(document.getElementById('current-page').max);
 let slider = document.getElementById('price-slider');
 noUiSlider.create(slider, {
     start: [min, max],
@@ -35,6 +35,10 @@ document.getElementById('price_max').onkeyup = function (event) {
 
 let checkboxes = document.getElementsByClassName('type');
 
+console.log(document.getElementById('prev-page'));
+document.getElementById('prev-page').onclick = prev_page;
+document.getElementById('next-page').onclick = next_page;
+
 for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].onclick = function (event) {
         checkboxes[i].children[0].checked = !checkboxes[i].children[0].checked;
@@ -51,12 +55,12 @@ $(function () {
     });
 });
 
-function prev_page() { 
+function prev_page(event) { 
     if(document.getElementById('current-page').value > 1)
         document.getElementById('current-page').value -= 1;
 }
 
-function next_page(max_page) { 
+function next_page(event) { 
     if(document.getElementById('current-page').value < max_page)
         document.getElementById('current-page').value ++;
 }

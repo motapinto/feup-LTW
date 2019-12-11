@@ -74,6 +74,42 @@ if (document.getElementById('password-change'))
 if (document.getElementById('confirm_password'))
     document.getElementById('confirm_password').onkeyup = function (event) { checkPass(); }
 
+let rents = document.getElementsByClassName('cancel-button');
+for (let i = 0; i < rents.length; i++){
+    rents[i].onclick = function (event) {
+        cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value));
+    };
+}
+
+// Cancels rent with id
+function cancelRent(id) {
+    let xhttp = new XMLHttpRequest();
+    let asynchronous = true;
+
+    let request = encodeForAjax({
+        id: id,
+    });
+
+
+    // Define what happens on successful data submission
+    xhttp.addEventListener('load', function (event) {
+        let response = JSON.parse(this.responseText);
+        if (response['response'] === 0) {
+                let rents = document.getElementsByClassName('rent-id');
+                for (let i = 0; i < rents.length; i++){
+                    if (rents.item(i).value === id) {
+                        let elements = document.getElementsByClassName('profile-overview-elem');
+                        elements[i].parentNode.removeChild(elements[i]);
+                    } 
+                }
+        }
+    });
+
+
+    xhttp.open('GET', '../actions/action_cancel_rent.php?' + request, asynchronous);
+    xhttp.send();
+
+}
 
 //  Selects user menu
 function profileSubMenu(option) {

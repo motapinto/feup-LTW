@@ -59,6 +59,15 @@
         return $stmt->fetchAll() !== false;
     }
 
+    // Adds a new rent to the database
+    function cancelRent($id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('DELETE FROM Rented WHERE id = ?');
+        $stmt->execute(array($id));
+        return $stmt->fetchAll() !== false;
+    }
+
     // Check if rented
     function checkRented($property_id, $initial_date, $final_date) {
         $db = Database::instance()->db();
