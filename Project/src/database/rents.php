@@ -41,20 +41,22 @@
     }
 
     // Adds a new rent to the database
-    function addRent($user, $property, $initial_date, $final_date) {
+    function addRent($user, $property, $initial_date, $final_date, $adults, $children, $babies) {
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO Rented (
                 user_id,
                 property_id,
                 initial_date,
-                final_date
+                final_date,
+                adults,
+                children,
+                babies
             )
-            VALUES (?, ?, ?, ?);
+            VALUES (?, ?, ?, ?, ?, ?, ?);
         ');
-        $stmt->execute(array($user, $property, $initial_date, $final_date));
-        $message = $stmt->fetch();
-        return $message !== false;
+        $stmt->execute(array($user, $property, $initial_date, $final_date, $adults, $children, $babies));
+        return $stmt->fetch() !== false;
     }
 
     // Check if rented

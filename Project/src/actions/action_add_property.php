@@ -24,7 +24,6 @@
     htmlentities($title, ENT_QUOTES, 'UTF-8');
     htmlentities($title, ENT_QUOTES, 'UTF-8');
 
-    print_r($_POST['property_type']);
     $result = addListing($_SESSION['id'], $title, $description, 
                 $price_day, $guests, $city,
                 $street, $door_number, $apartment_number,
@@ -36,6 +35,5 @@
     }
 
     $_SESSION['err_msg'] = "Failled to add property";
-    print_r($result);
-    // header('Location: ../properties/add_property.php');
+    header('Location: ../properties/add_property.php');
 ?>
