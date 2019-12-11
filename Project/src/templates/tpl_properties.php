@@ -27,9 +27,9 @@
                     $rating -= 1;
                 }
                 ?>
+                <p>Rented <?= $numRents ?> times.</p>
+                <p class="comments">Reviews: <?=numberCommentsByProperty($property['id'])?></p>
             </div>
-            <p class="comments">Reviews: <?=numberCommentsByProperty($property['id'])?></p>
-            <p>Rented <?= $numRents ?> times.</p>
         </a>
     </li>
 <?php }

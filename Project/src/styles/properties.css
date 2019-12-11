@@ -1,7 +1,7 @@
 .properties {
     list-style: none;
     padding: 0;
-    max-height: 82%;
+    max-height: 84%;
     overflow-y: scroll;
 }
 
@@ -15,7 +15,6 @@
 .properties li a {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr;
     grid-template-areas: 'image content';
 }
 
@@ -28,10 +27,15 @@
 .properties li a .rating,
 .properties li a .comments {
     grid-area: content;
+    max-height: min-content;
 }
 
 .properties li a h2 {
-    margin-top:5%;
+    margin-top: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 15em;
 }
 
 .properties li a span {
