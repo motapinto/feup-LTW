@@ -39,7 +39,7 @@ document.getElementById("sendMessage").onclick = function (event) {
 
                 // Insert message into html
                 document.getElementById('messages-chatSelected').appendChild(newMessage);
-                //document.getElementById( 'message-menu-item-lastmsg' ).scrollIntoView();
+                document.getElementById('messages-chatSelected').lastChild.scrollIntoView();
                 break;
 
             default:
