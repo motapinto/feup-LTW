@@ -1,7 +1,14 @@
+if (document.getElementById('dropdown-btn') && document.getElementById('dropdown'))
+    document.getElementById('dropdown-btn').onclick = dropdown;
+
 function encodeForAjax(data) {
     return Object.keys(data).map(function (k) {
         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
     }).join('&')
+}
+
+function dropdown() {
+    document.getElementById('dropdown').style.display = (document.getElementById('dropdown').style.display == 'none') ? 'block' : 'none';
 }
 
 function checkName(inProfile = false) {
