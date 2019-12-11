@@ -144,6 +144,56 @@
 
 /************************* PROFILE OVERVIEW *************************/
 
+#profile-overview-tab{
+    display: block;
+}
+
+.scrollable-overview {
+    overflow-y: scroll;
+    max-height: 530px;
+}
+
+.scrollable-overview::-webkit-scrollbar { 
+    width: 0
+}
+
+.profile-overview-elem {
+    border-bottom: solid 1px rgb(175, 175, 175);
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+}
+
+.profile-overview-elem a{
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-details {
+    display: flex;
+    flex-direction: row;
+}
+
+.overview-details img {
+    width: 60px;
+    height: 60px;
+}
+
+.overview-details div {
+    margin-left: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-details div h2{
+    font-size: 1em;
+    margin-top: 0.4em;
+    margin-bottom: 0.6em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 20em;
+}
+
 
 /******************** PROFILE SETTINGS/SECURITY *********************/
 
@@ -202,17 +252,13 @@
     text-align: center;
 }
 
-/******************** PROFILE MESSAGES *********************/
+/******************* PROFILE SEND MESSAGE *******************/
 #profile-sendMessage {
     display: flexbox;
     flex-direction: row;
 }
 
-/******************** PROFILE MESSAGES *********************/
-
-#profile-comments-tab{
-    display: block;
-}
+/******************** PROFILE COMMENTS *********************/
 
 .scrollable-comments {
     overflow-y: scroll;
@@ -227,7 +273,6 @@
     border-bottom: solid 1px rgb(175, 175, 175);
     margin-bottom: 5%;
 }
-
 
 .profile-comments-elem a{
     display: flex;
@@ -260,13 +305,13 @@
     margin-bottom: 0.6em;
 }
 
-#comments-date {
+.comments-date {
     grid-area: date;
     padding-top: 0.2em;
     margin-right: 2%;
 }
 
-#comments-ratings {
+.comment-details div span:first-of-type {
     grid-area: rating;
     color: teal;
 }

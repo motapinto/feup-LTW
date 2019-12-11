@@ -1,8 +1,4 @@
 <?php function draw_profile($user, $canEditProfile=false) { 
-    include_once('../database/comments.php');
-    include_once('../database/images.php');
-    include_once('../database/rents.php');
-
     $allComments = getAllUserRelatedComments($user['id']);
     $rents = getAllRentsByUser($_SESSION['id']);
     $image = getUserImagePath($user['id'], 'MEDIUM');
@@ -63,23 +59,31 @@
 <!--*********************** PROFILE OVERVIEW ***********************-->
         <section id='profile-overview-tab' class='selected-tab'>
             <h1>Rent History</h1>
-            <?php if(count($rents) === 0) { ?>
+            <?php if(count($rents) === 0) ?>
                 <p>Rent history empty</p>
-            <?php } else { 
-                foreach ($rents as $rent) { ?>
-                    <article>
-                        <p>id: <?=$rent['id']?></p>
-                        <p>Property: <?=$rent['property_id']?></p>
-                        <p>Initial Date: <?=$rent['initial_date']?></p>
-                        <p>Final Date: <?=$rent['final_date']?></p>
-                        <p>Price: <?=$rent['price']?></p>
-                        <p>Adults: <?=$rent['adults']?></p>
-                        <p>Children: <?=$rent['children']?></p>
-                        <p>Babies: <?=$rent['babies']?></p>
-                        <button class="btn">Cancel</button>
-                    </article>
-                <?php }
-            } ?>
+
+                <ul class="scrollable-overview">
+                <?php foreach ($rents as $rent) { 
+                    $image = getFirstImagePathOfProperty($rent['property_id'], 'MEDIUM');
+                    $property = getListingById($rent['property_id']);
+                    preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['initial_date'], $date_init);
+                    preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['final_date'], $date_final);
+                    ?>
+                    <li class='profile-overview-elem'>          
+                    <a href="../listings/item.php?id=<?= $rent['property_id'] ?>">
+                        <header class="overview-details"> 
+                            <img src="<?= $image ?>" alt="property photo" width="200" heigth="200">
+                            <div>
+                                <h2> <?= $property['title'] ?></h2>
+                                <span class="overview-price"> Paid: <?= $rent['price'] ?>&euro; </span>
+                                <span class="overview-init"> <?= $date_init[3].'-'.$date_init[2].'-'.$date_init[1]?> </span>
+                                <span class="overview-final"> <?= $date_final[3].'-'.$date_final[2].'-'.$date_final[1]?> </span>
+                                <span class="overview-guests"> Guests: <?=$rent['adults'] + $rent['children'] + $rent['babies'] ?> </span>
+                            </div>
+                        </header>
+                    </a>
+                    </li>                    
+                <?php } ?>
         </section>
 <!--*********************** PROFILE SETTINGS ***********************-->
         <section id='profile-settings-tab' class='selected-tab'>
@@ -174,15 +178,15 @@
                     ?>
                     <li class='profile-comments-elem'>          
                     <a href="../listings/item.php?id=<?= $comment['property_id'] ?>">
-                            <header class="comment-details"> 
-                                <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
-                                <div>
-                                    <h2> <?= $user['name'] ?></h2>
-                                    <span id="comments-ratings"> <?= draw_rating($comment['rating']) ?> </span>
-                                    <span id="comments-date"> <?= $comment['date'] ?> </span>
-                                </div>
-                            </header>
-                            <p> <?=$comment['comment']?> </p>
+                        <header class="comment-details"> 
+                            <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
+                            <div>
+                                <h2> <?= $user['name'] ?></h2>
+                                <span class="comments-ratings"> <?= draw_rating($comment['rating']) ?> </span>
+                                <span class="comments-date"> <?= $comment['date'] ?> </span>
+                            </div>
+                        </header>
+                        <p> <?=$comment['comment']?> </p>
                     </a>
                     </li>
                 <?php } ?>
