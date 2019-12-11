@@ -67,32 +67,30 @@
                 </header>
 
                 <section class='rent-body'>
-                    <form action='../actions/action_rent.php' method='GET'>
-                        <input name='id' type='hidden' value=<?=$item['id']?>/>
-                        <label>Check In and Check Out</label>
-                        <input id="calendar" type='daterange' name='daterange' value="Check In - Check Out" min=<?=date('Y-m-d')?> required>
-                        <label>Number of Guests: <span id="current-guests">1</span><button id='dropdown-btn' type="button"><i class="fas fa-chevron-down"></i></button></label>
-                        <section id='dropdown'>
-                            <p>Maximum number of guests: <?=$item['guests']?></p>  
-                            <input id="guests" type="hidden" value="<?=$item['guests']?>">
-                            <section id='change-guests'>
-                                <label>Number of adults</label>
-                                <button id="adults-sub" class="button-guests" type="button">-</button>
-                                <input id="adults" type="number" disabled name="adults" min='1' max="<?=$item['guests']?>" value="1">
-                                <button id="adults-add" class="button-guests" type="button">+</button>
-                                <label>Number of children</label>
-                                <button id="children-sub" class="button-guests" type="button">-</button>
-                                <input id="children" type="number" disabled name="children" min='0' max="<?=$item['guests']?>" value="0">
-                                <button id="children-add" class="button-guests" type="button">+</button>
-                                <label>Number of babies</label>
-                                <button id="babies-sub" class="button-guests" type="button">-</button>
-                                <input id="babies" type="number" disabled name="babies" min='0' max="<?=$item['guests']?>" value="0">
-                                <button id="babies-add" class="button-guests" type="button">+</button>
-                                <span class='error' id='msg-guests'></span>
-                            </section>
+                    <input id='id' name='id' type='hidden' value="<?=$item['id']?>"/>
+                    <label>Check In and Check Out</label>
+                    <input id="calendar" type='daterange' name='daterange' value="Check In - Check Out" min=<?=date('Y-m-d')?> required>
+                    <label>Number of Guests: <span id="current-guests">1</span><button id='dropdown-btn' type="button"><i class="fas fa-chevron-down"></i></button></label>
+                    <section id='dropdown'>
+                        <p>Maximum number of guests: <?=$item['guests']?></p>  
+                        <input id="guests" type="hidden" value="<?=$item['guests']?>">
+                        <section id='change-guests'>
+                            <label>Number of adults</label>
+                            <button id="adults-sub" class="button-guests" type="button">-</button>
+                            <input id="adults" type="number" disabled name="adults" min='1' max="<?=$item['guests']?>" value="1">
+                            <button id="adults-add" class="button-guests" type="button">+</button>
+                            <label>Number of children</label>
+                            <button id="children-sub" class="button-guests" type="button">-</button>
+                            <input id="children" type="number" disabled name="children" min='0' max="<?=$item['guests']?>" value="0">
+                            <button id="children-add" class="button-guests" type="button">+</button>
+                            <label>Number of babies</label>
+                            <button id="babies-sub" class="button-guests" type="button">-</button>
+                            <input id="babies" type="number" disabled name="babies" min='0' max="<?=$item['guests']?>" value="0">
+                            <button id="babies-add" class="button-guests" type="button">+</button>
+                            <span class='error' id='msg-guests'></span>
                         </section>
-                        <input id='rent_button' type="submit" value="Rent">
-                    </form>
+                    </section>
+                    <button id='rent-button' class="btn">Rent</button>
                 </section>
             <?php } ?>
         </aside>

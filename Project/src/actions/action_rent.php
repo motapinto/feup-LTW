@@ -1,8 +1,11 @@
 <?php
     include_once('../includes/session.php');       // starts the session
     include_once('../database/rents.php');      // properties functions
-    
-    if(!isset($_SESSION['id']) || isset($_GET['id']) || isset($_GET['daterange']) || isset($_GET['adults']) || isset($_GET['children']) || isset($_GET['babies']))
+    include_once('../templates/tpl_common.php');    // encodeForAJAX
+
+    $ret = array('response' => -3);
+
+    if(!isset($_SESSION['id']) || !isset($_GET['id']) || !isset($_GET['daterange']) || !isset($_GET['adults']) || !isset($_GET['children']) || !isset($_GET['babies']))
         header('Location: ../listings/listings_all.php');    
        
     if(isset($_GET['id'])) {
@@ -23,17 +26,12 @@
         $date_final = $output_array[6] . '-' . $output_array[5] . '-' . $output_array[4];
     }
     else {
-        header("Location: ../listings/item.php?id=$id");
+        encodeForAJAX($ret);
+        die();
     }
 
-    $result = addRent($_SESSION['id'], $id, $date_init, $date_final, 
-                $adults, $children, $babies);
+    $ret['response'] = addRent($_SESSION['id'], $id, $date_init, $date_final, 
+                $adults, $children, $babies)?0:-1;
     
-    if($result !== false){
-        $id = $result['id'];
-        header("Location: ../listings/item.php?id=$id");
-    }
-
-    $_SESSION['err_msg'] = "Failled to add property";
-    header('Location: ../properties/add_property.php');
+    encodeForAJAX($ret);
 ?>
