@@ -6,36 +6,36 @@
                 $numRents = numRentsByProperty($property['id']);
             ?>
 
-            <?php if(isset($image)) { ?>
-                <img src=<?=$image?> alt="Image of property" width="200" height="200">
-            <?php } ?>
-            <h2><?=$property['title']?></h2>
-            <span><?=$property['price_day']?>&euro; per night</span>
-            <div class="rating">
-                <?php 
-                $rating = $property['rating'];
-                for($i = 0; $i < 5; $i++){
-                    if ($rating <= 0) { ?>
-                        <i class="material-icons"> star_border</i>
-                    <?php }
-                    else if ($rating <= 0.5) { ?>
-                        <i class="material-icons"> star_half</i>
-                    <?php }
-                    else { ?>
-                        <i class="material-icons"> star</i>
-                    <?php }
-                    $rating -= 1;
-                }
-                ?>
+            <img src=<?=$image?> alt="Image of property" width="200" height="200">
+            <article class="property-content">
+                <h2><?=$property['title']?></h2>
+                <span><?=$property['price_day']?>&euro; per night</span>
+                <div id="property-rating" class="rating">
+                    <?php 
+                    $rating = $property['rating'];
+                    for($i = 0; $i < 5; $i++){
+                        if ($rating <= 0) { ?>
+                            <i class="material-icons"> star_border</i>
+                        <?php }
+                        else if ($rating <= 0.5) { ?>
+                            <i class="material-icons"> star_half</i>
+                        <?php }
+                        else { ?>
+                            <i class="material-icons"> star</i>
+                        <?php }
+                        $rating -= 1;
+                    }
+                    ?>
+                <span class="comments">(<?=numberCommentsByProperty($property['id'])?>)</span>
+                </div>
                 <p>Rented <?= $numRents ?> times.</p>
-                <p class="comments">Reviews: <?=numberCommentsByProperty($property['id'])?></p>
-            </div>
+            </article>
         </a>
     </li>
 <?php }
 
-function draw_properties($properties, $filter, $max_page) { ?>
-    <?php draw_filter($filter, $max_page); 
+function draw_properties($properties, $filter, $pagination) { ?>
+    <?php draw_filter($filter, $pagination); 
     
     add_property();
     ?>
@@ -53,7 +53,7 @@ function draw_properties($properties, $filter, $max_page) { ?>
 function add_property() { ?>
     <section id='addProperty'>
         <form action="add_property.php">
-            <button>Add a property</button>
+            <button id="addButton"><i class="fas fa-plus"></i></button>
         </form>
     </section>
 <?php } ?>
