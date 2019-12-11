@@ -21,7 +21,7 @@ function draw_list_item($item){
 <?php }
 
 function draw_list_all($listings, $filter, $max_page) { ?>
-    <?php draw_filter($filter, $max_page); ?>
+    <?php draw_filter($filter, $max_page, true); ?>
 
     <section class='listings'>
         <?php foreach($listings as $item) { 

@@ -103,6 +103,9 @@
 .pagination {
     margin-left: 10%;
     margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    width: 10%;
 }
 
 .pagination input{
@@ -113,6 +116,13 @@
     padding-left: 32%;
 }
 
-#next-page:hover, #prev-page:hover {
-    cursor: pointer;
+#next-page,
+#prev-page {
+    border-radius: 100%;
+}
+
+#submit-btn,
+#prev-page,
+#next-page {
+    background-color: teal;
 }

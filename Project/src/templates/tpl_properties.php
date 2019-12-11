@@ -34,8 +34,8 @@
     </li>
 <?php }
 
-function draw_properties($properties, $filter, $max_page) { ?>
-    <?php draw_filter($filter, $max_page); 
+function draw_properties($properties, $filter, $pagination) { ?>
+    <?php draw_filter($filter, $pagination); 
     
     add_property();
     ?>

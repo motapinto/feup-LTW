@@ -1,7 +1,7 @@
 <?php
 include_once('../database/listings.php');
 
-function draw_filter($filter, $max_page) { 
+function draw_filter($filter, $max_page=null, $pagination=true) { 
     $max = getMaxPrice()['price_day'];
     $min = getMinPrice()['price_day'];
     $cities = getCities();
@@ -55,16 +55,18 @@ function draw_filter($filter, $max_page) {
                     <option class="order-by" value="6" <?=(isset($_GET['order-by'])&&$_GET['order-by']==6)?'selected':''?>>Oldest First</option>
                 </select>
             </section>
+            <?php if($pagination) { ?>
             <section>
-                <span>Change page</span>
+                    <span>Change page</span>
                     <div class="pagination">
-                        <button id="prev-page" type="button"><i class="fas fa-minus"></i></button>
-                        <input id="current-page" name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>" max="<?=$max_page?>">
-                        <button id="next-page" type="button"><i class="fas fa-plus"></i></button>
+                        <button id="prev-page" type="button" class="no-button"><i class="fas fa-minus"></i></button>
+                        <input name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>" max="<?=$max_page?>">
+                        <button id="next-page" type="button" class="no-button"><i class="fas fa-plus"></i></button>
                     </div>  
             </section>
+            <?php } ?>
 
-            <button class="circular-button" style="background-color: teal;">Update Results</button>
+            <button id="submit-btn" class="circular-button">Update Results</button>
         </form>
 
   

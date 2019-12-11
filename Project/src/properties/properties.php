@@ -83,11 +83,8 @@
                 $checkout = $output_array[6] . '-' . $output_array[5] . '-' . $output_array[4];
             }
         }
-
-        $page = $_GET['page'];
-        htmlentities($_GET['page'], ENT_QUOTES, 'UTF-8');
         
-        $listings = getOwnerListingsFilter($_SESSION['id'], $types, $min, $max, $city, $checkdates, $checkin, $checkout, $page);      
+        $listings = getOwnerListingsFilter($_SESSION['id'], $types, $min, $max, $city, $checkdates, $checkin, $checkout);      
     }
 
     else {
@@ -125,13 +122,10 @@
     //Gets number max of page
     $max_page = ceil(count($listings) / 6);
 
-    // Limits the number of items per page after being ordered
-    $listings = changePage($listings, $page);
-
     draw_header('My Properties', 'filter');
     draw_navBar(1);
     $properties = getListingsByUser($_SESSION['id']);           // gets all listings from the database
-    draw_properties($listings, $filter, $max_page);
+    draw_properties($listings, $filter, $max_page, false);
 
     draw_footer();
 ?>
