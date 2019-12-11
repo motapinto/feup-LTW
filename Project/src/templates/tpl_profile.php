@@ -74,7 +74,7 @@
                     $date_init = $date_init_array[3].'-'.$date_init_array[2].'-'.$date_init_array[1];
                     $date_final = $date_final[3].'-'.$date_final[2].'-'.$date_final[1];
                     ?>
-                    <li class='profile-overview-elem'>          
+                    <li class='profile-overview-elem' id="rent<?=$rent['id']?>">          
                     <a href="../listings/item.php?id=<?= $rent['property_id'] ?>">
                         <header class="overview-details"> 
                             <img src="<?= $image ?>" alt="property photo" width="200" heigth="200">
@@ -101,6 +101,7 @@
 
                     </li>                    
                 <?php } ?>
+                </ul>
         </section>
 <!--*********************** PROFILE SETTINGS ***********************-->
         <section id='profile-settings-tab' class='selected-tab'>

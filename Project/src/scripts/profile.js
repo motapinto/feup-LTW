@@ -74,11 +74,15 @@ if (document.getElementById('password-change'))
 if (document.getElementById('confirm_password'))
     document.getElementById('confirm_password').onkeyup = function (event) { checkPass(); }
 
-let rents = document.getElementsByClassName('cancel-button');
-for (let i = 0; i < rents.length; i++){
-    rents[i].onclick = function (event) {
-        cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value));
-    };
+setCancelActions();
+
+function setCancelActions() {
+    let rents = document.getElementsByClassName('cancel-button');
+    for (let i = 0; i < rents.length; i++) {
+        rents[i].onclick = function (event) {
+            cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value));
+        };
+    }
 }
 
 // Cancels rent with id
@@ -95,13 +99,14 @@ function cancelRent(id) {
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
         if (response['response'] === 0) {
-                let rents = document.getElementsByClassName('rent-id');
-                for (let i = 0; i < rents.length; i++){
-                    if (rents.item(i).value === id) {
-                        let elements = document.getElementsByClassName('profile-overview-elem');
-                        elements[i].parentNode.removeChild(elements[i]);
-                    } 
-                }
+            let rents = document.getElementsByClassName('rent-id');
+            for (let i = 0; i < rents.length; i++){
+                if (parseInt(rents.item(i).value) === id) {
+                    let elements = document.getElementsByClassName('profile-overview-elem');
+                    elements[i].parentNode.removeChild(elements[i]);
+                } 
+            }
+            setCancelActions();
         }
     });
 

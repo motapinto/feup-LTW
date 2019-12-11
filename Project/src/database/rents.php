@@ -1,6 +1,30 @@
 <?php
     include_once('../includes/database.php');      // connects to the database
 
+    // returns rent with id
+    function getRent($id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Rented WHERE id = ?');
+        $stmt->execute(array($id));
+
+        return $stmt->fetch();
+    }
+
+    // returns rent with id
+    function getRentDetails($id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT R.id AS id, initial_date, final_date,
+                            property_id, P.user_id AS owner, R.user_id AS user_id,
+                            price, adults, children, babies, title  
+                            FROM Rented AS R, Property AS P 
+                            WHERE R.id = ? AND R.property_id = P.id');
+        $stmt->execute(array($id));
+
+        return $stmt->fetch();
+    }
+
     // returns all rents done by user
     function getAllRentsByUser($user) {
         $db = Database::instance()->db();
