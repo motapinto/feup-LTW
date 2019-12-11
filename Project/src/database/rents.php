@@ -56,7 +56,7 @@
             VALUES (?, ?, ?, ?, ?, ?, ?);
         ');
         $stmt->execute(array($user, $property, $initial_date, $final_date, $adults, $children, $babies));
-        return $stmt->fetch() !== false;
+        return $stmt->fetchAll() !== false;
     }
 
     // Check if rented
