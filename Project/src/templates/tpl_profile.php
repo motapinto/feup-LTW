@@ -59,8 +59,9 @@
 <!--*********************** PROFILE OVERVIEW ***********************-->
         <section id='profile-overview-tab' class='selected-tab'>
             <h1>Rent History</h1>
-            <?php if(count($rents) === 0) ?>
+            <?php if(count($rents) === 0) { ?>
                 <p>Rent history empty</p>
+            <?php } ?>
 
                 <ul class="scrollable-overview">
                 <?php foreach ($rents as $rent) { 
@@ -68,6 +69,8 @@
                     $property = getListingById($rent['property_id']);
                     preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['initial_date'], $date_init);
                     preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['final_date'], $date_final);
+                    $date_init = $date_init[3].'-'.$date_init[2].'-'.$date_init[1];
+                    $date_final = $date_final[3].'-'.$date_final[2].'-'.$date_final[1];
                     ?>
                     <li class='profile-overview-elem'>          
                     <a href="../listings/item.php?id=<?= $rent['property_id'] ?>">
@@ -75,9 +78,12 @@
                             <img src="<?= $image ?>" alt="property photo" width="200" heigth="200">
                             <div>
                                 <h2> <?= $property['title'] ?></h2>
-                                <span class="overview-price"> Paid: <?= $rent['price'] ?>&euro; </span>
-                                <span class="overview-init"> <?= $date_init[3].'-'.$date_init[2].'-'.$date_init[1]?> </span>
-                                <span class="overview-final"> <?= $date_final[3].'-'.$date_final[2].'-'.$date_final[1]?> </span>
+                                <span class="overview-date"> 
+                                    <?= $date_init ?>
+                                    <i class="fas fa-arrow-right"></i>
+                                    <?= $date_final ?>
+                                </span>
+                                <span class="overview-price"> Total: <?= $rent['price'] ?>&euro; </span>
                                 <span class="overview-guests"> Guests: <?=$rent['adults'] + $rent['children'] + $rent['babies'] ?> </span>
                             </div>
                         </header>

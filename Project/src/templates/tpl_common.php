@@ -21,7 +21,6 @@
             <link rel="stylesheet" href="../../assets/materialize/extras/noUiSlider/nouislider.css">
             <script src="../../assets/materialize/extras/noUiSlider/nouislider.js"></script>
 
-            
 <!--************************ COMMON  *************************-->
             <link rel="stylesheet" href="../styles/body.css">
             <script src="../scripts/common.js" defer></script>
@@ -29,7 +28,6 @@
 <!--************************* HOME  **************************-->
             <link rel="stylesheet" href="../styles/listings.css">            
             <link rel="stylesheet" href="../styles/filter.css">
-
 <!--********************** PROPERTIES  ***********************-->
             <link rel="stylesheet" href="../styles/properties.css">
 <!--******************** AUTHENTICATION  *********************-->
