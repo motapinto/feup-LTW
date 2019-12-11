@@ -75,4 +75,13 @@
         $stmt->execute(array($property_id, $initial_date, $final_date, $initial_date, $final_date));
         return count($stmt->fetchAll())==0?true:false;
     }
+
+    function numRentsByProperty($property_id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Rented WHERE property_id = ?');
+        $stmt->execute(array($property_id));
+        
+        return count($stmt->fetchAll());
+    }
 ?>

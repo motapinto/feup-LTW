@@ -3,6 +3,7 @@
     $rents = getAllRentsByUser($_SESSION['id']);
     $image = getUserImagePath($user['id'], 'MEDIUM');
     $rents = getAllRentsByUser($user['id']);
+    $now = date("d-m-Y");
 ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <section class='profile'>
@@ -65,6 +66,7 @@
 
                 <ul class="scrollable-overview">
                 <?php foreach ($rents as $rent) { 
+                    
                     $image = getFirstImagePathOfProperty($rent['property_id'], 'MEDIUM');
                     $property = getListingById($rent['property_id']);
                     preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['initial_date'], $date_init);
@@ -78,6 +80,7 @@
                             <img src="<?= $image ?>" alt="property photo" width="200" heigth="200">
                             <div>
                                 <h2> <?= $property['title'] ?></h2>
+                                <span> <?=$property['city']?> </span>
                                 <span class="overview-date"> 
                                     <?= $date_init ?>
                                     <i class="fas fa-arrow-right"></i>
@@ -88,6 +91,13 @@
                             </div>
                         </header>
                     </a>
+
+                    <?php if($canEditProfile) { ?>
+                        <?php if($date_init > $now) { ?>
+                            <button id="cancel-button" onclick="aux(<?php echo $rent['id']?>);"> Cancel </button>
+                        <?php } ?>
+                    <?php } ?>
+
                     </li>                    
                 <?php } ?>
         </section>
@@ -101,7 +111,7 @@
                     <i id='icon-name'></i>
                     <?php } ?>    
                     <?php if(!$canEditProfile) { ?> 
-                    <input value='<?=$user['name']?>' disabled> 
+                    <input value='<?=$user['name']?>' style="border:none; color:black; background-color: white;" disabled> 
                     <?php } ?>  
                 </article>
 
@@ -112,18 +122,18 @@
                     <button id="email-button"> Save </button>
                     <?php } ?>    
                     <?php if(!$canEditProfile) { ?> 
-                    <input value='<?=$user['email']?>' disabled> 
+                    <input value='<?=$user['email']?>' style="border:none; color:black; background-color: white;" disabled> 
                     <?php } ?>    
                 </article>
 
                 <article id='profile-setting-age' class='profile-setting-elem'>
-                    <?php if($canEditProfile) { ?>
                     <header> Age </header>
+                    <?php if($canEditProfile) { ?>
                     <input id='age' type='number' value='<?=$user['age']?>'>
                     <i id='icon-age'></i>
                     <?php } ?>    
                     <?php if(!$canEditProfile) { ?> 
-                    <input value='<?=$user['age']?>' disabled> 
+                    <input value='<?=$user['age']?>' style="border:none; color:black; background-color: white;" disabled> 
                     <?php } ?>  
                 </article>
 
@@ -181,15 +191,17 @@
                 <?php foreach($allComments as $comment) { 
                     $user = userProfile($comment['commentator']);
                     $image = getUserImagePath($comment['commentator'], 'SMALL'); 
+                    preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $comment['date'], $date);
+                    $date = $date[3].'-'.$date[2].'-'.$date[1];
                     ?>
                     <li class='profile-comments-elem'>          
                     <a href="../listings/item.php?id=<?= $comment['property_id'] ?>">
                         <header class="comment-details"> 
                             <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
                             <div>
-                                <h2> <?= $user['name'] ?></h2>
+                                <h2> <?= $user['name'] ?> </h2>
                                 <span class="comments-ratings"> <?= draw_rating($comment['rating']) ?> </span>
-                                <span class="comments-date"> <?= $comment['date'] ?> </span>
+                                <span class="comments-date"> <?= $date ?> </span>
                             </div>
                         </header>
                         <p> <?=$comment['comment']?> </p>
@@ -213,3 +225,13 @@
 <!--*********************** SECTION END ****************************-->
     </section>>
 <?php } ?>
+
+<script>
+    function aux(rentId) {
+        if (confirm("You are about to cancel your reservation. Are you sure?"))
+            alert('yes')
+        else 
+            alert('no')
+    }
+
+</script>

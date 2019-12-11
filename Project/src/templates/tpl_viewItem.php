@@ -32,7 +32,13 @@
                 } 
             ?>
             </p>
-            <p>Address: <?=$item['street']?>, n<?=$item['door_number']?>, <?=$item['city']?></p>
+            <p>Address: </p>
+            <?php if($_SESSION['id'] == $user['id']) {?>
+                <input type="text" value="<?= $item['street']?>.'n'.<?=$item['door_number']?>.', '<?=$item['city']?>"> 
+            <?php } 
+            else { ?>  
+                <input type="text" value="<?= $item['street']?>.'n'.<?=$item['door_number']?>.', '<?=$item['city']?>" disabled> 
+            <?php } ?>
             <p>Owner: 
                 <a href="../profile/profile.php?id=<?=$user['id']?>">
                     <?=$user['name']?>

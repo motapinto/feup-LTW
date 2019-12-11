@@ -1,52 +1,54 @@
-.property {
-    margin: var(--main-margin);
-    width: var(--main-width);
-}
-
-#properties {
+.properties {
     list-style: none;
     padding: 0;
-    width: 90%;
+    max-height: 82%;
+    overflow-y: scroll;
 }
 
-#properties li {
+.properties li {
     border-bottom: 2px solid black;
     min-height: 11em;
     padding-bottom: 5%;
+    margin-left: 5%;
 }
 
-#properties li a {
+.properties li a {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr;
     grid-template-areas: 'image content';
 }
 
-#properties li a img {
+.properties li a img {
     grid-area: image;
 }
 
-#properties li a h2,
-#properties li a span,
-#properties li a .rating,
-#properties li a .comments {
+.properties li a h2,
+.properties li a span,
+.properties li a .rating,
+.properties li a .comments {
     grid-area: content;
 }
 
-#properties li a h2 {
+.properties li a h2 {
     margin-top:5%;
 }
 
-#properties li a span {
+.properties li a span {
     margin-top:10%;
 }
 
-#properties li a .rating {
+.properties li a .rating {
     margin-top:15%;
 }
 
-#properties li a .comments {
+.properties li a .comments {
     margin-top:20%;
+}
+
+.property {
+    margin: var(--main-margin);
+    width: var(--main-width);
 }
 
 #addProperty form {

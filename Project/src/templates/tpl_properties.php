@@ -1,13 +1,11 @@
-<?php 
-  include_once('../includes/database.php');
-  include_once('../database/images.php');
-  include_once('../database/comments.php');
-
-
-function draw_property($property){ ?>
+<?php function draw_property($property){ ?>
     <li class='property'>
         <a href="../listings/item.php?id=<?=$property['id']?>">
-            <?php $image = getFirstImagePathOfProperty($property['id']); ?>
+            <?php 
+                $image = getFirstImagePathOfProperty($property['id']); 
+                $numRents = numRentsByProperty($property['id']);
+            ?>
+
             <?php if(isset($image)) { ?>
                 <img src=<?=$image?> alt="Image of property" width="200" height="200">
             <?php } ?>
@@ -31,14 +29,31 @@ function draw_property($property){ ?>
                 ?>
             </div>
             <p class="comments">Reviews: <?=numberCommentsByProperty($property['id'])?></p>
+            <p>Rented <?= $numRents ?> times.</p>
         </a>
     </li>
 <?php }
 
-function draw_properties($properties) { ?>
-    <ul id="properties">
+function draw_properties($properties, $filter, $max_page) { ?>
+    <?php draw_filter($filter, $max_page); 
+    
+    add_property();
+    ?>
+
+
+
+    <ul class="properties">
         <?php foreach($properties as $property) { 
             draw_property($property);
         } ?>
     </ul>
+<?php } 
+
+
+function add_property() { ?>
+    <section id='addProperty'>
+        <form action="add_property.php">
+            <button>Add a property</button>
+        </form>
+    </section>
 <?php } ?>
