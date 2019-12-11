@@ -5,13 +5,28 @@ let BABIES = 2;
 let ADD = 0;
 let SUB = 1;
 
+$(function () {
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'left',
+        locale: {
+            format: 'DD/MM/YYYY'
+        }
+    });
+});
+
+document.getElementById('adults-add').onclick = function (event) { guestsChange(ADULTS, ADD) }
+document.getElementById('adults-sub').onclick = function (event) { guestsChange(ADULTS, SUB) }
+document.getElementById('children-add').onclick = function (event) { guestsChange(CHILDREN, ADD) }
+document.getElementById('children-sub').onclick = function (event) { guestsChange(CHILDREN, SUB) }
+document.getElementById('babies-add').onclick = function (event) { guestsChange(BABIES, ADD) }
+document.getElementById('babies-sub').onclick = function (event) { guestsChange(BABIES, SUB) }
 
 function checkGuests(option) {
     switch (option) {
         case ADD:
-            let adults = document.getElementById('adults').value;
-            let children = document.getElementById('children').value;
-            let babies = document.getElementById('babies').value;
+            let adults = parseInt(document.getElementById('adults').value);
+            let children = parseInt(document.getElementById('children').value);
+            let babies = parseInt(document.getElementById('babies').value);
         
             return (adults + children + babies) < maxGuests;
 
@@ -71,9 +86,5 @@ function guestsChange(type, option) {
     }
 
     // Change current-guests number
-    document.getElementById('current-guests').textContent = ((document.getElementById('adults').value + document.getElementById('children').value + document.getElementById('babies').value)/100).toString();
-}
-
-function dropdown() {
-    document.getElementById('dropdown').style.display = (document.getElementById('dropdown').style.display == 'none') ? 'block' : 'none';
+    document.getElementById('current-guests').textContent = (parseInt(document.getElementById('adults').value) + parseInt(document.getElementById('children').value) + parseInt(document.getElementById('babies').value)).toString();
 }

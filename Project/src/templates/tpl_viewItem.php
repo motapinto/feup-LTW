@@ -41,55 +41,56 @@
         </article>
       
 <!--*********************** CALENDER + RENT (RIGHT SIDE) ***********************-->
-      <aside class='rent'>
-        <section class='rent-header'>
-          	<header>
-				<p id='rent-price'>
-					€<?=$item['price_day']?>
-				</span>
-				<span>
-					per night
-				</p>
-				<i id='rent-star' class='material-icons'> star</i>
-				<span class='rent-rating_comments'>
-					<?=$item['rating']?>
-					(<?=numberCommentsByProperty($item['id'])?> comments)
-				</span>
-			</header>
-		</section>
+    
+        <aside class='rent'>
+            <?php if(!isset($_SESSION['id'])){ ?>
+                <p>To rent please <a href="../authentication/login.php">log in</a>.</p>
+            <?php } else { ?>
+                <header class='rent-header'>
+                    <p id='rent-price'>
+                        €<?=$item['price_day']?>
+                    </span>
+                    <span>
+                        per night
+                    </p>
+                    <i id='rent-star' class='material-icons'> star</i>
+                    <span class='rent-rating_comments'>
+                        <?=$item['rating']?>
+                        (<?=numberCommentsByProperty($item['id'])?> comments)
+                    </span>
+                </header>
 
-        <section class='rent-body'>
-			<form action='../rent/rent.php' method='POST'>
-				<input name='id' type='hidden' value=<?=$item['id']?>/>
-				<label>Check In</label>
-				<input type='date' name='check_in' title='Check in date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
-				<label>Check Out</label>
-				<input type='date' name='check_out' title='Check out date in format DD/MM/YYYY' min=<?=date('Y-m-d')?> required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
-				<label>Number of Guests: <span id="current-guests">1</span><button onclick="dropdown()"><i class="fas fa-chevron-down"></i></button></label>
-                <section id='dropdown'>
-                    <p>Maximum number of guests: <?=$item['guests']?></p>  
-                    <input id="guests" type="hidden" value="<?=$item['guests']?>">
-                    <section id='change-guests'>
-                        <label>Number of adults</label>
-                        <button class="button-guests" onclick="guestsChange(ADULTS, ADD)" type="button">+</button>
-                        <input id="adults" type="disabled" name="adults" min='1' max="<?=$item['guests']?>" value="1">
-                        <button class="button-guests" onclick="guestsChange(ADULTS, SUB)" type="button">-</button>
-                        <label>Number of children</label>
-                        <button class="button-guests" onclick="guestsChange(CHILDREN, ADD)" type="button">+</button>
-                        <input id="children" type="disabled" name="children" min='0' max="<?=$item['guests']?>" value="0">
-                        <button class="button-guests" onclick="guestsChange(CHILDREN, SUB)" type="button">-</button>
-                        <label>Number of babies</label>
-                        <button class="button-guests" onclick="guestsChange(BABIES, ADD)" type="button">+</button>
-                        <input id="babies" type="disabled" name="babies" min='0' max="<?=$item['guests']?>" value="0">
-                        <button class="button-guests" onclick="guestsChange(BABIES, SUB)" type="button">-</button>
-                        <span class='error' id='msg-guests'></span>
-                    </section>
+                <section class='rent-body'>
+                    <form action='../actions/action_rent.php' method='GET'>
+                        <input name='id' type='hidden' value=<?=$item['id']?>/>
+                        <label>Check In and Check Out</label>
+                        <input id="calendar" type='daterange' name='daterange' value="Check In - Check Out" min=<?=date('Y-m-d')?> required>
+                        <label>Number of Guests: <span id="current-guests">1</span><button id='dropdown-btn' type="button"><i class="fas fa-chevron-down"></i></button></label>
+                        <section id='dropdown'>
+                            <p>Maximum number of guests: <?=$item['guests']?></p>  
+                            <input id="guests" type="hidden" value="<?=$item['guests']?>">
+                            <section id='change-guests'>
+                                <label>Number of adults</label>
+                                <button id="adults-sub" class="button-guests" type="button">-</button>
+                                <input id="adults" type="number" disabled name="adults" min='1' max="<?=$item['guests']?>" value="1">
+                                <button id="adults-add" class="button-guests" type="button">+</button>
+                                <label>Number of children</label>
+                                <button id="children-sub" class="button-guests" type="button">-</button>
+                                <input id="children" type="number" disabled name="children" min='0' max="<?=$item['guests']?>" value="0">
+                                <button id="children-add" class="button-guests" type="button">+</button>
+                                <label>Number of babies</label>
+                                <button id="babies-sub" class="button-guests" type="button">-</button>
+                                <input id="babies" type="number" disabled name="babies" min='0' max="<?=$item['guests']?>" value="0">
+                                <button id="babies-add" class="button-guests" type="button">+</button>
+                                <span class='error' id='msg-guests'></span>
+                            </section>
+                        </section>
+                        <input id='rent_button' type="submit" value="Rent">
+                    </form>
                 </section>
-				<input id='rent_button' type="submit" value="Rent">
-			</form>
-		  </section>
-
-    </aside>
+            <?php } ?>
+        </aside>
+    </section>
 <?php
     draw_allComments($comments);
     if(isset($_SESSION['id'])){ ?>
@@ -101,6 +102,6 @@
       </form>
     <?php }
     else { ?>
-      <p id='comment_form'>To leave a comment please log in.</p>
+      <p id='comment_form'>To leave a comment please <a href="../authentication/login.php">log in</a>.</p>
     <?php } 
  } ?>
