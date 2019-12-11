@@ -58,7 +58,17 @@
     }
 
     // Check if rented
-    function checkRented($id, $initial_date, $final_date) {
+    function checkRented($property_id, $initial_date, $final_date) {
+        $db = Database::instance()->db();
 
+        $stmt = $db->prepare('SELECT Rented.id
+                            FROM Rented
+                            WHERE ? = Rented.property_id AND
+                                ( julianday(?) BETWEEN julianday(Rented.initial_date) AND julianday(Rented.final_date) OR 
+                                julianday(?) BETWEEN julianday(Rented.initial_date) AND julianday(Rented.final_date) OR 
+                                julianday(Rented.initial_date) BETWEEN julianday(?) AND julianday(?) )
+        ');
+        $stmt->execute(array($property_id, $initial_date, $final_date, $initial_date, $final_date));
+        return count($stmt->fetchAll())==0?true:false;
     }
 ?>
