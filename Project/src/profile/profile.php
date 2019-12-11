@@ -3,6 +3,8 @@
     include_once('../database/users.php');          // user functions
     include_once('../database/rents.php');          // rent's functions
     include_once('../database/comments.php');       // comment's functions
+    include_once('../database/images.php');         // images funtions
+    include_once('../database/listings.php');       // listings funtions
     
     include('../templates/tpl_common.php');         // prints the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');         // prints the top navigation bar
@@ -18,7 +20,7 @@
 
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
-        $user = userProfile($id); //other user
+        $user = userProfile($id);             //other user
         if($user === false)
             die(header('Location: ../listings/listings_all.php'));
 		draw_profile($user);
