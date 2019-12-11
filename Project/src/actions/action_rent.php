@@ -4,12 +4,14 @@
     
     if(!isset($_SESSION['id']) || isset($_GET['id']) || isset($_GET['daterange']) || isset($_GET['adults']) || isset($_GET['children']) || isset($_GET['babies']))
         header('Location: ../listings/listings_all.php');    
-        
-    $id = $_GET['id'];
-    $daterange = $_GET['daterange'];
-    $adults = $_GET['adults'];
-    $children = $_GET['children'];
-    $babies = $_GET['babies'];
+       
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $daterange = $_GET['daterange'];
+        $adults = $_GET['adults'];
+        $children = $_GET['children'];
+        $babies = $_GET['babies'];
+    }
 
     htmlentities($id, ENT_QUOTES, 'UTF-8');
     htmlentities($adults, ENT_QUOTES, 'UTF-8');

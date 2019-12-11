@@ -150,6 +150,7 @@
 .scrollable-overview {
     overflow-y: scroll;
     max-height: 530px;
+    padding-left: 0;
 }
 
 .profile-overview-elem {
@@ -169,9 +170,10 @@
 }
 
 .overview-details img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     margin-right: 5%;
+    border-radius: 10%;
 }
 
 .overview-details div {
@@ -182,8 +184,8 @@
 
 .overview-details div h2{
     font-size: 1em;
-    margin-top: 0.4em;
-    margin-bottom: 0.6em;
+    margin-top: 2.5%;
+    margin-bottom: 2%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -191,7 +193,15 @@
 }
 
 .overview-details div span{
-    margin-bottom: 5%;
+    margin-bottom: 2%;
+}
+
+.overview-date > i{
+    margin: 0 90%;
+}
+
+.profile-overview-elem button{
+    margin-left: 80%;
 }
 
 
@@ -263,6 +273,7 @@
 .scrollable-comments {
     overflow-y: scroll;
     max-height: 530px;
+    padding-left: 0;
 }
 
 .profile-comments-elem {
@@ -310,4 +321,11 @@
 .comment-details div span:first-of-type {
     grid-area: rating;
     color: teal;
+}
+
+.profile-comments-elem a p {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 22em;
 }

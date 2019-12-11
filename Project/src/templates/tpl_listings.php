@@ -7,7 +7,7 @@
 function draw_list_item($item){ 
   	$image = getFirstImagePathOfProperty($item['id']); ?>
     <a class="elem" href='item.php?id=<?=$item['id']?>'>
-            <img src="https://cdn.vox-cdn.com/thumbor/0__zWQZmmmwHA5OjBTAchz6_sBw=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/62922957/4854_Alonzo_Ave__Encino_FInals_34.0.jpg" alt='img' width="400" height="400">     
+        <img src=<?=$image?> alt="Image of property" width="400" height="400">
         
         <div class="listing-content">
             <h1> <?=$item['title']?> </h1>
@@ -17,7 +17,6 @@ function draw_list_item($item){
                 <span class='comments'><?=numberCommentsByProperty($item['id'])?> Reviews</span>
             </p>
         </div>
-
     </a>
 <?php }
 
