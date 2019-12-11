@@ -1,3 +1,23 @@
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .side-drawer {width: 100%;}
+    .selected-tab {width: 100%;}
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .side-drawer {width: 100%;}
+    .selected-tab {width: 100%;}
+}
+
+@media only screen and (min-width: 400px) {
+    /* For phones: */
+    .side-drawer {width: 100%;}
+    .selected-tab {width: 100%;}
+}
+
+
+
 /************************* PROFILE SIDEMENU *************************/
 
 .side-drawer {

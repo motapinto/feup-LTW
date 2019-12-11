@@ -141,9 +141,9 @@
             <?php 
             $nComments = count($allComments);
             if($nComments === 1) { ?>
-                <h1>1 comment </h1>
+                <h1>1 related comment </h1>
             <?php } else { ?>
-                <h1><?=count($allComments)?> comments </h1>
+                <h1><?=count($allComments)?> related comments </h1>
             <?php } ?>
 
             <ul class="scrollable-comments">
