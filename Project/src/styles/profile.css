@@ -22,10 +22,9 @@
 
 .side-drawer {
     display: flex;
-    /* or inline-flex */
     flex-direction: column;
     background-color: white;
-    margin-top: 5%;
+    margin-top: 10%;
     align-items: center;
 }
 
@@ -138,23 +137,19 @@
     padding: 0 5%;
     width: 60%;
     height: 90%;
-    border-left: solid 1px rgb(175, 175, 175);
+    border-left: solid 1px rgb(175, 175, 175);   
+}
+
+#profile-settings-tab{
+    display: block;
 }
 
 
 /************************* PROFILE OVERVIEW *************************/
 
-#profile-overview-tab{
-    display: block;
-}
-
 .scrollable-overview {
     overflow-y: scroll;
     max-height: 530px;
-}
-
-.scrollable-overview::-webkit-scrollbar { 
-    width: 0
 }
 
 .profile-overview-elem {
@@ -174,8 +169,9 @@
 }
 
 .overview-details img {
-    width: 60px;
-    height: 60px;
+    width: 150px;
+    height: 150px;
+    margin-right: 5%;
 }
 
 .overview-details div {
@@ -191,7 +187,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 20em;
+    max-width: 15em;
+}
+
+.overview-details div span{
+    margin-bottom: 5%;
 }
 
 
@@ -263,10 +263,6 @@
 .scrollable-comments {
     overflow-y: scroll;
     max-height: 530px;
-}
-
-.scrollable-comments::-webkit-scrollbar { 
-    width: 0
 }
 
 .profile-comments-elem {
