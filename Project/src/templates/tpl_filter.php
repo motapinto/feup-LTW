@@ -1,7 +1,7 @@
 <?php
 include_once('../database/listings.php');
 
-function draw_filter($filter, $max_price) { 
+function draw_filter($filter, $max_page) { 
     $max = getMaxPrice()['price_day'];
     $min = getMinPrice()['price_day'];
     $cities = getCities();
@@ -60,7 +60,7 @@ function draw_filter($filter, $max_price) {
                     <div class="pagination">
                         <i class="fas fa-minus" id="prev-page" onclick="prev_page();"></i>
                         <input id="current-page" name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>">
-                        <i class="fas fa-plus" id="next-page" onclick="next_page(<?=$max_price?>);"></i>
+                        <i class="fas fa-plus" id="next-page" onclick="next_page(<?=$max_page?>);"></i>
                     </div>  
             </section>
 
