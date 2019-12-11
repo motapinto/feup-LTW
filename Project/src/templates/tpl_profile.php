@@ -1,10 +1,12 @@
 <?php function draw_profile($user, $canEditProfile=false) { 
     include_once('../database/comments.php');
     include_once('../database/images.php');
+    include_once('../database/rents.php');
 
     $allComments = getAllUserRelatedComments($user['id']);
     $rents = getAllRentsByUser($_SESSION['id']);
     $image = getUserImagePath($user['id'], 'MEDIUM');
+    $rents = getAllRentsByUser($user['id']);
 ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <section class='profile'>
@@ -60,6 +62,24 @@
 
 <!--*********************** PROFILE OVERVIEW ***********************-->
         <section id='profile-overview-tab' class='selected-tab'>
+            <h1>Rent History</h1>
+            <?php if(count($rents) === 0) { ?>
+                <p>Rent history empty</p>
+            <?php } else { 
+                foreach ($rents as $rent) { ?>
+                    <article>
+                        <p>id: <?=$rent['id']?></p>
+                        <p>Property: <?=$rent['property_id']?></p>
+                        <p>Initial Date: <?=$rent['initial_date']?></p>
+                        <p>Final Date: <?=$rent['final_date']?></p>
+                        <p>Price: <?=$rent['price']?></p>
+                        <p>Adults: <?=$rent['adults']?></p>
+                        <p>Children: <?=$rent['children']?></p>
+                        <p>Babies: <?=$rent['babies']?></p>
+                        <button class="btn">Cancel</button>
+                    </article>
+                <?php }
+            } ?>
         </section>
 <!--*********************** PROFILE SETTINGS ***********************-->
         <section id='profile-settings-tab' class='selected-tab'>

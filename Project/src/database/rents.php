@@ -7,7 +7,7 @@
 
         $stmt = $db->prepare('SELECT * FROM Rented WHERE 
                               user_id = ?
-                              ORDER BY initial_date');
+                              ORDER BY initial_date DESC');
         $stmt->execute(array($user));
 
         return $stmt->fetchAll();
@@ -20,7 +20,7 @@
         $stmt = $db->prepare('SELECT R.id AS id, initial_date, final_date, property_id, R.user_id AS user_id
                                 FROM Rented AS R, Property AS P 
                                 WHERE R.property_id = P.id, P.user_id = ?
-                                ORDER BY initial_date');
+                                ORDER BY initial_date DESC');
         $stmt->execute(array($owner));
 
         return $stmt->fetchAll();
@@ -61,12 +61,14 @@
     function checkRented($property_id, $initial_date, $final_date) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT Rented.id
+        $stmt = $db->prepare('SELECT id
                             FROM Rented
-                            WHERE ? = Rented.property_id AND
-                                ( julianday(?) BETWEEN julianday(Rented.initial_date) AND julianday(Rented.final_date) OR 
-                                julianday(?) BETWEEN julianday(Rented.initial_date) AND julianday(Rented.final_date) OR 
-                                julianday(Rented.initial_date) BETWEEN julianday(?) AND julianday(?) )
+                            WHERE ? = property_id AND
+                                ( 
+                                    julianday(?) BETWEEN julianday(initial_date) AND julianday(final_date) ´
+                                    OR julianday(?) BETWEEN julianday(initial_date) AND julianday(final_date) 
+                                    OR julianday(initial_date) BETWEEN julianday(?) AND julianday(?) 
+                                )
         ');
         $stmt->execute(array($property_id, $initial_date, $final_date, $initial_date, $final_date));
         return count($stmt->fetchAll())==0?true:false;
