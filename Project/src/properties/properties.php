@@ -48,7 +48,6 @@
     }
 
     $types = array();
-    $filter = false;
 
     if(isset($_GET['price_min'])) {
         $filter = true;
@@ -101,6 +100,7 @@
             case 2:
                 usort($listings, 'sortRating');
                 $listings = array_reverse($listings);
+                break;
             case 3: 
                 usort($listings, 'sortPrice');
                 break;
@@ -114,18 +114,20 @@
             case 6:
                 usort($listings, 'sortNewest');
                 $listings = array_reverse($listings);
+                break;
             default: 
                 break;
         }
     }
 
-    //Gets number max of page
-    $max_page = ceil(count($listings) / 6);
-
     draw_header('My Properties', 'filter');
     draw_navBar(1);
     $properties = getListingsByUser($_SESSION['id']);           // gets all listings from the database
-    draw_properties($listings, $filter, $max_page, false);
+    
+    $filter = false;
+    $owner = true;
+
+    draw_properties($listings, $filter, $owner);
 
     draw_footer();
 ?>

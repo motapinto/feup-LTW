@@ -13,15 +13,20 @@ function draw_list_item($item){
             <h1> <?=$item['title']?> </h1>
             <h5> Price: <?=$item['price_day']?>&euro; </h5>
             <p class="rating">
-                <?php draw_rating($item['rating']); ?>
-                <span class='comments'><?=numberCommentsByProperty($item['id'])?> Reviews</span>
+                <?php if(numberCommentsByProperty($item['id']) == 0) { ?>
+                    <i> No reviews </i>
+                <?php } 
+                 else {
+                    draw_rating($item['rating']); ?>
+                    <span class='comments'><?=numberCommentsByProperty($item['id'])?> Reviews</span>
+                <?php } ?>
             </p>
         </div>
     </a>
 <?php }
 
 function draw_list_all($listings, $filter, $max_page) { ?>
-    <?php draw_filter($filter, $max_page, true); ?>
+    <?php draw_filter($filter, $max_page); ?>
 
     <section class='listings'>
         <?php foreach($listings as $item) { 
