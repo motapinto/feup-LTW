@@ -4,11 +4,12 @@
     include_once('../database/listings.php');             // listings functions
     include_once('../database/comments.php');             // comments functions
     include_once('../database/images.php');               // images functions
+    include_once('../database/users.php');               // user functions
 
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');               // prints the menu in HTML
-            include('../templates/tpl_listings.php');     // prints the list of listings in HTML
-            include('../templates/tpl_comments.php');     // prints the list of listings in HTML
+    include('../templates/tpl_viewItem.php');             // prints the list of listings in HTML
+    include('../templates/tpl_comments.php');             // prints the list of listings in HTML
 
     $id = $_GET['id'];
     htmlentities($id, ENT_QUOTES, 'UTF-8');

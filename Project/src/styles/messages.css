@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas: 'messages-search messages-chatTitle' 'messages-menu messages-chatSelected' 'messages-menu messages-input';
     grid-template-columns: 25% 75%;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 10% 65% 10%;
     background: #fff;
     border-radius: 10px;
     height: 800px;
