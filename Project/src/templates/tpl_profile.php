@@ -95,7 +95,6 @@
                     <?php if($canEditProfile) { 
                         if(strcmp($date_init_array[1].'-'.$date_init_array[2].'-'.$date_init_array[3], $now) > 0) { ?>
                             <input class="rent-id" type="hidden" value="<?=$rent['id']?>">
-                            <input class="owner" type="hidden" value="<?=$rent['id']?>">
                             <button class="cancel-button"> Cancel </button>
                         <?php }
                     } ?>
