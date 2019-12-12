@@ -47,7 +47,7 @@
                                 SELECT receiver as user, date FROM Message Where sender = ? 
                                 UNION 
                                 SELECT sender as user, date FROM Message Where receiver = ?
-                              )');
+                              ) ORDER BY date DESC;');
 
         $stmt->execute(array($user, $user));
         $users = $stmt->fetchAll();

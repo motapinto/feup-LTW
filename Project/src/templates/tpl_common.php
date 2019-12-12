@@ -9,6 +9,8 @@
 
             <!--****************************** FONTS *********************************-->
             <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 
             <!--**************************** DATE RANGE ******************************-->
             <script type="text/javascript" src="../../assets/daterange/moment.min.js"></script>

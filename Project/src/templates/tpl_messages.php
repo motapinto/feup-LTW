@@ -1,24 +1,21 @@
-<?php function draw_messages($messengers) { ?>
+<?php function draw_messages($messengers, $userSelected) { ?>
     <section id='chat-container'>
         <?php if($messengers !== -1) 
-            draw_menu($messengers);
+            draw_menu($messengers, $userSelected);
         else { ?>
             <h3>You have no messages.</h3>
         <?php } ?>
     </section>
 <?php } ?>
 
-<?php function draw_menu($messengers) { ?>
+<?php function draw_menu($messengers, $lastMessengerId) { ?>
         <section id="messages-search">
       		<input type="text" placeholder="search by name">
 		</section>
 		
     	<section id="messages-menu">
             <?php 
-                $num = 0;
-                $allMessengers = getAllMessengers($_SESSION['id']);
-                $lastMessengerId = $allMessengers[0]['user'];
-                
+                $num = 0;  
                 foreach($messengers as $messenger) {
                     $num += 1;
                     $user = userProfile($messenger['user']);
@@ -31,9 +28,8 @@
                     if($num == 1) { ?>
                         <div class="message-menu-item active">
                     <?php } else { ?>
-                        <div class="message-menu-item ">
+                        <div class="message-menu-item desactive">
                     <?php } ?> 
-
                             <img width="60px" height="60px" src="<?=$image?>" alt="default">
                             <div class="message-menu-item-title">
                                 <?=$user['name']?>
@@ -44,6 +40,7 @@
                             <div class="message-menu-item-lastmsg">
                                 <?=$lastMessage['message']?>
                             </div>
+                            <input class="messenger-id"hidden value="<?=$user['id']?>">
                         </div>
                 <?php } ?>
         </section>
