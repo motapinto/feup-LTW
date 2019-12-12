@@ -10,7 +10,7 @@
     .selected-tab {width: 100%;}
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 480px) {
     /* For phones: */
     .side-drawer {width: 100%;}
     .selected-tab {width: 100%;}
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    margin-top: 10%;
+    margin-top: 3em;
     align-items: center;
 }
 
@@ -64,9 +64,9 @@
     display: flex;
     border: 1px solid rgb(175, 175, 175);
     background-color: rgb(39, 64, 89);
-    letter-spacing: 1px;
-    margin: 10px;
-    padding: 10px 20px;
+    letter-spacing: 0.1em;
+    margin: 1em;
+    padding: 1em 2em;
 }
 
 .profile-usermenu {
@@ -75,7 +75,7 @@
     margin: 1em;
     border-top: solid 1px rgb(136, 189, 234);
     border-bottom: solid 1px rgb(136, 189, 234);
-    padding: 0 10%;
+    padding: 0 3em;
 }
 
 .profile-usermenu button,
@@ -120,16 +120,15 @@
 
 .profile {
     display: grid;
-    grid-template-columns: 35% 65%
+    grid-template-columns: 2fr 3fr
 }
 
 .selected-tab {
     display: none;
     background-color: white;
-    margin-top: 5%;
-    padding: 0 5%;
-    width: 60%;
-    height: 90%;
+    margin-top: 3em;
+    padding: 0 5em;
+    width: 30em;
     border-left: solid 1px rgb(175, 175, 175);   
 }
 
@@ -142,14 +141,19 @@
 
 .scrollable-overview {
     overflow-y: scroll;
-    max-height: 530px;
+    max-height: 33em;
     padding-left: 0;
 }
 
 .profile-overview-elem {
     border-bottom: solid 1px rgb(175, 175, 175);
-    margin-bottom: 5%;
-    padding-bottom: 5%;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    margin-right: 2em;
+}
+
+.profile-overview-elem:last-child {
+    border: none;
 }
 
 .profile-overview-elem a{
@@ -163,9 +167,9 @@
 }
 
 .overview-details img {
-    width: 120px;
-    height: 120px;
-    margin-right: 5%;
+    width: 8em;
+    height: 8em;
+    margin-right: 1em;
     border-radius: 10%;
 }
 
@@ -177,8 +181,8 @@
 
 .overview-details div h2{
     font-size: 1em;
-    margin-top: 2.5%;
-    margin-bottom: 2%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -186,15 +190,15 @@
 }
 
 .overview-details div span{
-    margin-bottom: 2%;
+    margin-bottom: 0.2em;
 }
 
-.overview-date > i{
-    margin: 0 90%;
+.overview-date > svg{
+    margin: 0 0.5em;
 }
 
 .profile-overview-elem button{
-    margin-left: 80%;
+    margin-left: 27em;
 }
 
 
@@ -208,8 +212,6 @@
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
     text-align: center;
-    border-radius: 5px;
-    margin-right: 2%;
 }
 
 .selected-tab span {
@@ -227,7 +229,7 @@
 
 .profile-setting-elem {
     display: grid;
-    grid-template-columns: 88% 10%;
+    grid-template-columns: 9fr 1fr;
     padding-bottom: 2em;
     margin-bottom: 2em;
     border-bottom: solid 1px rgb(136, 189, 234);
@@ -265,13 +267,19 @@
 
 .scrollable-comments {
     overflow-y: scroll;
-    max-height: 530px;
+    max-height: 30em;
     padding-left: 0;
 }
 
 .profile-comments-elem {
     border-bottom: solid 1px rgb(175, 175, 175);
-    margin-bottom: 5%;
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+    margin-right: 2em;
+}
+
+.profile-comments-elem:last-child {
+    border: none
 }
 
 .profile-comments-elem a{
@@ -285,9 +293,9 @@
 }
 
 .comment-details img {
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
 }
 
 .comment-details div {
@@ -308,7 +316,6 @@
 .comments-date {
     grid-area: date;
     padding-top: 0.2em;
-    margin-right: 2%;
 }
 
 .comment-details div span:first-of-type {

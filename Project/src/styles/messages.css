@@ -55,7 +55,7 @@
 .message-menu-item {
     display: grid;
     grid-template-columns: 21% 58% 21%;
-    grid-template-rows: 15%;
+    grid-template-rows: 1em 1em;
     gap: 8px;
     color: rgba(39, 39, 39, 0.5);
     font-size: 18px;
@@ -78,6 +78,10 @@
 .message-menu-item-title {
     color: black;
     padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 20em;
 }
 
 .message-menu-item-date {
@@ -87,6 +91,10 @@
 
 .message-menu-item-lastmsg {
     padding-left: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 10em;
 }
 
 #messages-chatTitle {

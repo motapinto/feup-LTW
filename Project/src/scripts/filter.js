@@ -1,3 +1,5 @@
+"use strict";
+
 let max_page;
 
 if(document.getElementById('pagination') != null) 

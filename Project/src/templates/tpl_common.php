@@ -15,7 +15,7 @@
             <script src="../../assets/fontawesome/js/all.js"></script>
             <link rel="stylesheet" href="../../assets/fontawesome/css/all.css">
             <!--************************ MATERIALIZE INPUTS  *************************-->
-            <script src="../../assets/materialize/js/materialize.js"></script>
+            <script src="../../assets/materialize/js/materialize.min.js"></script>
             <link rel="stylesheet" href="../../assets/materialize/css/materialize.css">
             <!--************************ DOUBLE RANGE SLIDER  *************************-->
             <link rel="stylesheet" href="../../assets/materialize/extras/noUiSlider/nouislider.css">

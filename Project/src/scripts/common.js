@@ -1,3 +1,5 @@
+"use strict";
+
 if (document.getElementById('dropdown-btn') && document.getElementById('dropdown'))
     document.getElementById('dropdown-btn').onclick = dropdown;
 

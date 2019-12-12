@@ -1,3 +1,5 @@
+"use strict";
+
 let maxGuests = document.getElementById('guests').value;
 let ADULTS = 0;
 let CHILDREN = 1;

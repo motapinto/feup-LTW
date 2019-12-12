@@ -1,3 +1,5 @@
+"use strict";
+
 document.getElementById("sendMessage").onclick = function (event) { 
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;

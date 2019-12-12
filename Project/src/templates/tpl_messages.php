@@ -25,10 +25,9 @@
                     $lastMessage = getLastMessageFromConversation($messenger['user'], $_SESSION['id']);
                     $image = getUserImagePath($user['id'], 'MEDIUM');
 
-                    preg_match('/([0-9]{2})\/([0-9]{2})\/([0-9]{4}) - ([0-9]{2})\/([0-9]{2})\/([0-9]{4})/', $lastMessage['date'], $output_array);
+                    preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/', $lastMessage['date'], $output_array);
+                    $date = $output_array[3].'/'.$output_array[2].'/'.$output_array[1];
                         
-                    print_r($output_array);
-
                     if($num == 1) { ?>
                         <div class="message-menu-item active">
                     <?php } else { ?>
@@ -40,7 +39,7 @@
                                 <?=$user['name']?>
                             </div>
                             <div class="message-menu-item-date">
-                                <?=$lastMessage['date']?>
+                                <?=$date?>
                             </div>
                             <div class="message-menu-item-lastmsg">
                                 <?=$lastMessage['message']?>
@@ -65,11 +64,13 @@
     
     <section id="messages-chatSelected">
         <?php foreach($conversation as $message) { 
+            preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/', $message['date'], $output_array);
+            $date = $output_array[3].'/'.$output_array[2].'/'.$output_array[1];
             if($message['sender'] == $_SESSION['id']) { ?>
                 <div class="message-row sent">
                     <div class="message-content">
                         <div class="message-text"> <?=$message['message']?> </div>
-                        <div class="message-time"> <?=$message['date']?></div>
+                        <div class="message-time"> <?=$date?></div>
                     </div>
                 </div>
             <?php }
@@ -78,7 +79,7 @@
                     <div class="message-content">
                         <img width="50px" src="<?= $image ?>" alt="default">
                         <div class="message-text"> <?=$message['message']?> </div>
-                        <div class="message-time"> <?=$message['date']?></div>
+                        <div class="message-time"> <?=$date?></div>
                     </div>
                 </div>
             <?php } ?>    

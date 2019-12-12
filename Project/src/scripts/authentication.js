@@ -1,3 +1,5 @@
+"use strict";
+
 if (document.getElementById('log_in'))
     document.getElementById('login-btn').onclick = submitLogin;
 else 
