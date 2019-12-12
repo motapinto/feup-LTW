@@ -20,6 +20,8 @@
             <!--************************ DOUBLE RANGE SLIDER  *************************-->
             <link rel="stylesheet" href="../../assets/materialize/extras/noUiSlider/nouislider.css">
             <script src="../../assets/materialize/extras/noUiSlider/nouislider.js"></script>
+            <!--************************ PHOTO GALLERY LIB ****************************-->
+            <script src="./../assets/galleria/dist/galleria.min.js"></script>
 
 <!--************************ COMMON  *************************-->
             <link rel="stylesheet" href="../styles/body.css">
@@ -46,6 +48,13 @@
         </head>
         <body>
 <?php } ?>
+
+<script>
+(function() {
+                if (Galleria) { $("body").text('Galleria works') }
+            }());
+
+</script>
 
 <?php function draw_footer() { ?>
         </body>
