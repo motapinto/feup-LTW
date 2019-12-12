@@ -4,10 +4,8 @@
             draw_menu($messengers);
         else { ?>
             <h3>You have no messages.</h3>
-        <?php }
-        ?>
+        <?php } ?>
     </section>
-
 <?php } ?>
 
 <?php function draw_menu($messengers) { ?>
@@ -26,6 +24,11 @@
                     $user = userProfile($messenger['user']);
                     $lastMessage = getLastMessageFromConversation($messenger['user'], $_SESSION['id']);
                     $image = getUserImagePath($user['id'], 'MEDIUM');
+
+                    preg_match('/([0-9]{2})\/([0-9]{2})\/([0-9]{4}) - ([0-9]{2})\/([0-9]{2})\/([0-9]{4})/', $lastMessage['date'], $output_array);
+                        
+                    print_r($output_array);
+
                     if($num == 1) { ?>
                         <div class="message-menu-item active">
                     <?php } else { ?>
@@ -34,19 +37,18 @@
 
                             <img width="60px" height="60px" src="<?=$image?>" alt="default">
                             <div class="message-menu-item-title">
-                            <?=$user['name']?>
+                                <?=$user['name']?>
                             </div>
                             <div class="message-menu-item-date">
-                                Apr 16
+                                <?=$lastMessage['date']?>
                             </div>
                             <div class="message-menu-item-lastmsg">
-                            <?=$lastMessage['message']?>
+                                <?=$lastMessage['message']?>
                             </div>
                         </div>
                 <?php } ?>
         </section>
     <?php draw_conversation($lastMessengerId); ?>
-
 <?php } ?>
 
 <?php function draw_conversation($messengerId) { 
@@ -85,9 +87,9 @@
 
     <section id="messages-input">
             <input type="hidden" value='<?=$messengerId?>' id='receiver'>
-            <input type="text" placeholder="write a message" id='message'>
+            <input type="text" placeholder="write a message" id='message' required>
             <button id="sendMessage">
-                <img src="../../assets/icons/send.png" alt="">
+                <img src="../../assets/icons/send.png" alt="send icon">
             </button>
     </section>
 <?php  } ?>

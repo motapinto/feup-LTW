@@ -8,7 +8,7 @@
             <input id="password" name="password" type="password" placeholder="password" maxlength=30 required/>
             <p id='login-msg'></p>
             <a href="#">Forgot your password?</a>
-            <button class="btn" id="login-btn">LOG IN</button>
+            <button class="btn"  id="login-btn">LOG IN</button>
             <button class="btn" id="signup-btn">SIGN UP</button>
         </article>
     </section>
@@ -31,8 +31,8 @@
             <span id="msg-email"></span> 
             <span id="msg-password1"></span> 
             <a href="#">Forgot your password?</a>
-            <button class="btn" type="button" id="signup-btn">SIGN UP</button>
-            <button class="btn" type="button" id="login-btn">LOG IN</button>
+            <button type="submit" class="btn" id="signup-btn">SIGN UP</button>
+            <button type="submit" class="btn" id="login-btn">LOG IN</button>
         </section>
     </section>
 <?php } ?>

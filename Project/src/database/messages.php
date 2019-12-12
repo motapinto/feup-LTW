@@ -22,7 +22,7 @@
     function getLastMessageFromConversation($user1, $user2) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT message FROM Message WHERE 
+        $stmt = $db->prepare('SELECT * FROM Message WHERE 
                               receiver = ? AND sender = ? OR
                               receiver = ? AND sender = ? 
                               ORDER BY date DESC');
