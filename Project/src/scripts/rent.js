@@ -46,11 +46,10 @@ function submitRent(event) {
         switch (response['response']) {
             case 0:
                 if (document.getElementById('check') === null) {
-                    let check = document.createElement('div');
+                    let check = document.createElement('i');
                     check.id = 'check';
                     document.getElementById('rent-button').appendChild(check);                    
                 }
-                // fas fa-times
                 document.getElementById('check').className = 'fas fa-check';
                 document.getElementById('rent-button').style.backgroundColor = 'green';
                 break;
@@ -58,7 +57,7 @@ function submitRent(event) {
             //Error in db
             default:
                 if (document.getElementById('check') === null) {
-                    let check = document.createElement('div');
+                    let check = document.createElement('i');
                     check.id = 'check';
                     document.getElementById('rent-button').appendChild(check);
                 }

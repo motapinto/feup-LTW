@@ -79,8 +79,13 @@
             )
             VALUES (?, ?, ?, ?, ?, ?, ?);
         ');
-        $stmt->execute(array($user, $property, $initial_date, $final_date, $adults, $children, $babies));
-        return $stmt->fetchAll() !== false;
+        try {
+            $stmt->execute(array($user, $property, $initial_date, $final_date, $adults, $children, $babies));
+            return true;
+        }
+        catch (PDOException $e) {
+            return false;
+        }
     }
 
     // Adds a new rent to the database
