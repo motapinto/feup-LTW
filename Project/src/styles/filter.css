@@ -10,6 +10,7 @@
 .filter-form {
     height: 100%;
     background: -webkit-linear-gradient(-45deg, rgb(133, 119, 119) 0%, rgb(52, 54, 58) 100%);
+    margin-block-end: 0em;
 }
 
 .filter h2 {
@@ -45,10 +46,8 @@
     border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
-.filter button {
-    bottom: 5px;
-    margin-top: 0;
-    margin-left: 15%;
+.filter-form > button {
+    margin: 0 15%;
 }
 
 #price-slider {
@@ -101,11 +100,9 @@
 }
 
 .pagination {
-    margin-left: 10%;
-    margin-top: 5%;
+    margin: 5% 10%;
     display: flex;
     flex-direction: row;
-    width: 10%;
 }
 
 .pagination input{
