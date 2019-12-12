@@ -60,9 +60,9 @@ function draw_filter($filter, $max_page, $owner=false) {
             <?php if(!$owner) { ?>
             <section>
                     <span>Change page</span>
-                    <div class="pagination">
+                    <div id="pagination">
                         <button id="prev-page" type="button" class="no-button"><i class="fas fa-minus"></i></button>
-                        <input name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>" max="<?=$max_page?>">
+                        <input id="current-page" name="page" type="number" min="1" value="<?=isset($_GET['page'])?$_GET['page']:1?>" max="<?=$max_page?>">
                         <button id="next-page" type="button" class="no-button"><i class="fas fa-plus"></i></button>
                     </div>  
             </section>
