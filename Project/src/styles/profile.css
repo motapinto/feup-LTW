@@ -1,22 +1,38 @@
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
     /* For desktop: */
-    .side-drawer {width: 100%;}
-    .selected-tab {width: 100%;}
+    .side-drawer,
+    .selected-tab {
+        grid-column: span 1;
+    }
 }
 
-@media only screen and (min-width: 600px) {
-    /* For tablets: */
-    .side-drawer {width: 100%;}
-    .selected-tab {width: 100%;}
-}
-
-@media only screen and (min-width: 480px) {
+@media only screen and (max-width: 480px) {
     /* For phones: */
-    .side-drawer {width: 100%;}
-    .selected-tab {width: 100%;}
+    .side-drawer,
+    .selected-tab {
+        grid-column: span 2;
+    }
 }
 
+/*************************      COMMON      *************************/
 
+.profile {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.selected-tab {
+    display: none;
+    background-color: white;
+    margin-top: 3em;
+    padding: 0 5em;
+    width: 30em;
+    border-left: solid 1px rgb(175, 175, 175);   
+}
+
+#profile-settings-tab{
+    display: block;
+}
 
 /************************* PROFILE SIDEMENU *************************/
 
@@ -113,27 +129,6 @@
 
 .profile-change-photo form * {
     margin: 0.1em;
-}
-
-
-/*************************      COMMON      *************************/
-
-.profile {
-    display: grid;
-    grid-template-columns: 2fr 3fr
-}
-
-.selected-tab {
-    display: none;
-    background-color: white;
-    margin-top: 3em;
-    padding: 0 5em;
-    width: 30em;
-    border-left: solid 1px rgb(175, 175, 175);   
-}
-
-#profile-settings-tab{
-    display: block;
 }
 
 

@@ -12,8 +12,8 @@
             <script type="text/javascript" src="../../assets/daterange/daterangepicker.js"></script>
             <link rel="stylesheet" type="text/css" href="../../assets/daterange/daterangepicker.css" />
             <!--**************************** FONTAWESOME *****************************-->
-            <script src="../../assets/fontawesome/js/all.js"></script>
-            <link rel="stylesheet" href="../../assets/fontawesome/css/all.css">
+            <script src="../../assets/fontawesome/js/fontawesome.min.js"></script>
+            <link rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
             <!--************************ MATERIALIZE INPUTS  *************************-->
             <script src="../../assets/materialize/js/materialize.min.js"></script>
             <link rel="stylesheet" href="../../assets/materialize/css/materialize.css">
