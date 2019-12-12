@@ -1,38 +1,32 @@
 #chat-container {
     display: grid;
-    grid-template-areas: 'messages-search messages-chatTitle' 'messages-menu messages-chatSelected' 'messages-menu messages-input';
+    grid-template-areas: 'messages-search messages-chatTitle' 
+                         'messages-menu messages-chatSelected' 
+                         'messages-menu messages-input';
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 6fr 1fr;
     background: #fff;
-    border-radius: 10px;
-    height: 800px;
-    max-height: 800px;
-    margin-top: 1%;
+    max-height: 53em;
+    margin-top: 0.8em;
 }
 
 #messages-search {
     grid-area: messages-search;
     background-color: white;
-    padding: 10px 20px;
-    border-radius: 20px 0 0 0;
 }
 
 #messages-search input {
     font-weight: lighter;
-    width: 70%;
-    padding-top: 20px;
-    padding-left: 45px;
+    margin: 2em 2em;
     font-size: 16px;
-    border: none;
     border-bottom: solid 1px rgb(211, 209, 209);
-    background: url('../../assets/icons/search.png') no-repeat;
-    background-position: 15px center;
-    background-size: 18px 18px;
 }
 
 #messages-search input::placeholder {
+    position: relative;
     color: rgb(122, 121, 121);
     font-size: 20px;
+    left: 1em;
 }
 
 #messages-menu {
@@ -43,30 +37,24 @@
     flex-direction: column;
 }
 
-#messages-menu::-webkit-scrollbar {
-    width: 10px;
-}
-
-#messages-menu::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(0, 0, 0, -1);
-}
-
 .message-menu-item {
     display: grid;
-    grid-template-columns: 21% 58% 21%;
+    grid-template-columns: 3em 7em 4em;
     grid-template-rows: 1em 1em;
-    gap: 8px;
+    grid-template-areas: 'image title date'
+                         'image msg msg';
+    gap: 0.5em;
     color: rgba(39, 39, 39, 0.5);
     font-size: 18px;
     font-weight: lighter;
-    padding: 20px 20px 20px 15px;
+    padding: 1em 1em 1.5em 1em;
     border-radius: 10px;
 }
 
 .message-menu-item>img {
+    grid-area: image;
     grid-row-start: span 2;
-    border-radius: 100%;
+    border-radius: 50%;
 }
 
 .message-menu-item.active,
@@ -76,55 +64,69 @@
 }
 
 .message-menu-item-title {
+    font-family: 'Roboto', sans-serif;
     color: black;
-    padding-left: 5px;
+    padding-left: 0.2em;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 20em;
+    grid-area: title;
 }
 
 .message-menu-item-date {
     color: rgba(39, 39, 39, 0.4);
     font-size: 15px;
+    grid-area: date;
 }
 
 .message-menu-item-lastmsg {
-    padding-left: 5px;
+    padding-left: 0.2em;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 10em;
+    grid-area: msg;
 }
 
 #messages-chatTitle {
     grid-area: messages-chatTitle;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 2em 20em;
     align-content: center;
     align-items: center;
     color: black;
-    font-size: 30px;
-    padding: 0 20px;
+    font-size: 2em;
+    padding-left: 0.6em;
     border-bottom: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
 }
 
 #messages-chatTitle span {
-    width: 100%;
+    margin-left: 0.3em;
 }
 
-#messages-chatTitle>img {
+#messages-chatTitle > img {
     cursor: pointer;
-    border-radius: 100%;
+    border-radius: 50%;
 }
 
 #messages-chatSelected {
     grid-area: messages-chatSelected;
-    padding: 0.1em 20px;
-    padding-top: 20px;
-    overflow: auto;
+    padding: 2em 1em;
+    overflow-y: scroll;
     border-left: solid 1px rgb(236, 234, 234);
+}
+
+.message-row {
+    display: grid;
+    grid-template-columns: auto;
+    margin-bottom: 1.5em;
+    max-width: 30em;
+}
+
+.message-row img {
+    cursor: pointer;
+    border-radius: 50%;
+    grid-row: span 2;
 }
 
 .message-content {
@@ -144,49 +146,38 @@
 }
 
 .received .message-content {
-    grid-template-columns: 48px 1fr;
-    column-gap: 15px;
-}
-
-.message-row {
-    display: grid;
-    grid-template-columns: 100%;
-    margin-bottom: 20px;
-}
-
-.message-row img {
-    border-radius: 100%;
-    grid-row: span 2;
+    grid-template-columns: 1fr auto;
+    column-gap: 1em;
+    max-width: 30em;
 }
 
 .message-text {
-    padding: 9px 14px;
-    font-size: 20px;
-    margin-bottom: 5px;
+    padding: 0.5em 1em;
+    font-size: 1.2em;
 }
 
 .message-time {
-    font-size: 18px;
+    font-size: 1em,;
     color: #787;
 }
 
 .sent .message-text {
     background: teal;
     color: #eee;
-    border-radius: 20px 20px 0 20px;
+    border-radius: 1em 1em 0 1em;
 }
 
 .received .message-text {
     background: rgb(218, 218, 218);
     color: black;
-    border-radius: 20px 20px 20px 0;
+    border-radius: 1em 1em 1em 0;
 }
 
 #messages-input {
     grid-area: messages-input;
     display: grid;
     grid-template-columns: 80% 5%;
-    gap: 3%;
+    gap: 2em;
     align-content: space-around;
     align-items: center;
     border-radius: 0 0 10px 0;
@@ -198,10 +189,11 @@
 #messages-input input {
     outline: none;
     padding: 0.1em;
-    border: 2px solid #ddd;
+    border: 1px solid #ddd;
     color: #331;
-    border-radius: 6px;
-    font-size: 1.4rem;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    padding-left: 0.5em;
 }
 
 #messages-input button {

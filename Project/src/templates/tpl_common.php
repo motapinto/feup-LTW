@@ -7,6 +7,9 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+            <!--****************************** FONTS *********************************-->
+            <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
             <!--**************************** DATE RANGE ******************************-->
             <script type="text/javascript" src="../../assets/daterange/moment.min.js"></script>
             <script type="text/javascript" src="../../assets/daterange/daterangepicker.js"></script>
