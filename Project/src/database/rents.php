@@ -56,7 +56,7 @@
 
         $stmt = $db->prepare('SELECT * FROM Rented WHERE 
                               property_id = ?
-                              ORDER BY initial_date'
+                              ORDER BY initial_date DESC'
                             );
 
         $stmt->execute(array($property));

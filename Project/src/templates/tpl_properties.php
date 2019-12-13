@@ -53,7 +53,7 @@ function draw_properties($properties, $filter, $owner) { ?>
 
 function add_property() { ?>
     <section id='addProperty'>
-        <form action="add_property.php">
+        <form action="propertyDetails.php">
             <button id="addButton"><i class="fas fa-plus"></i></button>
         </form>
     </section>

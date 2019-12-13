@@ -56,3 +56,121 @@
 }
 
 /* ADD A NEW PROPERTY */
+
+#addProperty {
+    margin-left: 5%;
+}
+
+#property-important {
+    display: flex;
+    flex-direction: row;
+}
+
+#property-main {
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+}
+
+#property-images {
+    margin-left: 10%;
+}
+
+#property-main input, textarea,
+#property-details input {
+    width: 100%;
+    border-radius: 5px;
+    border: solid rgb(176, 183, 187) 1px;
+    color: grey;
+    text-align: center;
+}
+
+#property-info {
+    display: flex;
+    flex-direction: row;
+}
+
+#property-details {
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+}
+
+#property-details input {
+    margin-bottom: 5%;
+} 
+
+/*  OWNER MANAGMENT AREA*/
+#property-history {
+    overflow-y: scroll;
+    margin-left: 10%;
+    width: 30em;
+}
+
+.scrollable-history {
+    overflow-y: scroll;
+    max-height: 18em;
+    padding-left: 0;
+}
+
+.history-item {
+    border-bottom: solid 1px rgb(175, 175, 175);
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+    margin-right: 2em;
+}
+
+.rent-user {
+    display: flex;
+    flex-direction: row;
+}
+
+.rent-user span{
+    font-size: 1.5em;
+    margin-left: 0.5em;
+    padding-top: 0.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 15em;
+}
+
+.history-item:last-child {
+    border: none
+}
+
+.history-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.history-details span {
+    margin: 0.5em 0;
+}
+
+.history-item img {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+}
+
+.cancel-button {
+    color: teal;
+    background-color: white;
+    font-weight: bold;
+    margin-left: 20em;
+}
+
+.cancel-button:hover {
+    text-decoration: underline;
+}
+
+#add-button {
+    margin-top: 2em;
+    color: teal;
+    font-size: larger;
+    font-weight: 900;
+    background-color: wheat;
+}
+
+

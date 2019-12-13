@@ -7,6 +7,10 @@ html, body {
     height: 100%;
 }
 
+textarea {
+    resize: none;
+  }
+
 button:hover {
     cursor: pointer;
 }

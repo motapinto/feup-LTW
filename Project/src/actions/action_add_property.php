@@ -35,5 +35,5 @@
     }
 
     $_SESSION['err_msg'] = "Failled to add property";
-    header('Location: ../properties/add_property.php');
+    header('Location: ../properties/propertyDetails.php');
 ?>
