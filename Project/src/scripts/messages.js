@@ -1,3 +1,5 @@
+"use strict";
+
 document.getElementById("sendMessage").onclick = function (event) { 
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
@@ -56,3 +58,38 @@ document.getElementById("sendMessage").onclick = function (event) {
     xhttp.send();
 }
 
+let messengers = document.getElementsByClassName("message-menu-item desactive");
+for (let i = 0; i < messengers.length; i++) {
+    messengers[i].addEventListener('click', changeMenu, false);
+}
+
+function changeMenu(event) {
+    //let userId = messengers[instance].getElementsByClassName("messenger-id")[0].value;
+    let element = event.target
+    alert(element);
+    /*alert('sdf');
+    let xhttp = new XMLHttpRequest();
+    let asynchronous = true;
+    let request = encodeForAjax({ user: userId});
+
+    // Define what happens on successful data submission
+    xhttp.addEventListener('load', function (event) {
+        let response = JSON.parse(this.responseText);
+        switch (response['response']) {
+            case 0:
+                alert('success');
+                break;
+
+            default:
+                alert('Failled to change menu');
+                break;
+        }
+    });
+
+    xhttp.addEventListener('error', function (event) {
+        alert('Oops! Something goes wrong.');
+    });
+
+    xhttp.open('GET', '../messages/messages.php?' + request, asynchronous);
+    xhttp.send();*/
+};

@@ -14,20 +14,25 @@
     	die(header('Location: ../listings/listings_all.php'));
 
     draw_header('User Profile', 'profile');
-    	
+        
+    //visiting other profile
     if(isset($_GET['id']) && $_GET['id'] != $_SESSION['id']) {
         draw_navBar(-1);
 
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
-        $user = userProfile($id);             //other user
+        $user = userProfile($id);            
         if($user === false)
             die(header('Location: ../listings/listings_all.php'));
 		draw_profile($user);
-	}
+    }
+    //visiting own profile
 	else {
         draw_navBar(2);
-        $user = userProfile($_SESSION['id']); // own user
+
+        $user = userProfile($_SESSION['id']); 
+        if($user === false)
+            die(header('Location: ../listings/listings_all.php'));
 		draw_profile($user, true);
 	}
     

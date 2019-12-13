@@ -7,15 +7,20 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+            <!--****************************** FONTS *********************************-->
+            <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+
             <!--**************************** DATE RANGE ******************************-->
             <script type="text/javascript" src="../../assets/daterange/moment.min.js"></script>
             <script type="text/javascript" src="../../assets/daterange/daterangepicker.js"></script>
             <link rel="stylesheet" type="text/css" href="../../assets/daterange/daterangepicker.css" />
             <!--**************************** FONTAWESOME *****************************-->
-            <script src="../../assets/fontawesome/js/all.js"></script>
-            <link rel="stylesheet" href="../../assets/fontawesome/css/all.css">
+            <script src="../../assets/fontawesome/js/fontawesome.min.js"></script>
+            <link rel="stylesheet" href="../../assets/fontawesome/css/all.min.css">
             <!--************************ MATERIALIZE INPUTS  *************************-->
-            <script src="../../assets/materialize/js/materialize.js"></script>
+            <script src="../../assets/materialize/js/materialize.min.js"></script>
             <link rel="stylesheet" href="../../assets/materialize/css/materialize.css">
             <!--************************ DOUBLE RANGE SLIDER  *************************-->
             <link rel="stylesheet" href="../../assets/materialize/extras/noUiSlider/nouislider.css">

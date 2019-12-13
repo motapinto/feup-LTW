@@ -23,9 +23,6 @@
             <!-- USER NAME -->
             <header>
                 <h1 id='user-name'><?=$user['name']?></h1>
-                <article class='rating'>
-                    <?php draw_rating($user['rating']); ?>
-                </article>
             </header>
 
             <!-- SIDEBAR BUTTONS -->

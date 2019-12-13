@@ -1,3 +1,5 @@
+"use strict";
+
 if (document.getElementById('log_in'))
     document.getElementById('login-btn').onclick = submitLogin;
 else 
@@ -33,7 +35,7 @@ function submitLogin(event) {
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
         
-        switch (response['response']) {
+        switch (response.response) {
             case -1:
                 document.getElementById('login-msg').innerHTML = 'User does not exist';
                 document.getElementById('login-msg').style.color = 'red';

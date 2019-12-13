@@ -11,10 +11,20 @@
 
     if(!isset($_SESSION['id']))
         die(header('Location: ../listings/listings_all.php'));
+    
+    $allMessengers = getAllMessengers($_SESSION['id']);
+    $userSelected = $allMessengers[0]['user'];
+
+    if(isset($_GET['user'])) {
+        $userSelected = $_GET['user'];
+        htmlentities($userSelected, ENT_QUOTES, 'UTF-8');
+    }
+
+    print_r($userSelected);
 
     draw_header('Messages', 'messages');
     draw_navBar(4);
     $messengers = getAllMessengers($_SESSION['id']);      // gets all users that have exchange messages with from the database 
-    draw_messages($messengers);
+    draw_messages($messengers, $userSelected);
     draw_footer();
 ?>
