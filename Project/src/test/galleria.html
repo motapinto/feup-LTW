@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="galleria/src/galleria.js"></script>
+        <script>
+            $(document).ready(function(){
+                Galleria.loadTheme('galleria/src/themes/classic/galleria.classic.js');
+                Galleria.run('#galleria');
+            });
+        </script>
+    </head>
+<body>
+    <div id="galleria" style="height: 500px;">
+        <a href="images/1.png">
+            <img title="Image 1"
+                 alt="Image 1 description"
+                src="images/1.png" />
+        </a>
+        <a href="images/1.png">
+            <img data-title="Image 2"
+                data-description="Image 2 description"
+                src="images/1.png" />
+        </a>
+    </div>
+</body>
+</html>
