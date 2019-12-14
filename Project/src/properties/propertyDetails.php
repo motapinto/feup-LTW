@@ -13,7 +13,7 @@
     include('../templates/tpl_navBar.php');               // prints the menu in HTML
     include('../templates/tpl_propertyDetails.php');      // template of add new property
 
-    if(isset($_GET['id'])) {
+    if(isset($_GET['id']) && $_GET['id'] != null) {
         $new = false;
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');

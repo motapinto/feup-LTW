@@ -110,7 +110,7 @@
                                     <span class="overview-price"> Total: <?= $rent['price'] ?>&euro; </span>
                                     <span class="overview-guests"> Guests: <?=$rent['adults'] + $rent['children'] + $rent['babies'] ?> </span>
                                     <?php if(strcmp($date_init_array[1].'-'.$date_init_array[2].'-'.$date_init_array[3], $now) > 0) { ?>
-                                            <input class="rent-id" type="hidden" value="<?=$rent['id']?>">
+                                            <input id="rent_id" type="hidden" value="<?=$rent['id']?>">
                                             <button class="cancel-button"> Cancel </button>
                                     <?php } ?>
                                 </div>
