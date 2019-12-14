@@ -156,9 +156,44 @@ function checkText(id) {
     }
 }
 
-document.getElementById('add-pic').onclick = function (event) { addPic(); }
+document.getElementById('add-pic').onclick = function (event) { 
+    document.getElementById('add-pic-upload').click(); 
+}
 
-function addPic() {
-    alert('asd')
-    document.getElementById('add-pic-upload').click();
+document.getElementById('add-pic-upload').onchange = function () { addPic(this.files); };
+
+document.getElementById('remove-pic').onclick = function () { removePic(); };
+
+function addPic(files) {
+    let xhttp = new XMLHttpRequest();
+    let asynchronous = true;
+
+    let request = encodeForAjax({ image: files});
+
+    // Define what happens on successful data submission
+    xhttp.addEventListener('load', function (event) {
+        let response = JSON.parse(this.responseText);
+        alert(response['response']);
+        switch (response['response']) {
+            case 0:
+                alert('SUCCESS')
+                break;
+
+            default:
+                alert('FAIL')
+                break;
+        }
+    });
+
+    xhttp.addEventListener('error', function (event) {
+        alert('Oops! Something goes wrong.');
+    });
+
+    xhttp.open('FILES', '../actions/action_property_image.php?' + request, asynchronous);
+    xhttp.send();
+}
+
+//  Removes last/selected property image
+function removePic() {
+    deleteImage(?, 'PROPERTY')
 }
