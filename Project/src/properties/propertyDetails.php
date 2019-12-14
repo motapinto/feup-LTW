@@ -23,7 +23,7 @@
         $new = false;
     }
 
-    draw_header('My Properties');
+    draw_header('My Properties', 'property');
         draw_navBar(1);
         addProperty($id);
     draw_footer();

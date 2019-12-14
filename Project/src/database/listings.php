@@ -67,7 +67,7 @@
         $stmt->execute(array($id, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type));
         
         $changed = $stmt->fetch();
-        return !$changed ? -1 : 0;
+        return !$changed?-1:0;
     }
     
     // Returns listing with id = id

@@ -3,22 +3,17 @@
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/listings.php');      // properties functions
     
-    $ret = array();
-    
-    if(!isset($_SESSION['id'])) {
-        $ret['response'] = -1;
-        return;
-    }
+    $ret = array('response' => '');
         
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $price_day = $_POST['price_day'];
-    $guests = $_POST['guests'];
-    $city = $_POST['city'];
-    $street = $_POST['street'];
-    $door_number = $_POST['door_number'];
-    $apartment_number = $_POST['apartment_number'];
-    $property_type = $_POST['property_type'];
+    $title = $_GET['title'];
+    $description = $_GET['description'];
+    $price_day = $_GET['price_day'];
+    $guests = $_GET['guests'];
+    $city = $_GET['city'];
+    $street = $_GET['street'];
+    $door_number = $_GET['door_number'];
+    $apartment_number = $_GET['apartment_number'];
+    $property_type = $_GET['property_type'];
 
     if(!isset($title) || !isset($description) || !isset($price_day) || !isset($guests) ||
     !isset($city) || !isset($street) || !isset($door_number) || !isset($apartment_number) ||
@@ -38,23 +33,20 @@
     htmlentities($property_type, ENT_QUOTES, 'UTF-8');
 
     if(isset($_GET['id'])) {
-        $result = changeListing($_SESSION['id'], $title, $description, 
-                $price_day, $guests, $city,
-                $street, $door_number, $apartment_number,
-                $property_type);
+        $id = $_GET['id'];
+        htmlentities($id, ENT_QUOTES, 'UTF-8');
+
+        $ret['response'] = changeListing($id, $title, $description, 
+            $price_day, $guests, $city,
+            $street, $door_number, $apartment_number,
+            $property_type);
     }
     else {
-        $result = addListing($_SESSION['id'], $title, $description, 
-                    $price_day, $guests, $city,
-                    $street, $door_number, $apartment_number,
-                    $property_type);
+        $ret['response'] = addListing($_SESSION['id'], $title, $description, 
+            $price_day, $guests, $city,
+            $street, $door_number, $apartment_number,
+            $property_type);
     }
 
-    if($result !== false){
-        $id = $result['id'];
-        header("Location: ../properties/add_property_image.php?id=$id");
-    }
-
-    $_SESSION['err_msg'] = "Failled to add property";
-    header('Location: ../properties/propertyDetails.php');
+    encodeForAJAX($ret);
 ?>

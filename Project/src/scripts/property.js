@@ -1,21 +1,41 @@
-document.getElementById("sendMessage").onclick = function (event) {
+
+document.getElementById("add-button").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let message = document.getElementById('message').value;
-    let receiver = document.getElementById('receiver').value;
-    let request = encodeForAjax({ sendMessage: message, receiver: receiver });
 
+    let title = document.getElementById('title').value;
+    let description = document.getElementById('description').value;
+    let price_day = document.getElementById('price').value;
+    let guests = document.getElementById('guests').value;
+    let city = document.getElementById('city').value;
+    let street = document.getElementById('street').value;
+    let door_number = document.getElementById('door_number').value;
+    let apartment_number = document.getElementById('apart_number').value;
+    let property_type = document.getElementById('property_type').value;
+
+    let request = encodeForAjax({ 
+        title: title, 
+        description: description,
+        price_day:price_day, 
+        guests:guests, 
+        city:city, 
+        street:street, 
+        door_number:door_number, 
+        apartment_number:apartment_number,
+        property_type:property_type 
+    });
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
+        alert(response['response']);
         switch (response['response']) {
             case 0:
-                document.getElementById('sendMessage-msg').textContent = 'Message sent successfuly.';
+                alert('SUCCESS')
                 break;
 
             default:
-                document.getElementById('sendMessage-msg').textContent = 'Failled to send message.';
+                alert('FAIL')
                 break;
         }
     });
@@ -24,6 +44,6 @@ document.getElementById("sendMessage").onclick = function (event) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_message_add.php?' + request, asynchronous);
+    xhttp.open('GET', '../actions/action_change_property.php?' + request, asynchronous);
     xhttp.send();
 }
