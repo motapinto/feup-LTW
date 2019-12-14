@@ -1,55 +1,100 @@
-<?php function addProperty($new=false) { 
+<?php function addProperty($id=null) { 
     $now = date("Y-m-d");
+    if($id != null) {
+        $rents = getAllRentsByProperty($id);
+        $property = getListingById($id);
+    }
     ?>
     <section id='addProperty'>
         <h2>Property Details</h2>
-        <form action="../actions/action_propertyDetails.php" method='POST'>
+        <!-- <form action="../actions/action_change_property.php" method='POST'> -->
         
             <section id="property-important">
                 <article id="property-main">
                     <article>
                         <p>Title</p>
-                        <input type="text" name="title" placeholder="Title" required>
+                        <?php if($id != null) { ?>
+                            <input value="<?=$property['title']?>" type="text" name="title" placeholder="Title" required>
+                        <?php }  
+                            else { ?>
+                            <input type="text" name="title" placeholder="Title" required>
+                        <?php } ?>
                     </article>
                     <article>
                         <p>Description</p>
-                        <textarea name="description" cols="50" rows="10" required placeholder="Briefe description of the property"></textarea>
+                        <?php if($id != null) { ?>
+                            <textarea name="description" cols="50" rows="10" required placeholder="Briefe description of the property">
+                                <?=$property['description']?>
+                            </textarea>
+                        <?php }  
+                            else { ?>
+                            <textarea name="description" cols="50" rows="10" required placeholder="Briefe description of the property"></textarea>
+                        <?php } ?>
                     </article>
                 </article>
 
                 <article id="property-images">
-                    <img src="" alt="" width="400" height="400">
+                    <img src="" alt="" width="300" height="300">
                 </article>
             </section>
 
             <section id="property-info">
                 <article id="property-details">
-                    <input type="number" name="price_day" min="1" placeholder="Price per Day" required>
-                    <input type="number" name="guests" min="1" placeholder="Number of Guests" required>
-                    <input type="text" name="city" placeholder='City' required>
-                    <input type="text" name="street" placeholder='Street' required>
-                    <input type="number" name="door_number" min='1' placeholder='Door Number' required>
-                    <input type="text" name="apartment_number" placeholder='Apartment Number'>
-                    <select name="property_type" required>
-                        <option value="0">House</option>
-                        <option value="1">Apartment</option>
-                    </select>
-                    <button id="add-button" class="no-button">Add Property</button>
+                    <?php if($id != null) { 
+                        print_r($property);?>
+                        <label> Price (&euro;/night)</label>
+                        <input value="<?=$property['price_day']?>" type="text" name="title" required>
+                        <label> Guests </label>
+                        <input value="<?=$property['guests']?>" type="number" name="price_day" min="1" required>
+                        <label> City </label>
+                        <input value="<?=$property['city']?>" type="number" name="guests" min="1" required>
+                        <label> Street </label>
+                        <input value="<?=$property['street']?>" type="text" name="city" required>
+                        <label> Door number </label>
+                        <input value="<?=$property['door_number']?>" type="text" name="street" required>
+                        <label> Apartment number(if applicable) </label>
+                        <input value="<?=$property['apartment_number']?>" type="number" name="door_number" min='1' required>
+                        <label> Property type </label>
+                        <select value="<?=$property['property_type']?>" name="property_type" required>
+                            <option value="0" <?=(isset($property['property_type'])&&$property['property_type']==0)?'selected':''?>>House</option>
+                            <option value="1" <?=(isset($property['property_type'])&&$property['property_type']==1)?'selected':''?>>Apartment</option>
+                        </select>
+                    <?php }  
+                        else { ?>
+                        <label> Price (&euro;/night)</label>
+                        <input type="number" name="price_day" min="1" placeholder="Price per Day" required>
+                        <label> Guests </label>
+                        <input type="number" name="guests" min="1" placeholder="Number of Guests" required>
+                        <label> City </label>
+                        <input type="text" name="city" placeholder='City' required>
+                        <label> Street </label>
+                        <input type="text" name="street" placeholder='Street' required>
+                        <label> Door number </label> 
+                        <input type="number" name="door_number" min='1' placeholder='Door Number' required>
+                        <label> Apartment number(if applicable) </label>    
+                        <input type="text" name="apartment_number" placeholder='Apartment Number'>
+                        <label> Property type </label>
+                        <select name="property_type" required>
+                            <option value="0">House</option>
+                            <option value="1">Apartment</option>
+                        </select>
+                    <?php } ?>
+
+                    <button id="add-button" class="no-button">Update Property</button>
                 </article>
 
                 <article id="property-history">
                     <h1>Rent history </h1>
                     <ul class="scrollable-history">
-                    <?php if($new) { 
-                        $rents = getAllRentsByProperty(1);
+                    <?php if($id != null && !empty($rents) ) { 
                         foreach($rents as $rent) { 
                             $user = userProfile($rent['user_id']);
                             $image = getUserImagePath($rent['user_id'], 'SMALL');
                             preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['initial_date'], $date_init_array);
                             preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $rent['final_date'], $date_final);
                             $date_init = $date_init_array[3].'-'.$date_init_array[2].'-'.$date_init_array[1];
-                            $date_final = $date_final[3].'-'.$date_final[2].'-'.$date_final[1];     
-                        ?>
+                            $date_final = $date_final[3].'-'.$date_final[2].'-'.$date_final[1]; 
+                            ?>
 
                             <li class='history-item'>
                                 <div class="rent-user">
@@ -74,10 +119,13 @@
                             </li>
 
                         <?php } ?>
+                    <?php } 
+                    else if(empty($rents)) {  ?>
+                        <span> No rent history</span>
                     <?php } ?>
                     </ul>
                 </article>
             </section>
-        </form>
+        <!-- </form> -->
     </section>
 <?php } ?>

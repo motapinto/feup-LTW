@@ -49,6 +49,26 @@
         }
         return $db->lastInsertId();
     }
+
+    function changeListing($id, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type) {
+        $db = Database::instance()->db();
+            
+        $stmt = $db->prepare('UPDATE Property
+                            SET title = ?,
+                            description = ?,
+                            price_day = ?,
+                            guests = ?,
+                            city = ?,
+                            street = ?,
+                            door_number = ?,
+                            apartment_number = ?,
+                            property_type = ?
+                            WHERE id = ?');
+        $stmt->execute(array($id, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type));
+        
+        $changed = $stmt->fetch();
+        return !$changed ? -1 : 0;
+    }
     
     // Returns listing with id = id
     function getListingById($id) {

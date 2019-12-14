@@ -1,6 +1,6 @@
 <?php function draw_property($property){ ?>
     <li class='property'>
-        <a href="../listings/item.php?id=<?=$property['id']?>">
+        <a href="../properties/propertyDetails.php?id=<?=$property['id']?>">
             <?php 
                 $image = getFirstImagePathOfProperty($property['id']); 
                 $numRents = numRentsByProperty($property['id']);

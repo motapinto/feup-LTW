@@ -13,10 +13,18 @@
     include('../templates/tpl_navBar.php');               // prints the menu in HTML
     include('../templates/tpl_propertyDetails.php');      // template of add new property
 
+    if(isset($_GET['id'])) {
+        $new = false;
+        $id = $_GET['id'];
+        htmlentities($id, ENT_QUOTES, 'UTF-8');
+    } 
+    
+    else {
+        $new = false;
+    }
+
     draw_header('My Properties');
         draw_navBar(1);
-        
-        $new = true;
-        addProperty($new);
+        addProperty($id);
     draw_footer();
 ?>

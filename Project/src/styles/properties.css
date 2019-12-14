@@ -85,6 +85,10 @@
     text-align: center;
 }
 
+#property-main textarea {
+    overflow: hidden;
+}
+
 #property-info {
     display: flex;
     flex-direction: row;
@@ -109,7 +113,7 @@
 
 .scrollable-history {
     overflow-y: scroll;
-    max-height: 18em;
+    max-height: 25em;
     padding-left: 0;
 }
 
