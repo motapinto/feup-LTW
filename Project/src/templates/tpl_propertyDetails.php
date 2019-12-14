@@ -31,9 +31,19 @@
                     </article>
                 </article>
 
-                <article id="property-images">
-                    <img src="" alt="" width="300" height="300">
-                </article>
+                <?php 
+                    $images = getImagePathsByPropertyId($id);
+                    foreach($images as $image) { ?>
+                    <article id="property-images">
+                        <div id="galleria" style="height: 300px; width: 300px">
+                            <a href="<?=$image?>">
+                                <img title="Image Ttile - feature in progress"
+                                    alt="Image description - feature in progress"
+                                    src="<?=$image?>" />
+                            </a>
+                        </div>
+                    </article>
+                <?php } ?>
             </section>
 
             <section id="property-info">

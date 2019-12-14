@@ -4,14 +4,21 @@
         <head>
             <title><?=$title?></title>
             <meta charset="UTF-8">
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+            
             <!--****************************** FONTS *********************************-->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
             <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
-
+            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>~
+            <!--****************************** GALLERIA *********************************-->
+            <script src="../../assets/galleria/src/galleria.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Galleria.loadTheme('../../assets/galleria/src/themes/classic/galleria.classic.js');
+                    Galleria.run('#galleria');
+                });
+            </script>
             <!--**************************** DATE RANGE ******************************-->
             <script type="text/javascript" src="../../assets/daterange/moment.min.js"></script>
             <script type="text/javascript" src="../../assets/daterange/daterangepicker.js"></script>
@@ -25,8 +32,6 @@
             <!--************************ DOUBLE RANGE SLIDER  *************************-->
             <link rel="stylesheet" href="../../assets/materialize/extras/noUiSlider/nouislider.css">
             <script src="../../assets/materialize/extras/noUiSlider/nouislider.js"></script>
-            <!--************************ PHOTO GALLERY LIB ****************************-->
-            <script src="./../assets/galleria/dist/galleria.min.js"></script>
 
 <!--************************ COMMON  *************************-->
             <link rel="stylesheet" href="../styles/body.css">
@@ -53,13 +58,6 @@
         </head>
         <body>
 <?php } ?>
-
-<script>
-(function() {
-                if (Galleria) { $("body").text('Galleria works') }
-            }());
-
-</script>
 
 <?php function draw_footer() { ?>
         </body>
