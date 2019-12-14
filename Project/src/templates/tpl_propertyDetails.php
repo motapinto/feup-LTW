@@ -35,27 +35,31 @@
                     $images = getImagePathsByPropertyId($id);
                     foreach($images as $image) { ?>
                     <article id="property-images">
-                        <div id="galleria" style="height: 300px; width: 300px">
+                        <div id="change-pics">
+                            <input id='add-pic-upload' type='file' hidden/>
+                            <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
+                            <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div id="galleria">
                             <a href="<?=$image?>">
-                                <img title="Image Ttile - feature in progress"
-                                    alt="Image description - feature in progress"
-                                    src="<?=$image?>" />
+                                <img title="Image Tile - feature in progress"
+                                alt="Image description - feature in progress"
+                                src="<?=$image?>" />
                             </a>
                         </div>
                     </article>
                 <?php } ?>
             </section>
-
+            
             <section id="property-info">
                 <article id="property-details">
-                    <?php if($id != null) { 
-                        print_r($property);?>
+                    <?php if($id != null) { ?>
                         <label> Price (&euro;/night)</label>
                         <input value="<?=$property['price_day']?>" type="text" id="price" >
                         <label> Guests </label>
                         <input value="<?=$property['guests']?>" type="number" id="guests" min="1" >
                         <label> City </label>
-                        <input value="<?=$property['city']?>" type="number" id="city" min="1" >
+                        <input value="<?=$property['city']?>" type="text" id="city" min="1" >
                         <label> Street </label>
                         <input value="<?=$property['street']?>" type="text" id="street" >
                         <label> Door number </label>

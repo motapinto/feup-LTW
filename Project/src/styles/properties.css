@@ -177,4 +177,22 @@
     background-color: wheat;
 }
 
+#change-pics {
+    display: flex;
+}
+
+.pics-btns {
+    background-color: #FF5A5F;
+    border-radius: 100%;
+    color: white;
+    width: 2em;
+    height: 2em;
+}
+
+#galleria {
+    height: 20em; 
+    width: 20em;
+}
+
+
 

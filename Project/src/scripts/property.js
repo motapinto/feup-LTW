@@ -64,7 +64,7 @@ document.getElementById('street').onkeyup = function (event) { checkString('stre
 
 document.getElementById('door_number').onkeyup = function (event) { checkNumber('door_number'); }
 
-document.getElementById('apartment_number').onkeyup = function (event) { checkNumber('apartment_number'); }
+document.getElementById('apart_number').onkeyup = function (event) { checkNumber('apartment_number'); }
 
 function checkPrice() {
     let numbers = new RegExp("^[0-9]*$");
@@ -154,4 +154,11 @@ function checkText(id) {
         document.getElementById(id).style.backgroundColor = 'rgb(246, 220, 220)';
         document.getElementById(id).style.border = 'solid 1px rgb(233, 76, 76)';
     }
+}
+
+document.getElementById('add-pic').onclick = function (event) { addPic(); }
+
+function addPic() {
+    alert('asd')
+    document.getElementById('add-pic-upload').click();
 }
