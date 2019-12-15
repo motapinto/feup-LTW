@@ -1,95 +1,66 @@
 "use strict";
 
-document.getElementById("sendMessage").onclick = function (event) { 
-    let xhttp = new XMLHttpRequest();
-    let asynchronous = true;
-    let message = document.getElementById('message').value;
-    let receiver = document.getElementById('receiver').value;
-    let request = encodeForAjax({ sendMessage: message, receiver: receiver});
+if (document.getElementById("sendMessage"))
+    document.getElementById("sendMessage").onclick = function (event) { 
+        if (document.getElementById('message').value == '') return;
+        let xhttp = new XMLHttpRequest();
+        let asynchronous = true;
+        let message = document.getElementById('message').value;
+        let receiver = document.getElementById('receiver').value;
+        let request = encodeForAjax({ sendMessage: message, receiver: receiver});
 
-    // Define what happens on successful data submission
-    xhttp.addEventListener('load', function (event) {
-        let response = JSON.parse(this.responseText);
-        switch (response['response']) {
-            case 0:
-                document.getElementById('message').value = '';
-                // Create new message
-                let newMessage = document.createElement('div');
-                newMessage.className = 'message-row sent';
+        // Define what happens on successful data submission
+        xhttp.addEventListener('load', function (event) {
+            let response = JSON.parse(this.responseText);
+            switch (response['response']) {
+                case 0:
+                    document.getElementById('message').value = '';
+                    // Create new message
+                    let newMessage = document.createElement('div');
+                    newMessage.className = 'message-row sent';
 
-                let newMessageContent = document.createElement('div');
-                newMessageContent.className = 'message-content';
+                    let newMessageContent = document.createElement('div');
+                    newMessageContent.className = 'message-content';
 
-                let newMessageContentText = document.createElement('div');
-                newMessageContentText.className = 'message-text';
-                let newMessageContentTextText = document.createTextNode(message);
+                    let newMessageContentText = document.createElement('div');
+                    newMessageContentText.className = 'message-text';
+                    let newMessageContentTextText = document.createTextNode(message);
 
-                let newMessageContentTime = document.createElement('div');
-                newMessageContentTime.className = 'message-time';
-                let today = new Date();
-                let date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
-                let newMessageContentTimeText = document.createTextNode(date);
+                    let newMessageContentTime = document.createElement('div');
+                    newMessageContentTime.className = 'message-time';
+                    let today = new Date();
+                    let date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+                    let newMessageContentTimeText = document.createTextNode(date);
 
-                // Construct message
-                newMessageContentText.appendChild(newMessageContentTextText);
-                newMessageContent.appendChild(newMessageContentText);
+                    // Construct message
+                    newMessageContentText.appendChild(newMessageContentTextText);
+                    newMessageContent.appendChild(newMessageContentText);
 
-                newMessageContentTime.appendChild(newMessageContentTimeText);
-                newMessageContent.appendChild(newMessageContentTime);
+                    newMessageContentTime.appendChild(newMessageContentTimeText);
+                    newMessageContent.appendChild(newMessageContentTime);
 
-                newMessage.appendChild(newMessageContent);
+                    newMessage.appendChild(newMessageContent);
 
-                // Insert message into html
-                document.getElementById('messages-chatSelected').appendChild(newMessage);
-                document.getElementById('messages-chatSelected').lastChild.scrollIntoView();
-                break;
+                    // Insert message into html
+                    document.getElementById('messages-chatSelected').appendChild(newMessage);
+                    document.getElementById('messages-chatSelected').lastChild.scrollIntoView();
+                    break;
 
-            default:
-                alert('Failled to send message');
-                break;
-        }
-    });
+                default:
+                    alert('Failled to send message');
+                    break;
+            }
+        });
 
-    xhttp.addEventListener('error', function (event) {
-        alert('Oops! Something goes wrong.');
-    });
+        xhttp.addEventListener('error', function (event) {
+            alert('Oops! Something goes wrong.');
+        });
 
-    xhttp.open('GET', '../actions/action_message_add.php?' + request, asynchronous);
-    xhttp.send();
-}
+        xhttp.open('GET', '../actions/action_message_add.php?' + request, asynchronous);
+        xhttp.send();
+    }
 
 let messengers = document.getElementsByClassName("message-menu-item desactive");
 for (let i = 0; i < messengers.length; i++) {
     messengers[i].addEventListener('click', changeMenu, false);
 }
-
-function changeMenu(event) {
-    //let userId = messengers[instance].getElementsByClassName("messenger-id")[0].value;
-    let element = event.target
-    alert(element);
-    /*alert('sdf');
-    let xhttp = new XMLHttpRequest();
-    let asynchronous = true;
-    let request = encodeForAjax({ user: userId});
-
-    // Define what happens on successful data submission
-    xhttp.addEventListener('load', function (event) {
-        let response = JSON.parse(this.responseText);
-        switch (response['response']) {
-            case 0:
-                alert('success');
-                break;
-
-            default:
-                alert('Failled to change menu');
-                break;
-        }
-    });
-
-    xhttp.addEventListener('error', function (event) {
-        alert('Oops! Something goes wrong.');
-    });
-
-    xhttp.open('GET', '../messages/messages.php?' + request, asynchronous);
-    xhttp.send();*/
-};

@@ -8,43 +8,38 @@
     </section>
 <?php } ?>
 
-<?php function draw_menu($messengers, $lastMessengerId) { ?>
+<?php function draw_menu($messengers, $userSelected) { ?>
         <section id="messages-search">
       		<input type="text" placeholder="search by name">
 		</section>
 		
     	<section id="messages-menu">
             <?php 
-                $num = 0;  
                 foreach($messengers as $messenger) {
-                    $num += 1;
                     $user = userProfile($messenger['user']);
                     $lastMessage = getLastMessageFromConversation($messenger['user'], $_SESSION['id']);
                     $image = getUserImagePath($user['id'], 'MEDIUM');
 
                     preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/', $lastMessage['date'], $output_array);
                     $date = $output_array[3].'/'.$output_array[2].'/'.$output_array[1];
-                        
-                    if($num == 1) { ?>
-                        <div class="message-menu-item active">
-                    <?php } else { ?>
-                        <div class="message-menu-item desactive">
-                    <?php } ?> 
-                            <img width="60px" height="60px" src="<?=$image?>" alt="default">
-                            <div class="message-menu-item-title">
-                                <?=$user['name']?>
-                            </div>
-                            <div class="message-menu-item-date">
-                                <?=$date?>
-                            </div>
-                            <div class="message-menu-item-lastmsg">
-                                <?=$lastMessage['message']?>
-                            </div>
-                            <input class="messenger-id"hidden value="<?=$user['id']?>">
-                        </div>
+                    ?>    
+                        <a href="../messages/messages.php?user=<?=$messenger['user']?>" class="message-menu-item 
+                            <?=$messenger['user']===$userSelected?'active':'desactive'?>">
+                                <img width="60px" height="60px" src="<?=$image?>" alt="default">
+                                <div class="message-menu-item-title">
+                                    <?=$user['name']?>
+                                </div>
+                                <div class="message-menu-item-date">
+                                    <?=$date?>
+                                </div>
+                                <div class="message-menu-item-lastmsg">
+                                    <?=$lastMessage['message']?>
+                                </div>
+                                <input class="messenger-id"hidden value="<?=$user['id']?>">
+                        </a>
                 <?php } ?>
         </section>
-    <?php draw_conversation($lastMessengerId); ?>
+    <?php draw_conversation($userSelected); ?>
 <?php } ?>
 
 <?php function draw_conversation($messengerId) { 

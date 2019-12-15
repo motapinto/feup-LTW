@@ -1,4 +1,12 @@
 <?php
+    function checkUserId($allMessengers, $user){
+        foreach ($allMessengers as $messenger) {
+            if($messenger['user'] === $user)
+                return true;
+        }
+        return false;
+    }
+
     include_once('../includes/session.php');              // starts session
     include_once('../includes/database.php');             // connects to the database
     include_once('../database/messages.php');             // messages functions
@@ -16,8 +24,8 @@
     $userSelected = $allMessengers[0]['user'];
 
     if(isset($_GET['user'])) {
-        $userSelected = $_GET['user'];
-        htmlentities($userSelected, ENT_QUOTES, 'UTF-8');
+        $userSelected = checkUserId($allMessengers, $_GET['user'])?$_GET['user']:$allMessengers[0]['user'];
+        htmlentities($userSelected, ENT_QUOTES, 'UTF-8');        
     }
 
     draw_header('Messages', 'messages');
