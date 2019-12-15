@@ -76,7 +76,11 @@ function draw_rating($rating) {
 function encodeForAJAX($array){
     print('{');
     foreach ($array as $key => $value) {
-        print(' "'.$key.'"'.':'.$value.' ');
+        if($key == 'response')
+            print(' "'.$key.'"'.' : '.$value.', ');
+        else 
+            print(' "'.$key.'"'.' : "'.$value.'" ');
+
     }
     print('}');
 }

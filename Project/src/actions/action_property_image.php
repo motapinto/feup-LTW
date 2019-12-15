@@ -2,16 +2,25 @@
     include_once('../includes/session.php');       // starts the session
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/images.php');      // properties functions
-    
-    if(!isset($_SESSION['id']))
-        die(header('Location: ../listings/listings_all.php'));                                 // main webpage
-    
-    if(!isset($_FILES['image']) || !isset($_GET['property_id']))
-        die(header('Location: ../listings/listings_all.php'));                                 // main webpage
+    include_once('../templates/tpl_common.php');   // encodeForAJAX
 
     $ret = array('response' => -1);
+
+    if(!isset($_SESSION['id'])){
+        $ret['response'] = -2;
+        encodeForAJAX($ret);
+        exit;
+    }
+        
     
-    $property_id = $_GET['property_id'];
+    if(!isset($_FILES['image']) || !isset($_POST['property_id'])){
+        $ret['response'] = -3;
+        encodeForAJAX($ret);
+        exit;
+    }
+
+    
+    $property_id = $_POST['property_id'];
     // Crete an image representation of the original image
     $original = imagecreatefrompng($_FILES['image']['tmp_name']);
     if($original === false){
@@ -81,6 +90,7 @@
     imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
     imagepng($medium, $mediumFileName);
 
-    
     $ret['response'] = 0;
+    $ret['name'] = $name;
+    encodeForAJAX($ret);
 ?>

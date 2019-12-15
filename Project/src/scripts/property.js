@@ -177,19 +177,21 @@ function addPic(files) {
     let asynchronous = true;
 
     let id = document.getElementById('id').value;
-    let request = encodeForAjax({ image: files, property_id: id});
+    let data = new FormData();
+    data.append('image', files[0]);
+    data.append('property_id', id);
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
 
         switch (response['response']) {
-            case 0:
-                alert('SUCCESS')
+            case -1:
+                alert('FAIL')
                 break;
 
-            default:
-                alert('FAIL')
+            case 0:
+                // document.getElementById('galleria').innerHTML += '<a href="../../assets/images/properties/o_' + response.name + '.png">< img src = "../../assets/images/properties/o_' + response.name + '.png" /></a >';
                 break;
         }
     });
@@ -198,8 +200,8 @@ function addPic(files) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_property_image.php?' + request, asynchronous);
-    xhttp.send();
+    xhttp.open('POST', '../actions/action_property_image.php');
+    xhttp.send(data);
 }
 
 //  Removes last/selected property image
