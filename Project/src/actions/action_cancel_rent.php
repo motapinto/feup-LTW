@@ -21,17 +21,22 @@
         die();
     }
 
+    $init = $rent['initial_date'];
+    $fin = $rent['final_date'];
+    $title = $rent['title'];
+
+
     if(!isset($_GET['owner'])){
-        cancelRent($id);
-        $init = $rent['initial_date'];
-        $fin = $rent['final_date'];
-        $title = $rent['title'];
-        addMessage($rent['owner'], $_SESSION['id'], "I have canceled my reservation of the property $title between the days $init and $fin.");
-        $ret['response'] = 0;
+        if(cancelRent($id)) {
+            addMessage($rent['owner'], $_SESSION['id'], "I have canceled my reservation of the property $title between the days $init and $fin.");
+            $ret['response'] = 0;
+        }
     }
     else if ($_SESSION['id'] === $rent['owner']){
-        addMessage($_SESSION['id'], $rent['user_id'], "I have canceled your reservation of the property $title between the days $init and $fin.");
-        $ret['response'] = 0;
+        if(cancelRent($id)) {
+            addMessage($_SESSION['id'], $rent['owner'], "I have canceled your reservation of the property $title between the days $init and $fin.");
+            $ret['response'] = 0;
+        }
     }
     else {
         $ret['response'] = -1;

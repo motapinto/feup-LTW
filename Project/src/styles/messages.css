@@ -6,8 +6,8 @@
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 6fr 1fr;
     background: #fff;
-    max-height: 53em;
-    margin-top: 0.8em;
+    max-height: 39em;
+    margin-top: 0.1em;
 }
 
 #messages-search {

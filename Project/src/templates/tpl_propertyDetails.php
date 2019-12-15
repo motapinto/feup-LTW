@@ -12,6 +12,8 @@
                     <article>
                         <p>Title</p>
                         <?php if($id != null) { ?>
+                            <input id="id" type="hidden" value="<?=$property['id']?>">
+                            <input id="my-id" type="hidden" value="<?=$_SESSION['id']?>">
                             <input value="<?=$property['title']?>" type="text" id="title" placeholder="Title">
                         <?php }  
                             else { ?>
@@ -21,9 +23,7 @@
                     <article>
                         <p>Description</p>
                         <?php if($id != null) { ?>
-                            <textarea name="description" id="description" cols="50" rows="10" placeholder="Briefe description of the property">
-                                <?=$property['description']?>
-                            </textarea>
+                            <textarea name="description" id="description" cols="50" rows="10" placeholder="Briefe description of the property"><?=$property['description']?></textarea>
                         <?php }  
                             else { ?>
                             <textarea id="description" cols="50" rows="10"  placeholder="Briefe description of the property"></textarea>
@@ -124,7 +124,7 @@
                                     <span class="overview-price"> Total: <?= $rent['price'] ?>&euro; </span>
                                     <span class="overview-guests"> Guests: <?=$rent['adults'] + $rent['children'] + $rent['babies'] ?> </span>
                                     <?php if(strcmp($date_init_array[1].'-'.$date_init_array[2].'-'.$date_init_array[3], $now) > 0) { ?>
-                                            <input id="rent_id" type="hidden" value="<?=$rent['id']?>">
+                                            <input class="rent-id" type="hidden" value="<?=$rent['id']?>">
                                             <button class="cancel-button"> Cancel </button>
                                     <?php } ?>
                                 </div>
