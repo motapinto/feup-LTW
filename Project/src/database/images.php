@@ -35,16 +35,6 @@
         }
     }
 
-    function deletePropertyImageIndex($property, $index){
-        $db = Database::instance()->db();
-
-        $stmt = $db->prepare( 'DELETE FROM Image 
-                               WHERE property_id = ?
-                               LIMIT 1 OFFSET 3;');
-        $stmt->execute(array($property, $index));
-        return $stmt->fetchAll();
-    }
-
     //Returns all images for a property with id = id
     function getImagesByPropertyId($id){
         $db = Database::instance()->db();
