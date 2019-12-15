@@ -6,11 +6,10 @@
     }
     ?>
     <section id='addProperty'>
-        <h2>Property Details</h2>        
-            <section id="property-important">
+        <section id="property-important">
                 <article id="property-main">
                     <article>
-                        <p>Title</p>
+                        <label>Title</label>
                         <?php if($id != null) { ?>
                             <input value="<?=$property['title']?>" type="text" id="title" placeholder="Title">
                         <?php }  
@@ -19,7 +18,7 @@
                         <?php } ?>
                     </article>
                     <article>
-                        <p>Description</p>
+                        <label>Description</label>
                         <?php if($id != null) { ?>
                             <textarea name="description" id="description" cols="50" rows="10" placeholder="Briefe description of the property">
                                 <?=$property['description']?>
@@ -31,27 +30,6 @@
                     </article>
                 </article>
 
-                <?php 
-                    $images = getImagePathsByPropertyId($id);
-                    foreach($images as $image) { ?>
-                    <article id="property-images">
-                        <div id="change-pics">
-                            <input id='add-pic-upload' type='file' hidden/>
-                            <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
-                            <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div id="galleria">
-                            <a href="<?=$image?>">
-                                <img title="Image Tile - feature in progress"
-                                alt="Image description - feature in progress"
-                                src="<?=$image?>" />
-                            </a>
-                        </div>
-                    </article>
-                <?php } ?>
-            </section>
-            
-            <section id="property-info">
                 <article id="property-details">
                     <?php if($id != null) { ?>
                         <label> Price (&euro;/night)</label>
@@ -94,6 +72,29 @@
 
                     <button id="add-button" class="no-button">Update Property</button>
                 </article>
+                
+            </section>
+            
+            <section id="property-info">
+
+                <?php 
+                    $images = getImagePathsByPropertyId($id);
+                    foreach($images as $image) { ?>
+                    <article id="property-images">
+                        <div id="change-pics">
+                            <input id='add-pic-upload' type='file' hidden/>
+                            <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
+                            <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div id="galleria">
+                            <a href="<?=$image?>">
+                                <img title="Image Tile - feature in progress"
+                                alt="Image description - feature in progress"
+                                src="<?=$image?>" />
+                            </a>
+                        </div>
+                    </article>
+                    <?php } ?>
 
                 <article id="property-history">
                     <h1>Rent history </h1>

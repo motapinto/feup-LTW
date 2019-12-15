@@ -58,22 +58,17 @@
 /* ADD A NEW PROPERTY */
 
 #addProperty {
-    margin-left: 5%;
+    margin-left: 3em;
+    margin-top: 3em;
+    display: grid;
+    grid-template-areas: 'main info';
+    grid-template-columns: 25% 75%;
 }
 
 #property-important {
-    display: flex;
-    flex-direction: row;
-}
-
-#property-main {
+    grid-area: main;
     display: flex;
     flex-direction: column;
-    width: 30em;
-}
-
-#property-images {
-    margin-left: 10%;
 }
 
 #property-main input, textarea,
@@ -83,6 +78,7 @@
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
     text-align: center;
+    margin-bottom: 2em;
 }
 
 #property-main textarea {
@@ -90,30 +86,20 @@
 }
 
 #property-info {
-    display: flex;
-    flex-direction: row;
-}
-
-#property-details {
+    grid-area: info;
     display: flex;
     flex-direction: column;
-    width: 30em;
+    margin-left: 5em;
+    margin-right: 5%;
 }
 
-#property-details input {
-    margin-bottom: 5%;
-} 
-
-/*  OWNER MANAGMENT AREA*/
 #property-history {
     overflow-y: scroll;
-    margin-left: 10%;
-    width: 30em;
 }
 
 .scrollable-history {
     overflow-y: scroll;
-    max-height: 25em;
+    max-height: 13em;
     padding-left: 0;
 }
 
@@ -190,8 +176,9 @@
 }
 
 #galleria {
-    height: 20em; 
-    width: 20em;
+    height: 30em; 
+    width: 30em;
+    margin-left: 3em;
 }
 
 
