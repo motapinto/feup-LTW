@@ -31,24 +31,24 @@
                     </article>
                 </article>
 
-                <?php 
-                    $images = getImagePathsByPropertyId($id);
-                    foreach($images as $image) { ?>
-                    <article id="property-images">
-                        <div id="change-pics">
-                            <input id='add-pic-upload' type='file' hidden/>
-                            <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
-                            <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div id="galleria">
+                <article id="property-images">
+                    <div id="change-pics">
+                        <input id='add-pic-upload' type='file' hidden/>
+                        <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
+                        <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div id="galleria">
+                        <?php 
+                        $images = getImagePathsByPropertyId($id);
+                        foreach($images as $image) { ?>
                             <a href="<?=$image?>">
                                 <img title="Image Tile - feature in progress"
                                 alt="Image description - feature in progress"
                                 src="<?=$image?>" />
                             </a>
-                        </div>
-                    </article>
-                <?php } ?>
+                        <?php } ?>
+                    </div>
+                </article>
             </section>
             
             <section id="property-info">
@@ -74,7 +74,7 @@
                     <?php }  
                         else { ?>
                         <label> Price (&euro;/night)</label>
-                        <input type="number" id="price_day" placeholder="Price per Day" >
+                        <input type="number" id="price" placeholder="Price per Day" >
                         <label> Guests </label>
                         <input type="number" id="guests" placeholder="Number of Guests" >
                         <label> City </label>
@@ -84,7 +84,7 @@
                         <label> Door number </label> 
                         <input type="number" id="door_number" placeholder='Door Number' >
                         <label> Apartment number(if applicable) </label>    
-                        <input type="text" id="apartment_number" placeholder='Apartment Number'>
+                        <input type="text" id="apart_number" placeholder='Apartment Number'>
                         <label> Property type </label>
                         <select id="property_type" >
                             <option value="0">House</option>

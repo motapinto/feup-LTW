@@ -10,7 +10,7 @@
         die(header('Location: ../listings/listings_all.php'));                                 // main webpage
 
     $property_id = $_POST['property_id'];
-    print_r($property_id);
+
     // Crete an image representation of the original image
     $original = imagecreatefrompng($_FILES['image']['tmp_name']);
     if($original === false){
