@@ -9,6 +9,8 @@
     if(!isset($_FILES['image']) || !isset($_GET['property_id']))
         die(header('Location: ../listings/listings_all.php'));                                 // main webpage
 
+    $ret = array('response' => -1);
+    
     $property_id = $_GET['property_id'];
     // Crete an image representation of the original image
     $original = imagecreatefrompng($_FILES['image']['tmp_name']);
@@ -43,8 +45,7 @@
         }
     }
     if($original === false){
-        $_SESSION['msg'] = 'File is not an image, please choose a valid image';
-        die();
+        $ret['response'] = -1;
     }
 
     $name = generate_random_token();
@@ -81,5 +82,5 @@
     imagepng($medium, $mediumFileName);
 
     
-    header("Location: ../properties/add_property_image.php?id=$property_id");
+    $ret['response'] = 0;
 ?>
