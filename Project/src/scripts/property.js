@@ -196,7 +196,7 @@ function changePic(files) {
         let response = JSON.parse(this.responseText);
         alert(response['response'])
 
-        switch (response['response']) {
+        /*switch (response['response']) {
             case 0:
                 if(files != null)
                     //galleria.push({image: response['name']})
@@ -207,7 +207,7 @@ function changePic(files) {
             default:
                 //error
                 break;
-        }
+        }*/
     });
 
     xhttp.addEventListener('error', function (event) {
