@@ -168,16 +168,16 @@ document.getElementById('add-pic').onclick = function (event) {
     document.getElementById('add-pic-upload').click(); 
 }
 
-document.getElementById('add-pic-upload').onchange = function () { addPic("<?php echo $id ?>", this.files); };
+document.getElementById('add-pic-upload').onchange = function () { addPic(this.files); };
 
 document.getElementById('remove-pic').onclick = function () { removePic(); };
 
-function addPic(id, files) {
+function addPic(files) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
+    let id = document.getElementById('id').value;
     let request = encodeForAjax({ image: files, property_id: id});
-    alert(request);
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
