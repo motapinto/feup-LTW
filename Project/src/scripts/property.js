@@ -163,19 +163,21 @@ function checkText(id) {
     }
 }
 
+//  Add/Remove pcitures of property's
 document.getElementById('add-pic').onclick = function (event) { 
     document.getElementById('add-pic-upload').click(); 
 }
 
-document.getElementById('add-pic-upload').onchange = function () { addPic(this.files); };
+document.getElementById('add-pic-upload').onchange = function () { addPic("<?php echo $id ?>", this.files); };
 
 document.getElementById('remove-pic').onclick = function () { removePic(); };
 
-function addPic(files) {
+function addPic(id, files) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
-    let request = encodeForAjax({ image: files});
+    let request = encodeForAjax({ image: files, property_id: id});
+    alert(request);
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
@@ -196,7 +198,7 @@ function addPic(files) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('FILES', '../actions/action_property_image.php?' + request, asynchronous);
+    xhttp.open('GET', '../actions/action_property_image.php?' + request, asynchronous);
     xhttp.send();
 }
 
