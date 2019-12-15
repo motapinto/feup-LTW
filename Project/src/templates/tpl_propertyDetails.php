@@ -81,7 +81,7 @@
                     <div id="change-pics">
                         <input id='add-pic-upload' type='file' hidden/>
                         <button id="add-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
-                        <button id="remove-pic" class="pics-btns"><i class="fas fa-minus"></button>
+                        <button id="remove-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
                     </div>
                     <div id="galleria">
                     <?php 
@@ -94,7 +94,7 @@
                             </a>
                     <?php } ?>
                     </div>
-                    </article>
+                </article>
 
                 <article id="property-history">
                     <h1>Rent history </h1>
