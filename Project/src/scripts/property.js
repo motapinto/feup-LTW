@@ -5,6 +5,19 @@ $(document).ready(function () {
     Galleria.run('#galleria');
 });
 
+Galleria.ready(function(options) {
+
+    let gallery = Galleria.get(0);
+    
+    $('#remove-pic').bind("click", function(){
+        let index = gallery.getIndex();
+        removePic(index);
+    });
+
+    $('#add-pic').bind("click", function(){
+        gallery.push({ image: 'image1.jpg' }); // adds an image to the gallery
+    });
+});
 
 document.getElementById("add-button").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
@@ -145,7 +158,7 @@ function checkString(id) {
 }
 
 function checkText(id) {
-    let text = new RegExp("^(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]*$");
+    let text = new RegExp("^(?=.*[\w].*)[\w!@#$%&*]*$");
     let isLegal = text.test(document.getElementById(id).value);
 
     if(isLegal) {
@@ -187,11 +200,10 @@ function addPic(files) {
 
         switch (response['response']) {
             case -1:
-                alert('FAIL')
                 break;
 
             case 0:
-                // document.getElementById('galleria').innerHTML += '<a href="../../assets/images/properties/o_' + response.name + '.png">< img src = "../../assets/images/properties/o_' + response.name + '.png" /></a >';
+
                 break;
         }
     });
@@ -200,13 +212,13 @@ function addPic(files) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('POST', '../actions/action_property_image.php');
+    xhttp.open('POST', '../actions/action_property_image.php', asynchronous);
     xhttp.send(data);
 }
 
 //  Removes last/selected property image
-function removePic() {
-    // deleteImage(?, 'PROPERTY')
+function removePic(index) {
+    alert(index);
 }
 
 setCancelActions();
