@@ -149,9 +149,11 @@
 }
 
 .message-text {
-    padding: 0.5em 1em;
+    padding: 1% 2%;
     font-size: 1.2em;
+    max-width: 97%;
     overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 .message-time {
