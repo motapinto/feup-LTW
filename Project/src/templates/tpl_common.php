@@ -10,15 +10,9 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">           
             <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
             <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>~
+            <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
             <!--****************************** GALLERIA *********************************-->
             <script src="../../assets/galleria/src/galleria.js"></script>
-            <script>
-                $(document).ready(function(){
-                    Galleria.loadTheme('../../assets/galleria/src/themes/classic/galleria.classic.js');
-                    Galleria.run('#galleria');
-                });
-            </script>
             <!--**************************** DATE RANGE ******************************-->
             <script type="text/javascript" src="../../assets/daterange/moment.min.js"></script>
             <script type="text/javascript" src="../../assets/daterange/daterangepicker.js"></script>

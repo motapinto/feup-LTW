@@ -20,8 +20,6 @@
         htmlentities($userSelected, ENT_QUOTES, 'UTF-8');
     }
 
-    print_r($userSelected);
-
     draw_header('Messages', 'messages');
     draw_navBar(4);
     $messengers = getAllMessengers($_SESSION['id']);      // gets all users that have exchange messages with from the database 

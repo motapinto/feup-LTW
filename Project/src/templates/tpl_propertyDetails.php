@@ -6,73 +6,29 @@
     }
     ?>
     <section id='addProperty'>
+        <h2>Property Details</h2>        
         <section id="property-important">
-                <article id="property-main">
-                    <article>
-                        <label>Title</label>
-                        <?php if($id != null) { ?>
-                            <input id="id" type="hidden" value="<?=$property['id']?>">
-                            <input id="my-id" type="hidden" value="<?=$_SESSION['id']?>">
-                            <input value="<?=$property['title']?>" type="text" id="title" placeholder="Title">
-                        <?php }  
-                            else { ?>
-                            <input type="text" id="title" placeholder="Title">
-                        <?php } ?>
-                    </article>
-                    <article>
-                        <label>Description</label>
-                        <?php if($id != null) { ?>
-                            <textarea name="description" id="description" cols="50" rows="10" placeholder="Briefe description of the property"><?=$property['description']?></textarea>
-                        <?php }  
-                            else { ?>
-                            <textarea id="description" cols="50" rows="10"  placeholder="Briefe description of the property"></textarea>
-                        <?php } ?>
-                    </article>
-                </article>
-
-                <article id="property-details">
+            <article id="property-main">
+                <article>
+                    <p>Title</p>
                     <?php if($id != null) { ?>
-                        <label> Price (&euro;/night)</label>
-                        <input value="<?=$property['price_day']?>" type="text" id="price" >
-                        <label> Guests </label>
-                        <input value="<?=$property['guests']?>" type="number" id="guests" min="1" >
-                        <label> City </label>
-                        <input value="<?=$property['city']?>" type="text" id="city" min="1" >
-                        <label> Street </label>
-                        <input value="<?=$property['street']?>" type="text" id="street" >
-                        <label> Door number </label>
-                        <input value="<?=$property['door_number']?>" type="text" id="door_number" >
-                        <label> Apartment number(if applicable) </label>
-                        <input value="<?=$property['apartment_number']?>" type="number" id="apart_number" min='1' >
-                        <label> Property type </label>
-                        <select value="<?=$property['property_type']?>" id="property_type" >
-                            <option value="0" <?=(isset($property['property_type'])&&$property['property_type']==0)?'selected':''?>>House</option>
-                            <option value="1" <?=(isset($property['property_type'])&&$property['property_type']==1)?'selected':''?>>Apartment</option>
-                        </select>
+                        <input id="id" type="hidden" value="<?=$property['id']?>">
+                        <input id="my-id" type="hidden" value="<?=$_SESSION['id']?>">
+                        <input value="<?=$property['title']?>" type="text" id="title" placeholder="Title">
                     <?php }  
                         else { ?>
-                        <label> Price (&euro;/night)</label>
-                        <input type="number" id="price_day" placeholder="Price per Day" >
-                        <label> Guests </label>
-                        <input type="number" id="guests" placeholder="Number of Guests" >
-                        <label> City </label>
-                        <input type="text" id="city" placeholder='City' >
-                        <label> Street </label>
-                        <input type="text" id="street" placeholder='Street' >
-                        <label> Door number </label> 
-                        <input type="number" id="door_number" placeholder='Door Number' >
-                        <label> Apartment number(if applicable) </label>    
-                        <input type="text" id="apartment_number" placeholder='Apartment Number'>
-                        <label> Property type </label>
-                        <select id="property_type" >
-                            <option value="0">House</option>
-                            <option value="1">Apartment</option>
-                        </select>
+                        <input type="text" id="title" placeholder="Title">
                     <?php } ?>
-
-                    <button id="add-button" class="no-button">Update Property</button>
                 </article>
-                
+                <article>
+                    <p>Description</p>
+                    <?php if($id != null) { ?>
+                        <textarea name="description" id="description" cols="50" rows="10" placeholder="Briefe description of the property"><?=$property['description']?></textarea>
+                    <?php }  
+                        else { ?>
+                        <textarea id="description" cols="50" rows="10"  placeholder="Briefe description of the property"></textarea>
+                    <?php } ?>
+                </article>
         </section>
             
         <section id="property-info">

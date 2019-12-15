@@ -1,3 +1,10 @@
+'use strict';
+
+$(document).ready(function () {
+    Galleria.loadTheme('../../assets/galleria/src/themes/classic/galleria.classic.js');
+    Galleria.run('#galleria');
+});
+
 
 document.getElementById("add-button").onclick = function (event) {
     let xhttp = new XMLHttpRequest();

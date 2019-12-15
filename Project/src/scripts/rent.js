@@ -18,6 +18,12 @@ $(function () {
     });
 });
 
+$(document).ready(function () {
+    Galleria.loadTheme('../../assets/galleria/src/themes/classic/galleria.classic.js');
+    Galleria.run('#galleria');
+});
+
+
 document.getElementById('adults-add').onclick = function (event) { guestsChange(ADULTS, ADD) }
 document.getElementById('adults-sub').onclick = function (event) { guestsChange(ADULTS, SUB) }
 document.getElementById('children-add').onclick = function (event) { guestsChange(CHILDREN, ADD) }

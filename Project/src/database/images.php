@@ -58,7 +58,6 @@
 
     // Adds an image path to the database
     function addImage($property_id, $name){
-        print_r($property_id); print('\n');print_r($name);
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO Image (property_id, name)

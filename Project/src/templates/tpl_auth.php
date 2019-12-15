@@ -30,6 +30,7 @@
             <span id="msg-age"></span> 
             <span id="msg-email"></span> 
             <span id="msg-password1"></span> 
+            <span id="msg-password2"></span> 
             <a href="#">Forgot your password?</a>
             <button type="submit" class="btn" id="signup-btn">SIGN UP</button>
             <button type="submit" class="btn" id="login-btn">LOG IN</button>
