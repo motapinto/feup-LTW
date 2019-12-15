@@ -85,6 +85,7 @@
 #property-main textarea {
     width: 100%;
     border-radius: 5px;
+    margin-bottom: 2em;
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
 }
@@ -100,7 +101,6 @@
 #property-details input {
     margin-bottom: 5%;
 }
-
 
 /*  OWNER MANAGMENT AREA*/
 
@@ -187,6 +187,6 @@
 }
 
 #galleria {
-    height: 20em;
-    width: 20em;
+    height: 30em;
+    width: 30em;
 }

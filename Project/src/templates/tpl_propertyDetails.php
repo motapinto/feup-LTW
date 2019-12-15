@@ -73,28 +73,28 @@
                     <button id="add-button" class="no-button">Update Property</button>
                 </article>
                 
-            </section>
+        </section>
             
             <section id="property-info">
 
-                <?php 
+                <article id="property-images">
+                    <div id="change-pics">
+                        <input id='add-pic-upload' type='file' hidden/>
+                        <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
+                        <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div id="galleria">
+                    <?php 
                     $images = getImagePathsByPropertyId($id);
                     foreach($images as $image) { ?>
-                    <article id="property-images">
-                        <div id="change-pics">
-                            <input id='add-pic-upload' type='file' hidden/>
-                            <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
-                            <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div id="galleria">
                             <a href="<?=$image?>">
                                 <img title="Image Tile - feature in progress"
                                 alt="Image description - feature in progress"
                                 src="<?=$image?>" />
                             </a>
-                        </div>
-                    </article>
                     <?php } ?>
+                    </div>
+                    </article>
 
                 <article id="property-history">
                     <h1>Rent history </h1>

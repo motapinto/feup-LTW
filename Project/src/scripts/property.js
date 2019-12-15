@@ -50,9 +50,9 @@ document.getElementById("add-button").onclick = function (event) {
     xhttp.send();
 }
 
-document.getElementById('price').onkeyup = function (event) { checkText('title'); }
+document.getElementById('title').onkeyup = function (event) { checkText('title'); }
 
-document.getElementById('price').onkeyup = function (event) { checkText('description'); }
+document.getElementById('description').onkeyup = function (event) { checkText('description'); }
 
 document.getElementById('price').onkeyup = function (event) { checkPrice(); }
 
