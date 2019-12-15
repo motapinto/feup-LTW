@@ -1,10 +1,13 @@
 'use strict';
 
+let galleria;
+
 $(document).ready(function () {
     Galleria.loadTheme('../../assets/galleria/src/themes/classic/galleria.classic.js');
     Galleria.run('#galleria');
-});
 
+    galleria = Galleria.get(0);
+});
 
 document.getElementById("add-button").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
@@ -145,7 +148,7 @@ function checkString(id) {
 }
 
 function checkText(id) {
-    let text = new RegExp("^(?=.*[a-zA-Z\d].*)[a-zA-Z\d!@#$%&*]*$");
+    let text = new RegExp("^(?=.*[\w].*)[\w!@#$%&*]*$");
     let isLegal = text.test(document.getElementById(id).value);
 
     if(isLegal) {
@@ -168,45 +171,51 @@ document.getElementById('add-pic').onclick = function (event) {
     document.getElementById('add-pic-upload').click(); 
 }
 
-document.getElementById('add-pic-upload').onchange = function () { addPic(this.files); };
+document.getElementById('add-pic-upload').onchange = function () { changePic(this.files); };
 
-document.getElementById('remove-pic').onclick = function () { removePic(); };
+document.getElementById('remove-pic').onclick = function () { changePic(null); };
 
-function addPic(files) {
+function changePic(files) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
     let id = document.getElementById('id').value;
     let data = new FormData();
-    data.append('image', files[0]);
+
+    if(files === null && galleria != undefined) {
+        data.append('index', galleria.getIndex());
+    }
+    else {
+        data.append('image', files[0]);
+    }
+
     data.append('property_id', id);
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
+        alert(response['response'])
 
-        switch (response['response']) {
-            case -1:
-                alert('FAIL')
-                break;
-
+        /*switch (response['response']) {
             case 0:
-                // document.getElementById('galleria').innerHTML += '<a href="../../assets/images/properties/o_' + response.name + '.png">< img src = "../../assets/images/properties/o_' + response.name + '.png" /></a >';
+                if(files != null)
+                    //galleria.push({image: response['name']})
+                else
+                    // remove form gallery
                 break;
-        }
+
+            default:
+                //error
+                break;
+        }*/
     });
 
     xhttp.addEventListener('error', function (event) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('POST', '../actions/action_property_image.php');
+    xhttp.open('POST', '../actions/action_property_image.php', asynchronous);
     xhttp.send(data);
-}
-
-//  Removes last/selected property image
-function removePic() {
-    // deleteImage(?, 'PROPERTY')
 }
 
 setCancelActions();

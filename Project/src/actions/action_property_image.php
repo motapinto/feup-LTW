@@ -13,12 +13,28 @@
     }
         
     
-    if(!isset($_FILES['image']) || !isset($_POST['property_id'])){
+    if(!isset($_POST['property_id'])){
         $ret['response'] = -3;
         encodeForAJAX($ret);
         exit;
     }
 
+    $property_id = $_POST['property_id'];
+    htmlentities($property_id, ENT_QUOTES, 'UTF-8');
+
+    if(isset($_POST['index'])) {
+        $index = $_POST['index'];
+        htmlentities($index, ENT_QUOTES, 'UTF-8');
+        $ret['response'] = deletePropertyImageIndex($property_id, $index);
+        encodeForAJAX($ret);
+        exit;
+    }
+
+    if(!isset($_FILES['image'])){
+        $ret['response'] = -3;
+        encodeForAJAX($ret);
+        exit;
+    }
     
     $property_id = $_POST['property_id'];
     // Crete an image representation of the original image
