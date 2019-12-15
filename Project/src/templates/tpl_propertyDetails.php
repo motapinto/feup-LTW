@@ -80,8 +80,8 @@
                 <article id="property-images">
                     <div id="change-pics">
                         <input id='add-pic-upload' type='file' hidden/>
-                        <button id="add-pic" class="pics-btns"><i class="fas fa-minus"></i></button>
-                        <button id="remove-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
+                        <button id="add-pic" class="pics-btns"><i class="fas fa-plus"></i></button>
+                        <button id="remove-pic" class="pics-btns"><i class="fas fa-minus"></button>
                     </div>
                     <div id="galleria">
                     <?php 
