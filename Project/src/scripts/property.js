@@ -12,7 +12,7 @@ document.getElementById("add-button").onclick = function (event) {
     let door_number = document.getElementById('door_number').value;
     let apartment_number = document.getElementById('apart_number').value;
     let property_type = document.getElementById('property_type').value;
-    let property_id = document.getElementById('rent_id').value;
+    let property_id = document.getElementById('id').value;
 
     let request = encodeForAjax({ 
         title: title, 
@@ -173,7 +173,7 @@ function addPic(files) {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
-        alert(response['response']);
+
         switch (response['response']) {
             case 0:
                 alert('SUCCESS')
@@ -195,5 +195,48 @@ function addPic(files) {
 
 //  Removes last/selected property image
 function removePic() {
-    deleteImage(?, 'PROPERTY')
+    // deleteImage(?, 'PROPERTY')
+}
+
+setCancelActions();
+
+function setCancelActions() {
+    let rents = document.getElementsByClassName('cancel-button');
+    for (let i = 0; i < rents.length; i++) {
+        rents[i].onclick = function (event) {
+            cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value));
+        };
+    }
+}
+
+// Cancels rent with id
+function cancelRent(id) {
+    let xhttp = new XMLHttpRequest();
+    let asynchronous = true;
+
+    let request = encodeForAjax({
+        id: id,
+        owner: document.getElementById('my-id')
+    });
+
+
+    // Define what happens on successful data submission
+    xhttp.addEventListener('load', function (event) {
+        let response = JSON.parse(this.responseText);
+        if (response['response'] === 0) {
+            let rents = document.getElementsByClassName('rent-id');
+            for (let i = 0; i < rents.length; i++) {
+                if (parseInt(rents.item(i).value) === id) {
+                    let elements = document.getElementsByClassName('history-item');
+                    elements[i].parentNode.removeChild(elements[i]);
+                }
+            }
+            setCancelActions();
+        }
+    });
+
+
+    xhttp.open('GET', '../actions/action_cancel_rent.php?' + request, asynchronous);
+    xhttp.send();
+
 }

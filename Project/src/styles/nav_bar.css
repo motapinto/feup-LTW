@@ -31,7 +31,7 @@
     width: 20em;
     display: block;
     padding-right: 20em;
-    height: 3em;
+    /* height: 3em; */
 }
 
 #search-bar {

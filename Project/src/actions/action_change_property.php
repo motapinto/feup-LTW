@@ -2,8 +2,9 @@
     include_once('../includes/session.php');       // starts the session
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/listings.php');      // properties functions
-    
-    $ret = array('response' => '');
+    include_once('../templates/tpl_common.php');    // encodeForAJAX
+
+    $ret = array('response' => -2);
         
     $title = $_GET['title'];
     $description = $_GET['description'];
@@ -15,10 +16,11 @@
     $apartment_number = $_GET['apartment_number'];
     $property_type = $_GET['property_type'];
 
+
     if(!isset($title) || !isset($description) || !isset($price_day) || !isset($guests) ||
     !isset($city) || !isset($street) || !isset($door_number) || !isset($apartment_number) ||
-    !isset($property_type)) {
-        $ret['response'] = -2;
+    !isset($property_type) || !isset($_SESSION['id'])) {
+        encodeForAJAX($ret);
         return;
     }
 
@@ -36,7 +38,7 @@
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
 
-        $ret['response'] = changeListing($id, $title, $description, 
+        $ret['response'] = changeListing($id, $_SESSION['id'], $title, $description, 
             $price_day, $guests, $city,
             $street, $door_number, $apartment_number,
             $property_type);

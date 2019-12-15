@@ -50,7 +50,7 @@
         return $db->lastInsertId();
     }
 
-    function changeListing($id, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type) {
+    function changeListing($id, $owner, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type) {
         $db = Database::instance()->db();
             
         $stmt = $db->prepare('UPDATE Property
@@ -63,11 +63,12 @@
                             door_number = ?,
                             apartment_number = ?,
                             property_type = ?
-                            WHERE id = ?');
-        $stmt->execute(array($id, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type));
+                            WHERE id = ? AND user_id = ?');
+        $stmt->execute(array($title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type, $id, $owner));
         
         $changed = $stmt->fetch();
-        return !$changed?-1:0;
+
+        return !$changed?0:-1;
     }
     
     // Returns listing with id = id
