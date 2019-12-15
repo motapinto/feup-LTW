@@ -95,10 +95,12 @@
     padding-left: 0.6em;
     border-bottom: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
+    max-width: 80%;
 }
 
 #messages-chatTitle span {
     margin-left: 0.3em;
+    width: fit-content;
 }
 
 #messages-chatTitle>img {
@@ -108,7 +110,9 @@
 
 #messages-chatSelected {
     grid-area: messages-chatSelected;
-    padding: 2em 1em;
+    padding: 2% 2%;
+    width: 96%;
+    max-width: 100%;
     overflow-y: scroll;
     border-left: solid 1px rgb(236, 234, 234);
 }

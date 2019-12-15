@@ -59,8 +59,3 @@ if (document.getElementById("sendMessage"))
         xhttp.open('GET', '../actions/action_message_add.php?' + request, asynchronous);
         xhttp.send();
     }
-
-let messengers = document.getElementsByClassName("message-menu-item desactive");
-for (let i = 0; i < messengers.length; i++) {
-    messengers[i].addEventListener('click', changeMenu, false);
-}
