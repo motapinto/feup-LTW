@@ -1,22 +1,12 @@
 'use strict';
 
+let galleria;
+
 $(document).ready(function () {
     Galleria.loadTheme('../../assets/galleria/src/themes/classic/galleria.classic.js');
     Galleria.run('#galleria');
-});
 
-Galleria.ready(function(options) {
-
-    let gallery = Galleria.get(0);
-    
-    $('#remove-pic').bind("click", function(){
-        let index = gallery.getIndex();
-        removePic(index);
-    });
-
-    $('#add-pic').bind("click", function(){
-        gallery.push({ image: 'image1.jpg' }); // adds an image to the gallery
-    });
+    galleria = Galleria.get(0);
 });
 
 document.getElementById("add-button").onclick = function (event) {
@@ -181,29 +171,41 @@ document.getElementById('add-pic').onclick = function (event) {
     document.getElementById('add-pic-upload').click(); 
 }
 
-document.getElementById('add-pic-upload').onchange = function () { addPic(this.files); };
+document.getElementById('add-pic-upload').onchange = function () { changePic(this.files); };
 
-document.getElementById('remove-pic').onclick = function () { removePic(); };
+document.getElementById('remove-pic').onclick = function () { changePic(null); };
 
-function addPic(files) {
+function changePic(files) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
     let id = document.getElementById('id').value;
     let data = new FormData();
-    data.append('image', files[0]);
+
+    if(files === null && galleria != undefined) {
+        data.append('index', galleria.getIndex());
+    }
+    else {
+        data.append('image', files[0]);
+    }
+
     data.append('property_id', id);
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
+        alert(response['response'])
 
         switch (response['response']) {
-            case -1:
+            case 0:
+                if(files != null)
+                    //galleria.push({image: response['name']})
+                else
+                    // remove form gallery
                 break;
 
-            case 0:
-
+            default:
+                //error
                 break;
         }
     });
@@ -214,11 +216,6 @@ function addPic(files) {
 
     xhttp.open('POST', '../actions/action_property_image.php', asynchronous);
     xhttp.send(data);
-}
-
-//  Removes last/selected property image
-function removePic(index) {
-    alert(index);
 }
 
 setCancelActions();
