@@ -95,12 +95,15 @@
     padding-left: 0.6em;
     border-bottom: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
-    max-width: 80%;
+    max-width: 100%;
 }
 
 #messages-chatTitle span {
     margin-left: 0.3em;
-    width: fit-content;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 #messages-chatTitle>img {
