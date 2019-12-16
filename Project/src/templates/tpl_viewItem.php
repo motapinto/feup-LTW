@@ -63,7 +63,7 @@
                     </p>
                     <i id='rent-star' class='material-icons'> star</i>
                     <span class='rent-rating_comments'>
-                        <?=$item['rating']?>
+                        <?=floor ($item['rating'])?>
                         (<?=numberCommentsByProperty($item['id'])?> comments)
                     </span>
                 </header>
