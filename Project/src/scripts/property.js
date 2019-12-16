@@ -196,18 +196,18 @@ function changePic(files) {
         let response = JSON.parse(this.responseText);
         alert(response['response'])
 
-        /*switch (response['response']) {
+        switch (response['response']) {
             case 0:
                 if(files != null)
-                    //galleria.push({image: response['name']})
+                    galleria.push({image: response['name']})
                 else
-                    // remove form gallery
+                    galleria.splice(galleria.getIndex(), galleria.getIndex())// remove form gallery
                 break;
 
             default:
                 //error
                 break;
-        }*/
+        }
     });
 
     xhttp.addEventListener('error', function (event) {
