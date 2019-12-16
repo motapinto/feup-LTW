@@ -153,9 +153,9 @@
 }
 
 .message-text {
-    padding: 1% 2%;
+    padding: 0.5em 1em;
     font-size: 1.2em;
-    max-width: 97%;
+    max-width: 70%;
     overflow-x: hidden;
     word-wrap: break-word;
 }
