@@ -102,6 +102,7 @@
                     default:
                         break;
                 }
+            else array_push($imagePaths, "../../assets/images/noImgProp.png");
         }
 
         return $imagePaths;
@@ -113,21 +114,18 @@
             switch ($option) {
                 case 'ORIGINAL':
                     return "../../assets/images/properties/o_$name.png";
-                    break;
                 
                 case 'MEDIUM':
                     return "../../assets/images/properties/m_$name.png";
-                    break;
                 
                 case 'SMALL':
                     return "../../assets/images/properties/s_$name.png";
-                    break;
                 
                 default:
                     break;
             }
             
-        return;
+        return "../../assets/images/noImgProp.png";
     }
 
     function getUserImagePath($id, $option = 'ORIGINAL'){
