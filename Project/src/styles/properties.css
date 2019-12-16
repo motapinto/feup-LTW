@@ -103,6 +103,7 @@
 
 #property-history {
     overflow-y: scroll;
+    min-width: 25em;
 }
 
 .scrollable-history {
