@@ -91,9 +91,8 @@
 #property-info {
     grid-area: info;
     display: flex;
-    flex-direction: column;
-    margin-left: 5em;
-    margin-right: 5%;
+    flex-direction: row-reverse;
+    margin: 0 2em;
 }
 
 #property-details input {
@@ -104,11 +103,12 @@
 
 #property-history {
     overflow-y: scroll;
+    margin-top: 2em;
 }
 
 .scrollable-history {
     overflow-y: scroll;
-    max-height: 13em;
+    height: 85%;
     padding-left: 0;
 }
 
@@ -188,4 +188,12 @@
 #galleria {
     height: 30em;
     width: 30em;
+    margin-left: 2em;
+}
+
+#delete-property {
+    background-color: white;
+    margin-left: 25%;
+    color: red;
+    font-size: 3em;
 }
