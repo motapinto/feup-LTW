@@ -69,9 +69,6 @@
                             <option value="1">Apartment</option>
                         </select>
                     <?php } ?>
-
-                    <button id="add-button" class="no-button">Update Property</button>
-                    <button id="delete-property"><i class="far fa-trash-alt"></i></button>
                 </article>
                 
         </section>
@@ -137,7 +134,10 @@
                     <span> No rent history</span>
                 <?php } ?>
                 </ul>
+                <button id="add-button" class="no-button">Update Property</button>
+                <button id="delete-property"><i class="far fa-trash-alt"></i></button>
             </article>
+            
         </section>
     </section>
 <?php } ?>
