@@ -74,13 +74,32 @@ function draw_rating($rating) {
 } 
 
 function encodeForAJAX($array){
+    $num = count($array);
     print('{');
+    for ($i=0; $i < $num; $i++) { 
+        
+        if($i !== ($num-1))
+            print(',');
+    }
+    $i = 0;
     foreach ($array as $key => $value) {
-        if($key == 'response')
-            print(' "'.$key.'"'.' : '.$value.', ');
-        else 
-            print(' "'.$key.'"'.' : "'.$value.'" ');
+        switch ($key) {
+            case 'response':
+                print(' "'.$key.'"'.' : '.$value.' ');
+                break;
+            
+            case 'name':
+                print(' "'.$key.'"'.' : "'.$value.'" ');
+                break;
+            
+            default:
+                break;
+        }
 
+        if($i !== ($num-1))
+            print(',');
+        
+        $i++;
     }
     print('}');
 }
