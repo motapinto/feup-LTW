@@ -186,8 +186,8 @@ function changePic(files) {
                     galleria.push({image: '../../assets/images/properties/o_'+response['name']+'.png'})
                 }
                 else {    
-                    galleria.splice(galleria.getIndex(), 1);
-                    galleria.show(galleria.getIndex() + 1);
+                    console.log(galleria.getData());
+                    galleria.splice( galleria.getIndex(), 1);
                 }
                 break;
 
