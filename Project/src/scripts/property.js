@@ -72,9 +72,32 @@ document.getElementById('door_number').onkeyup = function (event) { checkNumber(
 
 document.getElementById('apart_number').onkeyup = function (event) { checkNumber('apartment_number'); }
 
-document.getElementById('delete-property').onsubmit = deleteProperty;
+if(document.getElementById('delete-property'))
+    document.getElementById('delete-property').onclick = deleteProperty;
 
-function deleteProperty(event) {}
+function deleteProperty(event) {
+    if (!confirm('Are you sure you want to delete this property?')) return;
+
+    let xhttp = new XMLHttpRequest();
+    let asynchronous = true;
+
+    let request = encodeForAjax({
+        id: document.getElementById('id').value,
+    });
+
+
+    // Define what happens on successful data submission
+    xhttp.addEventListener('load', function (event) {
+        let response = JSON.parse(this.responseText);
+        if (response['response'] === 0) {
+            window.location = '../properties/properties.php';
+        }
+    });
+
+
+    xhttp.open('GET', '../actions/action_property_delete.php?' + request, asynchronous);
+    xhttp.send();
+}
 
 function checkPrice() {
     let numbers = new RegExp("^[0-9]*$");
