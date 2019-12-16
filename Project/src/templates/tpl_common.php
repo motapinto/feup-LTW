@@ -76,11 +76,6 @@ function draw_rating($rating) {
 function encodeForAJAX($array){
     $num = count($array);
     print('{');
-    for ($i=0; $i < $num; $i++) { 
-        
-        if($i !== ($num-1))
-            print(',');
-    }
     $i = 0;
     foreach ($array as $key => $value) {
         switch ($key) {

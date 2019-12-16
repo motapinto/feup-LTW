@@ -181,9 +181,17 @@ function changePic(files) {
 
     let id = document.getElementById('id').value;
     let data = new FormData();
+    
 
     if(files === null && galleria != undefined) {
-        data.append('index', galleria.getIndex());
+        let photoName = galleria.getActiveImage().src.match(/_([\w]+).png/);
+        if(photoName === null)
+            return;
+        
+        else 
+            photoName = photoName[1];
+
+        data.append('name', photoName);
     }
     else {
         data.append('image', files[0]);
@@ -198,10 +206,13 @@ function changePic(files) {
 
         switch (response['response']) {
             case 0:
-                if(files != null)
-                    galleria.push({image: response['name']})
-                else
+                if(files != null) {
+                    galleria.push({image: '../../assets/images/properties/o_'+response['name']+'.png'})
+                }
+                else {    
+                    console.log(galleria.getIndex());
                     galleria.splice(galleria.getIndex(), galleria.getIndex())// remove form gallery
+                }
                 break;
 
             default:

@@ -1,4 +1,6 @@
 <?php
+    error_reporting(E_ERROR | E_PARSE);
+
     include_once('../includes/session.php');       // starts the session
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/images.php');      // properties functions
@@ -11,7 +13,6 @@
         encodeForAJAX($ret);
         exit;
     }
-        
     
     if(!isset($_POST['property_id'])){
         $ret['response'] = -3;
@@ -22,10 +23,10 @@
     $property_id = $_POST['property_id'];
     htmlentities($property_id, ENT_QUOTES, 'UTF-8');
 
-    if(isset($_POST['index'])) {
-        $index = $_POST['index'];
-        htmlentities($index, ENT_QUOTES, 'UTF-8');
-        $ret['response'] = deletePropertyImageIndex($property_id, $index);
+    if(isset($_POST['name'])) {
+        $name = $_POST['name'];
+        htmlentities($name, ENT_QUOTES, 'UTF-8');
+        $ret['response'] = deleTeImageName($property_id, $name);
         encodeForAJAX($ret);
         exit;
     }
