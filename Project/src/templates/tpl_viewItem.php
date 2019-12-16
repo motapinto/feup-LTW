@@ -1,17 +1,24 @@
 <?php function draw_item($item, $owner=false) { 
     $comments = getCommentsByPropertyId($item['id']);
-    $images = getImagePathsByPropertyId($item['id'], 'MEDIUM');
     $user = userProfile($item['user_id']);
+    $images = getImagePathsByPropertyId($item['id']);
     ?>
 
     <section id='list'>
         <article class='property'>
             <h2><?=$item['title']?></h2>
-            <ul> 
-            <?php foreach ($images as $image) { ?>
-                <li><img src=<?=$image?> alt='Image of the property '></li>          
-            <?php } ?>
-            </ul>
+            <article id="property-images">
+                <div id="galleria">
+                <?php 
+                foreach($images as $image) { ?>
+                        <a href="<?=$image?>">
+                            <img title="Image Tile - feature in progress"
+                            alt="Image description - feature in progress"
+                            src="<?=$image?>" />
+                        </a>
+                <?php } ?>
+                </div>
+            </article>
             <?php if($owner){ ?>
                 <a href='../properties/add_property_image.php?id=<?=$item['id']?>'>Add image(s)</a>
             <?php } ?>
@@ -33,12 +40,7 @@
             ?>
             </p>
             <p>Address: </p>
-            <?php if($_SESSION['id'] == $user['id']) {?>
-                <input type="text" value="<?= $item['street']?>.'n'.<?=$item['door_number']?>.', '<?=$item['city']?>"> 
-            <?php } 
-            else { ?>  
-                <input type="text" value="<?= $item['street']?>.'n'.<?=$item['door_number']?>.', '<?=$item['city']?>" disabled> 
-            <?php } ?>
+            <p><?= $item['street']?> nº<?=$item['apartment_number']?>, <?=$item['city']?></p>
             <p>Owner: 
                 <a href="../profile/profile.php?id=<?=$user['id']?>">
                     <?=$user['name']?>
