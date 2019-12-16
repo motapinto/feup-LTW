@@ -202,7 +202,6 @@ function changePic(files) {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
-        alert(response['response'])
 
         switch (response['response']) {
             case 0:
@@ -210,8 +209,8 @@ function changePic(files) {
                     galleria.push({image: '../../assets/images/properties/o_'+response['name']+'.png'})
                 }
                 else {    
-                    console.log(galleria.getIndex());
-                    galleria.splice(galleria.getIndex(), galleria.getIndex())// remove form gallery
+                    galleria.splice(galleria.getIndex(), 1);
+                    galleria.show(galleria.getIndex() + 1);
                 }
                 break;
 

@@ -31,7 +31,7 @@
         exit;
     }
 
-    if(!isset($_FILES['image'])){
+    if(!isset($_FILES['images'])){
         $ret['response'] = -3;
         encodeForAJAX($ret);
         exit;
