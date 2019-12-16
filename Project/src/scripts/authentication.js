@@ -1,22 +1,71 @@
 "use strict";
 
-if (document.getElementById('log_in'))
+if (document.getElementById('log_in')) {
     document.getElementById('login-btn').onclick = submitLogin;
-else 
-    document.getElementById('login-btn').onclick = function (event) {
-        window.location = 'login.php';
-    };
-
-if (document.getElementById('sign_up'))
-    document.getElementById('signup-btn').onclick = submitSignup;
-else
     document.getElementById('signup-btn').onclick = function (event) {
         window.location = 'signup.php';
     };
+    document.getElementById('email').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('password').focus();
+        }
+    }
+    document.getElementById('password').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            submitLogin(event);
+        }
+    }
+
+}
+else {
+    document.getElementById('login-btn').onclick = function (event) {
+        window.location = 'login.php';
+    };
+    document.getElementById('signup-btn').onclick = submitSignup;
+    document.getElementById('name').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('age').focus();
+        }
+        else checkName()
+    }
+    document.getElementById('age').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('email').focus();
+        }
+        else checkAge()
+    }
+    document.getElementById('email').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('password').focus();
+        }
+        else checkEmail()
+    }
+    document.getElementById('password').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('confirm_password').focus();
+        }
+        else checkPass()
+    }
+    document.getElementById('confirm_password').onkeyup = function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            submitSignup(event);
+        }
+        else checkPass()
+    }
+}
 
 document.getElementById('continue-btn').onclick = function (event) {
     window.location = '../listings/listings_all.php';
 }
+
+
 
 function submitLogin(event) {
     let xhttp = new XMLHttpRequest();
@@ -70,7 +119,7 @@ function submitLogin(event) {
     xhttp.send();
 }
 
-function submitSignup() {
+function submitSignup(event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 

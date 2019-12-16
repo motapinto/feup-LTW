@@ -1,8 +1,9 @@
 .properties {
     list-style: none;
     padding: 0;
-    max-height: 80%;
+    max-height: 84%;
     overflow-y: scroll;
+    margin: 0;
 }
 
 .properties li {
@@ -38,7 +39,7 @@
 }
 
 #addProperty form {
-    margin: var(--main-margin);
+    width: 50em;
 }
 
 #property-rating {
@@ -59,11 +60,8 @@
 /* ADD A NEW PROPERTY */
 
 #addProperty {
-    margin-left: 3em;
-    margin-top: 3em;
-    display: grid;
-    grid-template-areas: 'main info';
-    grid-template-columns: 25% 75%;
+    margin-top: 1%;
+    display: flex;
 }
 
 #property-important {
@@ -172,6 +170,7 @@
     font-size: larger;
     font-weight: 900;
     background-color: wheat;
+    right: 5em;
 }
 
 #change-pics {
