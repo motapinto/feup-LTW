@@ -35,6 +35,18 @@
         }
     }
 
+    // Deletes image from property
+    function deleTeImageName($property_id, $name) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('DELETE FROM Image 
+                              WHERE property_id = ?
+                              AND name LIKE ?'
+                            );
+        $stmt->execute(array($property_id, $name));
+        return !$stmt->fetch()?0:1;
+    }
+
     //Returns all images for a property with id = id
     function getImagesByPropertyId($id){
         $db = Database::instance()->db();

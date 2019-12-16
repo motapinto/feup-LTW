@@ -181,9 +181,17 @@ function changePic(files) {
 
     let id = document.getElementById('id').value;
     let data = new FormData();
+    
 
     if(files === null && galleria != undefined) {
-        data.append('index', galleria.getIndex());
+        let photoName = galleria.getActiveImage().src.match(/_([\w]+).png/);
+        if(photoName === null)
+            return;
+        
+        else 
+            photoName = photoName[1];
+
+        data.append('name', photoName);
     }
     else {
         data.append('image', files[0]);
@@ -194,14 +202,16 @@ function changePic(files) {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
-        alert(response['response'])
 
         switch (response['response']) {
             case 0:
-                if(files != null)
-                    galleria.push({image: response['name']})
-                else
-                    galleria.splice(galleria.getIndex(), galleria.getIndex())// remove form gallery
+                if(files != null) {
+                    galleria.push({image: '../../assets/images/properties/o_'+response['name']+'.png'})
+                }
+                else {    
+                    galleria.splice(galleria.getIndex(), 1);
+                    galleria.show(galleria.getIndex() + 1);
+                }
                 break;
 
             default:
