@@ -52,7 +52,7 @@
                     <?php }  
                         else { ?>
                         <label> Price (&euro;/night)</label>
-                        <input type="number" id="price_day" placeholder="Price per Day" >
+                        <input type="number" id="price" placeholder="Price per Day" >
                         <label> Guests </label>
                         <input type="number" id="guests" placeholder="Number of Guests" >
                         <label> City </label>
@@ -62,7 +62,7 @@
                         <label> Door number </label> 
                         <input type="number" id="door_number" placeholder='Door Number' >
                         <label> Apartment number(if applicable) </label>    
-                        <input type="text" id="apartment_number" placeholder='Apartment Number'>
+                        <input type="text" id="apart_number" placeholder='Apartment Number'>
                         <label> Property type </label>
                         <select id="property_type" >
                             <option value="0">House</option>
