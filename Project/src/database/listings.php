@@ -50,6 +50,15 @@
         return $db->lastInsertId();
     }
 
+    // Removes a listing
+    function deleteListing($id){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('DELETE FROM Property WHERE id = ?');
+        $stmt->execute(array($id));
+        return !$stmt->fetch()?0:-1;
+    }
+
     function changeListing($id, $owner, $title, $description, $price_day, $guests, $city, $street, $door_number, $apartment_number, $property_type) {
         $db = Database::instance()->db();
             
