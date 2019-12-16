@@ -101,8 +101,9 @@
       <form id='comment_form' action='../actions/action_comment.php' method='POST'>
           <h4>Leave a comment</h4>
           <textarea name='comment' cols='40' rows='5' placeholder='Describe your experience' required></textarea>
+          <input type="number" min="1" max="5" required placeholder='Rate this property'>
           <input name='property_id' type='hidden' value='<?=$item['id']?>'/>
-          <button class='comment_button'>Comment</button>
+          <button id='comment_button' class='btn'>Comment</button>
       </form>
     <?php }
     else { ?>
