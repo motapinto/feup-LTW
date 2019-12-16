@@ -209,13 +209,7 @@ function changePic(files) {
 
         switch (response['response']) {
             case 0:
-                if(files != null) {
-                    galleria.push({image: '../../assets/images/properties/o_'+response['name']+'.png'})
-                }
-                else {    
-                    console.log(galleria.getData());
-                    galleria.splice( galleria.getIndex(), 1);
-                }
+                window.location = window.location;
                 break;
 
             default:
