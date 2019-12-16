@@ -78,7 +78,6 @@
     }
 
     $name = generate_random_token();
-    addImage($property_id, $name);
 
     // Generate filenames for original, small and medium files
     $originalFileName = "../../assets/images/properties/o_$name.png";
@@ -94,7 +93,11 @@
 
     // Create and save a small square thumbnail
     $small = imagecreatetruecolor(200, 200);
-    imagecopyresized($small, $original, 0, 0, ($width>$square)?($width-$square)/2:0, ($height>$square)?($height-$square)/2:0, 200, 200, $square, $square);
+    if(!imagecopyresized($small, $original, 0, 0, ($width>$square)?($width-$square)/2:0, ($height>$square)?($height-$square)/2:0, 200, 200, $square, $square)){
+        $ret['response'] = 1;
+        encodeForAJAX($ret);
+        return;
+    }
     imagepng($small, $smallFileName);
 
     // Calculate width and height of medium sized image (max width: 400)
@@ -107,8 +110,15 @@
 
     // Create and save a medium image
     $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
-    imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
+    if(!imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height)){
+        $ret['response'] = 2;
+        encodeForAJAX($ret);
+        return;
+    }
     imagepng($medium, $mediumFileName);
+
+
+    addImage($property_id, $name);
 
     $ret['response'] = 0;
     $ret['name'] = $name;
