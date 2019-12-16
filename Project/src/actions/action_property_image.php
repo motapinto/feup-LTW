@@ -26,12 +26,12 @@
     if(isset($_POST['name'])) {
         $name = $_POST['name'];
         htmlentities($name, ENT_QUOTES, 'UTF-8');
-        $ret['response'] = deleTeImageName($property_id, $name);
+        $ret['response'] = deleteImageName($property_id, $name);
         encodeForAJAX($ret);
         exit;
     }
 
-    if(!isset($_FILES['images'])){
+    if(!isset($_FILES['image'])){
         $ret['response'] = -3;
         encodeForAJAX($ret);
         exit;
