@@ -72,6 +72,10 @@ document.getElementById('door_number').onkeyup = function (event) { checkNumber(
 
 document.getElementById('apart_number').onkeyup = function (event) { checkNumber('apartment_number'); }
 
+document.getElementById('delete-property').onsubmit = deleteProperty;
+
+function deleteProperty(event) {}
+
 function checkPrice() {
     let numbers = new RegExp("^[0-9]*$");
     let isLegal = numbers.test(document.getElementById('price').value);

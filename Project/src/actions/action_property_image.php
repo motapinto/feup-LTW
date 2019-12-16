@@ -73,6 +73,8 @@
     }
     if($original === false){
         $ret['response'] = -1;
+        encodeForAJAX($ret);
+        return;
     }
 
     $name = generate_random_token();
