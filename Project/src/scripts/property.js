@@ -136,7 +136,7 @@ function checkNumber(id) {
     let numbers = new RegExp("^[0-9]*$");
     let isLegal = numbers.test(document.getElementById(id).value);
 
-    if(isLegal && document.getElementById('door_number').value > 0) {
+    if(isLegal && document.getElementById('id').value > 0) {
         document.getElementById("add-button").disabled = false;
         document.getElementById(id).style.color = 'black';
         document.getElementById(id).style.backgroundColor = 'white';
