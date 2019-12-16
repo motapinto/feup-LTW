@@ -71,6 +71,7 @@
                     <?php } ?>
 
                     <button id="add-button" class="no-button">Update Property</button>
+                    <button id="delete-property"><i class="far fa-trash-alt"></i></button>
                 </article>
                 
         </section>
