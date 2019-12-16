@@ -27,6 +27,7 @@
         $name = $_POST['name'];
         htmlentities($name, ENT_QUOTES, 'UTF-8');
         $ret['response'] = deleteImageName($property_id, $name);
+        deleteImage($name, 'PROPERTY');
         encodeForAJAX($ret);
         exit;
     }
