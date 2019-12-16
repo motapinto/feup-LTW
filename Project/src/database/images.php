@@ -36,7 +36,7 @@
     }
 
     // Deletes image from property
-    function deleTeImageName($property_id, $name) {
+    function deleteImageName($property_id, $name) {
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('DELETE FROM Image 

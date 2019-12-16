@@ -60,10 +60,6 @@ document.getElementById("add-button").onclick = function (event) {
     xhttp.send();
 }
 
-document.getElementById('title').onkeyup = function (event) { checkText('title'); }
-
-document.getElementById('description').onkeyup = function (event) { checkText('description'); }
-
 document.getElementById('price').onkeyup = function (event) { checkPrice(); }
 
 document.getElementById('guests').onkeyup = function (event) { checkNumber('guests'); }
@@ -129,7 +125,7 @@ function checkNumber(id) {
 }
 
 function checkString(id) {
-    let numbers = new RegExp("^[a-zA-Z]*$");
+    let numbers = new RegExp("^[a-zA-Z ]*$");
     let isLegal = numbers.test(document.getElementById(id).value);
 
     if(isLegal) {
@@ -140,25 +136,6 @@ function checkString(id) {
     }
     else {
         alert('Only letters are accepted')
-        document.getElementById("add-button").disabled = true;
-        document.getElementById(id).style.color = 'red';
-        document.getElementById(id).style.backgroundColor = 'rgb(246, 220, 220)';
-        document.getElementById(id).style.border = 'solid 1px rgb(233, 76, 76)';
-    }
-}
-
-function checkText(id) {
-    let text = new RegExp("^(?=.*[\w].*)[\w!@#$%&*]*$");
-    let isLegal = text.test(document.getElementById(id).value);
-
-    if(isLegal) {
-        document.getElementById("add-button").disabled = false;
-        document.getElementById(id).style.color = 'black';
-        document.getElementById(id).style.backgroundColor = 'white';
-        document.getElementById(id).style.border = 'solid 1px rgb(176, 183, 187)';
-    }
-    else {
-        alert('Only text is accepted')
         document.getElementById("add-button").disabled = true;
         document.getElementById(id).style.color = 'red';
         document.getElementById(id).style.backgroundColor = 'rgb(246, 220, 220)';
