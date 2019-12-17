@@ -91,7 +91,7 @@
 
                     <?php if($canEditProfile) { 
                         if(strcmp($date_init_array[1].'-'.$date_init_array[2].'-'.$date_init_array[3], $now) > 0) { ?>
-                            <input class="rent-id" type="hidden" value="<?=$rent['id']?>">
+                            <input class="rent-id" type="hidden" value="<?=$id?>">
                             <button class="cancel-button"> Cancel </button>
                         <?php }
                     } ?>
@@ -188,7 +188,7 @@
             <ul class="scrollable-comments">
 
                 <?php foreach($allComments as $comment) { 
-                    $user = userProfile($comment['commentator']);
+                    $commentator = userProfile($comment['commentator']);
                     $image = getUserImagePath($comment['commentator'], 'SMALL'); 
                     preg_match('/([0-9]{4})-([0-9]{2})-([0-9]{2})/', $comment['date'], $date);
                     $date = $date[3].'-'.$date[2].'-'.$date[1];
@@ -198,7 +198,7 @@
                         <header class="comment-details"> 
                             <img src="<?= $image ?>" alt="user photo" width="200" heigth="200">
                             <div>
-                                <h2> <?= $user['name'] ?> </h2>
+                                <h2> <?= $commentator['name'] ?> </h2>
                                 <span class="comments-ratings"> <?= draw_rating($comment['rating']) ?> </span>
                                 <span class="comments-date"> <?= $date ?> </span>
                             </div>
