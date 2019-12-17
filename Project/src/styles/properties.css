@@ -62,6 +62,7 @@
 #addProperty {
     margin: 1%;
     display: flex;
+    max-height: 90%;
 }
 
 #property-important {
@@ -73,18 +74,18 @@
 
 #property-main input,
 #property-details input {
-    width: 95%;
+    width: 98%;
     border-radius: 5px;
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 #property-main textarea {
-    width: 95%;
+    width: 98%;
     border-radius: 5px;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
 }
@@ -104,20 +105,20 @@
 
 #property-history {
     overflow-y: scroll;
-    min-width: 25em;
+    max-width: 14em;
 }
 
 .scrollable-history {
     overflow-y: scroll;
-    height: 75%;
+    height: 50%;
     padding-left: 0;
 }
 
 .history-item {
     border-bottom: solid 1px rgb(175, 175, 175);
-    margin-bottom: 2em;
-    padding-bottom: 2em;
-    margin-right: 2em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    margin-right: 1em;
 }
 
 .rent-user {
@@ -158,7 +159,7 @@
     color: teal;
     background-color: white;
     font-weight: bold;
-    margin-left: 20em;
+    margin-left: 70%;
 }
 
 .cancel-button:hover {
@@ -186,7 +187,7 @@
     height: 2em;
 }
 
-#property-info #galleria {
+#property-details-images #galleria {
     height: 30em;
     width: 30em;
 }

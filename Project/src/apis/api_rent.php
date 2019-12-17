@@ -23,12 +23,12 @@
     $children = htmlentities($_GET['children'], ENT_QUOTES, 'UTF-8');
     $babies = htmlentities($_GET['babies'], ENT_QUOTES, 'UTF-8');
 
-    if(preg_match('/([0-9]{2})\/([0-9]{2})\/([0-9]{4}) - ([0-9]{2})\/([0-9]{2})\/([0-9]{4})/', $daterange, $output_array) &&
+    if(preg_match('/([0-9]{2})\/([0-9]{2})\/([0-9]{4}) - ([0-9]{2})\/([0-9]{2})\/([0-9]{4})/', $daterange, $date_array) &&
         preg_match('/^[0-9]+$/', $adults, $output_array) && preg_match('/^[0-9]+$/', $children, $output_array) &&
         preg_match('/^[0-9]+$/', $babies, $output_array) && preg_match('/^[0-9]+$/', $id, $output_array) ){
             
-        $date_init = $output_array[3] . '-' . $output_array[2] . '-' . $output_array[1];
-        $date_final = $output_array[6] . '-' . $output_array[5] . '-' . $output_array[4];
+        $date_init = $date_array[3] . '-' . $date_array[2] . '-' . $date_array[1];
+        $date_final = $date_array[6] . '-' . $date_array[5] . '-' . $date_array[4];
     }
     else {
         encodeForAJAX($ret);

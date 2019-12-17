@@ -75,7 +75,7 @@
         </section>
             
         <section id="property-info">
-            <article id="property-images">
+            <article id="property-details-images">
                 <div id="change-pics">
                     <input id='add-pic-upload' type='file' hidden/>
                     <button id="add-pic" class="pics-btns"><i class="fas fa-plus"></i></button>

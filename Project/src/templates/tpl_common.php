@@ -44,7 +44,6 @@
             <link rel="stylesheet" href="../styles/profile.css">
 <!--************************ MESSAGES  ************************-->
             <link rel="stylesheet" href="../styles/messages.css">
-            <link rel="stylesheet" href="../styles/item.css">
 
             <?php if($script !== NULL){ ?>
                 <script src="../scripts/<?=$script?>.js" defer></script>  

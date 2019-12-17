@@ -119,6 +119,7 @@
 
     //Gets number max of page
     $max_page = ceil(count($listings) / 6);
+    $max_page = $max_page==0?1:$max_page;
 
     // Limits the number of items per page after being ordered
     $listings = changePage($listings, $page);
