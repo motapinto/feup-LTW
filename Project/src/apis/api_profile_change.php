@@ -10,38 +10,45 @@
     $user = userProfile($_SESSION['id']);
 
     if(isset($_GET['name'])) {
-        $aux = $_GET['name'];
-        htmlentities($aux, ENT_QUOTES, 'UTF-8');
-        $user['name'] = $aux;
+        if(!preg_match('/^[a-zA-Z\x{00C0}-\x{00FF}]+(([\' -][a-zA-Z\x{00C0}-\x{00FF}])?[a-zA-Z\x{00C0}-\x{00FF}]*)*$/', $_GET['name'], $output_array)){
+            $ret['response'] = -2;
+            die();
+        }
+        $user['name'] = htmlentities($_GET['name'], ENT_QUOTES, 'UTF-8');
     }
     else if(isset($_GET['email'])) {
-        $aux = $_GET['email'];
-        htmlentities($aux, ENT_QUOTES, 'UTF-8');
-        $user['email'] = $aux;
+        if(!preg_match('/^[a-z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/', $_GET['email'], $output_array)){
+            $ret['response'] = -2;
+            die();
+        }
+        $user['email'] = htmlentities($_GET['email'], ENT_QUOTES, 'UTF-8');
     }
     else if(isset($_GET['age'])) {
-        $aux = $_GET['age'];
-        htmlentities($aux, ENT_QUOTES, 'UTF-8');
-        $user['age'] = $aux;
+        if(!preg_match('/^[0-9]+$/', $_GET['age'], $output_array)){
+            $ret['response'] = -2;
+            die();
+        }
+        $user['age'] = htmlentities($_GET['age'], ENT_QUOTES, 'UTF-8');
     }
     else if(isset($_GET['password'])) {
-        $aux = $_GET['password'];
-        htmlentities($aux, ENT_QUOTES, 'UTF-8');
-        $user['password'] = $aux;
+        if(!preg_match('/(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])./', $_GET['password'], $output_array)){
+            $ret['response'] = -2;
+            die();
+        }
+        $user['password'] = htmlentities($_GET['password'], ENT_QUOTES, 'UTF-8');
     }
     else if(isset($_GET['currentPassword'])) {
-        $aux = $_GET['currentPassword'];
-        htmlentities($aux, ENT_QUOTES, 'UTF-8');
-        if(password_verify($aux, $user['password']))
+        if(password_verify($_GET['currentPassword'], $user['password']))
             $ret['response'] = 0;
         else
             $ret['response'] = -1;
     }
     else if(isset($_GET['deleteUser'])) {
         deleteUser($_SESSION['id']);
+        $ret['response'] = 0;
     }
     else 
-        die(header('Location: ../listings/listings_all.php'));
+        die();
 
     if($ret['response'] === -3)
         $ret['response'] = changeUser($user['id'], $user['email'], $user['name'], $user['age'], $user['password']);

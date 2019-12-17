@@ -22,22 +22,23 @@ document.getElementById("add-button").onclick = function (event) {
     let door_number = document.getElementById('door_number').value;
     let apartment_number = document.getElementById('apart_number').value;
     let property_type = document.getElementById('property_type').value;
+    let property_id;
 
     let request;
     if (document.getElementById('id')) {
-        let property_id = document.getElementById('id').value;
-    
+        property_id = document.getElementById('id').value;
+
         request = encodeForAjax({ 
             title: title, 
             description: description,
-            price_day:price_day, 
-            guests:guests, 
-            city:city, 
-            street:street, 
-            door_number:door_number, 
-            apartment_number:apartment_number,
-            property_type:property_type,
-            id:property_id
+            price_day: price_day, 
+            guests: guests, 
+            city: city, 
+            street: street, 
+            door_number: door_number, 
+            apartment_number: apartment_number,
+            property_type: property_type,
+            id: property_id
         }); 
     }
     else {
@@ -58,7 +59,7 @@ document.getElementById("add-button").onclick = function (event) {
     xhttp.addEventListener('load', function (event) {
         let response = JSON.parse(this.responseText);
 
-        if (request.id != undefined) {
+        if (property_id != undefined) {
             switch (response['response']) {
                 case 0:
                     alert('Changed property details with success')

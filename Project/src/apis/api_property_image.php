@@ -14,14 +14,13 @@
         exit;
     }
     
-    if(!isset($_POST['property_id'])){
+    if(!isset($_POST['property_id']) || !preg_match('/^[0-9]+$/', $_POST['property_id'], $output_array)){
         $ret['response'] = -3;
         encodeForAJAX($ret);
         exit;
     }
 
-    $property_id = $_POST['property_id'];
-    htmlentities($property_id, ENT_QUOTES, 'UTF-8');
+    $property_id = htmlentities($_POST['property_id'], ENT_QUOTES, 'UTF-8');
 
     if(isset($_POST['name'])) {
         $name = $_POST['name'];

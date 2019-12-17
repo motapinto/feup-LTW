@@ -10,17 +10,16 @@
     $result = array('response' => -3);
 
     //must receive all parameters
-    if(!isset($_GET['sendMessage']) || !isset($_GET['receiver'])){
+    if(!isset($_GET['sendMessage']) || !isset($_GET['receiver']) ||
+        !preg_match('/^[0-9]+$/', $_GET['receiver'], $output_array)){
         encodeForAJAX($result);
         die(); 
     }
-
-    $sendMessage = $_GET['sendMessage'];
-    $receiver = $_GET['receiver'];
-
-    htmlentities($sendMessage, ENT_QUOTES, 'UTF-8');
-    htmlentities($receiver, ENT_QUOTES, 'UTF-8');
   
-    $result['response'] = addMessage($receiver, $_SESSION['id'], $sendMessage)?0:-1;
+    $result['response'] = addMessage(
+        htmlentities($_GET['receiver'], ENT_QUOTES, 'UTF-8'), $_SESSION['id'],
+        htmlentities($_GET['sendMessage'], ENT_QUOTES, 'UTF-8')
+    )?0:-1;
+
     encodeForAJAX($result);
 ?>
