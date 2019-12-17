@@ -77,14 +77,6 @@
     margin-top: 1em;
 }
 
-#calendar {
-    background-color: inherit;
-    color: white;
-    font-size: large;
-    margin-left: 10%;
-    margin-top: 5%;
-}
-
 #select-city {
     border: none;
     padding: 0 10%;
@@ -142,4 +134,13 @@
 #prev-page,
 #next-page {
     background-color: teal;
+}
+
+.filter #calendar  {
+    background-color: inherit;
+    color: white;
+    font-size: large;
+    margin-left: 10%;
+    margin-top: 5%;
+    color: white;
 }

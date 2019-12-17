@@ -1,6 +1,7 @@
 "use strict";
 
-let maxGuests = document.getElementById('guests').value;
+
+let maxGuests = document.getElementById('guests')?document.getElementById('guests').value:0;
 let ADULTS = 0;
 let CHILDREN = 1;
 let BABIES = 2;
@@ -24,14 +25,16 @@ $(document).ready(function () {
 });
 
 
-document.getElementById('adults-add').onclick = function (event) { guestsChange(ADULTS, ADD) }
-document.getElementById('adults-sub').onclick = function (event) { guestsChange(ADULTS, SUB) }
-document.getElementById('children-add').onclick = function (event) { guestsChange(CHILDREN, ADD) }
-document.getElementById('children-sub').onclick = function (event) { guestsChange(CHILDREN, SUB) }
-document.getElementById('babies-add').onclick = function (event) { guestsChange(BABIES, ADD) }
-document.getElementById('babies-sub').onclick = function (event) { guestsChange(BABIES, SUB) }
-
-document.getElementById('rent-button').onclick = submitRent;
+if(document.getElementById('rent-header')){
+    document.getElementById('adults-add').onclick = function (event) { guestsChange(ADULTS, ADD) }
+    document.getElementById('adults-sub').onclick = function (event) { guestsChange(ADULTS, SUB) }
+    document.getElementById('children-add').onclick = function (event) { guestsChange(CHILDREN, ADD) }
+    document.getElementById('children-sub').onclick = function (event) { guestsChange(CHILDREN, SUB) }
+    document.getElementById('babies-add').onclick = function (event) { guestsChange(BABIES, ADD) }
+    document.getElementById('babies-sub').onclick = function (event) { guestsChange(BABIES, SUB) }
+    
+    document.getElementById('rent-button').onclick = submitRent;
+}
 
 //  Submit form to change/delete profile
 function submitRent(event) {
