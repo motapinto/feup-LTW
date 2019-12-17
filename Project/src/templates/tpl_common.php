@@ -3,7 +3,7 @@
         <html lang="en-US">
         <head>
             <title><?=$title?></title>
-            <meta charset="UTF-8">
+            <meta charset="UTF-8" name="viewport" content="width=device-witdh, initial-scale=1.0">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             
             <!--****************************** FONTS *********************************-->

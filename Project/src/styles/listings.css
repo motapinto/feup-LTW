@@ -1,18 +1,43 @@
+@media only screen and (min-width: 672px) {
+    /* For desktop: */
+    .listings {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    /* For desktop: */
+    .listings {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+@media only screen and (max-width: 671px) {
+    /* For phones: */
+    .listings {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
 .listings {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     overflow-y: scroll;
     max-height: 93%;
+    margin: 0;
 }
 
 .elem {
-    margin: 5%;
+    margin: 1%;
 }
 
 .elem img {
     border-radius: 5%;
-    margin: 0 5%;
+    margin: 5% 5%;
     max-width: 90%;
     max-height: 250px;
 }

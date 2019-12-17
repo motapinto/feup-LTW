@@ -12,22 +12,22 @@
     include('../templates/tpl_common.php');               // functions for the initial and final part of the HTML document
     include('../templates/tpl_navBar.php');               // prints the menu in HTML
     include('../templates/tpl_propertyDetails.php');      // template of add new property
-
-
-    draw_header('My Properties', 'property');
-        draw_navBar(1);
-
+    
     if(isset($_GET['id']) && $_GET['id'] != null) {
         $new = false;
         $id = $_GET['id'];
         htmlentities($id, ENT_QUOTES, 'UTF-8');
-        addProperty($id);
+        $selected = getListingById($id);
+        if($selected['user_id'] !== $_SESSION['id'])
+            die(header('Location: ../listings/listings_all.php'));
     } 
-    
+
     else {
-        addProperty();
-        $new = false;
+        $new = true;
     }
 
+    draw_header('My Properties', 'property');
+    draw_navBar(1);
+    $new ? addProperty() : addProperty($id);
     draw_footer();
 ?>
