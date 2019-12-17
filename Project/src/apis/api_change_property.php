@@ -13,6 +13,12 @@
         die();
     }
 
+    if ($_SESSION['csrf'] !== $_GET['csrf']) {
+        encodeForAJAX($ret);
+        // ERROR: Request does not appear to be legitimate
+        die();
+    }
+
     $title = $_GET['title'];
     $description = $_GET['description'];
     $price_day = $_GET['price_day'];

@@ -7,18 +7,21 @@
 ?>
 <!--*********************** PROFILE SIDEMENU ***********************-->
     <section class='profile'>
+        <input type="hidden" value='<?=$_SESSION['csrf']?>' id='csrf'>
         <section class='side-drawer'>
             <!-- USER PHOTO -->
             <article class='profile-photo'>
                 <img class='_1mgxxu3' src='<?=$image?>' alt='User Photo' title='User Photo'>
-                <div class='profile-change-photo'>
-                    <form action='../actions/action_user_image.php' method='post' enctype='multipart/form-data'>
-                        <input type='file' name='image' id='image'>
-                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                        <label for='image'>Choose Image</label>
-                        <input id="photo-submit" type='submit' name='Submit' value='Upload'>
-                    </form>
-                </div>
+                <?php if($canEditProfile) { ?> 
+                    <div class='profile-change-photo'>
+                        <form action='../actions/action_user_image.php' method='post' enctype='multipart/form-data'>
+                            <input type='file' name='image' id='image'>
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                            <label for='image'>Choose Image</label>
+                            <input id="photo-submit" type='submit' name='Submit' value='Upload'>
+                        </form>
+                    </div>
+                <?php } ?>
             </article>
             
             <!-- USER NAME -->
@@ -33,8 +36,8 @@
 
                 <button class='circular-button' id="messages-button"> Messages </button> 
 
-                <?php } ?>    
-                <?php if(!$canEditProfile) { ?> 
+                <?php } 
+                if(!$canEditProfile) { ?> 
                 <button type='button' class='circular-button' id="send-message-button"> Send Message </button> 
                 <?php } ?>   
             </article>

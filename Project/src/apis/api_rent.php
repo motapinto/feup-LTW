@@ -5,9 +5,17 @@
 
     $ret = array('response' => -3);
 
-    if(!isset($_SESSION['id']) || !isset($_GET['id']) || !isset($_GET['daterange']) || !isset($_GET['adults']) || !isset($_GET['children']) || !isset($_GET['babies']))
+    if(!isset($_SESSION['id']) || !isset($_GET['id']) || !isset($_GET['daterange']) || !isset($_GET['adults']) || !isset($_GET['children']) || !isset($_GET['babies'])){
+        encodeForAJAX($ret);
         die();
+    }
     
+    if ($_SESSION['csrf'] !== $_GET['csrf']) {
+        // ERROR: Request does not appear to be legitimate
+        encodeForAJAX($ret);
+        die();
+    }
+
     $daterange = $_GET['daterange'];
 
     $id = htmlentities($_GET['id'], ENT_QUOTES, 'UTF-8');

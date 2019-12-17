@@ -69,7 +69,8 @@
                 </header>
 
                 <section class='rent-body'>
-                    <input id='id' name='id' type='hidden' value="<?=$item['id']?>"/>
+                    <input id='csrf' type="hidden" value='<?=$_SESSION['csrf']?>'>
+                    <input id='id' name='id' type='hidden' value="<?=$item['id']?>">
                     <label>Check In and Check Out</label>
                     <input id="calendar" type='daterange' name='daterange' value="Check In - Check Out" min=<?=date('Y-m-d')?> required>
                     <label>Number of Guests: <span id="current-guests">1</span><button id='dropdown-btn' type="button"><i class="fas fa-chevron-down"></i></button></label>
@@ -100,16 +101,16 @@
 <?php
     draw_allComments($comments);
     if(isset($_SESSION['id'])){ ?>
-      <form id='comment_form' action='../actions/action_comment.php' method='POST'>
-        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-          <h4>Leave a comment</h4>
-          <textarea name='comment' cols='40' rows='5' placeholder='Describe your experience' required></textarea>
-          <input name='rating' type="number" min="1" max="5" required placeholder='Rate this property'>
-          <input name='property_id' type='hidden' value='<?=$item['id']?>'/>
-          <button id='comment_button' class='btn'>Comment</button>
-      </form>
+        <form id='comment_form' action='../actions/action_comment.php' method='POST'>
+            <h4>Leave a comment</h4>
+            <textarea name='comment' cols='40' rows='5' placeholder='Describe your experience' required></textarea>
+            <input name='rating' type="number" min="1" max="5" required placeholder='Rate this property'>
+            <input name='property_id' type='hidden' value='<?=$item['id']?>'/>
+            <input name="csrf" type="hidden" value="<?=$_SESSION['csrf']?>">
+            <button id='comment_button' class='btn'>Comment</button>
+        </form>
     <?php }
     else { ?>
-      <p id='comment_form'>To leave a comment please <a href="../authentication/login.php">log in</a>.</p>
+        <p id='comment_form'>To leave a comment please <a href="../authentication/login.php">log in</a>.</p>
     <?php } 
  } ?>

@@ -13,6 +13,13 @@
         encodeForAJAX($ret);
         exit;
     }
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        // ERROR: Request does not appear to be legitimate
+        encodeForAJAX($ret);
+        die();
+    }
+
     
     if(!isset($_POST['property_id']) || !preg_match('/^[0-9]+$/', $_POST['property_id'], $output_array)){
         $ret['response'] = -3;

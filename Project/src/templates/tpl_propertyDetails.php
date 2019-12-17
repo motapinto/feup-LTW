@@ -6,6 +6,7 @@
     }
     ?>
     <section id='addProperty'>
+        <input type="hidden" value='<?=$_SESSION['csrf']?>' id='csrf'>
         <section id="property-important">
                 <article id="property-main">
                     <article>

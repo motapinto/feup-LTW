@@ -56,7 +56,7 @@ if (document.getElementById('email'))
     document.getElementById('email').onkeyup = function (event) { checkEmail(true); }
 
 if (document.getElementById('email-button'))
-    document.getElementById('email-button').onkeyup = function (event) { submitForm(1); }
+    document.getElementById('email-button').onclick = function (event) { submitForm(1); }
 
 if (document.getElementById('age'))
     document.getElementById('age').onkeyup = function (event) { checkAge(true); }
@@ -71,7 +71,7 @@ if (document.getElementById('password'))
     document.getElementById('password').onkeyup = function (event) { checkPass(); }
 
 if (document.getElementById('password-change'))
-    document.getElementById('password-change').onkeyup = function (event) { submitForm(3); }
+    document.getElementById('password-change').onclick = function (event) { submitForm(3); }
 
 if (document.getElementById('confirm_password'))
     document.getElementById('confirm_password').onkeyup = function (event) { checkPass(); }
@@ -95,6 +95,7 @@ function cancelRent(id) {
 
     let request = encodeForAjax({
         id: id,
+        csrf: document.getElementById('csrf').value
     });
 
 
@@ -167,7 +168,10 @@ function profileSubMenu(option) {
 function checkCurrentPassword() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let request = encodeForAjax({ currentPassword: document.getElementById('current-password').value });
+    let request = encodeForAjax({
+        csrf: document.getElementById('csrf').value,
+        currentPassword: document.getElementById('current-password').value
+    });
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
@@ -208,26 +212,28 @@ function submitForm(option) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
     let request;
+    let csrf = document.getElementById('csrf').value;
 
     switch (option) {
         // user name
         case 0:
-            request = encodeForAjax({ name: document.getElementById('name').value });
+            request = encodeForAjax({ name: document.getElementById('name').value, csrf: csrf });
             break;
         // user email
-        case 1:
-            request = encodeForAjax({ email: document.getElementById('email').value });
+        case 1: 
+            request = encodeForAjax({ email: document.getElementById('email').value, csrf: csrf });
             break;
         // user age
         case 2:
-            request = encodeForAjax({ age: document.getElementById('age').value });
+            request = encodeForAjax({ age: document.getElementById('age').value, csrf: csrf });
             break;
         // user password
         case 3:
-            request = encodeForAjax({ password: document.getElementById('password').value });
+            if (!checkPass()) return;
+            request = encodeForAjax({ password: document.getElementById('password').value, csrf: csrf });
             break;    
         case 4:
-            request = encodeForAjax({ deleteUser: 0 });
+            request = encodeForAjax({ deleteUser: 0, csrf: csrf });
             break;
 
         default:

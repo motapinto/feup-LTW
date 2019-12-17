@@ -29,6 +29,7 @@ document.getElementById("add-button").onclick = function (event) {
         property_id = document.getElementById('id').value;
 
         request = encodeForAjax({ 
+            csrf: document.getElementById('csrf').value, 
             title: title, 
             description: description,
             price_day: price_day, 
@@ -43,6 +44,7 @@ document.getElementById("add-button").onclick = function (event) {
     }
     else {
         request = encodeForAjax({
+            csrf: document.getElementById('csrf').value, 
             title: title,
             description: description,
             price_day: price_day,
@@ -113,7 +115,8 @@ function deleteProperty(event) {
     let asynchronous = true;
 
     let request = encodeForAjax({
-        id: document.getElementById('id').value,
+        csrf: document.getElementById('csrf').value,
+        id: document.getElementById('id').value
     });
 
 
@@ -233,6 +236,7 @@ function changePic(files) {
     }
 
     data.append('property_id', id);
+    data.append('csrf', document.getElementById('csrf').value);
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function (event) {
@@ -270,10 +274,13 @@ function setCancelActions() {
 
 // Cancels rent with id
 function cancelRent(id) {
+    if (!(id >= 0)) return;
+
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
     let request = encodeForAjax({
+        csrf: document.getElementById('csrf').value, 
         id: id,
         owner: document.getElementById('my-id')
     });

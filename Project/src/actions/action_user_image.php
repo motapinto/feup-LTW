@@ -6,8 +6,8 @@
     include_once('../database/users.php');
 
     if ($_SESSION['csrf'] !== $_POST['csrf']) {
-        alert('ERROR: Request does not appear to be legitimate');
-        header('Location: ../listings/listings_all.php');
+        // alert('ERROR: Request does not appear to be legitimate');
+        die(header('Location: ../listings/listings_all.php'));
     }
     
     if(!isset($_SESSION['id']))

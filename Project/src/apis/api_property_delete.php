@@ -7,13 +7,17 @@
 
     $ret = array('response' => -2);
         
-    
-    
     if(!isset($_GET['id']) || !isset($_SESSION['id'])) {
         encodeForAJAX($ret);
-        return;
+        die();
     }
-    
+
+    if ($_SESSION['csrf'] !== $_GET['csrf']) {
+        encodeForAJAX($ret);
+        // ERROR: Request does not appear to be legitimate
+        die();
+    }
+
     $id = $_SESSION['id'];
     $property_id = $_GET['id'];
 
