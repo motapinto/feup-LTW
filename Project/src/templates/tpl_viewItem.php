@@ -64,8 +64,9 @@
                     </span>
                 </header>
 
-                <section id='rent-body'>
-                    <input id='id' name='id' type='hidden' value="<?=$item['id']?>"/>
+                <section class='rent-body'>
+                    <input id='csrf' type="hidden" value='<?=$_SESSION['csrf']?>'>
+                    <input id='id' name='id' type='hidden' value="<?=$item['id']?>">
                     <p>Check In and Check Out</p>
                     <input id="calendar" type='daterange' name='daterange' value="Check In - Check Out" min=<?=date('Y-m-d')?> required>
                     <p>Number of Guests: <span id="current-guests">1</span><button id='dropdown-btn' type="button"><i class="fas fa-chevron-down"></i></button></p>

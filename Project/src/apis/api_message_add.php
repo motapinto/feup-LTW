@@ -4,10 +4,19 @@
     include_once('../database/messages.php');      // messages functions
     include_once('../templates/tpl_common.php');    // encodeForAJAX
     
-    if(!isset($_SESSION['id']))
-        exit; 
-    
     $result = array('response' => -3);
+
+    if(!isset($_SESSION['id'])){
+        encodeForAJAX($result);
+        die(); 
+    }
+    
+    if ($_SESSION['csrf'] !== $_GET['csrf']) {
+        encodeForAJAX($result);
+        // ERROR: Request does not appear to be legitimate
+        die();
+    }
+
 
     //must receive all parameters
     if(!isset($_GET['sendMessage']) || !isset($_GET['receiver']) ||

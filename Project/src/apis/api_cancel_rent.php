@@ -6,9 +6,18 @@
 
     $ret = array('response' => -2);
 
-    if(!isset($_SESSION['id']) || !isset($_GET['id']))
+    if(!isset($_SESSION['id']) || !isset($_GET['id'])){
+        encodeForAJAX($ret);
         die();    
+    }
        
+    if ($_SESSION['csrf'] !== $_GET['csrf']) {
+        // ERROR: Request does not appear to be legitimate
+        encodeForAJAX($ret);
+        die();
+    }
+
+
     $id = $_GET['id'];
     $rent = getRentDetails($id);
     if(!$rent){

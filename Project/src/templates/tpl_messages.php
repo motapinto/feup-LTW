@@ -82,6 +82,7 @@
 
     <section id="messages-input">
             <input type="hidden" value='<?=$messengerId?>' id='receiver'>
+            <input type="hidden" value='<?=$_SESSION['csrf']?>' id='csrf'>
             <input type="text" placeholder="write a message" id='message' required>
             <button id="sendMessage">
                 <img src="../../assets/icons/send.png" alt="send icon">

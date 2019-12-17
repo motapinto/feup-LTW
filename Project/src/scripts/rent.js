@@ -43,6 +43,7 @@ function submitRent(event) {
     let asynchronous = true;
     
     let request = encodeForAjax({
+        csrf: document.getElementById('csrf').value, 
         id: document.getElementById('id').value,
         daterange: document.getElementById('calendar').value,
         adults: document.getElementById('adults').value,
@@ -98,14 +99,14 @@ function submitRent(event) {
 function checkGuests(option) {
     switch (option) {
         case ADD:
-            let adults = parseInt(escapeHtml(document.getElementById('adults').value));
-            let children = parseInt(escapeHtml(document.getElementById('children').value));
-            let babies = parseInt(escapeHtml(document.getElementById('babies').value));
+            let adults = parseInt(escapeHtml(document.getElementById('adults').value), 10);
+            let children = parseInt(escapeHtml(document.getElementById('children').value), 10);
+            let babies = parseInt(escapeHtml(document.getElementById('babies').value), 10);
         
             return (adults + children + babies) < maxGuests;
 
         case SUB:
-            let currentGuests = parseInt(document.getElementById('current-guests').textContent);
+            let currentGuests = parseInt(document.getElementById('current-guests').textContent, 10);
             return currentGuests > 1;
         default:
             return -1;
@@ -135,7 +136,7 @@ function guestsChange(type, option) {
     switch (option) {
         case ADD:
             if (checkGuests(ADD)) {
-                document.getElementById(id).value = escapeHtml(document.getElementById(id).value) + 1;
+                document.getElementById(id).value = parseInt(escapeHtml(document.getElementById(id).value), 10) + 1;
                 document.getElementById('msg-guests').display = 'none';
             }
             else {
@@ -146,7 +147,7 @@ function guestsChange(type, option) {
     
         case SUB:
             if (checkGuests(SUB)) {
-                document.getElementById(id).value = escapeHtml(document.getElementById(id).value) - 1;
+                document.getElementById(id).value = parseInt(escapeHtml(document.getElementById(id).value), 10) - 1;
                 document.getElementById('msg-guests').display = 'none';
             }
             else {
