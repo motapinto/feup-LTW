@@ -99,6 +99,7 @@
     margin-bottom: 5%;
 }
 
+
 /*  OWNER MANAGMENT AREA*/
 
 #property-history {
@@ -185,7 +186,7 @@
     height: 2em;
 }
 
-#galleria {
+#property-info #galleria {
     height: 30em;
     width: 30em;
 }

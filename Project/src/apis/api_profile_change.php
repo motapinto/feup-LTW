@@ -47,9 +47,9 @@
             $ret['response'] = -2;
             die();
         }
-        $user['password'] = htmlentities($_GET['password'], ENT_QUOTES, 'UTF-8');
+        $user['password'] = password_hash($_GET['password'], PASSWORD_DEFAULT);
         $ret['response'] = -10;
-    }
+    }   
     else if(isset($_GET['currentPassword'])) {
         if(password_verify($_GET['currentPassword'], $user['password']))
             $ret['response'] = 0;

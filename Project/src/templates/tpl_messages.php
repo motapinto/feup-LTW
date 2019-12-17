@@ -26,15 +26,9 @@
                         <a href="../messages/messages.php?user=<?=$messenger['user']?>" class="message-menu-item 
                             <?=$messenger['user']===$userSelected?'active':'desactive'?>">
                                 <img width="60px" height="60px" src="<?=$image?>" alt="default">
-                                <div class="message-menu-item-title">
-                                    <?=$user['name']?>
-                                </div>
-                                <div class="message-menu-item-date">
-                                    <?=$date?>
-                                </div>
-                                <div class="message-menu-item-lastmsg">
-                                    <?=$lastMessage['message']?>
-                                </div>
+                                <div class="message-menu-item-title"><?=$user['name']?></div>
+                                <div class="message-menu-item-date"><?=$date?></div>
+                                <div class="message-menu-item-lastmsg"><?=$lastMessage['message']?></div>
                                 <input class="messenger-id"hidden value="<?=$user['id']?>">
                         </a>
                 <?php } ?>

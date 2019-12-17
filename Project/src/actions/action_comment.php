@@ -18,8 +18,7 @@
     $comment = htmlentities($_POST['comment'], ENT_QUOTES, 'UTF-8');
     $rating = $_POST['rating'];     
 
-    if(!addComment($_SESSION['id'], $property_id, $comment, $rating))
-        $_SESSION['msg'] = 'Failled to post Comment';
+    addComment($_SESSION['id'], $property_id, $comment, $rating);
 
     header("Location: ../listings/item.php?id=$property_id");
 ?>

@@ -5,7 +5,8 @@
     grid-template-rows: 1fr 6fr 1fr;
     background: #fff;
     margin-top: 0.1em;
-    overflow-x: hidden;
+    max-height: 92%;
+    max-width: 100%;
 }
 
 #messages-search {
@@ -38,12 +39,11 @@
 
 .message-menu-item {
     display: grid;
-    grid-template-columns: 3em 7em 4em;
-    grid-template-rows: 1em 1em;
-    grid-template-areas: 'image title date' 'image msg msg';
-    gap: 0.5em;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1.2em 1.2em 1fr;
+    grid-template-areas: 'image title ' 'image date' 'empty  msg';
+    gap: 0.1em;
     color: rgba(39, 39, 39, 0.5);
-    font-size: 18px;
     font-weight: lighter;
     padding: 1em 1em 1.5em 1em;
     border-radius: 10px;
@@ -88,12 +88,11 @@
 #messages-chatTitle {
     grid-area: messages-chatTitle;
     display: grid;
-    grid-template-columns: 2em 20em;
+    grid-template-columns: 2em 15em;
     align-content: center;
     align-items: center;
     color: black;
     font-size: 2em;
-    padding-left: 0.6em;
     border-bottom: solid 1px rgb(236, 234, 234);
     border-left: solid 1px rgb(236, 234, 234);
     max-width: 100%;
@@ -104,7 +103,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 100%;
 }
 
 #messages-chatTitle a {
@@ -112,16 +110,15 @@
     height: 50px;
 }
 
-
 #messages-chatTitle a img {
     cursor: pointer;
     border-radius: 50%;
+    padding-left: 0.6em;
 }
 
 #messages-chatSelected {
     grid-area: messages-chatSelected;
-    padding: 2% 2%;
-    width: 96%;
+    width: 99.9%;
     max-width: 100%;
     overflow-y: scroll;
     border-left: solid 1px rgb(236, 234, 234);

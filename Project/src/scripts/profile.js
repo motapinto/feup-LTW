@@ -82,7 +82,7 @@ function setCancelActions() {
     let rents = document.getElementsByClassName('cancel-button');
     for (let i = 0; i < rents.length; i++) {
         rents[i].onclick = function (event) {
-            cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value, 10));
+            cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value));
         };
     }
 }
@@ -177,7 +177,16 @@ function checkCurrentPassword() {
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
         switch (response['response']) {
-            case -1:
+            case 0:
+                document.getElementById('msg-password').innerHTML = '';
+                document.getElementById('current-password').style.backgroundColor = 'white';
+                document.getElementById('current-password').style.border = 'solid 1px rgb(176, 183, 187)';
+                document.getElementById('password').disabled = false;
+                document.getElementById('confirm_password').disabled = false;
+                document.getElementById('password-change').style.display = 'block';
+                break;
+            
+            default:
                 document.getElementById('msg-password').textContent = 'Current password is not correct';
                 document.getElementById('msg-password').style.color = 'red';
                 document.getElementById('current-password').style.backgroundColor = 'rgb(246, 220, 220)';
@@ -185,15 +194,6 @@ function checkCurrentPassword() {
                 document.getElementById('password').disabled = true;
                 document.getElementById('confirm_password').disabled = true;
                 document.getElementById('password-change').style.display = 'none';
-                break;
-
-            default:
-                document.getElementById('msg-password').innerHTML = '';
-                document.getElementById('current-password').style.backgroundColor = 'white';
-                document.getElementById('current-password').style.border = 'solid 1px rgb(176, 183, 187)';
-                document.getElementById('password').disabled = false;
-                document.getElementById('confirm_password').disabled = false;
-                document.getElementById('password-change').style.display = 'block';
                 break;
         }
     });
