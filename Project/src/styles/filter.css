@@ -1,10 +1,31 @@
-.filter {
-    float: left;
-    display: flex;
-    flex-direction: column;
-    height: 93%;
-    margin: 0;
-    width: 25%;
+@media only screen and (min-width: 600px) {
+    /* For desktop: */
+    .filter {
+        float: left;
+        display: flex;
+        flex-direction: column;
+        height: 93%;
+        margin: 0;
+        width: 25%;
+    }
+    .listings {
+        max-width: 75%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* For phones: */
+    .filter {
+        float: none;
+        display: flex;
+        flex-direction: column;
+        height: 93%;
+        margin: 0;
+        width: 100%;
+    }
+    .listings {
+        width: 100%;
+    }
 }
 
 .filter-form {
@@ -42,19 +63,18 @@
 
 .filter section {
     margin: 0.5em 0em;
-    padding-bottom: 5%;
-    margin-bottom: 5%;
+    padding-bottom: 1em;
     border-bottom: 1px solid rgba(39, 39, 39, 0.4);
 }
 
-.filter-form > button {
+.filter-form>button {
     margin: 0 15%;
 }
 
 #price-slider {
     left: 10%;
     width: 70%;
-    margin-top: 8%;
+    margin-top: 1em;
 }
 
 #calendar {
@@ -104,7 +124,7 @@
     flex-direction: row;
 }
 
-#pagination input{
+#pagination input {
     background-color: inherit;
     color: white;
     font-size: 0.9em;

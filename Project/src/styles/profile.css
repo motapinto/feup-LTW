@@ -1,4 +1,4 @@
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
     /* For desktop: */
     .side-drawer,
     .selected-tab {
@@ -6,7 +6,7 @@
     }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 767px) {
     /* For phones: */
     .side-drawer,
     .selected-tab {
@@ -28,6 +28,7 @@
     padding: 0 5em;
     width: 30em;
     border-left: solid 1px rgb(175, 175, 175);   
+    align-items: center;
 }
 
 #profile-settings-tab{
