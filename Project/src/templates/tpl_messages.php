@@ -50,7 +50,9 @@
     ?>
 
     <section id="messages-chatTitle">
-        <img width="50px" height="50px" src="<?= $image ?>" alt="default">
+        <a href="../profile/profile.php?id=<?= $messenger['id'] ?>">
+            <img width="50px" height="50px" src="<?= $image ?>" alt="default">
+        </a>
         <span> <?= $messenger['name'] ?> </span>
     </section>
     
