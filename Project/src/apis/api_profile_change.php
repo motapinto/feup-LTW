@@ -4,7 +4,7 @@
     include_once('../templates/tpl_common.php');    // encodeForAJAX
 
     if(!isset($_SESSION['id']))
-        die(header('Location: ../listings/listings_all.php'));
+        die();
         
     $ret = array('response' => -3);
     $user = userProfile($_SESSION['id']);

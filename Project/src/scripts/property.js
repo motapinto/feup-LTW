@@ -13,19 +13,19 @@ document.getElementById("add-button").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
-    let title = escapeHtml(document.getElementById('title').value);
-    let description = escapeHtml(document.getElementById('description').value);
-    let price_day = escapeHtml(document.getElementById('price').value);
-    let guests = escapeHtml(document.getElementById('guests').value);
-    let city = escapeHtml(document.getElementById('city').value);
-    let street = escapeHtml(document.getElementById('street').value);
-    let door_number = escapeHtml(document.getElementById('door_number').value);
-    let apartment_number = escapeHtml(document.getElementById('apart_number').value);
-    let property_type = escapeHtml(document.getElementById('property_type').value);
+    let title = document.getElementById('title').value;
+    let description = document.getElementById('description').value;
+    let price_day = document.getElementById('price').value;
+    let guests = document.getElementById('guests').value;
+    let city = document.getElementById('city').value;
+    let street = document.getElementById('street').value;
+    let door_number = document.getElementById('door_number').value;
+    let apartment_number = document.getElementById('apart_number').value;
+    let property_type = document.getElementById('property_type').value;
 
     let request;
     if (document.getElementById('id')) {
-        let property_id = escapeHtml(document.getElementById('id').value);
+        let property_id = document.getElementById('id').value;
     
         request = encodeForAjax({ 
             title: title, 
@@ -86,7 +86,7 @@ document.getElementById("add-button").onclick = function (event) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_change_property.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_change_property.php?' + request, asynchronous);
     xhttp.send();
 }
 
@@ -125,7 +125,7 @@ function deleteProperty(event) {
     });
 
 
-    xhttp.open('GET', '../actions/action_property_delete.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_property_delete.php?' + request, asynchronous);
     xhttp.send();
 }
 
@@ -252,7 +252,7 @@ function changePic(files) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('POST', '../actions/action_property_image.php', asynchronous);
+    xhttp.open('POST', '../apis/api_property_image.php', asynchronous);
     xhttp.send(data);
 }
 
@@ -284,7 +284,7 @@ function cancelRent(id) {
         if (response['response'] === 0) {
             let rents = document.getElementsByClassName('rent-id');
             for (let i = 0; i < rents.length; i++) {
-                if (parseInt(rents.item(i).value) === id) {
+                if (parseInt(rents.item(i).value, 10) === id) {
                     let elements = document.getElementsByClassName('history-item');
                     elements[i].parentNode.removeChild(elements[i]);
                 }
@@ -294,7 +294,7 @@ function cancelRent(id) {
     });
 
 
-    xhttp.open('GET', '../actions/action_cancel_rent.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_cancel_rent.php?' + request, asynchronous);
     xhttp.send();
 
 }

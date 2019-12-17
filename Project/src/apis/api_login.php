@@ -3,14 +3,11 @@
     include_once('../database/users.php');         // user functions
     include_once('../templates/tpl_common.php');   // encodeForAJAX
 
-    $ret = array('response' => '');
+    $ret = array('response' => -1);
 
     $email = $_GET['email'];
     $password = $_GET['password'];
     
-    htmlentities($email, ENT_QUOTES, 'UTF-8');
-    htmlentities($password, ENT_QUOTES, 'UTF-8');
-
     $ret['response'] = checkUser($email, $password);
 
     if($ret['response'] != -1 && $ret['response'] != -2) {

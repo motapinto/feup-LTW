@@ -69,8 +69,8 @@ function submitLogin(event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
     
-    let email = escapeHtml(document.getElementById('email').value);
-    let password = escapeHtml(document.getElementById('password').value);
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
 
     let request = encodeForAjax({ 
         email: email, 
@@ -80,7 +80,7 @@ function submitLogin(event) {
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);
-        
+
         switch (response.response) {
             case -1:
                 document.getElementById('login-msg').innerHTML = 'User does not exist';
@@ -112,7 +112,7 @@ function submitLogin(event) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_login.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_login.php?' + request, asynchronous);
     xhttp.send();
 }
 
@@ -123,10 +123,10 @@ function submitSignup(event) {
     if(!(checkName() && checkAge() && checkEmail() && checkPass()))
         return; 
 
-    let email = escapeHtml(document.getElementById('email').value);
-    let password = escapeHtml(document.getElementById('password').value);
-    let name = escapeHtml(document.getElementById('name').value);
-    let age = escapeHtml(document.getElementById('age').value);
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let name = document.getElementById('name').value;
+    let age = document.getElementById('age').value;
 
     let request = encodeForAjax({ 
         email: email, 
@@ -158,6 +158,6 @@ function submitSignup(event) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_signup.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_signup.php?' + request, asynchronous);
     xhttp.send();
 }

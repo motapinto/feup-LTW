@@ -3,7 +3,7 @@
     include_once('../database/users.php');         // user functions
     include_once('../templates/tpl_common.php');   // encodeForAJAX
 
-    $ret = array('response' => '');
+    $ret = array('response' => -3);
 
     $email = $_GET['email'];
     $password = $_GET['password'];

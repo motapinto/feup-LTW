@@ -3,8 +3,8 @@
 document.getElementById("sendMessage").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let message = escapeHtml(document.getElementById('message').value);
-    let receiver = escapeHtml(document.getElementById('receiver').value);
+    let message = document.getElementById('message').value;
+    let receiver = document.getElementById('receiver').value;
     let request = encodeForAjax({ sendMessage: message, receiver: receiver });
 
 
@@ -26,7 +26,7 @@ document.getElementById("sendMessage").onclick = function (event) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_message_add.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_message_add.php?' + request, asynchronous);
     xhttp.send();
 }
 
@@ -82,13 +82,14 @@ function setCancelActions() {
     let rents = document.getElementsByClassName('cancel-button');
     for (let i = 0; i < rents.length; i++) {
         rents[i].onclick = function (event) {
-            cancelRent(parseInt(escapeHtml(document.getElementsByClassName('rent-id')[i].value)));
+            cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value, 10));
         };
     }
 }
 
 // Cancels rent with id
 function cancelRent(id) {
+    if (id === NaN) return;
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
@@ -103,7 +104,7 @@ function cancelRent(id) {
         if (response['response'] === 0) {
             let rents = document.getElementsByClassName('rent-id');
             for (let i = 0; i < rents.length; i++){
-                if (parseInt(escapeHtml(rents.item(i).value)) === id) {
+                if (parseInt(rents.item(i).value) === id) {
                     let elements = document.getElementsByClassName('profile-overview-elem');
                     elements[i].parentNode.removeChild(elements[i]);
                 } 
@@ -113,7 +114,7 @@ function cancelRent(id) {
     });
 
 
-    xhttp.open('GET', '../actions/action_cancel_rent.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_cancel_rent.php?' + request, asynchronous);
     xhttp.send();
 
 }
@@ -166,7 +167,7 @@ function profileSubMenu(option) {
 function checkCurrentPassword() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let request = encodeForAjax({ currentPassword: escapeHtml(document.getElementById('current-password').value)});
+    let request = encodeForAjax({ currentPassword: document.getElementById('current-password').value });
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
@@ -198,7 +199,7 @@ function checkCurrentPassword() {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_profile_change.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_profile_change.php?' + request, asynchronous);
     xhttp.send();
 }
 
@@ -211,19 +212,19 @@ function submitForm(option) {
     switch (option) {
         // user name
         case 0:
-            request = encodeForAjax({ name: escapeHtml(document.getElementById('name').value)});
+            request = encodeForAjax({ name: document.getElementById('name').value });
             break;
         // user email
         case 1:
-            request = encodeForAjax({ email: escapeHtml(document.getElementById('email').value)});
+            request = encodeForAjax({ email: document.getElementById('email').value });
             break;
         // user age
         case 2:
-            request = encodeForAjax({ age: escapeHtml(document.getElementById('age').value)});
+            request = encodeForAjax({ age: document.getElementById('age').value });
             break;
         // user password
         case 3:
-            request = encodeForAjax({ password: escapeHtml(document.getElementById('password').value)});
+            request = encodeForAjax({ password: document.getElementById('password').value });
             break;    
         case 4:
             request = encodeForAjax({ deleteUser: 0 });
@@ -264,14 +265,16 @@ function submitForm(option) {
                         break;
 
                     default:
-                        alert('Email changed successfully!');                        
+                        document.getElementById('msg-email').innerHTML = 'Email changed successfully!';
+                        document.getElementById('msg-email').style.color = 'green';
                         break;
                 }
                 break;
 
             case 3: 
-                    alert('Password changed successfully!');
-                    break;
+                document.getElementById('msg-password').innerHTML = 'Password changed successfully!';
+                document.getElementById('msg-password').style.color = 'green';
+                break;
             
             case 4:
                 window.location = "../actions/action_logout.php";
@@ -286,7 +289,7 @@ function submitForm(option) {
         alert('Oops! Something goes wrong.');
     });
 
-    xhttp.open('GET', '../actions/action_profile_change.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_profile_change.php?' + request, asynchronous);
     xhttp.send();
 }
 
@@ -294,6 +297,4 @@ function submitForm(option) {
 function deleteUser() {
     if (confirm("Are you sure?"))
         submitForm(4);
-    else 
-        submitForm(-1);
 }

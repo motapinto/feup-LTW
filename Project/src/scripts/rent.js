@@ -40,11 +40,11 @@ function submitRent(event) {
     let asynchronous = true;
     
     let request = encodeForAjax({
-        id: escapeHtml(document.getElementById('id').value),
-        daterange: escapeHtml(document.getElementById('calendar').value),
-        adults: escapeHtml(document.getElementById('adults').value),
-        children: escapeHtml(document.getElementById('children').value),
-        babies: escapeHtml(document.getElementById('babies').value)
+        id: document.getElementById('id').value,
+        daterange: document.getElementById('calendar').value,
+        adults: document.getElementById('adults').value,
+        children: document.getElementById('children').value,
+        babies: document.getElementById('babies').value
     });
 
 
@@ -87,7 +87,7 @@ function submitRent(event) {
     });
 
 
-    xhttp.open('GET', '../actions/action_rent.php?' + request, asynchronous);
+    xhttp.open('GET', '../apis/api_rent.php?' + request, asynchronous);
     xhttp.send();
 }
 

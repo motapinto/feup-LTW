@@ -56,6 +56,6 @@ if (document.getElementById("sendMessage"))
             alert('Oops! Something goes wrong.');
         });
 
-        xhttp.open('GET', '../actions/action_message_add.php?' + request, asynchronous);
+        xhttp.open('GET', '../apis/api_message_add.php?' + request, asynchronous);
         xhttp.send();
     }

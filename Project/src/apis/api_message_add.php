@@ -5,7 +5,7 @@
     include_once('../templates/tpl_common.php');    // encodeForAJAX
     
     if(!isset($_SESSION['id']))
-        header('Location: ../listings/listings_all.php'); 
+        exit; 
     
     $result = array('response' => -3);
 
