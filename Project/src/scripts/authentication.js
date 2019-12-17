@@ -65,20 +65,17 @@ document.getElementById('continue-btn').onclick = function (event) {
     window.location = '../listings/listings_all.php';
 }
 
-
-
 function submitLogin(event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
+    
+    let email = escapeHtml(document.getElementById('email').value);
+    let password = escapeHtml(document.getElementById('password').value);
 
-    let email = document.getElementById('email').value;
-    email = email.replace('@', '%40');
-    email = 'email=' + email;
-
-    let password = document.getElementById('password').value;
-    password = 'password=' + password;
-
-    let request = email + '&' + password;
+    let request = encodeForAjax({ 
+        email: email, 
+        password: password
+    });
     
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
@@ -126,21 +123,18 @@ function submitSignup(event) {
     if(!(checkName() && checkAge() && checkEmail() && checkPass()))
         return; 
 
-    let email = document.getElementById('email').value;
-    email = email.replace('@', '%40');
-    email = 'email=' + email;
+    let email = escapeHtml(document.getElementById('email').value);
+    let password = escapeHtml(document.getElementById('password').value);
+    let name = escapeHtml(document.getElementById('name').value);
+    let age = escapeHtml(document.getElementById('age').value);
 
-    let password = document.getElementById('password').value;
-    password = 'password=' + password;
+    let request = encodeForAjax({ 
+        email: email, 
+        password: password,
+        name: name,
+        age: age
+    });
 
-    let name = document.getElementById('name').value;
-    name = 'name=' + name;
-
-    let age = document.getElementById('age').value;
-    age = 'age=' + age;
-
-    let request = email + '&' + password + '&' + name + '&' + age;
-    
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
         let response = JSON.parse(this.responseText);

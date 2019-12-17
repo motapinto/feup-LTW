@@ -5,8 +5,8 @@ if (document.getElementById("sendMessage"))
         if (document.getElementById('message').value == '') return;
         let xhttp = new XMLHttpRequest();
         let asynchronous = true;
-        let message = document.getElementById('message').value;
-        let receiver = document.getElementById('receiver').value;
+        let message = escapeHtml(document.getElementById('message').value);
+        let receiver = escapeHtml(document.getElementById('receiver').value);
         let request = encodeForAjax({ sendMessage: message, receiver: receiver});
 
         // Define what happens on successful data submission

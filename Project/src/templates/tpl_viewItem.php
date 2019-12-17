@@ -101,6 +101,7 @@
     draw_allComments($comments);
     if(isset($_SESSION['id'])){ ?>
       <form id='comment_form' action='../actions/action_comment.php' method='POST'>
+        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
           <h4>Leave a comment</h4>
           <textarea name='comment' cols='40' rows='5' placeholder='Describe your experience' required></textarea>
           <input name='rating' type="number" min="1" max="5" required placeholder='Rate this property'>

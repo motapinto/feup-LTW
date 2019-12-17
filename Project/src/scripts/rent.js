@@ -40,11 +40,11 @@ function submitRent(event) {
     let asynchronous = true;
     
     let request = encodeForAjax({
-        id: document.getElementById('id').value,
-        daterange: document.getElementById('calendar').value,
-        adults: document.getElementById('adults').value,
-        children: document.getElementById('children').value,
-        babies: document.getElementById('babies').value
+        id: escapeHtml(document.getElementById('id').value),
+        daterange: escapeHtml(document.getElementById('calendar').value),
+        adults: escapeHtml(document.getElementById('adults').value),
+        children: escapeHtml(document.getElementById('children').value),
+        babies: escapeHtml(document.getElementById('babies').value)
     });
 
 
@@ -95,9 +95,9 @@ function submitRent(event) {
 function checkGuests(option) {
     switch (option) {
         case ADD:
-            let adults = parseInt(document.getElementById('adults').value);
-            let children = parseInt(document.getElementById('children').value);
-            let babies = parseInt(document.getElementById('babies').value);
+            let adults = parseInt(escapeHtml(document.getElementById('adults').value));
+            let children = parseInt(escapeHtml(document.getElementById('children').value));
+            let babies = parseInt(escapeHtml(document.getElementById('babies').value));
         
             return (adults + children + babies) < maxGuests;
 
@@ -132,7 +132,7 @@ function guestsChange(type, option) {
     switch (option) {
         case ADD:
             if (checkGuests(ADD)) {
-                document.getElementById(id).value++;
+                document.getElementById(id).value = escapeHtml(document.getElementById(id).value) + 1;
                 document.getElementById('msg-guests').display = 'none';
             }
             else {
@@ -143,7 +143,7 @@ function guestsChange(type, option) {
     
         case SUB:
             if (checkGuests(SUB)) {
-                document.getElementById(id).value--;
+                document.getElementById(id).value = escapeHtml(document.getElementById(id).value) - 1;
                 document.getElementById('msg-guests').display = 'none';
             }
             else {
@@ -157,5 +157,5 @@ function guestsChange(type, option) {
     }
 
     // Change current-guests number
-    document.getElementById('current-guests').textContent = (parseInt(document.getElementById('adults').value) + parseInt(document.getElementById('children').value) + parseInt(document.getElementById('babies').value)).toString();
+    document.getElementById('current-guests').textContent = (parseInt(escapeHtml(document.getElementById('adults').value)) + parseInt(escapeHtml(document.getElementById('children').value)) + parseInt(escapeHtml(document.getElementById('babies').value))).toString();
 }

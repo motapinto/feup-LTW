@@ -14,6 +14,7 @@
                 <div class='profile-change-photo'>
                     <form action='../actions/action_user_image.php' method='post' enctype='multipart/form-data'>
                         <input type='file' name='image' id='image'>
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                         <label for='image'>Choose Image</label>
                         <input id="photo-submit" type='submit' name='Submit' value='Upload'>
                     </form>

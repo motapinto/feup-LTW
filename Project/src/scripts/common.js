@@ -1,5 +1,25 @@
 "use strict";
 
+let entityMap = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': '&quot;',
+    "'": '&#39;',
+    "/": '&#x2F;'
+};
+
+
+function escapeHtml(string) {
+    return String(string).replace(/[&<>"'\/]/g, function (s) {
+        return entityMap[s];
+    });
+}
+
+function generate_random_token() {
+    return bin2hex(openssl_random_pseudo_bytes(32));
+  }
+
 if (document.getElementById('dropdown-btn') && document.getElementById('dropdown'))
     document.getElementById('dropdown-btn').onclick = dropdown;
 
@@ -14,7 +34,7 @@ function dropdown() {
 }
 
 function checkName(inProfile = false) {
-    let name = document.getElementById('name').value;
+    let name = escapeHtml(document.getElementById('name').value);
     let nameTest = new RegExp("^[a-zA-Z\u00C0-\u00FF]+(([' -][a-zA-Z\u00C0-\u00FF])?[a-zA-Z\u00C0-\u00FF]*)*$");
     let isLegal = nameTest.test(name);
 
@@ -25,7 +45,7 @@ function checkName(inProfile = false) {
             document.getElementById('name').style.border = 'solid 1px rgb(176, 183, 187)';
             document.getElementById('icon-name').style.color = 'black';
             document.getElementById('icon-name').className = 'fas fa-check';
-            document.getElementById('user-name').textContent = document.getElementById('name').value;
+            document.getElementById('user-name').textContent = name;
             submitForm(0);
         }
         return true;
@@ -44,7 +64,7 @@ function checkName(inProfile = false) {
 }
 
 function checkAge(inProfile=false) {
-    let age = document.getElementById('age').value;
+    let age = escapeHtml(document.getElementById('age').value);
 
     if (age >= 18) {
         document.getElementById('age').style.backgroundColor = 'white';
@@ -71,7 +91,7 @@ function checkAge(inProfile=false) {
 }
 
 function checkEmail(inProfile=false) {
-    let email = document.getElementById('email').value;
+    let email = escapeHtml(document.getElementById('email').value);
     let emailTest = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
     let isLegal = emailTest.test(email);
 
@@ -95,7 +115,7 @@ function checkEmail(inProfile=false) {
 }
 
 function checkPass() {
-    let password = document.getElementById('password').value;
+    let password = escapeHtml(document.getElementById('password').value);
     let isLegal = /(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])./.test(password);
 
     if (isLegal) {

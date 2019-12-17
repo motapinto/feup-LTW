@@ -13,19 +13,19 @@ document.getElementById("add-button").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
 
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    let price_day = document.getElementById('price').value;
-    let guests = document.getElementById('guests').value;
-    let city = document.getElementById('city').value;
-    let street = document.getElementById('street').value;
-    let door_number = document.getElementById('door_number').value;
-    let apartment_number = document.getElementById('apart_number').value;
-    let property_type = document.getElementById('property_type').value;
+    let title = escapeHtml(document.getElementById('title').value);
+    let description = escapeHtml(document.getElementById('description').value);
+    let price_day = escapeHtml(document.getElementById('price').value);
+    let guests = escapeHtml(document.getElementById('guests').value);
+    let city = escapeHtml(document.getElementById('city').value);
+    let street = escapeHtml(document.getElementById('street').value);
+    let door_number = escapeHtml(document.getElementById('door_number').value);
+    let apartment_number = escapeHtml(document.getElementById('apart_number').value);
+    let property_type = escapeHtml(document.getElementById('property_type').value);
 
     let request;
     if (document.getElementById('id')) {
-        let property_id = document.getElementById('id').value;
+        let property_id = escapeHtml(document.getElementById('id').value);
     
         request = encodeForAjax({ 
             title: title, 
@@ -61,18 +61,18 @@ document.getElementById("add-button").onclick = function (event) {
         if (request.id != undefined) {
             switch (response['response']) {
                 case 0:
-                    alert('SUCCESS')
+                    alert('Changed property details with success')
                     break;
     
                 default:
-                    alert('FAIL')
+                    alert('Failed changing property details! Try again')
                     break;
             }
         }
         else {
             switch (response['response']) {
                 case -1:
-                    alert('FAIL')
+                    alert('Failed changing property details! Try again')
                     break;
                     
                 default:

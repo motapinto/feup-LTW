@@ -2,6 +2,11 @@
     include_once('../includes/session.php');        // starts the session
     include_once('../database/comments.php');       // comments functions
 
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        alert('ERROR: Request does not appear to be legitimate');
+        header('Location: ../listings/listings_all.php');
+    }
+
     if(!isset($_POST['property_id']) || !isset($_POST['comment']))
         header('Location: ../listings/listings_all.php');
 	

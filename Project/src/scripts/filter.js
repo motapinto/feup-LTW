@@ -3,12 +3,12 @@
 let max_page;
 
 if(document.getElementById('pagination') != null) 
-    max_page = parseInt(document.getElementById('current-page').max);
+    max_page = parseInt(escapeHtml(document.getElementById('current-page').max));
 else
     max_page = 0;
  
-let min = parseInt(document.getElementById('price_min').value);
-let max = parseInt(document.getElementById('price_max').value);
+let min = parseInt(escapeHtml(document.getElementById('price_min').value));
+let max = parseInt(escapeHtml(document.getElementById('price_max').value));
 let slider = document.getElementById('price-slider');
 
 noUiSlider.create(slider, {
@@ -28,17 +28,17 @@ noUiSlider.create(slider, {
 slider.noUiSlider.on('update', function (values, handle) {
     min = values[0];
     max = values[1];
-    document.getElementById('price_min').value = values[0];
-    document.getElementById('price_max').value = values[1];
+    escapeHtml(document.getElementById('price_min').value) = values[0];
+    escapeHtml(document.getElementById('price_max').value) = values[1];
 });
 
 document.getElementById('price_min').onkeyup = function (event) {
-    min = parseInt(document.getElementById('price_min').value);
+    min = parseInt(escapeHtml(document.getElementById('price_min').value));
     document.getElementById('price_max').min = min;
 }
 
 document.getElementById('price_max').onkeyup = function (event) {
-    max = parseInt(document.getElementById('price_max').value);
+    max = parseInt(escapeHtml(document.getElementById('price_max').value));
     document.getElementById('price_min').max = max;
 }
 

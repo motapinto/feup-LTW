@@ -3,8 +3,8 @@
 document.getElementById("sendMessage").onclick = function (event) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let message = document.getElementById('message').value;
-    let receiver = document.getElementById('receiver').value;
+    let message = escapeHtml(document.getElementById('message').value);
+    let receiver = escapeHtml(document.getElementById('receiver').value);
     let request = encodeForAjax({ sendMessage: message, receiver: receiver });
 
 
@@ -82,7 +82,7 @@ function setCancelActions() {
     let rents = document.getElementsByClassName('cancel-button');
     for (let i = 0; i < rents.length; i++) {
         rents[i].onclick = function (event) {
-            cancelRent(parseInt(document.getElementsByClassName('rent-id')[i].value));
+            cancelRent(parseInt(escapeHtml(document.getElementsByClassName('rent-id')[i].value)));
         };
     }
 }
@@ -103,7 +103,7 @@ function cancelRent(id) {
         if (response['response'] === 0) {
             let rents = document.getElementsByClassName('rent-id');
             for (let i = 0; i < rents.length; i++){
-                if (parseInt(rents.item(i).value) === id) {
+                if (parseInt(escapeHtml(rents.item(i).value)) === id) {
                     let elements = document.getElementsByClassName('profile-overview-elem');
                     elements[i].parentNode.removeChild(elements[i]);
                 } 
@@ -166,8 +166,7 @@ function profileSubMenu(option) {
 function checkCurrentPassword() {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let password = document.getElementById('current-password').value;
-    let request = 'currentPassword=' + password;
+    let request = encodeForAjax({ currentPassword: escapeHtml(document.getElementById('current-password').value)});
 
     // Define what happens on successful data submission
     xhttp.addEventListener('load', function(event) {
@@ -207,36 +206,28 @@ function checkCurrentPassword() {
 function submitForm(option) {
     let xhttp = new XMLHttpRequest();
     let asynchronous = true;
-    let request, name, email, age, password;
+    let request;
 
     switch (option) {
         // user name
         case 0:
-            name = document.getElementById('name').value;
-            name = name.split(' ');
-            name = name.join('+');
-            request = 'name=' + name;
+            request = encodeForAjax({ name: escapeHtml(document.getElementById('name').value)});
             break;
         // user email
         case 1:
-            email = document.getElementById('email').value;
-            email = email.replace('@', '%40');
-            request = 'email=' + email;
+            request = encodeForAjax({ email: escapeHtml(document.getElementById('email').value)});
             break;
         // user age
         case 2:
-            age = document.getElementById('age').value;
-            request = 'age=' + age;
+            request = encodeForAjax({ age: escapeHtml(document.getElementById('age').value)});
             break;
-
         // user password
         case 3:
-            password = document.getElementById('password').value;
-            request = 'password=' + password;
-            break;
-        
+            request = encodeForAjax({ password: escapeHtml(document.getElementById('password').value)});
+            break;    
         case 4:
-            request = 'deleteUser=0'
+            request = encodeForAjax({ deleteUser: 0 });
+            break;
 
         default:
             break;
