@@ -11,11 +11,4 @@
 > **Any problems?**\
 > Start an Issue please.
 
-Ideias:
-- por um dropdown order by: price, date, location, ...
-- ao clicar em username puder editar toa a info e ver os comentarios feitos
-- colocar foto para user e guardar!?
-- seguir estilo imovirtual/remax
-
-
 **Disclaimer** - This repository was created for educational purposes and we do not take any responsibility for anything related to its content. You are free to use any code or algorithm you find, but do so at your own risk.
