@@ -59,22 +59,45 @@
 
 /* ADD A NEW PROPERTY */
 
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    #property-details,
+    #property-info,
+    #property-hisotry {
+        grid-column: span 3;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    /* For phones: */
+    #property-details,
+    #property-info,
+    #property-hisotry {
+        grid-column: span 1;
+    }
+}
+
 #addProperty {
     margin: 1%;
-    display: flex;
+    display: grid;
     max-height: 90%;
 }
 
 #property-important {
-    grid-area: main;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     margin-right: 2em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'details rent info';
 }
 
-#property-main input,
+#property-details {
+    grid-area: details;
+    display: flex;
+    flex-direction: column;
+}
+
 #property-details input {
-    width: 98%;
+    width: 95%;
     border-radius: 5px;
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
@@ -82,35 +105,35 @@
     margin-bottom: 1em;
 }
 
-#property-main textarea {
-    width: 98%;
+#property-details select {
+    width: 95%;
+}
+
+#property-details textarea {
+    width: 95%;
     border-radius: 5px;
     margin-bottom: 1em;
     border: solid rgb(176, 183, 187) 1px;
     color: grey;
 }
 
-#property-info {
-    grid-area: info;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
 #property-details input {
     margin-bottom: 5%;
 }
 
-
-/*  OWNER MANAGMENT AREA*/
+#property-info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+}
 
 #property-history {
     overflow-y: scroll;
-    max-width: 14em;
+    max-height: 40em;
+    grid-area: rent;
 }
 
 .scrollable-history {
-    overflow-y: scroll;
-    height: 50%;
     padding-left: 0;
 }
 
@@ -192,9 +215,21 @@
     width: 30em;
 }
 
+#delete-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10em;
+    margin-right: 20em;
+    background-color: rgb(231, 174, 174);
+}
+
+#delete {
+    margin-top: 1%;
+}
+
 #delete-property {
-    background-color: white;
-    margin-left: 25%;
+    background-color: inherit;
     color: red;
-    font-size: 3em;
+    font-size: 2em;
+    margin-left: 1em;
 }

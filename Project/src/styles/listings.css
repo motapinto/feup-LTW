@@ -27,8 +27,8 @@
 
 .listings {
     overflow-y: scroll;
-    max-height: 93%;
     margin: 0;
+    height: 93%;
 }
 
 .elem {
