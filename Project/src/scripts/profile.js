@@ -5,7 +5,11 @@ document.getElementById("sendMessage").onclick = function (event) {
     let asynchronous = true;
     let message = document.getElementById('message').value;
     let receiver = document.getElementById('receiver').value;
-    let request = encodeForAjax({ sendMessage: message, receiver: receiver });
+    let request = encodeForAjax({ 
+        csrf: document.getElementById('csrf').value,
+        sendMessage: message,
+        receiver: receiver 
+    });
 
 
     // Define what happens on successful data submission
