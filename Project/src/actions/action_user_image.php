@@ -1,4 +1,6 @@
 <?php
+    error_reporting(E_ERROR | E_PARSE);
+
     include_once('../includes/session.php');       // starts the session
     include_once('../includes/database.php');      // connects to the database
     include_once('../database/listings.php');      // properties functions
@@ -58,7 +60,6 @@
         }
     }
     if($original === false){
-        $_SESSION['msg'] = 'File is not an image, please choose a valid image';
         die();
     }
 

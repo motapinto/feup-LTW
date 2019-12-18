@@ -288,6 +288,7 @@ function submitForm(option) {
             
             case 4:
                 window.location = "../actions/action_logout.php";
+                break;
 
             default:
                 break;

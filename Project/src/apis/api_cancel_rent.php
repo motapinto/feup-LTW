@@ -43,7 +43,7 @@
     }
     else if ($_SESSION['id'] === $rent['owner']){
         if(cancelRent($id)) {
-            addMessage($_SESSION['id'], $rent['owner'], "I have canceled your reservation of the property $title between the days $init and $fin.");
+            addMessage($rent['user_id'], $_SESSION['id'], "I have canceled your reservation of the property $title between the days $init and $fin.");
             $ret['response'] = 0;
         }
     }
